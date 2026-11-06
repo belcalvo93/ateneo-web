@@ -1,0 +1,3549 @@
+{
+  "_nota": "Borrador generado a partir de los títulos del canal. Completar titulo, disertante y url de cada video; revisar agrupamiento y tema. anio_aprox sale de 'hace X años' al 06/11/2026.",
+  "temas": [
+    "Historia, cultura y humanidades",
+    "Agua, ambiente y sostenibilidad",
+    "Inteligencia artificial y tecnología",
+    "Física y matemática",
+    "Espacio y astronomía",
+    "Ingeniería, sismos e infraestructura",
+    "Geología, minería y energía",
+    "Neurociencia, salud y psicología"
+  ],
+  "charlas": [
+    {
+      "id": "c001",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2026,
+      "videos": [
+        {
+          "titulo_original": "PINCELADAS  SANMARTINIANAS J.  M.  AMORETTI",
+          "duracion": "1:10:57",
+          "vistas": "5",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c002",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2026,
+      "videos": [
+        {
+          "titulo_original": "RECICLADO QUIMICO DE RESIDUOS PLASTICOS - Dra Elangeni Gilbert",
+          "duracion": "31:40",
+          "vistas": "15",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c003",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2026,
+      "videos": [
+        {
+          "titulo_original": "LA IH junto a la IA, Mesa Redonda",
+          "duracion": "1:30:17",
+          "vistas": "34",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c004",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2026,
+      "videos": [
+        {
+          "titulo_original": "LA RAPIDEZ DEL TIEMPO",
+          "duracion": "40:01",
+          "vistas": "51",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c005",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2026,
+      "videos": [
+        {
+          "titulo_original": "Módulo Habitacional y de Logística (HALO) - CHI - Ing Carlos Sisso",
+          "duracion": "1:33:57",
+          "vistas": "24",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c006",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2026,
+      "videos": [
+        {
+          "titulo_original": "ENCUENTRO ENTRE NEURONA DE SILICIO Y LA NEURONA DE  CARBONO",
+          "duracion": "1:09:06",
+          "vistas": "74",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c007",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2026,
+      "videos": [
+        {
+          "titulo_original": "LA PROPORCION AUREA - NATURALEZA Y MATEMÁTICA",
+          "duracion": "54:43",
+          "vistas": "211",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c008",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2026,
+      "videos": [
+        {
+          "titulo_original": "BORGES LA FILOSOFÍA Y EL POEMA IMTELECTUAL",
+          "duracion": "1:23:11",
+          "vistas": "82",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c009",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2026,
+      "videos": [
+        {
+          "titulo_original": "Ciencia y Tecnología para la Defensa en Argentina - Dr Pablo Bolcatto",
+          "duracion": "58:48",
+          "vistas": "142",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c010",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2026,
+      "videos": [
+        {
+          "titulo_original": "ROTONDAS COMO EJE PRINCIPAL DE INTERSECCIÓN A NIVEL EN  MENDOZA Ing DANIEL NAVARRO",
+          "duracion": "1:17:51",
+          "vistas": "45",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c011",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "Envases desechados de agroquímicos  Ing Eduardo Vidal",
+          "duracion": "1:08:02",
+          "vistas": "13",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c012",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "ENERGÍAS LIMPIAS por ALBERTO PATRIGNANI",
+          "duracion": "1:03:15",
+          "vistas": "21",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c013",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "El estudio de impacto ambiental como herramienta de gestión, una mirada",
+          "duracion": "40:02",
+          "vistas": "20",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c014",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "ARQUITECTURA PATRIMONIAL DE MENDOZA",
+          "duracion": "1:04:40",
+          "vistas": "32",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c015",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "MINERÍA ACTUAL Y FUTURA GUILLERMO PENSADO",
+          "duracion": "1:32:11",
+          "vistas": "101",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c016",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "RECORDANDO LA OBRA DE VÍCTOR DELHEZ",
+          "duracion": "36:49",
+          "vistas": "193",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c017",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "HIPÓTESIS  DE  RIEMANN",
+          "duracion": "1:03:24",
+          "vistas": "1 K",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c018",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "MECÁNICA Y ÓPTICA   ACTUALIDAD",
+          "duracion": "1:01:55",
+          "vistas": "44",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c019",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "DIOS, ENTRE BORGES Y EL PAPA FRANCISCO",
+          "duracion": "1:59:42",
+          "vistas": "109",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c020",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "Regresiones y Correlaciones Espurias en Economía Dr Hugo Balacco",
+          "duracion": "1:14:19",
+          "vistas": "26",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c021",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "DE LAS  PSEUDOCIENCIAS",
+          "duracion": "39:03",
+          "vistas": "22",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c022",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "TIERRAS RARAS, SU RELEVANCIA",
+          "duracion": "21:53",
+          "vistas": "27",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c023",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "LOS DOMINICOS Y LAS GUERRAS POR LA INDEPENDENCIA",
+          "duracion": "46:56",
+          "vistas": "17",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c024",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "COACHING ONTOLÓGICO",
+          "duracion": "1:08:18",
+          "vistas": "11",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c025",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "LA IA DESCIFRÓ EL CÓDIGO GENÉTICO Y ACCEDIERON AL PREMIO NOBEL",
+          "duracion": "1:22:05",
+          "vistas": "31",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c026",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "Etica en las Geociencias y controles en la Minería - Dra Marita Ahumada",
+          "duracion": "1:03:11",
+          "vistas": "40",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c027",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "CONVERSANDO CON O.  PEINADO SOBRE VIAJES ESPACIALES, Parte I",
+          "duracion": "53:26",
+          "vistas": "27",
+          "url": null
+        },
+        {
+          "titulo_original": "CONVERSANDO CON O.  PEINADO SOBRE VIAJES ESPACIALES II",
+          "duracion": "23:22",
+          "vistas": "52",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c028",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2025,
+      "videos": [
+        {
+          "titulo_original": "La Evolucion del uso de los metales y el desarrollo Humano - Ing Pablo Rolando",
+          "duracion": "57:55",
+          "vistas": "157",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c029",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Panorámica del mundo psíquico III: Relaciones transaccionales - Dr Raul Rivarola",
+          "duracion": "1:30:49",
+          "vistas": "39",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c030",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "VACA MUERTA : ROBERTO BARRIOS, PARTE 1",
+          "duracion": "51:34",
+          "vistas": "88",
+          "url": null
+        },
+        {
+          "titulo_original": "VACA MUERTA: ROBERTO BARRIOS PARTE 2 (INTERCAMBIO)",
+          "duracion": "12:02",
+          "vistas": "34",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c031",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Bernardo Parizek: Permisos Ambientales en Minería Metalífera",
+          "duracion": "43:59",
+          "vistas": "76",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c032",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "NEURONAS: La última frontera de las Neurociencias - Dra Alicia Seltzer",
+          "duracion": "1:12:47",
+          "vistas": "59",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c033",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "ECONOMÍA PARA NO ECONOMISTAS",
+          "duracion": "1:17:09",
+          "vistas": "69",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c034",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "ELIANA CONCI:   EUTROFIZACIÓN REGIONAL, IMPACTO DE LOS NUTRIENTES EN CUERPOS DE AGUA Y SUELOS",
+          "duracion": "47:13",
+          "vistas": "62",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c035",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Cuando sopla el viento ¿se pueden pueden evitar daños en las construcciones? Ing Gustavo C Balbastro",
+          "duracion": "49:44",
+          "vistas": "45",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c036",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "BORGES ANTE EL ESPEJO DE LA PATRIA",
+          "duracion": "1:09:02",
+          "vistas": "78",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c037",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "A.DALMASSO: Investigación aplicada en el uso de la flora nativa y dificultades en su transferencia",
+          "duracion": "56:17",
+          "vistas": "38",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c038",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Panorama del Psiquismo II - Los estados del Yo - Dr Raul Rivarola",
+          "duracion": "1:08:06",
+          "vistas": "93",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c039",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Introducción a las redes neuronales con aprendizaje profundo - Dr Diego Milone",
+          "duracion": "1:14:52",
+          "vistas": "109",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c040",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "RESEÑA ARQUEOLÓGICA E HISTORIA COLONIAL DE MENDOZA",
+          "duracion": "1:04:59",
+          "vistas": "67",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c041",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Misiones actuales y futuras a la luna; Osvaldo Peinado.",
+          "duracion": "26:10",
+          "vistas": "79",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c042",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "La etnobotánica  Su relación con la fitomedicina en ambientes urbanos  Dr. E. Martínez Carretero",
+          "duracion": "1:02:35",
+          "vistas": "33",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c043",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "IMPACTO CERO: El desafío de producir y consumir alimentos sin pérdidas ni desperdicios",
+          "duracion": "52:20",
+          "vistas": "40",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c044",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "LA IA NOS TRAERÁ MAYOR FELICIDAD ???",
+          "duracion": "24:57",
+          "vistas": "12",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c045",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "TIROIDES Y ESTRÉS   SUSANA VALDEZ",
+          "duracion": "57:41",
+          "vistas": "55",
+          "url": null
+        },
+        {
+          "titulo_original": "TIROIDES Y ESTRÉS SUSANA VALDEZ PARTE II",
+          "duracion": "8:19",
+          "vistas": "14",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c046",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "AMPLIFICACIÓN DEL MOVIMIENTO SÍSMICO   EMILCE  GIOLO",
+          "duracion": "40:21",
+          "vistas": "217",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c047",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Panorama del psiquismo I - Niveles de conciencia - Dr Raul E. Rivarola - primera parte",
+          "duracion": "44:48",
+          "vistas": "107",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c048",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Panorámica del psiquismo I - Niveles de conciencia - Dr Raul E. Rivarola - Parte 2",
+          "duracion": "42:24",
+          "vistas": "60",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c049",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "PLAN PILARES  MENDOZA   GUILLERMO  PENSADO PARTE 1",
+          "duracion": "1:02:48",
+          "vistas": "273",
+          "url": null
+        },
+        {
+          "titulo_original": "PLAN PILARES  MENDOZA   GUILLERMO  PENSADO PARTE 2",
+          "duracion": "44:28",
+          "vistas": "71",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c050",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Concurso internacional de robótica en Singapur - SUBCAMPEONES alumnos de escuela Tomas A Edison.",
+          "duracion": "1:08:04",
+          "vistas": "43",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c051",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "De máquinas a vapora los trenes eléctricos - Arq Graciela Moretti - Parte 1",
+          "duracion": "1:03:11",
+          "vistas": "70",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c052",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "De máquinas a vapor a los trenes eléctricos Arq Graciela Moretti - Parte 2 - Preguntas y comentarios",
+          "duracion": "30:09",
+          "vistas": "37",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c053",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "APROVECHAMIENTO INTEGRAL DEL RÍO MENDOZA: EMBALSE POTRERILLOS PARTE 1",
+          "duracion": "1:10:56",
+          "vistas": "291",
+          "url": null
+        },
+        {
+          "titulo_original": "APROVECHAMIENTO INTEGRAL DEL RÍO MENDOZA: PROYECTO POTRERILLOS PARTE 2",
+          "duracion": "30:51",
+          "vistas": "49",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c054",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "LA CUARTA REVOLUCIÓN INDUSTRIAL Y LA NANOTECNOLOGÍA PARTE 1",
+          "duracion": "1:06:44",
+          "vistas": "73",
+          "url": null
+        },
+        {
+          "titulo_original": "LA CUARTA REVOLUCIÓN INDUSTRIAL Y LA NANOTECNOLOGÍA PARTE 2",
+          "duracion": "17:05",
+          "vistas": "22",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c055",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "CUATRO PROBLEMAS DE LA HISTORIA ECONÓMICA DE MENDOZA",
+          "duracion": "44:08",
+          "vistas": "54",
+          "url": null
+        },
+        {
+          "titulo_original": "CUATRO PROBLEMAS DE LA HISTORIA ECONÓMICA DE MENDOZA",
+          "duracion": "57:13",
+          "vistas": "54",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c056",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "ERRORES NUÉRICOS Y ALGUNOS DESASTRES OCASIONADOS POR ELLOS, PARTE 1",
+          "duracion": "57:45",
+          "vistas": "42",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c057",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "ERRORES NUMÉRICOS Y ALGNOS DESASTRES OCASIONADOS POR ELLOS, parte 2",
+          "duracion": "31:14",
+          "vistas": "102",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c058",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Adolfo Anunziata - Intelilgencia Artificial: Oportunidades, Amenazas, Etica y Derecho - Parte 1",
+          "duracion": "59:16",
+          "vistas": "73",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c059",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "Adolfo Anunziata - Inteligencia Artificial : Oportunidades, Amenazas, Ética y Derecho -   PARTE 2",
+          "duracion": "43:13",
+          "vistas": "61",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c060",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2024,
+      "videos": [
+        {
+          "titulo_original": "ROL DE LAS MUJERES EN MINERÍA PARTE 1",
+          "duracion": "1:01:22",
+          "vistas": "13",
+          "url": null
+        },
+        {
+          "titulo_original": "ROL DE LAS MUJERES EN MINERÍA PARTE 2",
+          "duracion": "40:08",
+          "vistas": "17",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c061",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "MECANISMOS DE DEFENSA, JUAN SAMAT",
+          "duracion": "1:27:10",
+          "vistas": "91",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c062",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "MECANISMOS DE DEFENSA",
+          "duracion": "27:17",
+          "vistas": "32",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c063",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "GENERACIÓN FOTOVOLTAICA PARTE 1",
+          "duracion": "1:33:01",
+          "vistas": "24",
+          "url": null
+        },
+        {
+          "titulo_original": "GENERACIÓN FOTOVOLTAICA PARTE 2",
+          "duracion": "38:06",
+          "vistas": "5",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c064",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "ORDEN Y CAOS E. SERDOCH,   PARTE 2:   VIDEOS",
+          "duracion": "1:05:40",
+          "vistas": "56",
+          "url": null
+        },
+        {
+          "titulo_original": "ORDEN Y CAOS E. SERDOCH   PARTE 3: DEBATE",
+          "duracion": "22:55",
+          "vistas": "17",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c065",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "ORDEN Y CAOS, Eduardo S. SERDOCH,   PARTE 1",
+          "duracion": "59:27",
+          "vistas": "50",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c066",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "La gestión integral del riesgo en Argentina. Avances en la reducción del riesgo sísmico. Parte 1.",
+          "duracion": "59:42",
+          "vistas": "373",
+          "url": null
+        },
+        {
+          "titulo_original": "La gestión integral del riesgo en Argentina. Avances en ... Parte 2",
+          "duracion": "39:02",
+          "vistas": "21",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c067",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Mendoza sostenible Reverdecer la ciudad. La idea de la gran manzana. Parte1",
+          "duracion": "50:11",
+          "vistas": "15",
+          "url": null
+        },
+        {
+          "titulo_original": "Mendoza sostenible Reverdecer la ciudad. La idea de la gran manzana Parte 2",
+          "duracion": "46:33",
+          "vistas": "8",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c068",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "PROYECTOS ESPACIALES DE LA UNION EUROPEA - Ing Osvaldo Peinado -  Primera parte",
+          "duracion": "46:11",
+          "vistas": "25",
+          "url": null
+        },
+        {
+          "titulo_original": "PROYECTOS ESPACIALES DE LA UNION EUROPEA - Ing Osvaldo Peinado - Segunda parte",
+          "duracion": "1:05:27",
+          "vistas": "21",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c069",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Historia y futuro del Agua Subterránea, el gigante oculto - Ing Armando Llop",
+          "duracion": "58:40",
+          "vistas": "66",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c070",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "DATACIÓN DE MINERALES PARTE 1",
+          "duracion": "1:14:17",
+          "vistas": "149",
+          "url": null
+        },
+        {
+          "titulo_original": "DATACIÓN DE MINERALES PARTE 2",
+          "duracion": "18:23",
+          "vistas": "36",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c071",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Sinapsis Nerviosa - Dra Alicia Seltzer - parte 1",
+          "duracion": "1:30:14",
+          "vistas": "52",
+          "url": null
+        },
+        {
+          "titulo_original": "Sinapsis Nerviosa - Dra Alicia Seltzer - parte 2 - Preguntas y comentarios",
+          "duracion": "36:27",
+          "vistas": "27",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c072",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "LA CRIPTOGRAFÍA CUÁNTICA  PARTE  1",
+          "duracion": "1:26:22",
+          "vistas": "114",
+          "url": null
+        },
+        {
+          "titulo_original": "LA CRIPTOGRAFÍA CUÁNTICA  PARTE  2",
+          "duracion": "30:48",
+          "vistas": "14",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c073",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "RADIACIONES NO IONIZANTES   ING. JOSÉ  BALACCO   PARTE 1",
+          "duracion": "1:02:29",
+          "vistas": "97",
+          "url": null
+        },
+        {
+          "titulo_original": "RADIACIONES NO IONIZANTES   ING JOSÉ  BALACCO   PARTE 2",
+          "duracion": "18:29",
+          "vistas": "32",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c074",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "ELABORACIÓN DE VINOS TINTOS DE CALIDAD SUPERIOR   PARTE 1",
+          "duracion": "46:43",
+          "vistas": "66",
+          "url": null
+        },
+        {
+          "titulo_original": "ELABORACIÓN DE VINOS TINTOS DE CALIDAD SUPERIOR PARTE 2",
+          "duracion": "17:19",
+          "vistas": "15",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c075",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "herramientas de IA para investigación en bioingeniería -Ciro Edgardo Romero - Ignacio Bosch-parte 1",
+          "duracion": "35:57",
+          "vistas": "59",
+          "url": null
+        },
+        {
+          "titulo_original": "Herramientas de IA para investigación en bioingeniería-Ciro Edgardo Romero - Ignacio Bosch - 2 parte",
+          "duracion": "47:07",
+          "vistas": "32",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c076",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Respuestas para el riesgo sísmico en Mendoza -  Dr Ing Miguel Tornello - Primera parte",
+          "duracion": "56:02",
+          "vistas": "58",
+          "url": null
+        },
+        {
+          "titulo_original": "Respuestas para el riesgo sísmico en Mendoza -  Dr Ing Miguel Tornello - Segunda parte",
+          "duracion": "40:47",
+          "vistas": "19",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c077",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Minerales Críticos y Estratégicos   Guillermo Pensado PARTE 1",
+          "duracion": "46:33",
+          "vistas": "297",
+          "url": null
+        },
+        {
+          "titulo_original": "Minerales Críticos y Estratégicos , Guillermo Pensado: PARTE 2",
+          "duracion": "28:55",
+          "vistas": "74",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c078",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "SEGURIDAD INDUSTRIAL   A  PÉREZ RAFFAELLI PARTE 1",
+          "duracion": "1:23:30",
+          "vistas": "15",
+          "url": null
+        },
+        {
+          "titulo_original": "SEGURIDAD INDUSTRIAL   A  PÉREZ RAFFAELLI PARTE 2",
+          "duracion": "30:56",
+          "vistas": "15",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c079",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "INTELIGENCIA  ARTIFICIAL  NICOLÁS  BUSTOS,  PARTE 1",
+          "duracion": "37:17",
+          "vistas": "100",
+          "url": null
+        },
+        {
+          "titulo_original": "INTELIGENCIA  ARTIFICIAL  NICOLÁS  BUSTOS, PARTE 2",
+          "duracion": "24:24",
+          "vistas": "49",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c080",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Agua y Recursos naturales - Ing Alejandro Drovandi",
+          "duracion": "57:46",
+          "vistas": "17",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c081",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Bio-nanotecnología : por qué y para qué",
+          "duracion": "1:00:51",
+          "vistas": "71",
+          "url": null
+        },
+        {
+          "titulo_original": "Bio-nanotecnología : por qué y para qué",
+          "duracion": "19:55",
+          "vistas": "42",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c082",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "INTELIGENCIA  ARTIFICIAL     A  SALASSA PARTE 1",
+          "duracion": "56:29",
+          "vistas": "99",
+          "url": null
+        },
+        {
+          "titulo_original": "INTELIGENCIA  ARTIFICIAL     A  SALASSA PARTE 2",
+          "duracion": "37:37",
+          "vistas": "33",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c083",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "ANTONIO ÁLVAREZ  ABRIL  ATENCIÓN MEMORIA Y NEUROTECNOLOGÍA  PARTE 1",
+          "duracion": "51:14",
+          "vistas": "71",
+          "url": null
+        },
+        {
+          "titulo_original": "ANTONIO ÁLVAREZ  ABRIL  ATENCIÓN, MEMORIA Y NEUROTECNOLOGÍA  PARTE 2",
+          "duracion": "57:57",
+          "vistas": "51",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c084",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Entrelazamiento cuántico - Dr Ernesto Gandolfo Raso - primera parte",
+          "duracion": "1:54:45",
+          "vistas": "12 k",
+          "url": null
+        },
+        {
+          "titulo_original": "Entrelazamiento  cuántico - Dr Ernesto Gandolfo Raso -  SEGUNDA PARTE",
+          "duracion": "32:46",
+          "vistas": "154",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c085",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Mesa Redonda Agua en MEXICO segunda parte - Ing. Raul Morales Escalante",
+          "duracion": "1:20:06",
+          "vistas": "24",
+          "url": null
+        },
+        {
+          "titulo_original": "Mesa Redonda Agua en MEXICO primera parte - Ing Agustin Puig Valades",
+          "duracion": "56:18",
+          "vistas": "48",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c086",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Astrología, el falso determinismo - Prof Jorge Coghlan - primera parte - Los signos del Zodíaco",
+          "duracion": "1:14:05",
+          "vistas": "128",
+          "url": null
+        },
+        {
+          "titulo_original": "Astrología, el falso determinismo - Prof Jorge Coghlan - segunda parte - Preguntas y comentarios",
+          "duracion": "47:13",
+          "vistas": "36",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c087",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Proyecto CUBIC - Dra Beatriz García y otros - Primera parte - El Proyecto",
+          "duracion": "1:08:33",
+          "vistas": "40",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c088",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Proyecto QUBIC - Dra Beatriz García y otros - segunda parte - Preguntas y comentarios",
+          "duracion": "29:49",
+          "vistas": "51",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c089",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2023,
+      "videos": [
+        {
+          "titulo_original": "Mesa Redonda Agua, Fuentes y Usos - Leyes del Agua en Mendoza - Dr Leonardo Muzzino - CAPITULO II",
+          "duracion": "38:35",
+          "vistas": "40",
+          "url": null
+        },
+        {
+          "titulo_original": "Mesa Redonda Agua, fuentes y usos - Agua y ambiente - capitulo I - Ing. Alejandro  Drovandi",
+          "duracion": "26:51",
+          "vistas": "27",
+          "url": null
+        },
+        {
+          "titulo_original": "Mesa Redonda Agua, Fuentes y Uso - Amenazas aluvionales a Mendoza Capitulo III Ing Victor H. Burgos",
+          "duracion": "40:26",
+          "vistas": "24",
+          "url": null
+        },
+        {
+          "titulo_original": "Mesa Redonda Agua, Fuentes y Usos -  Administracion del Agua en Mdza Capitulo IV - Ing Juan A. Pina",
+          "duracion": "34:03",
+          "vistas": "20",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c090",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Valor agregado en la minería del siglo XXI - Lic Guillermo Pensado - primera parte",
+          "duracion": "49:24",
+          "vistas": "131",
+          "url": null
+        },
+        {
+          "titulo_original": "Valor Agregado en la Minería del Siglo XXI - Lic Guillermo Pensado - segunda parte",
+          "duracion": "37:42",
+          "vistas": "20",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c091",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "El bosque urbano de Mendoza - Ing Mabel Chambouleyron - Primera parte",
+          "duracion": "39:21",
+          "vistas": "38",
+          "url": null
+        },
+        {
+          "titulo_original": "El bosque urbano de Mendoza - Ing. Mabel Chambouleyron - segunda parte",
+          "duracion": "43:46",
+          "vistas": "27",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c092",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Sistema inmune - Dra Alicia Seltzer - primera parte",
+          "duracion": "1:27:14",
+          "vistas": "38",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c093",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Sistema inmune Alicia - Dra Alicia Seltzer - segunda parte",
+          "duracion": "22:36",
+          "vistas": "8",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c094",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "AAC   E Serdoch Conceptos y Construcción de Tomografías; 09/09/2022 SEGUNDA PARTE",
+          "duracion": "56:34",
+          "vistas": "21",
+          "url": null
+        },
+        {
+          "titulo_original": "AAC   E Serdoch Conceptos y Construcción de Tomografías, 09/09/2022 PARTE 1",
+          "duracion": "1:13:46",
+          "vistas": "17",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c095",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Antonio Curi:  Pavimentos de adoquines de hormigón",
+          "duracion": "1:47:13",
+          "vistas": "294",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c096",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "VACUNACIÓN SIN AGUJAS NANOTECNOLOGÍA PARTE 1.",
+          "duracion": "44:39",
+          "vistas": "16",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c097",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Ana Sonzogni VACUNACIÓN SIN AGUJAS NANOTECNOLOGÍA PARTE 2   26 08 2022",
+          "duracion": "38:00",
+          "vistas": "12",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c098",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "PLAN  CORDILLERANO   Pérez Raffaelli Parte 1",
+          "duracion": "1:10:57",
+          "vistas": "61",
+          "url": null
+        },
+        {
+          "titulo_original": "PLAN  CORDILLERANO   Pérez Raffaelli PARTE 2",
+          "duracion": "47:07",
+          "vistas": "32",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c099",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Eduardo Bringa   Nanotecnología en laboratorio virtual Parte 1",
+          "duracion": "1:00:41",
+          "vistas": "92",
+          "url": null
+        },
+        {
+          "titulo_original": "Eduardo Bringa   Nanotecnología en laboratorio virtual Parte 2",
+          "duracion": "17:32",
+          "vistas": "28",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c100",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Alejandro Caballero IMÁGENES  MULTI  E  HIPERESPECTRALES   PARTE 1",
+          "duracion": "46:35",
+          "vistas": "185",
+          "url": null
+        },
+        {
+          "titulo_original": "Alejandro Caballero IMÁGENES  MULTI  E  HIPERESPECTRALES   PARTE 2",
+          "duracion": "43:09",
+          "vistas": "39",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c101",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "E PULIAFITO   EMISIONES DE LA AVIACIÓN PARTE 1",
+          "duracion": "1:09:04",
+          "vistas": "18",
+          "url": null
+        },
+        {
+          "titulo_original": "E PULIAFITO   EMISIONES DE LA AVIACIÓN PARTE 2",
+          "duracion": "39:08",
+          "vistas": "8",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c102",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "El universo en que vivimos - Dr Andres Piatti - primera parte",
+          "duracion": "51:30",
+          "vistas": "39",
+          "url": null
+        },
+        {
+          "titulo_original": "El universo en que vivimos - Dr Andrés Piatti - segunda parte",
+          "duracion": "21:19",
+          "vistas": "11",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c103",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Osvaldo Peinado   New Space Vuelos Espaciales Privados  Parte 1",
+          "duracion": "41:21",
+          "vistas": "40",
+          "url": null
+        },
+        {
+          "titulo_original": "Osvaldo Peinado   New Space Vuelos Espaciales Privados  Parte 2",
+          "duracion": "25:58",
+          "vistas": "20",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c104",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Gral Gerónimo Espejo y su libro \"Paso de los Andes\" -  Alba Acevedo - primera parte",
+          "duracion": "34:24",
+          "vistas": "187",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c105",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "General Espejo y su libro \"Paso de los Andes\" - Alba Acevedo - segunda parte",
+          "duracion": "19:29",
+          "vistas": "63",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c106",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Borges y el Arte de la Amistad  - Augusto Garrido Huergo  - 2da parte",
+          "duracion": "30:51",
+          "vistas": "71",
+          "url": null
+        },
+        {
+          "titulo_original": "Borges y el Arte de la amistad - Augusto Garrido Huergo - 1ra parte",
+          "duracion": "1:16:56",
+          "vistas": "135",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c107",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "LUIS LÓPEZ   MINERÍA DEL URANIO POR LIXIVIACIÓN IN SITU PARTE 1",
+          "duracion": "53:07",
+          "vistas": "1 K",
+          "url": null
+        },
+        {
+          "titulo_original": "LUIS LÓPEZ   MINERÍA DEL URANIO POR LIXIVIACIÓN IN SITU PARTE 2",
+          "duracion": "48:54",
+          "vistas": "185",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c108",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "USO DE LiDAR AÉREO PARA ESTUDIO GEOMORFOLÓGICO   MARIO  PROFETA   PARTE 1",
+          "duracion": "41:24",
+          "vistas": "60",
+          "url": null
+        },
+        {
+          "titulo_original": "USO DE LiDAR AÉREO PARA ESTUDIO GEOMORFOLÓGICO: MARIO  PROFETA - PARTE 2",
+          "duracion": "24:41",
+          "vistas": "22",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c109",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "El Futuro de las Redes III: 4G, 5G,...y 6G ... - Ing Roberto Lauro - primera parte",
+          "duracion": "1:26:06",
+          "vistas": "11",
+          "url": null
+        },
+        {
+          "titulo_original": "El Futuro de las Redes III: 4G, 5G... y 6G... - Ing Roberto Lauro - segunda parte",
+          "duracion": "16:55",
+          "vistas": "9",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c110",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "GABRIEL  CASTELLÁ: NUESTROS AMIGOS LOS MIEDOS PARTE 1",
+          "duracion": "47:12",
+          "vistas": "962",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c111",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "GABRIEL  CASTELLÁ NUESTROS AMIGOS LOA MIEDOS PARTE 2",
+          "duracion": "53:30",
+          "vistas": "325",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c112",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Como aprendemos - Sesgos cognitivos - Luis Roldan - parte 1",
+          "duracion": "53:08",
+          "vistas": "59",
+          "url": null
+        },
+        {
+          "titulo_original": "Como aprendemos - Sesgos cognitivos - Luis Roldan - parte 2",
+          "duracion": "34:08",
+          "vistas": "21",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c113",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "GREGORIO  MEIRA DARWIN    COMENTARIOS   PARTE  1",
+          "duracion": "48:52",
+          "vistas": "113",
+          "url": null
+        },
+        {
+          "titulo_original": "GREGORIO  MEIRA DARWIN    COMENTARIOS   PARTE  2",
+          "duracion": "42:16",
+          "vistas": "90",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c114",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "ROTACIONES  MARIO  STORTI PARTE 1",
+          "duracion": "1:17:43",
+          "vistas": "80",
+          "url": null
+        },
+        {
+          "titulo_original": "ROTACIONES,  MARIO  STORTI PARTE 2 PREGUNTAS",
+          "duracion": "11:36",
+          "vistas": "30",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c115",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "NORBERTO NIGRO   SOLUCIONES  PARA  LA TECNOLOGÍA;  MECÁNICA  COMPUTACIONAL  PARTE  2 DE 3",
+          "duracion": "39:48",
+          "vistas": "26",
+          "url": null
+        },
+        {
+          "titulo_original": "NORBERTO NIGRO SOLUCIONES PARA LA TECNOLOGÍA;  MECÁNICA COMPUTACIONAL 1 DE 3, INTRODUCCIÓN",
+          "duracion": "22:19",
+          "vistas": "24",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c116",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "SOLUCIONES  PARA  LA TECNOLOGÍA;  MECÁNICA  COMPUTACIONAL -  PARTE  3 DE 3  -  DEBATE",
+          "duracion": "7:28",
+          "vistas": "11",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c117",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Efecto Doppler y ley de Hubble - Carolina Luna -  parte 2",
+          "duracion": "36:49",
+          "vistas": "39",
+          "url": null
+        },
+        {
+          "titulo_original": "Efecto Doppler y ley de Hubble - Carolina Luna - parte1",
+          "duracion": "33:14",
+          "vistas": "143",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c118",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "De la prospección a la mina - Joaquin Marias - parte 2",
+          "duracion": "32:43",
+          "vistas": "31",
+          "url": null
+        },
+        {
+          "titulo_original": "De la prospección a la mina - Joaquin Marias - parte 1",
+          "duracion": "1:13:48",
+          "vistas": "43",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c119",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "RAÚL E.  PÍA VARGAS:   ECOLOGÍA,  CAMBIO  CLIMÁTICO, Parte 1",
+          "duracion": "1:01:22",
+          "vistas": "18",
+          "url": null
+        },
+        {
+          "titulo_original": "RAÚL E.  PÍA VARGAS:   ECOLOGÍA   CAMBIO  CLIMÁTICO, Parte 2",
+          "duracion": "51:12",
+          "vistas": "9",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c120",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Coaching - Ing German Manzur - primera parte",
+          "duracion": "1:28:57",
+          "vistas": "90",
+          "url": null
+        },
+        {
+          "titulo_original": "Coaching - Ing German Manzur - segunda parte",
+          "duracion": "24:24",
+          "vistas": "19",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c121",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "HUGO  MARENGO   EVOLUCIÓN GEOLÓGICA DE MENDOZA parte 1",
+          "duracion": "58:45",
+          "vistas": "1.2 K",
+          "url": null
+        },
+        {
+          "titulo_original": "HUGO  MARENGO   EVOLUCIÓN GEOLÓGICA DE MENDOZA parte 2",
+          "duracion": "13:55",
+          "vistas": "239",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c122",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "Inicios de la computacion en Argentina - Ing Victorio Sonzogni - parte 2",
+          "duracion": "21:07",
+          "vistas": "17",
+          "url": null
+        },
+        {
+          "titulo_original": "Inicios de la computación en Argentina  - Ing Victorio Sonzogni - parte 1",
+          "duracion": "1:09:56",
+          "vistas": "22",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c123",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2022,
+      "videos": [
+        {
+          "titulo_original": "RICARDO TOLEDANO   GEORGE CANTOR Y LOS INFINITOS PARTE 1",
+          "duracion": "54:12",
+          "vistas": "28",
+          "url": null
+        },
+        {
+          "titulo_original": "RICARDO TOLEDANO   GEORGE CANTOR Y LOS INFINITOS PARTE 2",
+          "duracion": "43:22",
+          "vistas": "27",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c124",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Energia Pasado Presente y futuro - Ing Luis Tittarelli -  parte 4",
+          "duracion": "22:58",
+          "vistas": "27",
+          "url": null
+        },
+        {
+          "titulo_original": "Energía Pasado Presente y futuro - Ing Luis Tittarelli - parte 3",
+          "duracion": "17:12",
+          "vistas": "10",
+          "url": null
+        },
+        {
+          "titulo_original": "Energia Pasado Presente y futuro - Ing Luis Tittarelli - parte 2",
+          "duracion": "35:09",
+          "vistas": "10",
+          "url": null
+        },
+        {
+          "titulo_original": "Energía,  Pasado Presente y futuro - parte 1 - Ing Luis Tittarelli",
+          "duracion": "40:09",
+          "vistas": "28",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c125",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "GABRIEL  CASTELLÁ   PARADOJAS EXISTENCIALES  PARTE  1",
+          "duracion": "1:12:13",
+          "vistas": "668",
+          "url": null
+        },
+        {
+          "titulo_original": "GABRIEL  CASTELLÁ   PARADOJAS EXISTENCIALES  PARTE  2",
+          "duracion": "1:19:18",
+          "vistas": "221",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c126",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "AUGUSTO  GARRIDO H    POÉTICA Y FILOSOFÍA  HERÁCLITO  EN  BORGES",
+          "duracion": "1:56:14",
+          "vistas": "219",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c127",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "LUCAS  PAGANINI   MISIÓN  JUNO  PARTE 1",
+          "duracion": "1:01:27",
+          "vistas": "29",
+          "url": null
+        },
+        {
+          "titulo_original": "LUCAS  PAGANINI   MISIÓN  JUNO  PARTE 2",
+          "duracion": "54:36",
+          "vistas": "7",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c128",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Meteorologia - Dr Jorge Rubén Santos - Parte 2",
+          "duracion": "57:58",
+          "vistas": "57",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c129",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Meteorología - Dr Ruben Santos - parte 1",
+          "duracion": "48:35",
+          "vistas": "72",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c130",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "ADOLFO  ANUNZIATA  CIENCIA  TECNOLOGÍA  ÉTICA  Y DERECHO  PARTE  1",
+          "duracion": "1:10:18",
+          "vistas": "51",
+          "url": null
+        },
+        {
+          "titulo_original": "ADOLFO  ANUNZIATA  CIENCIA  TECNOLOGÍA  ÉTICA  Y DERECHO  PARTE  2",
+          "duracion": "54:12",
+          "vistas": "17",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c131",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "ONDAS GRAVITACIONALES  ROBERTO LAURO 20 08 2021 PARTE 1",
+          "duracion": "1:10:19",
+          "vistas": "20",
+          "url": null
+        },
+        {
+          "titulo_original": "ONDAS GRAVITACIONALES  ROBERTO LAURO 20 08 2021 PARTE 2 Y DEBATE",
+          "duracion": "46:43",
+          "vistas": "16",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c132",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "ORIGEN Y EXPLOTACIÓN DE HIDROCARBUROS   E    S   SERDOCH   2a. PARTE",
+          "duracion": "1:20:47",
+          "vistas": "45",
+          "url": null
+        },
+        {
+          "titulo_original": "ORIGEN Y EXPLOTACIÓN DE HIDROCARBUROS   E    S   SERDOCH   PARTE 1",
+          "duracion": "1:09:52",
+          "vistas": "137",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c133",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "EQUILIBRIO: FUNDAMENTOS DE INGENIERÍA CIVIL   VICTORIO SONZOGNI PARTE 1",
+          "duracion": "1:02:18",
+          "vistas": "173",
+          "url": null
+        },
+        {
+          "titulo_original": "EQUILIBRIO: FUNDAMENTOS DE INGENIERÍA CIVIL   VICTORIO SONZOGNI PARTE 2",
+          "duracion": "51:27",
+          "vistas": "48",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c134",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Bitcoin, criptomonedas y blockchain - Mario Storti - segunda parte",
+          "duracion": "33:16",
+          "vistas": "50",
+          "url": null
+        },
+        {
+          "titulo_original": "Bitcoin, criptomonedas y blockchain - Mario Storti - primera parte",
+          "duracion": "1:23:45",
+          "vistas": "120",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c135",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "PABLA TOGNOLI    LOS DEPÓSITOS DE SALES DE POTASIO   EVIDENCIAS DE LA MUERTE DE UN OCÉANO",
+          "duracion": "1:26:42",
+          "vistas": "882",
+          "url": null
+        },
+        {
+          "titulo_original": "PABLA TOGNOLI    LOS DEPÓSITOS DE SALES DE POTASIO        PARTE 2",
+          "duracion": "22:35",
+          "vistas": "125",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c136",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Luis López   Los Recursos de Uranio para Generación Nucleoeléctrica en Argentina parte 1",
+          "duracion": "51:37",
+          "vistas": "111",
+          "url": null
+        },
+        {
+          "titulo_original": "Luis López   Los Recursos de Uranio para Generación Nucleoeléctrica en Argentina   Parte 2",
+          "duracion": "42:20",
+          "vistas": "58",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c137",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Bosques urbanos en ciudaddes sustentables - Ing Mabel Chambouleyron-   parte 2",
+          "duracion": "48:24",
+          "vistas": "4",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c138",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Bosques urbanos en ciudades sustentables - Ing Mabel Chambouleyron -  parte 1",
+          "duracion": "52:29",
+          "vistas": "31",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c139",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Supercomputadoras para ciencia y técnica - Mario Storti - parte 2",
+          "duracion": "40:48",
+          "vistas": "25",
+          "url": null
+        },
+        {
+          "titulo_original": "Supercomputadoras para ciencia y técnica - Mario Storti - parte 1",
+          "duracion": "59:58",
+          "vistas": "71",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c140",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Explorando un proyecto minero parte 2",
+          "duracion": "30:23",
+          "vistas": "18",
+          "url": null
+        },
+        {
+          "titulo_original": "Explorando un proyecto minero parte1",
+          "duracion": "1:35:07",
+          "vistas": "102",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c141",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "REALIDAD EXTENDIDA   CARLOS TOMBA  PARTE 2 intercambio",
+          "duracion": "20:27",
+          "vistas": "11",
+          "url": null
+        },
+        {
+          "titulo_original": "REALIDAD EXTENDIDA   CARLOS TOMBA  PARTE 1",
+          "duracion": "51:22",
+          "vistas": "17",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c142",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Eduardo Sergio Serdoch MATEMÁTICA Y LEYENDA PARA VER MÁS CLARO   INTERCAMBIO",
+          "duracion": "39:58",
+          "vistas": "28",
+          "url": null
+        },
+        {
+          "titulo_original": "Eduardo Sergio Serdoch MATEMÁTICA Y LEYENDA PARA VER MÁS CLARO   parte 1",
+          "duracion": "53:17",
+          "vistas": "47",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c143",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "ALEJANDRO CABALLERO   TÉCNICAS HIPERESPECTRALES EN LA DETECCIÓN DE MINERALES",
+          "duracion": "49:17",
+          "vistas": "332",
+          "url": null
+        },
+        {
+          "titulo_original": "ALEJANDRO CABALLERO   TÉCNICAS HIPERESPECTRALES EN LA DETECCIÓN DE MINERALES   PARTE 2",
+          "duracion": "23:06",
+          "vistas": "75",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c144",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Ordenamiento del Piedemonte de la cordillera de Mendoza - Elena Abraham -  PRIMERA PARTE",
+          "duracion": "35:59",
+          "vistas": "154",
+          "url": null
+        },
+        {
+          "titulo_original": "Ordenamiento del Piedemonte de la cordillera de Mendoza - Elena Abraham -  SEGUNDA PARTE",
+          "duracion": "43:48",
+          "vistas": "42",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c145",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Neurobiología del dolor - Alicia Seltzer - segunda parte",
+          "duracion": "29:31",
+          "vistas": "41",
+          "url": null
+        },
+        {
+          "titulo_original": "Neurobiología del dolor - Alicia Seltzer - primera parte",
+          "duracion": "1:49:25",
+          "vistas": "402",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c146",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "AUGUSTO R GARRIDO HUERGO:  BORGES Y EL PREMIO NOBEL   EL GALARDÓN NEGADO   EL PREMIO MERECIDO",
+          "duracion": "1:21:17",
+          "vistas": "147",
+          "url": null
+        },
+        {
+          "titulo_original": "AUGUSTO R GARRIDO HUERGO:  BORGES Y EL PREMIO NOBEL  EL GALARDÓN NEGADO   EL PREMIO MERECIDO   INTER",
+          "duracion": "1:22:39",
+          "vistas": "116",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c147",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Sensado remoto de la actividad magnetica solar - Francisco Iglesias - parte 2",
+          "duracion": "29:10",
+          "vistas": "24",
+          "url": null
+        },
+        {
+          "titulo_original": "Sensado remoto de la actividad magnetica solar - Francisco Iglesias - parte1",
+          "duracion": "1:07:59",
+          "vistas": "22",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c148",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "NEUROLIDERAZGO EN LAS ORGANIZACIONES LUIS ROLDÁN GONZÁLEZ   DE LAS CUEVAS   PARTE 1",
+          "duracion": "51:13",
+          "vistas": "413",
+          "url": null
+        },
+        {
+          "titulo_original": "NEUROLIDERAZGO EN LAS ORGANIZACIONES, LUIS ROLDÁN G  DE LAS CUEVAS   PARTE 2",
+          "duracion": "50:51",
+          "vistas": "97",
+          "url": null
+        },
+        {
+          "titulo_original": "NEUROLIDERAZGO EN LAS ORGANIZACIONES, LUIS ROLDÁN G.  DE LAS CUEVAS   PARTE 3   DEBATE",
+          "duracion": "25:52",
+          "vistas": "16",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c149",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Preparandonos para vivir en Marte - Gabriel Caballero - Parte 1",
+          "duracion": "1:09:01",
+          "vistas": "38",
+          "url": null
+        },
+        {
+          "titulo_original": "Preparandonos para vivir en Marte - Gabriel Caballero - Parte 2",
+          "duracion": "24:49",
+          "vistas": "13",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c150",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Arqueometalurgia, Patricia S. Carrizo, Parte 3   DEBATE",
+          "duracion": "32:39",
+          "vistas": "21",
+          "url": null
+        },
+        {
+          "titulo_original": "Arqueometalurgia, Patricia S. Carrizo, Parte 2",
+          "duracion": "53:17",
+          "vistas": "63",
+          "url": null
+        },
+        {
+          "titulo_original": "Arqueometalurgia, Patricia S. Carrizo, Parte 1",
+          "duracion": "36:46",
+          "vistas": "144",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c151",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "DE LA CORTEZA AL NÚCLEO   DANIEL GUZMÁN   PARTE 2 Y DEBATE",
+          "duracion": "1:24:45",
+          "vistas": "16",
+          "url": null
+        },
+        {
+          "titulo_original": "DE LA CORTEZA AL NÚCLEO   DANIEL GUZMÁN   PARTE 1",
+          "duracion": "51:08",
+          "vistas": "16",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c152",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Mitos y leyendas de la conquista de America - Noemi Bistue - parte 1",
+          "duracion": "59:23",
+          "vistas": "54",
+          "url": null
+        },
+        {
+          "titulo_original": "Mitos y leyendas de la Conquista de America - Noemi Bistue -  parte 2 - Preguntas y comentarios",
+          "duracion": "26:35",
+          "vistas": "12",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c153",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Teledetección y Geología Espectral   Alejandro Caballero   Parte 1",
+          "duracion": "43:39",
+          "vistas": "113",
+          "url": null
+        },
+        {
+          "titulo_original": "Teledetección y Geología Espectral   Alejandro Caballero   Parte 2  y DEBATE",
+          "duracion": "52:40",
+          "vistas": "51",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c154",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Eduardo S  Serdoch   Desde Hilbert y Fourier hacia la Física Moderna   Parte 3",
+          "duracion": "25:47",
+          "vistas": "21",
+          "url": null
+        },
+        {
+          "titulo_original": "Eduardo S  Serdoch   Desde Hilbert y Fourier hacia la Física Moderna   Parte 2",
+          "duracion": "50:07",
+          "vistas": "28",
+          "url": null
+        },
+        {
+          "titulo_original": "Eduardo S  Serdoch   Desde Hilbert y Fourier hacia la Física Moderna   Parte 1",
+          "duracion": "56:03",
+          "vistas": "28",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c155",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Construcciones sismo resistentes Dr  Ing  Carlos D  Frau Parte 3   DEBATE",
+          "duracion": "34:59",
+          "vistas": "18",
+          "url": null
+        },
+        {
+          "titulo_original": "Construcciones sismo resistentes Dr  Ing  Carlos D  Frau Parte 2",
+          "duracion": "42:22",
+          "vistas": "31",
+          "url": null
+        },
+        {
+          "titulo_original": "Construcciones sismo resistentes Dr  Ing  Carlos D  Frau Parte 1",
+          "duracion": "44:39",
+          "vistas": "54",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c156",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "La Neurociencia va a la Escuela por Adolfo Anunziata, Parte 3   DEBATE",
+          "duracion": "25:43",
+          "vistas": "8",
+          "url": null
+        },
+        {
+          "titulo_original": "La Neurociencia va a la Escuela por Adolfo Anunziata, Parte 2",
+          "duracion": "56:28",
+          "vistas": "8",
+          "url": null
+        },
+        {
+          "titulo_original": "La Neurociencia va a la Escuela por Adolfo Anunziata, Parte 1",
+          "duracion": "50:48",
+          "vistas": "14",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c157",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "AAC  GUSTAVO PALAZZO, EL RIESGO SÍSMICO EN ESCUELAS SEGÚN LA PERSPECTIVA INTERNACIONAL  PARTE  2",
+          "duracion": "50:18",
+          "vistas": "11",
+          "url": null
+        },
+        {
+          "titulo_original": "AAC  GUSTAVO PALAZZO, EL RIESGO SÍSMICO EN ESCUELAS SEGÚN LA PERSPECTIVA INTERNACIONAL  PARTE  3   D",
+          "duracion": "33:08",
+          "vistas": "6",
+          "url": null
+        },
+        {
+          "titulo_original": "AAC  GUSTAVO PALAZZO, EL RIESGO SÍSMICO EN ESCUELAS SEGÚN LA PERSPECTIVA INTERNACIONAL  PARTE 1",
+          "duracion": "57:20",
+          "vistas": "15",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c158",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "LAS MUJERES SOSTIENEN LA MITAD DEL CIELO  MUJERES EN LA ASTRONOMÍA BEATRIZ GARCÍA PARTE 2",
+          "duracion": "13:17",
+          "vistas": "22",
+          "url": null
+        },
+        {
+          "titulo_original": "LAS MUJERES SOSTIENEN LA MITAD DEL CIELO  MUJERES EN LA ASTRONOMÍA BEATRIZ GARCÍA PARTE 1",
+          "duracion": "57:45",
+          "vistas": "36",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c159",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "El Desafío de la Protección Sísmica y la Entropía de las Políticas de Estado  M  E  Tornello Parte 3",
+          "duracion": "51:19",
+          "vistas": "6",
+          "url": null
+        },
+        {
+          "titulo_original": "El Desafío de la Protección Sísmica y la Entropía de las Políticas de Estado  M  E  Tornello Parte 2",
+          "duracion": "56:45",
+          "vistas": "13",
+          "url": null
+        },
+        {
+          "titulo_original": "El Desafío de la Protección Sísmica y la Entropía de las Políticas de Estado  M  E  Tornello Parte 1",
+          "duracion": "55:25",
+          "vistas": "9",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c160",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Efectos de viajes espaciales en la vida cotidiana   Osvaldo Peinado Parte 2   debate",
+          "duracion": "59:09",
+          "vistas": "15",
+          "url": null
+        },
+        {
+          "titulo_original": "Efectos de viajes espaciales en la vida cotidiana   Osvaldo Peinado Parte 1",
+          "duracion": "32:25",
+          "vistas": "22",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c161",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Fuentes Renovables de Energía Geotermia H Gaczec DEBATE",
+          "duracion": "16:11",
+          "vistas": "26",
+          "url": null
+        },
+        {
+          "titulo_original": "Fuentes Renovables de Energía Geotermia H Gaczec Parte 1",
+          "duracion": "40:16",
+          "vistas": "25",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c162",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "EL ROL DEL FÍSICO MÉDICO GUILLERMO ÁLVAREZ PARTE 3 debate",
+          "duracion": "32:57",
+          "vistas": "13",
+          "url": null
+        },
+        {
+          "titulo_original": "EL ROL DEL FÍSICO MÉDICO GUILLERMO ÁLVAREZ PARTE 2",
+          "duracion": "43:03",
+          "vistas": "19",
+          "url": null
+        },
+        {
+          "titulo_original": "EL ROL DEL FÍSICO MÉDICO GUILLERMO ÁLVAREZ PARTE 1",
+          "duracion": "43:40",
+          "vistas": "31",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c163",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Mecánica Computacional   Victorio Sonzogni PARTE 2",
+          "duracion": "54:32",
+          "vistas": "16",
+          "url": null
+        },
+        {
+          "titulo_original": "Mecánica Computacional   Victorio Sonzogni PARTE 1",
+          "duracion": "59:35",
+          "vistas": "31",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c164",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Estructuras Sismo resistentes  Victorio Sonzogni PARTE 2",
+          "duracion": "34:59",
+          "vistas": "33",
+          "url": null
+        },
+        {
+          "titulo_original": "Estructuras Sismo resistentes  Victorio Sonzogni PARTE 1",
+          "duracion": "50:49",
+          "vistas": "44",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c165",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Parte 1 Situación mundial de los recursos de uranio  Luis López",
+          "duracion": "1:10:43",
+          "vistas": "61",
+          "url": null
+        },
+        {
+          "titulo_original": "DEBATE   Situación mundial de los depósitos de uranio Luis López",
+          "duracion": "59:49",
+          "vistas": "9",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c166",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Neurociencia   Alicia Seltzer   DEBATE",
+          "duracion": "18:56",
+          "vistas": "6",
+          "url": null
+        },
+        {
+          "titulo_original": "Neurociencia Alicia Seltzer Parte 1",
+          "duracion": "34:50",
+          "vistas": "16",
+          "url": null
+        },
+        {
+          "titulo_original": "Neurociencia Alicia Seltzer Parte 2",
+          "duracion": "36:39",
+          "vistas": "7",
+          "url": null
+        },
+        {
+          "titulo_original": "Neurociencia Alicia Seltzer Parte 3",
+          "duracion": "26:47",
+          "vistas": "2",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c167",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Procesos Productivos de la Minería Metalífera - Parte 2",
+          "duracion": "1:12:14",
+          "vistas": "51",
+          "url": null
+        },
+        {
+          "titulo_original": "Procesos Productivos de la Minería Metalífera - Parte 1",
+          "duracion": "1:16:01",
+          "vistas": "120",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c168",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Juan P Cordone - Aprovechamiento integral de Potrerillos Mza AR  Parte 1",
+          "duracion": "59:01",
+          "vistas": "279",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c169",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Aprovechamiento integral de Potrerillos   Debate Final",
+          "duracion": "1:08:21",
+          "vistas": "53",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c170",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Descripción del aprovechamiento integral de Potrerillos   Parte 2",
+          "duracion": "1:08:21",
+          "vistas": "158",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c171",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Trabajando para la industria   Carlos Tomba   Parte 2 Preguntas y comentarios",
+          "duracion": "41:29",
+          "vistas": "11",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c172",
+      "tema": "Inteligencia artificial y tecnología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Trabajando para la industdria   Carlos Tomba   Parte 1 Conferencia",
+          "duracion": "1:20:15",
+          "vistas": "17",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c173",
+      "tema": "Física y matemática",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Estados cuánticos - Ernesto Gandolfo - Parte 2 - Preguntas y respuestas, comentarios y debate",
+          "duracion": "47:05",
+          "vistas": "24",
+          "url": null
+        },
+        {
+          "titulo_original": "Estados cuanticos - Ernesto Gandolfo   Parte 1 Conferencia",
+          "duracion": "1:12:13",
+          "vistas": "59",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c174",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Covid19: análisis de riesgo y los desafíos para la ingeniería civil - 2° parte - Preguntas y debate",
+          "duracion": "48:00",
+          "vistas": "15",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c175",
+      "tema": "Ingeniería, sismos e infraestructura",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Covid19: analisis del riesgo y los desafíos para la ingeniería civil Parte I - Conferencia",
+          "duracion": "1:13:43",
+          "vistas": "11",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c176",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Neurociencia Educacional - Antonio Alvarez - 3° parte - Preguntas comentarios y debate",
+          "duracion": "1:11:26",
+          "vistas": "21",
+          "url": null
+        },
+        {
+          "titulo_original": "Neurociencia educacional - Antonio Alvarez - 2° parte La Tecnología",
+          "duracion": "24:34",
+          "vistas": "17",
+          "url": null
+        },
+        {
+          "titulo_original": "Neurociencia Educacional -  Antonio Alvarez 1° parte",
+          "duracion": "47:13",
+          "vistas": "25",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c177",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2021,
+      "videos": [
+        {
+          "titulo_original": "Huella de Carbono  -  Barbara Civit - Segunda parte",
+          "duracion": "57:17",
+          "vistas": "40",
+          "url": null
+        },
+        {
+          "titulo_original": "Huella de Carbono  - Barbara Civit  - Primera parte - Conferencia",
+          "duracion": "48:10",
+          "vistas": "49",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c178",
+      "tema": "Historia, cultura y humanidades",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2020,
+      "videos": [
+        {
+          "titulo_original": "Borges: Patria, Música, Amor y Poesía - Alicia Dúo - 1° parte: conferencia",
+          "duracion": "1:04:56",
+          "vistas": "78",
+          "url": null
+        },
+        {
+          "titulo_original": "Borges: Patria,  Musica , Amor y Poesía - Alicia Dúo - 2° parte: Preguntas y debate",
+          "duracion": "47:14",
+          "vistas": "12",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c179",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2020,
+      "videos": [
+        {
+          "titulo_original": "Back to the Moon   Parte 3 P&R",
+          "duracion": "46:06",
+          "vistas": "34",
+          "url": null
+        },
+        {
+          "titulo_original": "Back to the Moon   Parte 2 P&R",
+          "duracion": "36:40",
+          "vistas": "26",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c180",
+      "tema": "Espacio y astronomía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2020,
+      "videos": [
+        {
+          "titulo_original": "Back to the Moon por Osvaldo Peinado   Parte 1",
+          "duracion": "23:32",
+          "vistas": "117",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c181",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2020,
+      "videos": [
+        {
+          "titulo_original": "Depósitos de Litio por Pabla Tognoli - Parte 3",
+          "duracion": "29:12",
+          "vistas": "1.1 K",
+          "url": null
+        },
+        {
+          "titulo_original": "Depósitos de Litio por Pabla Tognoli Parte 2",
+          "duracion": "37:50",
+          "vistas": "1.9 K",
+          "url": null
+        },
+        {
+          "titulo_original": "Depósitos de Litio por Pabla Tognoli - Parte 1",
+          "duracion": "36:10",
+          "vistas": "2 K",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c182",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2020,
+      "videos": [
+        {
+          "titulo_original": "Teledetección y Geología Espectral por Alejandro Caballero Parte 3",
+          "duracion": "29:47",
+          "vistas": "513",
+          "url": null
+        },
+        {
+          "titulo_original": "Teledetección y Geología Espectral por Alejandro Caballero Parte 2",
+          "duracion": "24:29",
+          "vistas": "627",
+          "url": null
+        },
+        {
+          "titulo_original": "Teledetección y Geología Espectral por Alejandro Caballero Parte 1",
+          "duracion": "25:30",
+          "vistas": "1.1 K",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c183",
+      "tema": "Agua, ambiente y sostenibilidad",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2020,
+      "videos": [
+        {
+          "titulo_original": "Meteorología Charla con Dr Federico Norte Parte 3",
+          "duracion": "36:12",
+          "vistas": "27",
+          "url": null
+        },
+        {
+          "titulo_original": "Meteorología Charla con Dr Federico Norte Parte 2",
+          "duracion": "32:47",
+          "vistas": "40",
+          "url": null
+        },
+        {
+          "titulo_original": "Meteorología: Charla con Dr Federico Norte Parte 1",
+          "duracion": "32:32",
+          "vistas": "71",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c184",
+      "tema": "Neurociencia, salud y psicología",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2020,
+      "videos": [
+        {
+          "titulo_original": "Neurociencia en la Educación   Luis Roldán Parte 3 de 3",
+          "duracion": "22:39",
+          "vistas": "41",
+          "url": null
+        },
+        {
+          "titulo_original": "Neurociencia en la Educación   Luis Roldán Parte 2 de 3",
+          "duracion": "34:38",
+          "vistas": "44",
+          "url": null
+        },
+        {
+          "titulo_original": "Neurociencia en la Educación   Luis Roldán Parte 1 de 3",
+          "duracion": "50:18",
+          "vistas": "79",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c185",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2020,
+      "videos": [
+        {
+          "titulo_original": "URANIO: Depósitos sedimentarios argentinos por Guillermo Pensado - Parte 1",
+          "duracion": "30:18",
+          "vistas": "518",
+          "url": null
+        },
+        {
+          "titulo_original": "URANIO: Depósitos sedimentarios argentinos por Guillermo Pensado - Parte 2",
+          "duracion": "16:42",
+          "vistas": "252",
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "c186",
+      "tema": "Geología, minería y energía",
+      "titulo": null,
+      "disertante": null,
+      "anio_aprox": 2020,
+      "videos": [
+        {
+          "titulo_original": "Tectónica de Placas por Leandro Echavarria - Parte 3",
+          "duracion": "22:07",
+          "vistas": "173",
+          "url": null
+        },
+        {
+          "titulo_original": "Tectonica de Placas por Leandro Echavarria - Parte 2",
+          "duracion": "30:26",
+          "vistas": "168",
+          "url": null
+        },
+        {
+          "titulo_original": "Tectonica de Placas por Leandro Echavarria - Parte 1",
+          "duracion": "30:37",
+          "vistas": "299",
+          "url": null
+        }
+      ]
+    }
+  ]
+}
