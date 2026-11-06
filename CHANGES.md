@@ -95,7 +95,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 > Estos dos changes se pueden empezar ya. Son el punto de partida del roadmap.
 
 ### [C-01] `base-y-estilos`
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` completado y archivado (2026-11-06)
 - **Scope**:
   - Estructura de carpetas según KB 08: `css/`, `js/`, `data/`, `tests/`, `index.html` y `videoteca.html` como esqueletos vacíos pero válidos.
   - `README.md` del repo: qué es, estructura, cómo abrirlo en local, cómo correr los tests (`node --test`).
@@ -220,7 +220,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 
 | ID | Change | Fase | Dependencias | Governance | Estado | Validación |
 |----|--------|------|--------------|------------|--------|------------|
-| C-01 | `base-y-estilos` | 1 | — | BAJO | `[ ]` | Firme (arrancar ya) |
+| C-01 | `base-y-estilos` | 1 | — | BAJO | `[x]` | Firme (arrancar ya) |
 | C-02 | `datos-charlas` | 1 | C-01 | MEDIO | `[ ]` | Firme (arrancar ya) |
 | C-03 | `portada` | 2 | C-02 | BAJO | `[ ]` | ⚠ Tras reunión 10/11 |
 | C-04 | `videoteca` | 2 | C-02 | MEDIO | `[ ]` | ⚠ Tras reunión 10/11 |

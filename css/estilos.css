@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:wght@400;600&family=Dosis:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap');
+
+/* Ateneo Amigos de la Ciencia — hoja de estilos del sitio.
+   Tokens: design-system rev. 1 (design-system/tokens.css es la fuente de verdad).
+   Sincronía: si cambia tokens.css (sube su Revision), volver a copiar el bloque
+   de variables de abajo y actualizar esta cabecera.
+   Aislamiento: todo selector de elemento vive bajo .aac-web para que el contenido
+   se pueda pegar en un widget HTML de Elementor sin afectar la página anfitriona. */
+
+:root, .aac-web {
+  /* UTN FRM */
+  --utn-negro: #000000;
+  --utn-blanco: #FFFFFF;
+  --utn-gris-azulado: #8A9BA6;
+  --utn-azul-grisaceo: #7391B6;
+  --utn-verde-graduados: #D0DFA8;
+  /* Ateneo (logo) */
+  --aac-azul: #004B95;
+  --aac-rojo: #B90000;
+  --aac-llama: #F5D547;
+
+  /* Derivados (AA verificados sobre su fondo previsto) */
+  --superficie-pagina: #F1F3F8;      /* fondo general */
+  --superficie-tarjeta: #FFFFFF;
+  --superficie-suave: #EAF0F8;       /* botones de parte, panel de datos */
+  --superficie-media: #0D2B50;       /* miniatura/placeholder de video */
+  --texto: #1A1F26;                  /* 16:1 sobre blanco */
+  --texto-suave: #4A5560;            /* 7.5:1 sobre blanco */
+  --borde: #D9DEE6;
+
+  /* Tipografías (Google Fonts, las mismas de frm.utn.edu.ar) */
+  --fuente-titulos: 'Dosis', sans-serif;      /* títulos y menú, mayúsculas */
+  --fuente-texto: 'Open Sans', sans-serif;    /* texto */
+  --fuente-serif: 'Baskervville', serif;      /* títulos del pie */
+
+  /* Escala tipográfica (base 18 px obligatoria) */
+  --texto-base: 1.125rem;   /* 18 px */
+  --texto-chico: 1rem;      /* 16 px, mínimo para metadatos */
+  --texto-h3: 1.375rem;
+  --texto-h2: 2rem;
+  --texto-h1: clamp(2.25rem, 5vw, 3.5rem);
+  --interlineado: 1.6;
+
+  /* Espaciado */
+  --esp-1: .25rem; --esp-2: .5rem; --esp-3: .75rem; --esp-4: 1rem;
+  --esp-5: 1.5rem; --esp-6: 2rem; --esp-7: 3rem; --esp-8: 4rem;
+  --ancho-contenido: 1200px;
+
+  /* Radios y sombras */
+  --radio-chico: 8px; --radio: 12px; --radio-pildora: 999px;
+  --sombra-tarjeta: 0 1px 2px rgba(0,0,0,.06), 0 4px 14px rgba(13,43,80,.08);
+
+  /* Interacción */
+  --objetivo-minimo: 44px;   /* alto mínimo de botones/enlaces táctiles */
+  --foco: 3px solid var(--aac-llama);
+  --foco-contorno: 0 0 0 2px var(--utn-negro);
+  --transicion: 160ms ease;
+}
+
+/* Derivados de componentes (components.html rev. 1).
+   Valores literales ya aprobados en components.html; en la próxima revisión del
+   design system conviene promoverlos a tokens.css. */
+:root, .aac-web {
+  --aac-rojo-hover: #8F0000;
+  --aac-azul-hover: #003A73;
+  --blanco-translucido: rgba(255,255,255,.14);
+  --texto-boton: 1rem;
+}
+
+/* Base del contenedor */
+.aac-web, .aac-web *, .aac-web *::before, .aac-web *::after { box-sizing: border-box; }
+.aac-web {
+  min-height: 100dvh;
+  font: var(--texto-base)/var(--interlineado) var(--fuente-texto);
+  color: var(--texto);
+  background: var(--superficie-pagina);
+}
+.aac-web h1, .aac-web h2, .aac-web h3 { font-family: var(--fuente-titulos); line-height: 1.15; margin: 0 0 var(--esp-3); }
+.aac-web h1 { font-size: var(--texto-h1); }
+.aac-web h2 { font-size: var(--texto-h2); }
+.aac-web h3 { font-size: var(--texto-h3); }
+.aac-web a { color: var(--aac-azul); }
+.aac-web .wrap { max-width: var(--ancho-contenido); margin: 0 auto; padding: 0 var(--esp-4); }
+
+/* Foco visible */
+.aac-web :focus-visible { outline: var(--foco); box-shadow: var(--foco-contorno); outline-offset: 2px; }
+
+/* Movimiento reducido (solo dentro de .aac-web) */
+@media (prefers-reduced-motion: reduce) {
+  :root, .aac-web { --transicion: 0ms; }
+  .aac-web *, .aac-web *::before, .aac-web *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Barra superior */
+.aac-web .topbar { background: var(--utn-negro); color: var(--utn-blanco); font: 600 var(--texto-chico) var(--fuente-titulos); letter-spacing: .06em; text-transform: uppercase; padding: var(--esp-2) 0; }
+.aac-web .topbar .wrap { display: flex; justify-content: space-between; gap: var(--esp-4); flex-wrap: wrap; }
+
+/* Navegación principal */
+.aac-web .nav { background: var(--utn-blanco); border-bottom: 1px solid var(--borde); }
+.aac-web .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-4); flex-wrap: wrap; padding-top: var(--esp-2); padding-bottom: var(--esp-2); }
+.aac-web .nav img { height: 56px; width: auto; display: block; }
+.aac-web .nav ul { list-style: none; display: flex; gap: var(--esp-2) var(--esp-5); margin: 0; padding: 0; flex-wrap: wrap; }
+.aac-web .nav a { display: inline-flex; align-items: center; min-height: var(--objetivo-minimo); font: 600 var(--texto-boton) var(--fuente-titulos); text-transform: uppercase; letter-spacing: .03em; color: var(--texto); text-decoration: none; border-bottom: 3px solid transparent; }
+.aac-web .nav a[aria-current="page"] { color: var(--aac-azul); border-bottom-color: var(--aac-rojo); }
+
+/* Botones */
+.aac-web .btn { display: inline-flex; align-items: center; justify-content: center; min-height: var(--objetivo-minimo); padding: 0 var(--esp-5); border-radius: var(--radio-chico); font: 700 var(--texto-boton) var(--fuente-texto); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background var(--transicion), color var(--transicion), transform var(--transicion); }
+.aac-web .btn:active { transform: scale(.98); }
+.aac-web .btn-rojo { background: var(--aac-rojo); color: var(--utn-blanco); }
+.aac-web .btn-rojo:hover { background: var(--aac-rojo-hover); }
+.aac-web .btn-azul { background: var(--aac-azul); color: var(--utn-blanco); }
+.aac-web .btn-azul:hover { background: var(--aac-azul-hover); }
+.aac-web .btn-blanco { background: var(--utn-blanco); color: var(--aac-azul); }
+.aac-web .btn-blanco:hover { background: var(--superficie-suave); }
+.aac-web .btn-borde { background: transparent; color: var(--utn-blanco); border-color: var(--utn-blanco); }
+.aac-web .btn-borde:hover { background: var(--blanco-translucido); }
+.aac-web .fila { display: flex; gap: var(--esp-3); flex-wrap: wrap; align-items: center; }
+
+/* Pie */
+.aac-web .pie { background: var(--utn-negro); color: var(--utn-blanco); padding: var(--esp-6) 0; }
+.aac-web .pie h2 { font-family: var(--fuente-serif); font-size: var(--texto-h3); font-weight: 600; }
+.aac-web .pie a { display: inline-flex; align-items: center; min-height: var(--objetivo-minimo); color: var(--utn-blanco); }
+.aac-web .pie p { margin: 0 0 var(--esp-2); }
+.aac-web .pie .wrap { display: grid; gap: var(--esp-5); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.aac-web main.wrap { padding-top: var(--esp-6); padding-bottom: var(--esp-6); }

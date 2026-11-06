@@ -1,0 +1,8 @@
+{
+  "name": "ateneo-web",
+  "private": true,
+  "description": "Sección del Ateneo Amigos de la Ciencia en la web de la UTN FRM (HTML/CSS/JS puro, sin dependencias)",
+  "scripts": {
+    "test": "node --test"
+  }
+}
