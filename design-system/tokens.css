@@ -1,0 +1,59 @@
+/* Design tokens — Ateneo Amigos de la Ciencia. Revision 1.
+   Valores de marca tomados de docs/PRD.md ("Identidad visual").
+   Los derivados (superficies, texto, espaciado) salen de los mockups aprobados. */
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:wght@400;600&family=Dosis:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap');
+
+:root {
+  /* UTN FRM */
+  --utn-negro: #000000;
+  --utn-blanco: #FFFFFF;
+  --utn-gris-azulado: #8A9BA6;
+  --utn-azul-grisaceo: #7391B6;
+  --utn-verde-graduados: #D0DFA8;
+  /* Ateneo (logo) */
+  --aac-azul: #004B95;
+  --aac-rojo: #B90000;
+  --aac-llama: #F5D547;
+
+  /* Derivados (AA verificados sobre su fondo previsto) */
+  --superficie-pagina: #F1F3F8;      /* fondo general */
+  --superficie-tarjeta: #FFFFFF;
+  --superficie-suave: #EAF0F8;       /* botones de parte, panel de datos */
+  --superficie-media: #0D2B50;       /* miniatura/placeholder de video */
+  --texto: #1A1F26;                  /* 16:1 sobre blanco */
+  --texto-suave: #4A5560;            /* 7.5:1 sobre blanco */
+  --borde: #D9DEE6;
+
+  /* Tipografías (Google Fonts, las mismas de frm.utn.edu.ar) */
+  --fuente-titulos: 'Dosis', sans-serif;      /* títulos y menú, mayúsculas */
+  --fuente-texto: 'Open Sans', sans-serif;    /* texto */
+  --fuente-serif: 'Baskervville', serif;      /* títulos del pie */
+
+  /* Escala tipográfica (base 18 px obligatoria) */
+  --texto-base: 1.125rem;   /* 18 px */
+  --texto-chico: 1rem;      /* 16 px, mínimo para metadatos */
+  --texto-h3: 1.375rem;
+  --texto-h2: 2rem;
+  --texto-h1: clamp(2.25rem, 5vw, 3.5rem);
+  --interlineado: 1.6;
+
+  /* Espaciado */
+  --esp-1: .25rem; --esp-2: .5rem; --esp-3: .75rem; --esp-4: 1rem;
+  --esp-5: 1.5rem; --esp-6: 2rem; --esp-7: 3rem; --esp-8: 4rem;
+  --ancho-contenido: 1200px;
+
+  /* Radios y sombras */
+  --radio-chico: 8px; --radio: 12px; --radio-pildora: 999px;
+  --sombra-tarjeta: 0 1px 2px rgba(0,0,0,.06), 0 4px 14px rgba(13,43,80,.08);
+
+  /* Interacción */
+  --objetivo-minimo: 44px;   /* alto mínimo de botones/enlaces táctiles */
+  --foco: 3px solid var(--aac-llama);
+  --foco-contorno: 0 0 0 2px var(--utn-negro);
+  --transicion: 160ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --transicion: 0ms; }
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
