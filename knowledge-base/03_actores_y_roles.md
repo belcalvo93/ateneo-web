@@ -9,6 +9,7 @@
 | Becaria / desarrolladora | María Belén Calvo | Construye el sitio, carga datos, entrega guía e integración en Elementor |
 | Administración web FRM | Quien administra WordPress/Elementor de la facultad | Pega el código en el widget HTML (o da acceso) — **quién es: pregunta abierta** |
 | Otra becaria (redes) | Gestiona Instagram y Facebook | Aporta los enlaces de esas redes |
+| Agustina — becaria de medios | Reorganiza y edita los videos del canal de YouTube del Ateneo: títulos, orden, playlists por tema; puede volver a subir videos editados (**cambia el id del video en YouTube**); crea las redes sociales del Ateneo (Instagram y también TikTok o Facebook, sin decidir) | Sus cambios en el canal obligan a regenerar los enlaces del catálogo (`scripts/derivar-datos.js`); aporta los usuarios de las redes. Puede ser la misma persona que la «otra becaria (redes)»: a confirmar |
 
 ## Matriz de permisos (RBAC)
 
@@ -17,7 +18,8 @@ No hay autenticación ni roles en el sistema. La «autorización» es operativa:
 | Rol | Contenido (datos) | Diseño/código | Publicación en WP |
 |---|---|---|---|
 | Visitante | Solo lectura | — | — |
-| Editor del Ateneo | Editar archivo de datos | — | Depende de la admin FRM (ver IN-02) |
+| Editor del Ateneo | Editar `correcciones.js`, `charlas-nuevas.js` y `proxima-charla.js` (`charlas.js` es generado) | — | Depende de la admin FRM (ver IN-02) |
+| Agustina (becaria de medios) | Solo lectura; sus cambios en YouTube se reflejan regenerando `charlas.js` | — | — |
 | Desarrolladora | Total | Total | Vía admin FRM |
 | Admin FRM | — | — | Total |
 

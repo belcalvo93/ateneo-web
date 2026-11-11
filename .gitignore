@@ -1,2 +1,9 @@
 .atl/
 .claude/settings.local.json
+# Salidas regenerables (foto del canal, reportes): se vuelven a generar con yt-dlp + scripts/derivar-datos.js
+scripts/salida/*
+!scripts/salida/.gitkeep
+
+# Dependencias y herramientas locales
+node_modules/
+.playwright-mcp/

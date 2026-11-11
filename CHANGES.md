@@ -112,16 +112,16 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - `design-system/README.md` y `design-system/tokens.css`
 
 ### [C-02] `datos-charlas`
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` completado y archivado (2026-11-11)
 - **Scope**:
-  - Esquema final de `data/charlas.json` a partir de `data/charlas-borrador.json`: `Tema` (`nombre` + `etiqueta` corta, `playlist_url` opcional), `Charla` (`id`, `tema`, `titulo`, `disertante`, `anio_aprox`, `videos[]`), `Video` (`titulo_original`, `duracion`, `vistas` normalizado a número, `url`).
-  - Migrar las 186 charlas / 310 videos sin perder datos; `titulo`, `disertante` y `url` quedan en `null` (se completan en C-05).
-  - Esquema de `ProximaCharla`: título, disertante, descripción breve, fecha, hora, lugar, modalidad, enlace Zoom, correo de inscripción. Sin inventar valores: placeholders marcados (RN-GL-02).
-  - Datos de configuración del sitio (contacto, redes, cifras de portada) a definir.
-  - Decisión de formato (JSON vs. bloque JS) dejando la estructura lista para inlinear; **decisión final sujeta a la plataforma (pregunta abierta 1)**.
-  - Script de validación (`node`, sin dependencias) para detectar JSON mal formado, temas inexistentes, ids duplicados.
-  - Documentación para editores no programadores: cómo agregar una charla y cómo editar la próxima charla (borrador de la guía; la versión final va en C-06).
-  - Tests: el validador cubre el esquema (casos válido e inválido).
+  - Datos como archivos **`.js`** en `data/` (no `.json`; decisión DD-03): `data/temas.js` (`window.AAC_TEMAS`: `id`, `nombre`, `etiqueta` corta, `playlist_url` opcional), `data/charlas.js` (`window.AAC_CHARLAS`, **archivo generado, no se edita a mano**: `Charla` con `id`, `titulo`, `disertante`, `tema`, `anio`, `partes[]`, `revisar[]` y `destacada` opcional; `Parte` con `titulo_original`, `duracion`, `vistas` normalizado a número, `url`) `data/correcciones.js` (`window.AAC_CORRECCIONES`: correcciones a mano por id de charla), `data/charlas-nuevas.js` (`window.AAC_CHARLAS_NUEVAS`) y `data/proxima-charla.js` (`window.AAC_PROXIMA_CHARLA`). `js/aplicar-correcciones.js` junta generado + nuevas + correcciones en el navegador (`AAC_aplicarCorrecciones`). Concatenables en un solo `<script>` para pegar en Elementor (acceso a archivos externos desconocido).
+  - Derivar las 186 charlas / 310 partes desde `data/charlas-borrador.json` (se conserva sin cambios) con `scripts/derivar-datos.js`, sin perder datos; `anio_aprox` → `anio`, `videos` → `partes` (ordenadas por número de parte); `titulo`/`disertante` solo cuando se extraen con alta confianza, el resto como `[Título]`/`[Disertante]` + `revisar` (se completan en C-05).
+  - Cruce de `url` y `vistas` con el canal de YouTube a partir de un `canal.jsonl` obtenido con `python -m yt_dlp --flat-playlist` (CLI puntual de desarrollo, ver DD-09; no va en `package.json`). **Regeneración conservadora** (`scripts/derivar-datos.js`, con `--comprobar`): ids y partes salen siempre del borrador; el enlace de cada parte es el manual, el que ya tenía si su video sigue en el canal, o un título único; nada ambiguo se asigna. Reporte de dudosos en `scripts/salida/reporte-cruce.md` (carpeta fuera de git). Ver DD-10 a DD-12.
+  - Esquema de `ProximaCharla`: título, disertante, descripción breve, fecha (`DD/MM/AAAA`), hora (`HH:MM`), lugar, modalidad, enlace Zoom, correo de inscripción. Sin inventar valores: placeholders marcados (RN-GL-02).
+  - Validador (`node scripts/validar-datos.js`, sin dependencias, con `--estricto` para publicar): valida la vista combinada; errores de esquema, ids duplicados, temas inexistentes, correcciones a charlas inexistentes o con campos desconocidos, avisos de pendientes.
+  - Documentación para editores no programadores (`data/LEEME.md`, borrador de la guía; la versión final va en C-06) y `scripts/LEEME.md`.
+  - Tests `node:test` (TDD) sobre los módulos de `scripts/lib/`.
+  - La configuración del sitio (contacto, redes, cifras de portada) **se mueve a C-03**, que es quien la consume.
 - **Dependencias**: `C-01`
 - **Governance**: MEDIO
 - **Leer antes**:
@@ -142,7 +142,11 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - `index.html` según el mockup «Inicio» (escritorio y celular) en `docs/mockups/`.
   - Hero con propuesta y cifras (+100 conferencias, 310 videos, viernes 18 hs); sección «Quiénes somos» (2017, Dpto. Ing. Electrónica) — US-001.
   - Tarjeta «Próxima charla» renderizada desde datos, con botón `mailto:ateneoac.mo@gmail.com` y correo visible como texto — US-007.
-  - 3 últimas charlas, 3 más vistas y grilla de 8 temas con conteo — US-008 (criterio automático vs. curado según respuesta del Ateneo).
+  - 3 últimas charlas, 3 más vistas y grilla de 8 temas con conteo — US-008. «Más vistas» es **automático** por el campo `vistas`, con la opción de fijar charlas destacadas a mano con `destacada: true` (campo opcional del esquema de C-02; la lógica de portada que lo usa — destacadas primero, luego por `vistas` — es de este change).
+  - Configuración del sitio (contacto, redes, cifras de portada) en datos, movida desde C-02.
+  - **Requisito (D17 de C-02)**: los enlaces a **redes sociales** son una **lista configurable en los datos** (`redes: [{ nombre, url }]`): agregar o quitar una red se hace editando los datos, sin tocar el HTML. Agustina creará Instagram y además TikTok o Facebook (sin decidir); mientras no exista el usuario, `url` con placeholder `[…]` o `null` (un placeholder nunca se muestra al público).
+  - **Requisito (D13 de C-02)**: leer siempre la vista combinada `AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS)`, nunca `AAC_CHARLAS` directo (se perderían las correcciones a mano).
+  - **Requisito (decidido en C-02)**: un placeholder entre corchetes nunca es visible para el público. Si `titulo` sigue en `[Título]`, se muestra el `titulo_original` de la parte 1; si `disertante` es `[Disertante]`, esa línea no se muestra.
   - Sección «Proponer una charla» (requisitos + Declaración de Principios + «Enviar mi propuesta») — US-009.
   - Pie con redes (YouTube, Instagram, Facebook; usuarios pendientes como placeholder) — US-003.
   - Manejo de error si falla la carga de datos: mensaje + enlace al canal de YouTube.
@@ -161,7 +165,8 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - **Strict TDD** con `node:test` (sin dependencias): `js/buscador.js` con funciones puras `normalizar`, `buscar`, `filtrarPorTema`, `combinar`; tests en `tests/buscador.test.js` escritos antes del código.
   - Tests esperados: normalización de mayúsculas y tildes, búsqueda por título o disertante (RN-BU-01/02), filtro por tema, combinación búsqueda + tema, «Todos los temas» por defecto, sin resultados, mínimo 2 casos por comportamiento.
   - `videoteca.html` según el mockup «Videoteca» (`docs/mockups/`): buscador, chips de tema (etiquetas cortas), contador «Mostrando N charlas», fichas con miniatura derivada de la URL de YouTube.
-  - `js/app.js`: render desde `data/charlas.json`; una ficha por charla; botones «Charla · duración» o «Parte N · duración» (RN-VI-05).
+  - `js/app.js`: render desde la vista combinada `AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS)` (generado + correcciones + charlas nuevas; nunca `AAC_CHARLAS` directo); una ficha por charla; botones «Charla · duración» o «Parte N · duración» (RN-VI-05), con el nombre derivado de la cantidad de partes.
+  - **Requisito (decidido en C-02)**: un placeholder entre corchetes nunca es visible para el público. Si `titulo` sigue en `[Título]`, la ficha muestra el `titulo_original` de la parte 1; si `disertante` es `[Disertante]`, esa línea no se muestra. Las partes con `url: null` no deben romper la ficha.
   - Estado vacío «No encontramos charlas…» con acción de limpiar filtros; mensaje si falla la carga de datos.
   - Búsqueda nunca insertada con `innerHTML`; enlaces con `rel="noopener noreferrer"`.
   - Enlace a playlist por tema solo si existe `playlist_url` (US-006, opcional).
@@ -183,8 +188,8 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 - **Scope**:
   - Responsive en celular (390 px), tablet y escritorio (1440 px), mobile-first (RN-AC-02); menú hamburguesa accesible.
   - Accesibilidad RN-AC-01: base 18 px, contraste AA (revisar texto sobre `--aac-llama` y gris sobre blanco), `alt`, navegación por teclado en menú/chips/fichas, objetivos ≥ 44 px, foco visible.
-  - Carga completa de las 186 charlas: `titulo` limpio (formato *Tema – Disertante (año)* o el que defina el Ateneo), `disertante` y `url` de cada uno de los 310 videos; revisión de `anio_aprox` y de los 8 temas con el Ateneo.
-  - Script de validación (C-02) ejecutado sobre el catálogo completo: sin `null` en `titulo`, `disertante`, `url`.
+  - Carga completa de las 186 charlas: `titulo` limpio (formato *Tema – Disertante (año)* o el que defina el Ateneo), `disertante` y `url` de cada uno de los 310 videos; revisión de `anio` (aproximado) y de los 8 temas con el Ateneo.
+  - Validador de datos (C-02) ejecutado en modo estricto (`node scripts/validar-datos.js --estricto`) sobre el catálogo completo: sin placeholders, sin `revisar` y sin `url` en `null`.
   - Verificación manual contra mockups en 390×844 y 1440×900, sin errores de consola ni requests fallidos.
   - Tests: re-ejecutar `node --test` y el validador de datos.
 - **Dependencias**: `C-03, C-04`
@@ -221,11 +226,27 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 | ID | Change | Fase | Dependencias | Governance | Estado | Validación |
 |----|--------|------|--------------|------------|--------|------------|
 | C-01 | `base-y-estilos` | 1 | — | BAJO | `[x]` | Firme (arrancar ya) |
-| C-02 | `datos-charlas` | 1 | C-01 | MEDIO | `[ ]` | Firme (arrancar ya) |
+| C-02 | `datos-charlas` | 1 | C-01 | MEDIO | `[x]` | Firme (arrancar ya) |
 | C-03 | `portada` | 2 | C-02 | BAJO | `[ ]` | ⚠ Tras reunión 10/11 |
 | C-04 | `videoteca` | 2 | C-02 | MEDIO | `[ ]` | ⚠ Tras reunión 10/11 |
 | C-05 | `responsive-a11y-carga-completa` | 3 | C-03, C-04 | MEDIO | `[ ]` | ⚠ Tras reunión 10/11 |
 | C-06 | `integracion-y-guia` | 3 | C-05 | ALTO | `[ ]` | ⚠ Tras reunión 10/11 |
+
+## Ideas / changes futuros
+
+> No son parte del roadmap C-01 a C-06 ni están empezados. Quedan registrados para decidirlos con el Ateneo.
+
+### [C-07] `tarjeta-en-portada-utn` (idea)
+- **Estado**: no empezado — sujeto a la reunión con el Ateneo.
+- **Idea**: la portada de la UTN FRM tiene cajas de colores (Cursos, Tecnicaturas, Licenciaturas, etc.), cada una con ícono, número, nombre y una etiqueta debajo, que enlazan a cada sección. El Ateneo tendría una caja que lleve a su página.
+- **Pendiente de definir**: quién la agrega en Elementor, un color que no choque con los existentes, el ícono y el número.
+
+### Ideas sobre los datos de YouTube
+- **Completar disertantes y títulos desde las descripciones de los videos**: `python -m yt_dlp --skip-download --dump-json <video>` (por video, solo metadatos de lectura) trae la descripción; un script podría proponer `titulo`/`disertante` y dejar al Ateneo solo lo que no se pueda obtener.
+- **Tema desde las playlists**: si Agustina arma playlists por tema, el script podría listar cada playlist (`yt-dlp --flat-playlist`) y asignar el tema por pertenencia (playlist → id de tema; `temas.js` ya tiene `playlist_url`).
+- **«Más vistas» automático con `destacada` opcional**: ya está definido en C-03 (ver arriba); no se duplica acá.
+
+---
 
 **Primer change recomendado**: `C-01` (`base-y-estilos`). Siguiente: `C-02` (`datos-charlas`). Después, parar y revisar el roadmap con lo que salga de la reunión del 10/11.
 

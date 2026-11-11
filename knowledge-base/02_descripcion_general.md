@@ -7,8 +7,8 @@
 | Marcado | HTML5 puro | Sin frameworks |
 | Estilos | CSS puro con variables (`:root`) | Identidad visual del PRD (ver `08`) |
 | Lógica | JavaScript puro (ES modules NO: debe pegarse en un widget) | Sin bundler ni build |
-| Datos | Archivo editable por no programadores (`charlas.json` + datos de próxima charla) | Separado del diseño |
-| Tests | `node:test` (Node nativo) | Solo para buscador y filtro, sin dependencias |
+| Datos | Archivos `.js` editables por no programadores en `data/` (`temas.js`, `charlas.js`, `proxima-charla.js`; cada uno asigna una global `window.AAC_*`) | Separado del diseño; admiten comentarios y se pueden pegar en línea (DD-03) |
+| Tests | `node:test` (Node nativo) | Buscador y filtro, más los scripts de datos (derivación, validación, cruce con YouTube); sin dependencias |
 | Tipografías | Google Fonts: Dosis, Open Sans, Baskervville | Las mismas de frm.utn.edu.ar |
 | Hosting | WordPress + Elementor Pro 4.2 de la FRM (widget HTML) | Alternativa: Google Sites → Insertar → Código. A confirmar el 10/11 |
 | Costo | Cero | RNF |
@@ -18,7 +18,7 @@
 Sitio estático del lado del cliente. No hay backend.
 
 ```
-Archivos de datos (JSON)  ──►  JS puro (render + buscador/filtro)  ──►  DOM
+Archivos de datos (.js)    ──►  JS puro (render + buscador/filtro)  ──►  DOM
         ▲                                                              ▲
  editados por el Ateneo                                   estilos.css (variables)
 ```

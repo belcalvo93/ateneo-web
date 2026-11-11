@@ -12,8 +12,8 @@
 | Marcado | HTML5 puro | — |
 | Estilos | CSS puro con variables (`:root`) | — |
 | Lógica | JavaScript puro (sin ES modules en el código a pegar en el widget) | — |
-| Datos | Archivos JSON editables por no programadores (`data/`) | — |
-| Tests | `node:test` (solo buscador y filtro; sin dependencias) | Node nativo |
+| Datos | Archivos JS de datos en `data/*.js`, editables por no programadores salvo `charlas.js`, que es **generado** por `scripts/derivar-datos.js` (`window.AAC_TEMAS`, `AAC_CHARLAS`, `AAC_CHARLAS_NUEVAS`, `AAC_CORRECCIONES` y `AAC_PROXIMA_CHARLA`; las correcciones a mano van en `correcciones.js`/`charlas-nuevas.js`, que se combinan en el navegador con `js/aplicar-correcciones.js`; concatenables en un solo `<script>`) | — |
+| Tests | `node:test` (buscador, filtro y scripts de datos de `scripts/lib/`; sin dependencias) | Node nativo |
 | Tipografías | Google Fonts: Dosis, Open Sans, Baskervville | — |
 | Entrega | Widget HTML de Elementor (WordPress FRM); alternativa Google Sites | a confirmar 10/11 |
 
@@ -77,7 +77,7 @@ El plan completo está en [CHANGES.md](CHANGES.md). Resumen:
 > Reglas globales ya definidas en `~/.claude/CLAUDE.md` (orquestador, governance, TDD, engram): el proyecto las hereda. Acá viven solo las reglas **específicas de este proyecto** + las universales que el global no cubra (commit/build).
 
 **Portabilidad y stack**
-- NUNCA usar frameworks, librerías ni paso de build → HTML/CSS/JS puro; el único tooling permitido es `node:test`, sin dependencias.
+- NUNCA usar frameworks, librerías ni paso de build → HTML/CSS/JS puro; el único tooling permitido es `node:test`, sin dependencias. Excepción acotada: `yt-dlp` se permite solo como CLI puntual de desarrollo bajo `scripts/` (se invoca como `python -m yt_dlp`; documentado en `scripts/LEEME.md`), nunca como parte del sitio ni en `package.json`.
 - NUNCA mezclar datos con diseño → charlas y próxima charla viven solo en `data/`.
 - NUNCA estilos globales que afecten la página anfitriona (Elementor) → todo bajo el prefijo `.aac-web`.
 

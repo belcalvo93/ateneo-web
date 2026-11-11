@@ -1,0 +1,39 @@
+{
+  "_nota": "Muestra chica del borrador para los tests de derivación (no es el catálogo real).",
+  "temas": [],
+  "charlas": [
+    {
+      "id": "m001", "tema": "Agua, ambiente y sostenibilidad", "titulo": null, "disertante": null, "anio_aprox": 2026,
+      "videos": [
+        { "titulo_original": "RECICLADO QUIMICO DE RESIDUOS PLASTICOS - Dra Elangeni Gilbert", "duracion": "31:40", "vistas": "15", "url": null }
+      ]
+    },
+    {
+      "id": "m002", "tema": "Física y matemática", "titulo": null, "disertante": null, "anio_aprox": 2023,
+      "videos": [
+        { "titulo_original": "Mitos del cielo - Dra Ana Luna - parte 3", "duracion": "45:10", "vistas": "1.2 K", "url": null },
+        { "titulo_original": "Mitos del cielo - Dra Ana Luna - parte 2", "duracion": "50:00", "vistas": "12 k", "url": null },
+        { "titulo_original": "Mitos del cielo - Dra Ana Luna - parte 1", "duracion": "1:02:03", "vistas": "1 K", "url": null }
+      ]
+    },
+    {
+      "id": "m003", "tema": "Inteligencia artificial y tecnología", "titulo": null, "disertante": null, "anio_aprox": 2021,
+      "videos": [
+        { "titulo_original": "Redes sin número de parte", "duracion": "20:00", "vistas": "1,2 mil", "url": null },
+        { "titulo_original": "Redes sin número de parte", "duracion": "21:00", "vistas": "7", "url": null }
+      ]
+    },
+    {
+      "id": "m004", "tema": "Espacio y astronomía", "titulo": null, "disertante": null, "anio_aprox": 2020,
+      "videos": [
+        { "titulo_original": "Viaje a Marte Osvaldo Peinado", "duracion": "58:59", "vistas": "5", "url": null }
+      ]
+    },
+    {
+      "id": "m005", "tema": "Química inexistente", "titulo": null, "disertante": null, "anio_aprox": 2022,
+      "videos": [
+        { "titulo_original": "Tema que no existe", "duracion": "10:00", "vistas": "1", "url": null }
+      ]
+    }
+  ]
+}

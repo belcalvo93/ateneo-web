@@ -10,7 +10,7 @@
 | Variables CSS (design tokens) | `estilos.css` `:root` | Identidad visual única y mantenible |
 | Progressive enhancement | HTML con contenido base | Tolerancia a fallos de JS/datos |
 
-**Restricción clave**: el código final debe poder pegarse en un widget HTML de Elementor. Implica considerar que (a) los archivos externos (JSON/CSS/JS) pueden no ser hospedables junto al widget: puede requerir inlinear los datos o subirlos a la Mediateca de WP; (b) los estilos de Elementor/tema pueden interferir → **aislar con un contenedor/prefijo** (ver `10`).
+**Restricción clave**: el código final debe poder pegarse en un widget HTML de Elementor. Implica considerar que (a) los archivos externos (CSS/JS, incluidos los de datos) pueden no ser hospedables junto al widget: puede requerir inlinear los datos o subirlos a la Mediateca de WP; (b) los estilos de Elementor/tema pueden interferir → **aislar con un contenedor/prefijo** (ver `10`).
 
 ## Estructura de directorios propuesta
 
@@ -20,12 +20,23 @@ ateneo-web/
 ├── videoteca.html        # Videoteca
 ├── css/estilos.css       # Variables de identidad + estilos
 ├── js/
+│   ├── aplicar-correcciones.js  # vista combinada: generado + nuevas + correcciones (script común y require)
 │   ├── buscador.js       # Lógica pura: normalizar, buscar, filtrar (testeada)
 │   └── app.js            # Render y eventos
 ├── data/
-│   ├── charlas.json      # Catálogo final (desde charlas-borrador.json)
-│   └── proxima-charla.json  # (o dentro de un único archivo de datos)
-├── tests/buscador.test.js   # node:test
+│   ├── temas.js          # window.AAC_TEMAS
+│   ├── charlas.js        # window.AAC_CHARLAS — GENERADO, no se edita a mano
+│   ├── charlas-nuevas.js # window.AAC_CHARLAS_NUEVAS (a mano)
+│   ├── correcciones.js   # window.AAC_CORRECCIONES por id de charla (a mano)
+│   ├── proxima-charla.js # window.AAC_PROXIMA_CHARLA
+│   ├── charlas-borrador.json  # origen, no se edita
+│   └── LEEME.md          # guía para editores (borrador)
+├── scripts/              # herramientas de desarrollo (no son parte del sitio)
+│   ├── derivar-datos.js, validar-datos.js, cruzar-youtube.js
+│   ├── lib/              # módulos puros testeados
+│   ├── salida/           # canal.jsonl, reporte-cruce.md (fuera de git)
+│   └── LEEME.md
+├── tests/                # node:test: buscador y filtro + scripts de datos
 ├── docs/                 # PRD y mockups
 ├── knowledge-base/
 ├── openspec/

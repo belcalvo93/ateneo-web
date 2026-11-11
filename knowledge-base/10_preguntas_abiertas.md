@@ -22,6 +22,16 @@ Los mockups usan `[fecha]`, `[Título…]`, `[usuario a confirmar]`. No hay dato
 ### IN-05 — Alcance de «nombres» en mockups
 El mockup de Videoteca muestra 12 charlas reales con títulos/disertantes limpios (p. ej. Entrelazamiento cuántico — Dr. Ernesto Gandolfo Raso, 2023); el borrador tiene `titulo`/`disertante` en `null` para las 186. Hay que cargarlas.
 
+### IN-06 — Caja del Ateneo en la portada de la UTN FRM (idea)
+La portada de la UTN FRM tiene cajas de colores (Cursos, Tecnicaturas, Licenciaturas, etc.), cada una con ícono, número, nombre y una etiqueta debajo, que enlazan a cada sección; el Ateneo tendría una que apunte a su página (idea de change C-07 `tarjeta-en-portada-utn`, en `CHANGES.md`).
+**Pendiente**: quién la agrega en Elementor, un color que no choque con los existentes, el ícono y el número. Sujeto a la reunión con el Ateneo.
+
+### IN-07 — Completar disertantes y títulos desde las descripciones de los videos (idea)
+Las descripciones de YouTube podrían traer título y disertante: `python -m yt_dlp --skip-download --dump-json <video>` (solo metadatos, lectura) y un script que proponga los datos, dejando al Ateneo solo lo que no se pueda obtener. Reduciría la carga manual de las 186 charlas (hoy solo ~16 % de disertantes se extraen automáticamente). No implementado.
+
+### IN-08 — Tema a partir de las playlists (idea)
+Si Agustina arma una playlist por tema, el script podría listar cada playlist (`yt-dlp --flat-playlist`) y asignar el tema por pertenencia (playlist → id de tema; `temas.js` ya tiene `playlist_url`). Hoy el tema sale del borrador. No implementado.
+
 ## Preguntas abiertas (priorizadas)
 
 | Prioridad | Pregunta | Bloquea | Decisor |
@@ -36,6 +46,11 @@ El mockup de Videoteca muestra 12 charlas reales con títulos/disertantes limpio
 | Media | ¿Cómo se definen «últimas charlas» y «más vistas» en portada: automático o curado? | C-03 | Dev / Ateneo |
 | Media | ¿Sigue vigente la Declaración de Principios (bit.ly/3ai4qQx)? | US-009 | Ateneo |
 | Media | ¿Quiénes integran la Mesa Organizadora y quieren aparecer? | Quiénes somos | Mesa |
+| Media | ¿Cómo se coordinan los cambios de Agustina en el canal (títulos, orden, videos vueltos a subir) con la actualización de datos: quién vuelve a correr el cruce (`derivar-datos.js`) y cuándo? | Enlaces del catálogo al día | Dev / Agustina / Ateneo |
+| Media | Caja del Ateneo en la portada de la UTN FRM: ¿quién la agrega en Elementor, qué color, ícono y número? (IN-06) | C-07 (idea) | Ateneo / FRM |
+| Media | Conjunto final de redes sociales: Instagram + ¿TikTok o Facebook? (lista configurable, C-03) | Pie de página (C-03) | Agustina / Ateneo |
+| Baja | Completar disertantes y títulos desde las descripciones de los videos con `yt-dlp` (IN-07) | Menos carga manual (C-05) | Dev |
+| Baja | Tema desde las playlists por tema que arme Agustina (IN-08) | Asignación de tema | Dev / Agustina |
 | Baja | Usuarios de Instagram y Facebook (otra becaria) | Pie de página | Otra becaria |
 | Baja | Enlace de Zoom y formato de asunto del correo de inscripción | Próxima charla | Ateneo |
 | Baja | Tercera parte del roadmap del autor (mensaje cortado después de C-04) | Roadmap | Autora |
