@@ -10,7 +10,7 @@
 | Datos | Archivos `.js` editables por no programadores en `data/` (`temas.js`, `charlas.js`, `proxima-charla.js`; cada uno asigna una global `window.AAC_*`) | Separado del diseño; admiten comentarios y se pueden pegar en línea (DD-03) |
 | Tests | `node:test` (Node nativo) | Buscador y filtro, más los scripts de datos (derivación, validación, cruce con YouTube); sin dependencias |
 | Tipografías | Google Fonts: Dosis, Open Sans, Baskervville | Las mismas de frm.utn.edu.ar |
-| Hosting | WordPress + Elementor Pro 4.2 de la FRM (widget HTML) | Alternativa: Google Sites → Insertar → Código. A confirmar el 10/11 |
+| Hosting | WordPress + Elementor Pro 4.2 de la FRM (widget HTML) | Alternativa: Google Sites → Insertar → Código. A confirmar el 11/11 |
 | Costo | Cero | RNF |
 
 ## Arquitectura general
@@ -37,7 +37,7 @@ Desarrollo en local (este repo) → entrega pegando el código en el widget HTML
 | Servicio | Propósito | Tipo |
 |---|---|---|
 | YouTube (canal @ateneoamigosdelasciencias-2269) | Videos, miniaturas, playlists por tema | Enlaces / miniaturas por URL, sin API |
-| Instagram, Facebook | Redes (gestionadas por otra becaria) | Enlaces (usuarios a confirmar) |
+| Instagram, Facebook | Redes (gestionadas por Agustina, becaria de medios y redes) | Enlaces (usuarios a confirmar) |
 | Correo ateneoac.mo@gmail.com | Consultas, inscripción, propuestas | `mailto:` |
 | Zoom | Modalidad virtual de la próxima charla | Enlace |
 | Google Fonts | Tipografías | CSS remoto |

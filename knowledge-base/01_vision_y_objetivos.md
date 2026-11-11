@@ -33,7 +33,7 @@ Público pensado primero para quien llega **desde el celular**; incluye adultos 
 
 ## Fuera de alcance
 
-- Gestionar redes sociales o producir contenido (lo hace otra becaria).
+- Gestionar redes sociales o producir contenido (lo hace Agustina, becaria de medios y redes).
 - Editar o resubir videos.
 - Inscripciones online, login o pagos (la inscripción es por correo).
 - Frameworks, build, servidor propio o backend.

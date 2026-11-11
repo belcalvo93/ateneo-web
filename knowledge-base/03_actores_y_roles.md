@@ -8,8 +8,7 @@
 | Integrante del Ateneo (editor de contenido) | Mesa Organizadora y colaboradores, sin conocimientos de programación | Edita el archivo de datos (charlas, próxima charla) siguiendo la guía de uso |
 | Becaria / desarrolladora | María Belén Calvo | Construye el sitio, carga datos, entrega guía e integración en Elementor |
 | Administración web FRM | Quien administra WordPress/Elementor de la facultad | Pega el código en el widget HTML (o da acceso) — **quién es: pregunta abierta** |
-| Otra becaria (redes) | Gestiona Instagram y Facebook | Aporta los enlaces de esas redes |
-| Agustina — becaria de medios | Reorganiza y edita los videos del canal de YouTube del Ateneo: títulos, orden, playlists por tema; puede volver a subir videos editados (**cambia el id del video en YouTube**); crea las redes sociales del Ateneo (Instagram y también TikTok o Facebook, sin decidir) | Sus cambios en el canal obligan a regenerar los enlaces del catálogo (`scripts/derivar-datos.js`); aporta los usuarios de las redes. Puede ser la misma persona que la «otra becaria (redes)»: a confirmar |
+| Agustina — becaria de medios y redes | Reorganiza y edita los videos del canal de YouTube del Ateneo: títulos, orden, playlists por tema; puede volver a subir videos editados (**cambia el id del video en YouTube**); crea y gestiona las redes sociales del Ateneo (Instagram y también TikTok o Facebook, sin decidir). Es la misma persona que la «otra becaria» del PRD (confirmado el 11/11/2026) | Sus cambios en el canal obligan a regenerar los enlaces del catálogo (`scripts/derivar-datos.js`); aporta los usuarios de las redes |
 
 ## Matriz de permisos (RBAC)
 

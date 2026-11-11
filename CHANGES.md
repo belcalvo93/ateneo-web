@@ -5,7 +5,7 @@
 > **Leer este archivo antes de ejecutar cualquier `/opsx:propose`.**
 
 > ## ⚠️ ROADMAP PROVISIONAL — C-03 a C-06 SUJETOS A VALIDACIÓN
-> Este roadmap se revisa después de la **reunión con el Ateneo del martes 10/11/2026**, donde pueden pedir cambios en los temas de la videoteca, las secciones y la plataforma (Elementor o Google Sites).
+> Este roadmap se revisa después de la **reunión con el Ateneo del 11/11/2026**, donde pueden pedir cambios en los temas de la videoteca, las secciones y la plataforma (Elementor o Google Sites).
 >
 > - **Punto de partida (camino crítico, inicio): C-01 y C-02.** No dependen de ninguna de esas decisiones, así que se arrancan ya.
 > - **C-03, C-04, C-05 y C-06 están SUJETOS A VALIDACIÓN** tras la reunión: su scope, orden o incluso su existencia pueden cambiar. No hacer `/opsx:propose` de ninguno hasta confirmar.
@@ -25,7 +25,7 @@ Diseño: el sistema de diseño (`design-system/`, modo `system-only`, revisión 
 
 ### Preguntas abiertas que condicionan el roadmap
 
-Fuente: `knowledge-base/10_preguntas_abiertas.md` e `09_decisiones_y_supuestos.md`. Se resuelven en la reunión del 10/11.
+Fuente: `knowledge-base/10_preguntas_abiertas.md` e `09_decisiones_y_supuestos.md`. Se resuelven en la reunión del 11/11.
 
 1. **Plataforma final de integración: ¿Elementor (WordPress FRM) o Google Sites?** Define dónde viven datos/CSS/JS, si se inlinea todo y cómo es la guía de uso. Afecta C-06 (y el formato de entrega de C-02/C-05). Ver DD-02, IN-02.
 2. **Validación de los 8 temas propuestos** (y de las etiquetas cortas). Afecta el esquema de temas de C-02 y la clasificación de las 186 charlas en C-05. Ver DD-05, IN-03.
@@ -40,9 +40,9 @@ Otras abiertas, menos bloqueantes: criterio de «últimas»/«más vistas» (cur
 ```
 C-01 base-y-estilos                     ← ARRANQUE (no depende de la reunión)
  └── C-02 datos-charlas                 ← ARRANQUE (no depende de la reunión)
-      ├── C-03 portada                  ⚠ sujeto a validación (10/11)
+      ├── C-03 portada                  ⚠ sujeto a validación (11/11)
       │    └── C-05 responsive-a11y-carga-completa   ⚠
-      └── C-04 videoteca (TDD)          ⚠ sujeto a validación (10/11)
+      └── C-04 videoteca (TDD)          ⚠ sujeto a validación (11/11)
            └── C-05 responsive-a11y-carga-completa   ⚠
                 └── C-06 integracion-y-guia          ⚠
 ```
@@ -56,7 +56,7 @@ GATE 0: (nada)                                  ← ARRANQUE
 GATE 1: C-01 ✓
   → C-02 datos-charlas                 [Agente A]
 
---- Acá se hace la reunión del 10/11. Revisar C-03..C-06 antes de seguir. ---
+--- Acá se hace la reunión del 11/11. Revisar C-03..C-06 antes de seguir. ---
 
 GATE 2: C-02 ✓                                  ← FORK (⚠ sujeto a validación)
   → C-03 portada                       [Agente A]
@@ -74,7 +74,7 @@ GATE 4: C-05 ✓                                  (⚠ sujeto a validación)
 
 `C-01 → C-02 → C-04* → C-05 → C-06`
 
-\* C-03 es la otra rama de GATE 2; C-05 espera a ambas, así que cualquiera de las dos puede ser la última. La videoteca (C-04) es la más larga por el TDD. Tramo confirmado hoy: **C-01 → C-02**; el resto depende de la reunión del 10/11. Hito duro: guía entregada el **18/12** (revisión con el Ateneo 09/12–15/12).
+\* C-03 es la otra rama de GATE 2; C-05 espera a ambas, así que cualquiera de las dos puede ser la última. La videoteca (C-04) es la más larga por el TDD. Tramo confirmado hoy: **C-01 → C-02**; el resto depende de la reunión del 11/11. Hito duro: guía entregada el **18/12** (revisión con el Ateneo 09/12–15/12).
 
 ### Plan óptimo con 3 agentes
 
@@ -132,12 +132,12 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 
 ---
 
-## FASE 2 — Páginas (⚠ SUJETA A VALIDACIÓN tras la reunión del 10/11)
+## FASE 2 — Páginas (⚠ SUJETA A VALIDACIÓN tras la reunión del 11/11)
 
 > C-03 y C-04 son paralelizables entre sí. No arrancar hasta revisar este roadmap con lo que se decida con el Ateneo (secciones, temas, plataforma).
 
 ### [C-03] `portada`
-- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (10/11)**
+- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (11/11)**
 - **Scope**:
   - `index.html` según el mockup «Inicio» (escritorio y celular) en `docs/mockups/`.
   - Hero con propuesta y cifras (+100 conferencias, 310 videos, viernes 18 hs); sección «Quiénes somos» (2017, Dpto. Ing. Electrónica) — US-001.
@@ -160,7 +160,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - `knowledge-base/10_preguntas_abiertas.md` §IN-01, §IN-04
 
 ### [C-04] `videoteca`
-- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (10/11)**
+- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (11/11)**
 - **Scope**:
   - **Strict TDD** con `node:test` (sin dependencias): `js/buscador.js` con funciones puras `normalizar`, `buscar`, `filtrarPorTema`, `combinar`; tests en `tests/buscador.test.js` escritos antes del código.
   - Tests esperados: normalización de mayúsculas y tildes, búsqueda por título o disertante (RN-BU-01/02), filtro por tema, combinación búsqueda + tema, «Todos los temas» por defecto, sin resultados, mínimo 2 casos por comportamiento.
@@ -181,10 +181,10 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 
 ---
 
-## FASE 3 — Calidad y contenido (⚠ SUJETA A VALIDACIÓN tras la reunión del 10/11)
+## FASE 3 — Calidad y contenido (⚠ SUJETA A VALIDACIÓN tras la reunión del 11/11)
 
 ### [C-05] `responsive-a11y-carga-completa`
-- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (10/11)**
+- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (11/11)**
 - **Scope**:
   - Responsive en celular (390 px), tablet y escritorio (1440 px), mobile-first (RN-AC-02); menú hamburguesa accesible.
   - Accesibilidad RN-AC-01: base 18 px, contraste AA (revisar texto sobre `--aac-llama` y gris sobre blanco), `alt`, navegación por teclado en menú/chips/fichas, objetivos ≥ 44 px, foco visible.
@@ -202,7 +202,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - `design-system/README.md` §Reglas clave
 
 ### [C-06] `integracion-y-guia`
-- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (10/11)**; depende de la plataforma elegida
+- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (11/11)**; depende de la plataforma elegida
 - **Scope**:
   - Empaquetado para la plataforma confirmada: **Elementor (widget HTML)** o **Google Sites (Insertar → Código)**.
   - Variante inlineada (HTML con CSS/JS/datos embebidos) si los archivos externos no se pueden hospedar (Mediateca de WP), con aislamiento CSS bajo contenedor.
@@ -227,10 +227,10 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 |----|--------|------|--------------|------------|--------|------------|
 | C-01 | `base-y-estilos` | 1 | — | BAJO | `[x]` | Firme (arrancar ya) |
 | C-02 | `datos-charlas` | 1 | C-01 | MEDIO | `[x]` | Firme (arrancar ya) |
-| C-03 | `portada` | 2 | C-02 | BAJO | `[ ]` | ⚠ Tras reunión 10/11 |
-| C-04 | `videoteca` | 2 | C-02 | MEDIO | `[ ]` | ⚠ Tras reunión 10/11 |
-| C-05 | `responsive-a11y-carga-completa` | 3 | C-03, C-04 | MEDIO | `[ ]` | ⚠ Tras reunión 10/11 |
-| C-06 | `integracion-y-guia` | 3 | C-05 | ALTO | `[ ]` | ⚠ Tras reunión 10/11 |
+| C-03 | `portada` | 2 | C-02 | BAJO | `[ ]` | ⚠ Tras reunión 11/11 |
+| C-04 | `videoteca` | 2 | C-02 | MEDIO | `[ ]` | ⚠ Tras reunión 11/11 |
+| C-05 | `responsive-a11y-carga-completa` | 3 | C-03, C-04 | MEDIO | `[ ]` | ⚠ Tras reunión 11/11 |
+| C-06 | `integracion-y-guia` | 3 | C-05 | ALTO | `[ ]` | ⚠ Tras reunión 11/11 |
 
 ## Ideas / changes futuros
 
@@ -248,6 +248,6 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 
 ---
 
-**Primer change recomendado**: `C-01` (`base-y-estilos`). Siguiente: `C-02` (`datos-charlas`). Después, parar y revisar el roadmap con lo que salga de la reunión del 10/11.
+**Primer change recomendado**: `C-01` (`base-y-estilos`). Siguiente: `C-02` (`datos-charlas`). Después, parar y revisar el roadmap con lo que salga de la reunión del 11/11.
 
 Para arrancar: `/opsx:propose C-01-base-y-estilos` (nombre OpenSpec en kebab-case: `base-y-estilos`).

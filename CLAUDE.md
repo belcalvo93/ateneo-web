@@ -15,7 +15,7 @@
 | Datos | Archivos JS de datos en `data/*.js`, editables por no programadores salvo `charlas.js`, que es **generado** por `scripts/derivar-datos.js` (`window.AAC_TEMAS`, `AAC_CHARLAS`, `AAC_CHARLAS_NUEVAS`, `AAC_CORRECCIONES` y `AAC_PROXIMA_CHARLA`; las correcciones a mano van en `correcciones.js`/`charlas-nuevas.js`, que se combinan en el navegador con `js/aplicar-correcciones.js`; concatenables en un solo `<script>`) | — |
 | Tests | `node:test` (buscador, filtro y scripts de datos de `scripts/lib/`; sin dependencias) | Node nativo |
 | Tipografías | Google Fonts: Dosis, Open Sans, Baskervville | — |
-| Entrega | Widget HTML de Elementor (WordPress FRM); alternativa Google Sites | a confirmar 10/11 |
+| Entrega | Widget HTML de Elementor (WordPress FRM); alternativa Google Sites | a confirmar 11/11 |
 
 Detalle completo: [knowledge-base/02_descripcion_general.md](knowledge-base/02_descripcion_general.md)
 
@@ -66,7 +66,7 @@ El plan completo está en [CHANGES.md](CHANGES.md). Resumen:
 - **Total**: 6 changes en 3 fases (Fundación, Páginas, Calidad y contenido).
 - **Camino crítico** (5): `C-01 → C-02 → C-04 → C-05 → C-06` (C-03 es la otra rama tras C-02).
 - **Primer change**: `C-01` (`base-y-estilos`), luego `C-02` (`datos-charlas`).
-- ⚠️ **Roadmap provisorio**: C-03 a C-06 quedan **sujetos a validación** tras la reunión con el Ateneo del 10/11/2026 (temas, secciones, plataforma Elementor o Google Sites). Empezar solo por C-01 y C-02.
+- ⚠️ **Roadmap provisorio**: C-03 a C-06 quedan **sujetos a validación** tras la reunión con el Ateneo del 11/11/2026 (temas, secciones, plataforma Elementor o Google Sites). Empezar solo por C-01 y C-02.
 
 **Antes de cualquier `/opsx:propose`**: leé [CHANGES.md](CHANGES.md), identificá las dependencias del change y los archivos de "Leer antes".
 
@@ -88,7 +88,7 @@ El plan completo está en [CHANGES.md](CHANGES.md). Resumen:
 
 **Contenido y roadmap**
 - NUNCA inventar datos (fechas, disertantes, títulos, URLs, usuarios de redes) → dejar placeholders `[…]` o preguntar.
-- NUNCA hacer `/opsx:propose` de C-03 a C-06 antes de la validación posterior a la reunión del 10/11 → empezar por C-01 y C-02.
+- NUNCA hacer `/opsx:propose` de C-03 a C-06 antes de la validación posterior a la reunión del 11/11 → empezar por C-01 y C-02.
 - Tests `node:test` solo donde hay lógica (buscador: sin distinguir mayúsculas/tildes; filtro por tema), con TDD.
 
 **Git (universales que el global no cubre)**

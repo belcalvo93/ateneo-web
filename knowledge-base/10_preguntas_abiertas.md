@@ -51,7 +51,7 @@ Si Agustina arma una playlist por tema, el script podría listar cada playlist (
 | Media | Conjunto final de redes sociales: Instagram + ¿TikTok o Facebook? (lista configurable, C-03) | Pie de página (C-03) | Agustina / Ateneo |
 | Baja | Completar disertantes y títulos desde las descripciones de los videos con `yt-dlp` (IN-07) | Menos carga manual (C-05) | Dev |
 | Baja | Tema desde las playlists por tema que arme Agustina (IN-08) | Asignación de tema | Dev / Agustina |
-| Baja | Usuarios de Instagram y Facebook (otra becaria) | Pie de página | Otra becaria |
+| Baja | Usuarios de las redes (Instagram y TikTok o Facebook) | Pie de página | Agustina |
 | Baja | Enlace de Zoom y formato de asunto del correo de inscripción | Próxima charla | Ateneo |
 | Baja | Tercera parte del roadmap del autor (mensaje cortado después de C-04) | Roadmap | Autora |
 

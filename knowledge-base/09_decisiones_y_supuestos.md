@@ -6,10 +6,10 @@
 **Decisión**: sin frameworks, bundler ni build. **Contexto**: se pegará en un widget HTML de Elementor y debe tener costo cero. **Alternativas**: React/Vite, generador estático. **Justificación**: portabilidad y mantenibilidad por no programadores. **Trade-offs**: más código manual; sin componentes reutilizables.
 
 ### DD-02 — Plataforma: widget HTML de Elementor (WordPress de la FRM)
-**Decisión**: apuntar a Elementor; alternativa Google Sites (Insertar → Código). **Contexto**: la página será una sección de la web de la FRM (Elementor Pro 4.2). **Estado**: a confirmar en la reunión del 10/11.
+**Decisión**: apuntar a Elementor; alternativa Google Sites (Insertar → Código). **Contexto**: la página será una sección de la web de la FRM (Elementor Pro 4.2). **Estado**: a confirmar en la reunión del 11/11.
 
 ### DD-03 — Datos separados del diseño
-**Decisión**: charlas, temas y próxima charla en archivos de datos fáciles de editar. **Resuelto en C-02**: archivos `.js` que asignan una global (`window.AAC_TEMAS`, `window.AAC_CHARLAS`, `window.AAC_PROXIMA_CHARLA`), no `.json`. **Por qué**: un `.json` hay que pedirlo con `fetch`, que los navegadores bloquean al abrir la página con doble clic (`file://`) y que exige hospedar el archivo; un `.js` carga con `<script src>` o se pega en línea dentro del widget de Elementor, admite comentarios para quien edita y tolera una coma de más. Todos los archivos de datos deben poder concatenarse en un único `<script>` (Elementor: el acceso a archivos externos es desconocido, se consulta el 10/11). El cuerpo de `charlas.js` es JSON válido, así que volver a `.json` es mecánico.
+**Decisión**: charlas, temas y próxima charla en archivos de datos fáciles de editar. **Resuelto en C-02**: archivos `.js` que asignan una global (`window.AAC_TEMAS`, `window.AAC_CHARLAS`, `window.AAC_PROXIMA_CHARLA`), no `.json`. **Por qué**: un `.json` hay que pedirlo con `fetch`, que los navegadores bloquean al abrir la página con doble clic (`file://`) y que exige hospedar el archivo; un `.js` carga con `<script src>` o se pega en línea dentro del widget de Elementor, admite comentarios para quien edita y tolera una coma de más. Todos los archivos de datos deben poder concatenarse en un único `<script>` (Elementor: el acceso a archivos externos es desconocido, se consulta el 11/11). El cuerpo de `charlas.js` es JSON válido, así que volver a `.json` es mecánico.
 
 ### DD-04 — Una ficha por charla con sus partes
 **Decisión**: agrupar videos de una misma charla. **Contexto**: 310 videos ≈ 186 charlas; 104 charlas tienen más de un video.
@@ -41,7 +41,7 @@ Propuesta de la autora: C-01 base-y-estilos, C-02 datos-charlas, C-03 portada, C
 ## Supuestos inferidos
 
 ### SU-01 — La sección se crea con cuentas de la facultad
-**Origen**: PRD. **Riesgo si es falso**: no hay forma de publicar. **Validar**: reunión 10/11.
+**Origen**: PRD. **Riesgo si es falso**: no hay forma de publicar. **Validar**: reunión 11/11.
 
 ### SU-02 — El Ateneo aporta textos, logo e información de eventos
 **Origen**: PRD. **Riesgo**: placeholders sin completar. **Validar**: pedir lista de insumos.

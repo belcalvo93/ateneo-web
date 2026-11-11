@@ -11,7 +11,7 @@ Todo lo que cambia en el sitio (charlas, próxima charla, temas) vive en esta ca
 | `proxima-charla.js` | Los datos de la próxima charla (título, disertante, fecha, hora…) | **Sí**, cada semana |
 | `correcciones.js` | Tus correcciones a las charlas ya cargadas: título, disertante, tema, año, enlaces, «destacada»… | **Sí**: es el lugar para corregir |
 | `charlas-nuevas.js` | Las charlas que se agregan de ahora en más | **Sí**: es el lugar para agregar |
-| `temas.js` | Los temas (Geología, IA, etc.) y sus nombres cortos | Casi nunca; provisorio hasta la reunión del 10/11 |
+| `temas.js` | Los temas (Geología, IA, etc.) y sus nombres cortos | Casi nunca; provisorio hasta la reunión del 11/11 |
 | `charlas.js` | El catálogo de las 186 charlas (con sus videos de YouTube) | **No**: lo genera un script y se pisa cada vez que se regenera |
 | `charlas-borrador.json` | El borrador original del que salió el catálogo | **Nunca**: es solo el origen |
 

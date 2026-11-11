@@ -1,6 +1,6 @@
 /*
   TEMAS DEL ATENEO — lista única de temas del sitio.
-  PROVISORIO hasta la reunión del 10/11: los temas pueden cambiar.
+  PROVISORIO hasta la reunión del 11/11: los temas pueden cambiar.
 
   Cómo editar:
   - "id": identificador interno (minúsculas y guiones). NO lo cambies si ya hay charlas que lo usan.
