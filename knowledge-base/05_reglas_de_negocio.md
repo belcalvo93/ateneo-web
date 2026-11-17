@@ -16,8 +16,8 @@ Códigos `RN-{DOMINIO}-{NN}`. Todas derivadas de `docs/PRD.md`; las marcadas **(
 - **RN-BU-03**: El filtro por tema se combina con la búsqueda; «Todos los temas» es el estado por defecto (Mockup).
 
 ## Dominio: Próxima charla (RN-PC)
-- **RN-PC-01**: Muestra fecha, hora, lugar y modalidad presencial + Zoom (RF-04).
-- **RN-PC-02**: Las charlas son los viernes a las 18 hs, Salón de Actos UTN FRM (Rodríguez 273), presencial y por Zoom.
+- **RN-PC-01**: Muestra fecha, hora, lugar y modalidad (presencial y/o por Zoom) (RF-04).
+- **RN-PC-02**: Las charlas son los viernes a las 18 hs, Salón de Actos UTN FRM (Rodríguez 273) y/o por Zoom (texto provisorio: desde la pandemia la mayoría de las charlas son solo por Zoom; ver `10`).
 - **RN-PC-03**: La inscripción y consultas son por correo a ateneoac.mo@gmail.com; no hay inscripción online (fuera de alcance).
 - **RN-PC-04**: Los enlaces para agendar en Google Calendar y para entrar por Zoom son opcionales: cada botón se muestra solo si su enlace está cargado (DD-15).
 

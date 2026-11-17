@@ -29,7 +29,7 @@ Define el archivo editable con los datos de la próxima charla del Ateneo, separ
 - **THEN** el validador informa un error en `fecha`
 
 ### Requirement: Sin datos inventados en la próxima charla
-Los valores no confirmados MUST quedar como placeholder entre corchetes; solo se precargan valores documentados en la knowledge base: `lugar` (Salón de Actos UTN FRM, Rodríguez 273), `hora` habitual 18:00, `modalidad` (presencial y por Zoom) y `correo_inscripcion` (ateneoac.mo@gmail.com). `zoom_url` y `calendar_url` quedan en `null` hasta que el Ateneo cargue cada enlace.
+Los valores no confirmados MUST quedar como placeholder entre corchetes; solo se precargan valores documentados en la knowledge base: `lugar` (Salón de Actos UTN FRM, Rodríguez 273), `hora` habitual 18:00, `modalidad` (presencial y/o por Zoom) y `correo_inscripcion` (ateneoac.mo@gmail.com). `zoom_url` y `calendar_url` quedan en `null` hasta que el Ateneo cargue cada enlace.
 
 #### Scenario: Estado inicial
 - **WHEN** se actualiza el archivo en este change

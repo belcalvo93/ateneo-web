@@ -32,13 +32,14 @@ window.AAC_PROXIMA_CHARLA = {
   fecha: "14/11/2026",
   hora: "18:00",
   lugar: "Salón de Actos UTN FRM, Rodríguez 273, Ciudad de Mendoza",
-  modalidad: "Presencial y por Zoom",
+  modalidad: "Solo por Zoom",
   zoom_url: "https://…",
   calendar_url: "https://…",
   correo_inscripcion: "ateneoac.mo@gmail.com"
 };
 ```
 
+- **modalidad**: cómo es esa charla en particular: `"Presencial y por Zoom"`, `"Solo por Zoom"` o `"Presencial"`. Mientras no se sepa, queda `"Presencial y/o por Zoom"`.
 - **fecha**: siempre `DD/MM/AAAA` (día, mes, año de cuatro cifras). Ejemplo: `"14/11/2026"`.
 - **hora**: siempre `HH:MM` en 24 horas. Ejemplo: `"18:00"`.
 - **zoom_url** (opcional): el enlace de Zoom entre comillas. Si está cargado, la página muestra el botón «Entrar por Zoom». Si no se quiere publicar, dejá `null` (sin comillas): el botón no aparece y no pasa nada.

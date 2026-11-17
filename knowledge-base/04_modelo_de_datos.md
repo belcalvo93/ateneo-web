@@ -69,7 +69,7 @@ El nombre visible **no se guarda**: «Charla» si hay 1 parte; «Parte N» si ha
 186 charlas, 310 videos, 104 charlas con más de un video, años 2020–2026.
 
 ### ProximaCharla (`data/proxima-charla.js`)
-Campos según RF-04: `titulo`, `disertante`, `descripcion` (1–2 líneas), `fecha` (`DD/MM/AAAA`), `hora` (`HH:MM`, 24 h), `lugar`, `modalidad` (presencial + Zoom), `zoom_url` (string | null) y `correo_inscripcion`. Los valores no confirmados quedan como placeholder entre corchetes; solo se precargan los documentados (RN-PC-02/03).
+Campos según RF-04: `titulo`, `disertante`, `descripcion` (1–2 líneas), `fecha` (`DD/MM/AAAA`), `hora` (`HH:MM`, 24 h), `lugar`, `modalidad` (presencial y/o por Zoom; se ajusta en cada charla), `zoom_url` (string | null) y `correo_inscripcion`. Los valores no confirmados quedan como placeholder entre corchetes; solo se precargan los documentados (RN-PC-02/03).
 
 **Ampliación acordada el 11/11 (DD-15, se implementa en C-03)**: se suma un campo opcional `calendar_url` (string | null) con el enlace para agendar la charla en Google Calendar. Junto con `zoom_url` (que ya existe) alimenta dos botones opcionales de la tarjeta «Próxima charla»: cada botón se muestra solo si su enlace está cargado. Se conserva el nombre `zoom_url` del esquema de C-02 y el nuevo campo sigue el mismo patrón (`calendar_url`), en lugar de renombrar a `url_zoom`/`url_calendar`. Todavía no está en `data/proxima-charla.js` ni en el validador.
 

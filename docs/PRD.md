@@ -27,7 +27,7 @@ El Ateneo no tiene página web activa: todo su contenido vive en un canal de You
 - Bajada institucional: «Entidad autónoma sin fines de lucro dedicada a la divulgación de las Ciencias Exactas, Físicas y Naturales y cultura general».
 - Valores (Declaración de Principios v2.4): rigor científico, clima amistoso y horizontal (trato por nombre de pila, sin jerarquías), acceso libre y gratuito. No cobra entrada ni paga honorarios.
 - Funciona en el Departamento de Ingeniería Electrónica, con apoyo de la Dirección de Graduadas y Graduados. Lo guía una Mesa Organizadora de 7 miembros elegidos por consenso.
-- Organiza una charla abierta todos los viernes a las 18 hs (con el receso del calendario académico), presencial (Salón de Actos UTN FRM, Rodríguez 273, Ciudad de Mendoza) y por Zoom. Superó las 100 conferencias (la n.º 100 fue en abril de 2023) y fue declarado De Interés para la FRM por el Consejo Directivo.
+- Organiza una charla abierta todos los viernes a las 18 hs (con el receso del calendario académico), presencial (Salón de Actos UTN FRM, Rodríguez 273, Ciudad de Mendoza) y/o por Zoom; desde la pandemia la mayoría son solo por Zoom, así que los textos del sitio dicen «y/o por Zoom» de forma provisoria, hasta que el Ateneo confirme si vuelven las charlas presenciales. Superó las 100 conferencias (la n.º 100 fue en abril de 2023) y fue declarado De Interés para la FRM por el Consejo Directivo.
 - Está abierto a todo público y tiene una convocatoria para proponer charlas (propuesta temática, resumen, CV abreviado y aceptación de su Declaración de Principios). Los temas deben tener base científica o tecnológica comprobada; no se admiten charlas con fines comerciales ni sobre política partidaria o religión.
 - Consultas, inscripciones y propuestas por correo: ateneoac.mo@gmail.com
 - Su información estaba dispersa en noticias sueltas de la web de la UTN, documentos internos y YouTube.
@@ -92,7 +92,7 @@ Los mockups aprobados (Inicio escritorio, Videoteca, Inicio celular) están en `
 | RF-01 | Presentación del Ateneo: quiénes son, historia (desde agosto de 2015), bajada institucional, valores de la Declaración de Principios y galería de fotos históricas | Alta |
 | RF-02 | Videoteca: charlas por tema, una ficha por charla con miniatura, título, disertante, año y enlaces a sus partes en YouTube | Alta |
 | RF-03 | Buscar charlas por título o disertante (sin distinguir mayúsculas ni tildes) y filtrarlas por tema (8 temas confirmados + 2 a definir por Agustina) | Alta |
-| RF-04 | Próxima charla con fecha, hora, lugar y modalidad (presencial y Zoom), con enlaces opcionales para agendar en Google Calendar y entrar por Zoom | Alta |
+| RF-04 | Próxima charla con fecha, hora, lugar y modalidad (presencial y/o por Zoom), con enlaces opcionales para agendar en Google Calendar y entrar por Zoom | Alta |
 | RF-05 | Enlaces visibles a las redes, como lista configurable en los datos: YouTube, Instagram y Canal de Difusión de WhatsApp | Alta |
 | RF-06 | Contacto e inscripción por correo (ateneoac.mo@gmail.com) | Alta |
 | RF-07 | Enlazar las playlists de YouTube de cada tema (en construcción por Agustina) | Media |
