@@ -18,7 +18,7 @@
 ### US-003 — Enlaces a redes (RF-05, Alta)
 **Como** visitante **quiero** llegar a YouTube, Instagram y el Canal de Difusión de WhatsApp **para** seguir al Ateneo.
 - [ ] Enlaces visibles en el pie, tomados de la lista configurable de redes (DD-14) — 11/11
-- [ ] Instagram y WhatsApp quedan como placeholder hasta tener el enlace; una red sin enlace no se muestra al público
+- [ ] WhatsApp usa el enlace oficial del canal (DD-14); Instagram queda como placeholder hasta tener el enlace; una red sin enlace no se muestra al público
 
 ## Épica 2: Videoteca
 ### US-004 — Explorar charlas por tema (RF-02, Alta)

@@ -29,4 +29,13 @@
     c124: { partes: { 2: { url: "https://www.youtube.com/watch?v=XXXXXXXXXXX" } } }
   };
 */
-window.AAC_CORRECCIONES = {};
+window.AAC_CORRECCIONES = {
+  // Charlas que salen en la portada (últimas y más vistas). Título y disertante tomados del título
+  // del video en YouTube, solo ordenando mayúsculas y tildes. Falta confirmar con el Ateneo el
+  // tratamiento de cada persona (Dr., Ing., Lic.) y, en c003, quiénes integraron la mesa.
+  c001: { titulo: "Pinceladas sanmartinianas", disertante: "J. M. Amoretti" },
+  c002: { titulo: "Reciclado químico de residuos plásticos" },
+  c003: { titulo: "La IH junto a la IA", disertante: "Mesa redonda" },
+  c181: { titulo: "Depósitos de litio", disertante: "Pabla Tognoli" },
+  c182: { titulo: "Teledetección y geología espectral", disertante: "Alejandro Caballero" }
+};

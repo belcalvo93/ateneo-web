@@ -123,3 +123,111 @@
 .aac-web .pie p { margin: 0 0 var(--esp-2); }
 .aac-web .pie .wrap { display: grid; gap: var(--esp-5); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .aac-web main.wrap { padding-top: var(--esp-6); padding-bottom: var(--esp-6); }
+
+/* ===== Portada (C-03) ===== */
+
+/* Utilidades */
+.aac-web .solo-lectores { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.aac-web [hidden] { display: none !important; }
+.aac-web .meta { color: var(--texto-suave); font-size: var(--texto-chico); margin: 0; }
+.aac-web .nota { color: var(--texto-suave); font-size: var(--texto-chico); }
+.aac-web .aviso { grid-column: 1 / -1; background: var(--superficie-suave); border-radius: var(--radio-chico); padding: var(--esp-4); margin: 0; }
+.aac-web .aviso a { display: inline-flex; align-items: center; min-height: var(--objetivo-minimo); font-weight: 700; }
+.aac-web .btn-contorno { background: var(--superficie-tarjeta); color: var(--aac-azul); border-color: var(--aac-azul); }
+.aac-web .btn-contorno:hover { background: var(--superficie-suave); }
+
+/* Secciones */
+.aac-web .seccion { padding: var(--esp-6) 0; }
+.aac-web .seccion-cabecera { display: flex; align-items: baseline; justify-content: space-between; gap: var(--esp-2) var(--esp-5); flex-wrap: wrap; margin-bottom: var(--esp-4); }
+.aac-web .seccion-cabecera h2 { margin: 0; }
+.aac-web .seccion h2 { margin-bottom: var(--esp-4); }
+.aac-web .enlace-flecha { display: inline-flex; align-items: center; min-height: var(--objetivo-minimo); font-weight: 700; }
+.aac-web .enlace-flecha::after { content: "\2192"; margin-left: var(--esp-2); }
+
+/* Hero */
+.aac-web .hero { background: var(--aac-azul); color: var(--utn-blanco); padding: var(--esp-7) 0 var(--esp-8); }
+.aac-web .hero-etq { color: var(--aac-llama); font: 600 var(--texto-chico) var(--fuente-titulos); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 var(--esp-3); }
+.aac-web .hero h1 { max-width: 18ch; margin-bottom: var(--esp-4); }
+.aac-web .hero-bajada { max-width: 34rem; margin: 0 0 var(--esp-5); }
+.aac-web .cifras { display: grid; gap: var(--esp-4) var(--esp-5); grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: var(--esp-6) 0 0; padding-top: var(--esp-5); border-top: 1px solid var(--blanco-translucido); }
+.aac-web .cifras dt { font: 700 var(--texto-h2) var(--fuente-titulos); line-height: 1.15; }
+.aac-web .cifras dd { margin: var(--esp-1) 0 0; font-size: var(--texto-chico); }
+
+/* Próxima charla (se monta sobre el hero, como en el mockup) */
+.aac-web .seccion-proxima { padding-top: 0; margin-top: calc(-1 * var(--esp-6)); scroll-margin-top: var(--esp-6); }
+.aac-web .proxima { background: var(--superficie-tarjeta); border-radius: var(--radio); box-shadow: var(--sombra-tarjeta); padding: var(--esp-5); display: grid; gap: var(--esp-5); grid-template-columns: 1fr; align-items: center; }
+.aac-web .proxima h2 { margin: var(--esp-3) 0 var(--esp-2); overflow-wrap: anywhere; }
+.aac-web .etiqueta { display: inline-block; background: var(--aac-llama); color: var(--utn-negro); font: 700 var(--texto-chico) var(--fuente-texto); letter-spacing: .06em; text-transform: uppercase; padding: var(--esp-1) var(--esp-3); border-radius: var(--radio-chico); }
+.aac-web .datos { background: var(--superficie-pagina); border-radius: var(--radio); padding: var(--esp-4); }
+.aac-web .datos p { margin: 0 0 var(--esp-2); overflow-wrap: anywhere; }
+.aac-web .datos a:not(.btn) { display: inline-flex; align-items: center; min-height: var(--objetivo-minimo); }
+.aac-web .datos .fila { margin-top: var(--esp-3); }
+.aac-web .datos .btn { flex: 1 1 auto; }
+
+/* Tarjetas de charla */
+.aac-web .grilla { display: grid; gap: var(--esp-5); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.aac-web .ficha { position: relative; background: var(--superficie-tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); box-shadow: var(--sombra-tarjeta); overflow: hidden; display: flex; flex-direction: column; }
+.aac-web .miniatura { position: relative; aspect-ratio: 16 / 9; background: var(--superficie-media); display: grid; place-items: center; }
+.aac-web .miniatura img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.aac-web .miniatura .play { position: relative; width: 56px; height: 56px; border-radius: 50%; background: var(--aac-rojo); display: grid; place-items: center; }
+.aac-web .miniatura .play::after { content: ""; border-left: 18px solid var(--utn-blanco); border-top: 11px solid transparent; border-bottom: 11px solid transparent; margin-left: var(--esp-1); }
+.aac-web .cuerpo { padding: var(--esp-4); display: flex; flex-direction: column; gap: var(--esp-2); flex: 1; }
+.aac-web .tema { font: 700 var(--texto-chico) var(--fuente-texto); letter-spacing: .06em; text-transform: uppercase; color: var(--aac-azul); }
+.aac-web .ficha h3, .aac-web .mas-vistas h3 { font-size: var(--texto-h3); margin: 0; overflow-wrap: anywhere; }
+/* Un solo enlace por tarjeta (el título), que se extiende a toda la tarjeta */
+.aac-web .enlace-tarjeta { color: var(--texto); text-decoration: none; }
+.aac-web .enlace-tarjeta::after { content: ""; position: absolute; inset: 0; }
+.aac-web .enlace-tarjeta:hover { color: var(--aac-azul); text-decoration: underline; }
+.aac-web .enlace-tarjeta:focus-visible { outline: none; box-shadow: none; }
+.aac-web .enlace-tarjeta:focus-visible::after { outline: var(--foco); box-shadow: var(--foco-contorno); outline-offset: -3px; border-radius: var(--radio); }
+
+/* Temas */
+.aac-web .grilla-temas { display: grid; gap: var(--esp-3); grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.aac-web .tema-card { background: var(--superficie-tarjeta); border: 1px solid var(--borde); border-top: 4px solid var(--aac-azul); border-radius: var(--radio-chico); padding: var(--esp-4); min-height: var(--objetivo-minimo); font: 600 var(--texto-base)/1.25 var(--fuente-titulos); color: var(--texto); text-decoration: none; display: block; transition: background var(--transicion), transform var(--transicion); }
+.aac-web .tema-card small { display: block; margin-top: var(--esp-2); color: var(--texto-suave); font: var(--texto-chico) var(--fuente-texto); }
+.aac-web .tema-card:hover { background: var(--superficie-suave); }
+.aac-web .tema-card:active { transform: scale(.98); }
+
+/* Las más vistas */
+.aac-web .mas-vistas { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-4); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); counter-reset: puesto; }
+.aac-web .mas-vistas li { position: relative; counter-increment: puesto; background: var(--superficie-tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); padding: var(--esp-4) var(--esp-4) var(--esp-4) var(--esp-8); display: flex; flex-direction: column; gap: var(--esp-1); min-height: var(--objetivo-minimo); }
+.aac-web .mas-vistas li::before { content: counter(puesto); position: absolute; left: var(--esp-4); top: var(--esp-3); font: 700 var(--texto-h2) var(--fuente-titulos); line-height: 1.15; color: var(--aac-rojo); }
+
+/* Quiénes somos y Proponer una charla */
+.aac-web .dos-columnas { display: grid; gap: var(--esp-5); grid-template-columns: 1fr; align-items: start; }
+.aac-web .panel { background: var(--superficie-tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); box-shadow: var(--sombra-tarjeta); padding: var(--esp-5); scroll-margin-top: var(--esp-4); }
+.aac-web .panel-propone { border-top: 4px solid var(--aac-rojo); }
+.aac-web .panel h3 { margin-top: var(--esp-5); }
+.aac-web .panel p { margin: 0 0 var(--esp-3); }
+.aac-web .panel ul { margin: 0 0 var(--esp-3); padding-left: var(--esp-5); }
+.aac-web .panel li { margin-bottom: var(--esp-2); }
+.aac-web .bajada-institucional { font-weight: 600; color: var(--aac-azul); border-left: 4px solid var(--aac-llama); padding-left: var(--esp-3); }
+.aac-web .panel .fila { margin-top: var(--esp-4); }
+.aac-web .galeria { display: grid; gap: var(--esp-3); grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); margin-top: var(--esp-4); }
+.aac-web .galeria img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radio-chico); display: block; }
+
+/* Declaración de Principios (desplegable) */
+.aac-web .declaracion { margin-top: var(--esp-4); border: 1px solid var(--borde); border-radius: var(--radio-chico); background: var(--superficie-pagina); }
+.aac-web .declaracion summary { display: flex; align-items: center; gap: var(--esp-2); min-height: var(--objetivo-minimo); padding: var(--esp-2) var(--esp-4); font-weight: 700; color: var(--aac-azul); cursor: pointer; border-radius: var(--radio-chico); list-style: none; }
+.aac-web .declaracion summary::-webkit-details-marker { display: none; }
+.aac-web .declaracion summary::before { content: ""; flex: none; border-left: 9px solid currentColor; border-top: 6px solid transparent; border-bottom: 6px solid transparent; transition: transform var(--transicion); }
+.aac-web .declaracion[open] summary::before { transform: rotate(90deg); }
+.aac-web .declaracion summary:hover { background: var(--superficie-suave); }
+.aac-web .declaracion-texto { padding: var(--esp-2) var(--esp-4) var(--esp-4); border-top: 1px solid var(--borde); }
+.aac-web .declaracion-texto h4 { font: 700 var(--texto-base) var(--fuente-titulos); text-transform: uppercase; letter-spacing: .03em; margin: var(--esp-5) 0 var(--esp-2); }
+
+/* Redes del pie */
+.aac-web .redes { list-style: none; margin: 0; padding: 0; }
+
+@media (min-width: 720px) {
+  .aac-web .proxima { grid-template-columns: 1.4fr 1fr; }
+  .aac-web .datos .btn { flex: 0 1 auto; }
+  .aac-web .grilla-temas { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--esp-4); }
+}
+@media (min-width: 960px) {
+  .aac-web .dos-columnas { grid-template-columns: 1fr 1fr; }
+}
+.aac-web .hero .btn { flex: 1 1 12rem; }
+@media (min-width: 720px) {
+  .aac-web .hero .btn { flex: 0 1 auto; }
+}

@@ -1,5 +1,8 @@
 .atl/
 .claude/settings.local.json
+.claude/launch.json
+# Skills locales (se reinstalan con un comando)
+.claude/skills/
 # Salidas regenerables (foto del canal, reportes): se vuelven a generar con yt-dlp + scripts/derivar-datos.js
 scripts/salida/*
 !scripts/salida/.gitkeep

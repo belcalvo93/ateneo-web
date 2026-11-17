@@ -36,8 +36,8 @@ Desarrollo en local (este repo) → entrega pegando el código en el widget HTML
 
 | Servicio | Propósito | Tipo |
 |---|---|---|
-| YouTube (canal @ateneoamigosdelasciencias-2269) | Videos, miniaturas, playlists por tema | Enlaces / miniaturas por URL, sin API |
-| Instagram, Canal de Difusión de WhatsApp | Redes (gestionadas por Agustina, becaria de medios y redes) | Enlaces en la lista configurable (todavía sin enlace: placeholder) |
+| YouTube (canal @ateneoamigosdelasciencias) | Videos, miniaturas, playlists por tema | Enlaces / miniaturas por URL, sin API |
+| Instagram, Canal de Difusión de WhatsApp | Redes (gestionadas por Agustina, becaria de medios y redes) | Enlaces en la lista configurable (WhatsApp con enlace oficial, DD-14; Instagram todavía placeholder) |
 | Google Calendar, Zoom | Agendar la próxima charla y entrar a la transmisión | Enlaces opcionales en la próxima charla (DD-15) |
 | Correo ateneoac.mo@gmail.com | Consultas, inscripción, propuestas | `mailto:` |
 | Zoom | Modalidad virtual de la próxima charla | Enlace |

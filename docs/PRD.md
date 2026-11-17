@@ -36,7 +36,7 @@ El Ateneo no tiene página web activa: todo su contenido vive en un canal de You
 
 ## Inventario del canal de YouTube
 
-Canal: https://www.youtube.com/@ateneoamigosdelasciencias-2269 — 310 videos, 995 suscriptores, ~186 charlas (la mayoría partida en 2 a 4 videos: parte 1, parte 2, debate).
+Canal: https://www.youtube.com/@ateneoamigosdelasciencias — 310 videos, 995 suscriptores, ~186 charlas (la mayoría partida en 2 a 4 videos: parte 1, parte 2, debate).
 
 | Tema | Charlas | Videos |
 | --- | --- | --- |
@@ -138,7 +138,7 @@ Logo UTN oficial: https://frm.utn.edu.ar/wp-content/uploads/2021/05/UTN_marca-ne
 La web de la facultad está hecha en WordPress + Elementor (Pro 4.2). Elementor tiene un widget «HTML» que acepta HTML, CSS y JavaScript propio, por lo que el desarrollo se hace en local (este repo) y se integra pegando el código en ese widget. **Confirmado en la reunión del 11/11**: la página va integrada en la web oficial de la UTN FRM; se descarta Google Sites (solo existía un sitio abandonado de 2022).
 
 Supuestos: la sección se crea con cuentas de la facultad; el Ateneo aporta textos, logo e información de eventos (ya entregó la Declaración de Principios, el logo y fotos históricas).
-Dependencias: alta de Belén como editora en la web de la FRM (pendiente de gestionar con el administrador web); nombres de las 2 categorías nuevas, usuario de Instagram y enlace del Canal de Difusión de WhatsApp (los pasa Agustina).
+Dependencias: alta de Belén como editora en la web de la FRM (pendiente de gestionar con el administrador web); nombres de las 2 categorías nuevas y usuario de Instagram (los pasa Agustina). El enlace del Canal de Difusión de WhatsApp ya se tiene: https://whatsapp.com/channel/0029VbDjwCbI7BeKsvprkr3t
 
 Privacidad: el repositorio es público. El listado interno de miembros del Ateneo no se copia al repositorio ni se publica; no se guardan correos ni teléfonos personales.
 
@@ -170,6 +170,6 @@ Siguen abiertas:
 - Validar con el nexo que el logo «AAC» con la llama es el oficial (hoy confirmado solo por los archivos entregados).
 - ¿Quién es el administrador web de la FRM y cómo se da de alta a Belén como editora?
 - ¿Cuáles son las 2 categorías nuevas de la videoteca?
-- Usuario de Instagram y enlace del Canal de Difusión de WhatsApp.
+- Usuario de Instagram.
 - ¿Quiénes integran la Mesa Organizadora y quieren aparecer en la página? ¿Se nombra a los fundadores?
 - ¿Cómo avisa quien graba las charlas cuando sube una nueva al canal?

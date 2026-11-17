@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Inicio — Ateneo Amigos de la Ciencia</title>
+<meta name="description" content="Ateneo Amigos de la Ciencia: divulgación científica y cultural en la UTN Facultad Regional Mendoza. Una charla abierta cada viernes a las 18 hs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Solo para la vista local; no se pega en Elementor -->
@@ -18,35 +19,211 @@
     <nav aria-label="Principal"><ul>
       <li><a href="index.html" aria-current="page">Inicio</a></li>
       <li><a href="videoteca.html">Videoteca</a></li>
-      <li><a href="index.html#proxima-charla">Próxima charla</a></li>
-      <li><a href="index.html#quienes-somos">Quiénes somos</a></li>
-      <li><a href="index.html#proponer">Proponer una charla</a></li>
+      <li><a href="#proxima-charla">Próxima charla</a></li>
+      <li><a href="#quienes-somos">Quiénes somos</a></li>
+      <li><a href="#proponer">Proponer una charla</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul></nav>
   </div></header>
 
-  <main class="wrap">
-    <h1>Ciencia y cultura abiertas a toda la comunidad</h1>
-    <p>[Contenido pendiente: C-03]</p>
-    <p><a class="btn btn-azul" href="videoteca.html">Ver la videoteca</a></p>
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="titulo-inicio">
+      <div class="wrap">
+        <p class="hero-etq">Divulgación científica y cultural · UTN Mendoza</p>
+        <h1 id="titulo-inicio">Ciencia y cultura abiertas a toda la comunidad</h1>
+        <p class="hero-bajada">Una charla cada viernes a las 18 hs, en el Salón de Actos de la UTN FRM y por Zoom. Todas las conferencias quedan en nuestra videoteca.</p>
+        <div class="fila">
+          <a class="btn btn-blanco" href="videoteca.html">Ver la videoteca</a>
+          <a class="btn btn-borde" href="#proxima-charla">Próxima charla</a>
+        </div>
+        <dl class="cifras">
+          <div><dt data-aac="conferencias">+100</dt><dd>conferencias desde 2015</dd></div>
+          <div><dt data-aac="videos">310</dt><dd>videos en YouTube</dd></div>
+          <div><dt>Viernes 18 hs</dt><dd>presencial y por Zoom</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Próxima charla: la completa js/portada.js con data/proxima-charla.js -->
+    <section class="seccion seccion-proxima" id="proxima-charla" aria-labelledby="titulo-proxima">
+      <div class="wrap">
+        <div class="proxima" data-aac="proxima">
+          <div>
+            <span class="etiqueta">Próxima charla</span>
+            <h2 id="titulo-proxima">La próxima charla se anunciará pronto</h2>
+            <p class="meta">Las charlas son abiertas a todo público, con entrada libre y gratuita.</p>
+          </div>
+          <div class="datos">
+            <p><strong>Cuándo:</strong> los viernes a las 18 hs</p>
+            <p><strong>Dónde:</strong> Salón de Actos UTN FRM, Rodríguez 273, Ciudad de Mendoza, y por Zoom</p>
+            <p><strong>Inscripción:</strong> <a href="mailto:ateneoac.mo@gmail.com" data-aac="correo">ateneoac.mo@gmail.com</a></p>
+            <div class="fila"><a class="btn btn-rojo" href="mailto:ateneoac.mo@gmail.com" data-aac="correo-boton">Inscribirme por correo</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Últimas charlas -->
+    <section class="seccion" aria-labelledby="titulo-ultimas">
+      <div class="wrap">
+        <div class="seccion-cabecera">
+          <h2 id="titulo-ultimas">Últimas charlas</h2>
+          <a class="enlace-flecha" href="videoteca.html">Ver todas en la videoteca</a>
+        </div>
+        <div class="grilla" data-aac="ultimas">
+          <p class="aviso" role="status">Para ver las charlas necesitás tener JavaScript activado. Mientras tanto, están todas en <a href="https://www.youtube.com/@ateneoamigosdelasciencias" rel="noopener noreferrer">nuestro canal de YouTube</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Temas -->
+    <section class="seccion" aria-labelledby="titulo-temas">
+      <div class="wrap">
+        <h2 id="titulo-temas">Explorá la videoteca por tema</h2>
+        <div class="grilla-temas" data-aac="temas">
+          <p class="aviso" role="status">Los temas se ven en la <a href="videoteca.html">videoteca</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Más vistas -->
+    <section class="seccion" aria-labelledby="titulo-vistas" hidden>
+      <div class="wrap">
+        <h2 id="titulo-vistas">Las más vistas</h2>
+        <ol class="mas-vistas" data-aac="mas-vistas"></ol>
+      </div>
+    </section>
+
+    <!-- Quiénes somos + Proponer una charla -->
+    <section class="seccion" aria-label="Sobre el Ateneo">
+      <div class="wrap dos-columnas">
+        <article class="panel" id="quienes-somos" aria-labelledby="titulo-quienes">
+          <h2 id="titulo-quienes">Quiénes somos</h2>
+          <p class="bajada-institucional">Entidad autónoma sin fines de lucro dedicada a la divulgación de las Ciencias Exactas, Físicas y Naturales y cultura general.</p>
+          <p>El Ateneo Amigos de la Ciencia nació en <strong>agosto de 2015</strong> como un grupo de amigos, ingenieros y médicos vinculados a la UTN Mendoza, que se reunían por el placer de aprender e intercambiar libros sobre Teoría de la Relatividad, Mecánica Cuántica y Astronomía.</p>
+          <p>En 2016 se constituyó formalmente y, con el respaldo de la UTN Facultad Regional Mendoza, creció hasta adoptar su nombre actual. Hoy funciona en el Departamento de Ingeniería Electrónica, con el apoyo de la Dirección de Graduadas y Graduados, y lleva más de 100 conferencias.</p>
+          <p>Cada viernes invitamos a una persona idónea a compartir un tema de ciencia, tecnología o cultura, en el Salón de Actos y por Zoom.</p>
+          <h3>Nuestros valores</h3>
+          <ul class="valores">
+            <li><strong>Rigor científico:</strong> todo tema tiene bases científicas sólidas o desarrollos tecnológicos comprobados.</li>
+            <li><strong>Clima amistoso y horizontal:</strong> nos tratamos por el nombre, sin jerarquías ni solemnidades.</li>
+            <li><strong>Acceso libre:</strong> las charlas son abiertas a todo público y gratuitas.</li>
+          </ul>
+          <p class="nota">Declarado De Interés para la FRM por el Consejo Directivo.</p>
+          <!-- Galería: se llena sola con las fotos de data/sitio.js; vacía no se muestra -->
+          <div class="galeria" data-aac="galeria" hidden></div>
+        </article>
+
+        <article class="panel panel-propone" id="proponer" aria-labelledby="titulo-proponer">
+          <h2 id="titulo-proponer">Proponer una charla</h2>
+          <p>No hace falta ser profesional universitario: la convocatoria está abierta a docentes, investigadores, estudiantes avanzados, graduados y personas especializadas.</p>
+          <h3>Qué enviar</h3>
+          <ul>
+            <li>Propuesta temática y resumen del tema a exponer</li>
+            <li>CV abreviado</li>
+            <li>Aceptación de la Declaración de Principios del Ateneo</li>
+            <li>Correo electrónico y teléfono de contacto</li>
+          </ul>
+          <h3>Qué temas se aceptan</h3>
+          <ul>
+            <li>Temas con bases científicas sólidas o desarrollos tecnológicos comprobados.</li>
+            <li>No se admiten charlas sobre ideologías políticas, religión, cuestiones étnicas, ni que impliquen violencia o discriminación.</li>
+            <li>No se admiten charlas con fines comerciales o publicitarios.</li>
+          </ul>
+          <details class="declaracion">
+            <summary>Leer la Declaración de Principios completa</summary>
+            <div class="declaracion-texto">
+              <p class="nota">Texto de la Declaración de Principios del Ateneo Amigos de la Ciencia, versión 2.4.</p>
+              <h4>Fundación e historia</h4>
+              <p>El Ateneo Amigos de la Ciencia nace en agosto de 2015, entre un grupo de amigos, ingenieros y médicos, que tenían en común el deseo de aprender, por placer mismo de aprender, sobre Teoría de la Relatividad y Mecánica Cuántica y también sobre Astronomía. En esos días, nos reuníamos todos los miércoles y el aprendizaje se realizaba mediante intercambio de libros y luego comentando lo leído con el fin de aclarar dudas y ampliar conocimientos. Luego se introdujo el desarrollo de charlas y exposiciones entre sus miembros sobre temas específicos de los que tenían buena información. Las primeras actividades se desarrollaban en las aulas de la UTN FRM y luego en otros ámbitos como las casas particulares de los miembros. El buen clima entre ellos potenció el desarrollo de las actividades, llegando a trascender al pequeño grupo y lograr el cobijo de la UTN, quien nos asignó un aula específica los días viernes de 17 a 19 hs, facilitándonos medios audiovisuales para desarrollar nuestras actividades. Al principio el grupo no tenía nombre ni estructura organizativa, pero con el correr del tiempo se hizo necesario algún tipo de organización y pasamos a llamarnos Ateneo Amigos de la Ciencia. No hay entre sus miembros ninguna jerarquía, y el trato personal se desarrolla sin solemnidades, particularidad a la que siempre dio primordial importancia para facilitar la buena relación mutua, amistosa y fraternal. Existe desde un principio una apertura intelectual que permite mejorar conocimientos. Este Ateneo no posee organización jurídica y carece de objetivos de lucro. Tampoco maneja presupuestos monetarios ni posee ningún bien. Si bien entre los participantes hay personas muy destacadas profesionalmente y con valiosos antecedentes, se los refiere por su nombre o sobrenombre para mantener el ámbito de amistad, curiosidad y ganas de aprender en un clima de franqueza y distensión.</p>
+              <h4>Misión del Ateneo Amigos de la Ciencia</h4>
+              <p>Formar y mantener unido a un grupo de personas que compartan el deseo y el placer de aprender, estudiar, intercambiar y divulgar conocimientos científicos, con el más alto nivel que las facultades humanas de este Ateneo puedan alcanzar.</p>
+              <h4>Visión</h4>
+              <p>AAC pretende ser considerado por la FRM-UTN y por la Comunidad en general como una agrupación reconocida por su aporte y calidad de sus estudios, en permanente interés por la mejora propia y de los destinatarios de su labor.</p>
+              <h4>Objetivos</h4>
+              <p>Son objetivos del AAC:</p>
+              <ul>
+                <li>Propender a un mejoramiento humano que permita un alto rendimiento “físico-intelectual”.</li>
+                <li>Mantener una actualización constante de conocimientos científicos de sus integrantes.</li>
+                <li>Profundizar estudios relacionados con las ciencias exactas, físicas y naturales, ciencias de la educación, neurociencias, astronomía y filosofía de las ciencias, y toda otra disciplina que muestre ser un cuerpo de ideas caracterizado por un conocimiento racional, sistemático, exacto, verificable y falible, congruente con el método científico, con la finalidad de hallar estructuras generales (principios y leyes) con capacidad predictiva y comprobable, y su finalidad sea el enriquecimiento del conocimiento objetivo de la humanidad.</li>
+                <li>Fomentar la divulgación científica dentro de la sociedad, de los rubros mencionados en el apartado anterior.</li>
+                <li>Generar lazos de intercambio con entidades similares, organizaciones, foros, etc.</li>
+                <li>Mejorar la educación en general como elemento básico del buen desarrollo y mejoramiento social.</li>
+                <li>Aumentar su potencial fomentando su desarrollo científico y la actualización del conocimiento de sus miembros.</li>
+              </ul>
+              <h4>De los miembros</h4>
+              <p>Toda persona que tenga inquietudes como las contenidas en los objetivos puede ser miembro de AAC.</p>
+              <h4>Ambiente interno</h4>
+              <p>La diversidad de las extracciones técnicas y profesionales hizo de la heterogeneidad, una magnífica oportunidad de enriquecimiento por el intercambio de ideas que espontáneamente se producen.</p>
+              <p>El clima de amistad y tolerancia en sus actividades, generan un espacio en el que, libre de tensiones y antagonismos, se potencia el deseo de aprender con alegría y compartir y divulgar los conocimientos científicos.</p>
+              <p>La sociedad necesita del desarrollo de las ciencias en su medio, y la mejor forma de hacerlo es difundiendo conocimientos científicos haciéndolos accesibles a todos. Estas divulgaciones potencian su penetración social si logran sinergia con otras instituciones afines.</p>
+              <h4>De las actividades</h4>
+              <p>Para cumplir con sus objetivos, el AAC desarrollará sus actividades de la siguiente forma:</p>
+              <ul>
+                <li>Mediante charlas y exposiciones públicas y de libre acceso a cargo de sus miembros sobre las especialidades de cada uno.</li>
+                <li>Mediante charlas y exposiciones públicas y de libre acceso a cargo de expositores invitados externos al AAC, que posean acreditado prestigio e idoneidad o conocimiento científico sobre el tema que a aquéllos involucre.</li>
+                <li>Las exposiciones y charlas deberán poseer bases científicas sólidas o probados desarrollos tecnológicos como pueden ser la actividad industrial o la informática, u otros que sobrevengan conforme al desarrollo del conocimiento y las ciencias aplicadas.</li>
+                <li>Mesas redondas de discusión de temas especiales organizadas por la MO.</li>
+                <li>Producir, publicar y divulgar informes o trabajos técnicos relacionados con sus objetivos previamente aprobados por la MO.</li>
+                <li>Cualquier otra actividad no prevista aquí y que cumpla con la misión y los objetivos del grupo o que la Mesa Organizadora apruebe.</li>
+              </ul>
+              <h4>De la organización</h4>
+              <p>El AAC está guiado por una Mesa Organizadora (MO) compuesta por siete miembros nombrados por consenso y por un periodo de tres años. Son sus tareas:</p>
+              <ul>
+                <li>Planificar el desarrollo de las actividades.</li>
+                <li>Informar sobre la agenda de charlas, exposiciones, mesas redondas y en general sobre todas las actividades del AAC.</li>
+                <li>Resolver sobre el cumplimiento y adaptación de las actividades propuestas a los objetivos y principios del AAC.</li>
+                <li>Evaluar permanentemente el desarrollo de las actividades.</li>
+                <li>Introducir los cambios que sean necesarios conforme la dinámica de la Ciencia y de la Sociedad.</li>
+              </ul>
+              <h4>Ámbito físico</h4>
+              <p>El AAC desarrollará sus actividades en cualquier ámbito establecido por la MO y a través de medios presenciales o virtuales idóneos.</p>
+              <h4>Particularidades</h4>
+              <p>Se aclara fehacientemente que el AAC no permite en sus actividades discurrir sobre temas relacionados con ideologías políticas, religiosos, étnicos o que comulguen con cualquier tipo y nivel de violencia o discriminación, y otros que atenten contra la Moral, la ley y buenas costumbres, como tampoco aquellos que carezcan de bases científicas o tecnológicas debidamente probadas.</p>
+              <p>En resguardo de lo expresado, la MO se reserva la admisión de propuestas temáticas que puedan ser inconvenientes a los objetivos y ambiente de este Ateneo.</p>
+              <h4>Frecuencia de las actividades</h4>
+              <p>La frecuencia de las actividades será semanal, según lo establezca la MO de acuerdo con las posibilidades y conveniencias del conjunto de miembros del Ateneo Amigos de la Ciencia.</p>
+            </div>
+          </details>
+          <div class="fila"><a class="btn btn-azul" href="mailto:ateneoac.mo@gmail.com?subject=Propuesta%20de%20charla" data-aac="correo-propuesta">Enviar mi propuesta</a></div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="pie" id="contacto"><div class="wrap">
     <div>
       <h2>Contacto</h2>
-      <p><a href="mailto:ateneoac.mo@gmail.com">ateneoac.mo@gmail.com</a></p>
+      <p><a href="mailto:ateneoac.mo@gmail.com" data-aac="correo">ateneoac.mo@gmail.com</a></p>
+      <p>Consultas e inscripción a las charlas</p>
     </div>
     <div>
       <h2>Seguinos</h2>
-      <p><a href="https://www.youtube.com/@ateneoamigosdelasciencias-2269" rel="noopener noreferrer">YouTube · @ateneoamigosdelasciencias</a></p>
-      <p>Instagram · [usuario a confirmar]</p>
-      <p>Facebook · [página a confirmar]</p>
+      <!-- Las redes salen de data/sitio.js (js/pie.js); este enlace es el respaldo si no carga -->
+      <ul class="redes" data-aac="redes">
+        <li><a href="https://www.youtube.com/@ateneoamigosdelasciencias" rel="noopener noreferrer">YouTube</a></li>
+      </ul>
     </div>
     <div>
       <h2>Dónde estamos</h2>
-      <p>UTN · Facultad Regional Mendoza · Rodríguez 273, Ciudad de Mendoza</p>
+      <p>UTN · Facultad Regional Mendoza</p>
+      <p>Rodríguez 273, Ciudad de Mendoza</p>
     </div>
   </div></footer>
 </div>
+
+<!-- Datos (se editan en data/) -->
+<script src="data/temas.js"></script>
+<script src="data/charlas.js"></script>
+<script src="data/charlas-nuevas.js"></script>
+<script src="data/correcciones.js"></script>
+<script src="data/proxima-charla.js"></script>
+<script src="data/sitio.js"></script>
+<!-- Lógica -->
+<script src="js/aplicar-correcciones.js"></script>
+<script src="js/portada-logica.js"></script>
+<script src="js/pie.js"></script>
+<script src="js/portada.js"></script>
 </body>
 </html>

@@ -73,13 +73,25 @@ test('data/temas.js: 8 temas con ids únicos y nombres iguales a los del borrado
   assert.deepEqual(temas.map((t) => t.nombre).sort(), [...borrador.temas].sort());
 });
 
-test('data/correcciones.js y data/charlas-nuevas.js: cargan vacíos, y la vista combinada es el catálogo generado', () => {
+test('data/correcciones.js y data/charlas-nuevas.js: cargan bien, no tocan el catálogo generado y la vista combinada es válida', () => {
   const { aplicarCorrecciones } = require('../js/aplicar-correcciones.js');
   const correcciones = clon(cargarArchivoDeDatos(path.join(raiz, 'data', 'correcciones.js'), 'AAC_CORRECCIONES'));
   const nuevas = clon(cargarArchivoDeDatos(path.join(raiz, 'data', 'charlas-nuevas.js'), 'AAC_CHARLAS_NUEVAS'));
-  assert.deepEqual(correcciones, {});
   assert.deepEqual(nuevas, []);
-  assert.deepEqual(aplicarCorrecciones(versionadas, correcciones, nuevas), versionadas);
+  // Sin correcciones, la vista combinada es el catálogo generado tal cual.
+  assert.deepEqual(aplicarCorrecciones(versionadas, {}, nuevas), versionadas);
+  // Con las correcciones reales: mismas charlas y mismos ids; cada corrección de texto se ve en la vista.
+  const antes = JSON.stringify(versionadas);
+  const combinada = aplicarCorrecciones(versionadas, correcciones, nuevas);
+  assert.equal(JSON.stringify(versionadas), antes);
+  assert.deepEqual(combinada.map((c) => c.id), versionadas.map((c) => c.id));
+  for (const id of Object.keys(correcciones)) {
+    const charla = combinada.find((c) => c.id === id);
+    assert.ok(charla, 'corrección a una charla que no existe: ' + id);
+    for (const campo of ['titulo', 'disertante']) {
+      if (campo in correcciones[id]) assert.equal(charla[campo], correcciones[id][campo]);
+    }
+  }
   const r = validar({ temas, charlas: versionadas, correcciones, nuevas, proxima });
   assert.deepEqual(r.errores, []);
   assert.equal(r.resumen.charlas, 186);

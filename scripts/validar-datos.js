@@ -30,6 +30,7 @@ const archivos = [
   ['temas.js', 'AAC_TEMAS', 'temas'],
   ['charlas.js', 'AAC_CHARLAS', 'charlas'],
   ['proxima-charla.js', 'AAC_PROXIMA_CHARLA', 'proxima'],
+  ['sitio.js', 'AAC_SITIO', 'sitio'],
   // opcionales: si faltan, se toman vacíos
   ['charlas-nuevas.js', 'AAC_CHARLAS_NUEVAS', 'nuevas', []],
   ['correcciones.js', 'AAC_CORRECCIONES', 'correcciones', {}]
@@ -64,7 +65,7 @@ if (r.errores.length > 0) {
 }
 
 // ---- pendientes, agrupados por charla para que no sean cientos de líneas ----
-const pendientes = r.avisos.filter((a) => a.tipo !== 'tema-vacio');
+const pendientes = r.avisos.filter((a) => a.tipo !== 'tema-vacio' && a.tipo !== 'red-pendiente');
 const grupos = new Map();
 for (const a of pendientes) {
   const clave = a.archivo + ' · ' + (a.charla || '(general)');
@@ -85,7 +86,7 @@ if (grupos.size > 0) {
   }
   console.log('');
 }
-for (const a of r.avisos.filter((x) => x.tipo === 'tema-vacio')) {
+for (const a of r.avisos.filter((x) => x.tipo === 'tema-vacio' || x.tipo === 'red-pendiente')) {
   console.log('  ! ' + a.archivo + ' · ' + a.mensaje);
 }
 
@@ -96,9 +97,10 @@ console.log('  - Textos sin completar ([…]): ' + s.placeholders);
 console.log('  - Charlas con "revisar": ' + s.charlasConRevisar + ' (' + s.entradasRevisar + ' campos a revisar)');
 console.log('  - Partes sin url: ' + s.partesSinUrl);
 console.log('  - Temas sin charlas: ' + s.temasVacios);
+console.log('  - Redes sin enlace (no se muestran): ' + s.redesPendientes);
 console.log('  - Errores: ' + r.errores.length);
 
-if (r.errores.length === 0 && grupos.size === 0 && s.temasVacios === 0) {
+if (r.errores.length === 0 && grupos.size === 0 && s.temasVacios === 0 && s.redesPendientes === 0) {
   console.log('\nTodo bien: no hay errores ni pendientes.');
 }
 if (r.fallo) {

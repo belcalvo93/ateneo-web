@@ -34,19 +34,27 @@
   <footer class="pie" id="contacto"><div class="wrap">
     <div>
       <h2>Contacto</h2>
-      <p><a href="mailto:ateneoac.mo@gmail.com">ateneoac.mo@gmail.com</a></p>
+      <p><a href="mailto:ateneoac.mo@gmail.com" data-aac="correo">ateneoac.mo@gmail.com</a></p>
+      <p>Consultas e inscripción a las charlas</p>
     </div>
     <div>
       <h2>Seguinos</h2>
-      <p><a href="https://www.youtube.com/@ateneoamigosdelasciencias-2269" rel="noopener noreferrer">YouTube · @ateneoamigosdelasciencias</a></p>
-      <p>Instagram · [usuario a confirmar]</p>
-      <p>Facebook · [página a confirmar]</p>
+      <!-- Las redes salen de data/sitio.js (js/pie.js); este enlace es el respaldo si no carga -->
+      <ul class="redes" data-aac="redes">
+        <li><a href="https://www.youtube.com/@ateneoamigosdelasciencias" rel="noopener noreferrer">YouTube</a></li>
+      </ul>
     </div>
     <div>
       <h2>Dónde estamos</h2>
-      <p>UTN · Facultad Regional Mendoza · Rodríguez 273, Ciudad de Mendoza</p>
+      <p>UTN · Facultad Regional Mendoza</p>
+      <p>Rodríguez 273, Ciudad de Mendoza</p>
     </div>
   </div></footer>
 </div>
+
+<!-- Pie: redes y correo desde data/sitio.js -->
+<script src="data/sitio.js"></script>
+<script src="js/portada-logica.js"></script>
+<script src="js/pie.js"></script>
 </body>
 </html>

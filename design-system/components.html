@@ -34,6 +34,7 @@
   .btn-azul{background:var(--aac-azul);color:#fff} .btn-azul:hover{background:#003a73}
   .btn-blanco{background:#fff;color:var(--aac-azul)} .btn-blanco:hover{background:var(--superficie-suave)}
   .btn-borde{background:transparent;color:#fff;border-color:#fff} .btn-borde:hover{background:rgba(255,255,255,.14)}
+  .btn-contorno{background:var(--superficie-tarjeta);color:var(--aac-azul);border-color:var(--aac-azul)} .btn-contorno:hover{background:var(--superficie-suave)}
   .fila{display:flex;gap:var(--esp-3);flex-wrap:wrap;align-items:center}
   /* Tarjeta de charla */
   .grilla{display:grid;gap:var(--esp-5);grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
@@ -97,7 +98,8 @@
   </section>
 
   <section class="demo"><h2>Botones</h2>
-    <div class="fila"><a class="btn btn-rojo" href="#">Inscribirme por correo</a><a class="btn btn-azul" href="#">Enviar mi propuesta</a><a class="btn btn-blanco" href="#" style="outline:1px solid var(--borde)">Ver la videoteca</a></div>
+    <div class="fila"><a class="btn btn-rojo" href="#">Inscribirme por correo</a><a class="btn btn-azul" href="#">Enviar mi propuesta</a><a class="btn btn-blanco" href="#" style="outline:1px solid var(--borde)">Ver la videoteca</a><a class="btn btn-contorno" href="#">Agendar en Calendar</a></div>
+    <p class="nota">«Contorno» (azul sobre blanco): acción secundaria sobre fondo claro, por ejemplo los enlaces opcionales de la próxima charla.</p>
     <p class="nota">Alto mínimo 44 px. Foco visible: anillo amarillo con contorno negro (pulsá Tab).</p>
   </section>
 

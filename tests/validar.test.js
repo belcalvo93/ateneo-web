@@ -29,7 +29,7 @@ function datosValidos() {
     ],
     proxima: {
       titulo: 'Energía solar', disertante: 'Dra Ana Luna', descripcion: 'Paneles solares.', fecha: '14/11/2026', hora: '18:00',
-      lugar: 'Salón de Actos', modalidad: 'Presencial y por Zoom', zoom_url: null, correo_inscripcion: 'a@b.com'
+      lugar: 'Salón de Actos', modalidad: 'Presencial y por Zoom', zoom_url: null, calendar_url: null, correo_inscripcion: 'a@b.com'
     }
   };
 }
@@ -188,7 +188,7 @@ test('validar: revisar y url nula son avisos; el resumen cuenta cada tipo', () =
   const r = validar(d, OPC);
   assert.deepEqual(r.avisos.filter((a) => a.tipo === 'revisar').map((a) => [a.charla, a.campo]), [['c002', 'vistas'], ['c002', 'partes']]);
   assert.deepEqual(r.avisos.filter((a) => a.tipo === 'url-nula').map((a) => [a.charla, a.parte]), [['c002', 2]]);
-  assert.deepEqual(r.resumen, { charlas: 2, partes: 3, placeholders: 0, charlasConRevisar: 1, entradasRevisar: 2, partesSinUrl: 1, temasVacios: 0 });
+  assert.deepEqual(r.resumen, { charlas: 2, partes: 3, placeholders: 0, charlasConRevisar: 1, entradasRevisar: 2, partesSinUrl: 1, temasVacios: 0, redesPendientes: 0 });
 });
 
 test('validar: tema sin charlas es un aviso informativo con el nombre del tema', () => {

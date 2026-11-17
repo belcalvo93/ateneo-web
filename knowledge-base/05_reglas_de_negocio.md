@@ -42,5 +42,5 @@ Códigos `RN-{DOMINIO}-{NN}`. Todas derivadas de `docs/PRD.md`; las marcadas **(
 
 ## Excepciones globales
 - **RN-GL-01**: HTML/CSS/JS puro, sin frameworks ni build, portable a widget HTML de Elementor. Costo cero.
-- **RN-GL-02**: Los textos marcados `[…]` en los mockups (fecha, título de próxima charla, enlaces de Instagram y del Canal de Difusión de WhatsApp) son placeholders: no inventar valores. Tampoco se inventan los nombres de las 2 categorías nuevas de la videoteca (DD-05).
+- **RN-GL-02**: Los textos marcados `[…]` en los mockups (fecha, título de próxima charla, enlace de Instagram) son placeholders: no inventar valores. Tampoco se inventan los nombres de las 2 categorías nuevas de la videoteca (DD-05).
 - **RN-GL-03**: Privacidad (DD-17): el repo es público; el listado interno de miembros del Ateneo nunca se copia ni se commitea, y no se guarda ningún correo ni teléfono personal. Solo se guardan nombres de disertantes que ya figuran públicamente en YouTube.

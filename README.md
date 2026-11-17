@@ -39,11 +39,21 @@ Requiere Node 22 o superior. No hace falta `npm install`: no hay dependencias.
 npm test
 ```
 
-(equivale a `node --test`). Mientras no haya archivos de prueba informa 0 tests y termina con código 0.
+(equivale a `node --test`). Corre los tests de `tests/` (lógica de la portada, validador y scripts de datos).
+
+## Portada (Inicio)
+
+`index.html` muestra la próxima charla, las últimas charlas, los temas, las más vistas, «Quiénes somos» y «Proponer una charla». El contenido fijo está escrito en el HTML; lo que sale de los datos lo arma el navegador:
+
+- `js/portada-logica.js`: las reglas (qué se muestra, en qué orden y qué se oculta). Son funciones puras, probadas en `tests/portada-logica.test.js`.
+- `js/portada.js`: dibuja la página con esas reglas.
+- `js/pie.js`: redes y correo del pie, compartido con `videoteca.html`.
+
+Regla de oro: un dato sin completar (entre corchetes, como `[Título]`) nunca se muestra al público. Una charla sin título limpio usa el título original del video; un disertante, una red o un botón sin dato simplemente no aparecen.
 
 ## Datos
 
-Las charlas, los temas y la próxima charla viven en `data/` como archivos `.js` (guía para editores: [data/LEEME.md](data/LEEME.md)). `data/charlas.js` es un catálogo **generado** (no se edita a mano: lo regenera `node scripts/derivar-datos.js` cuando cambia el canal de YouTube); lo que una persona corrige va en `data/correcciones.js` (por id de charla) y las charlas nuevas en `data/charlas-nuevas.js`, que ningún script pisa. El navegador junta todo con `js/aplicar-correcciones.js`, así que editar esos dos archivos no requiere correr nada. Para comprobar que están bien escritos y ver qué falta completar:
+Las charlas, los temas, la próxima charla y los datos generales del sitio (`data/sitio.js`: contacto, redes y fotos) viven en `data/` como archivos `.js` (guía para editores: [data/LEEME.md](data/LEEME.md)). `data/charlas.js` es un catálogo **generado** (no se edita a mano: lo regenera `node scripts/derivar-datos.js` cuando cambia el canal de YouTube); lo que una persona corrige va en `data/correcciones.js` (por id de charla) y las charlas nuevas en `data/charlas-nuevas.js`, que ningún script pisa. El navegador junta todo con `js/aplicar-correcciones.js`, así que editar esos dos archivos no requiere correr nada. Para comprobar que están bien escritos y ver qué falta completar:
 
 ```
 node scripts/validar-datos.js

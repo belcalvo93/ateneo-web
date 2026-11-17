@@ -2,7 +2,7 @@
 
 > Esta es una guía borrador. La guía final, pensada para quien mantenga el sitio, se entrega en C-06.
 
-Todo lo que cambia en el sitio (charlas, próxima charla, temas) vive en esta carpeta, en archivos de texto que se abren con cualquier editor (el Bloc de notas sirve; mejor si es uno que muestre colores, como VS Code). No hace falta saber programar, pero sí respetar la forma en que están escritos: comillas, comas y llaves.
+Todo lo que cambia en el sitio (charlas, próxima charla, temas, redes) vive en esta carpeta, en archivos de texto que se abren con cualquier editor (el Bloc de notas sirve; mejor si es uno que muestre colores, como VS Code). No hace falta saber programar, pero sí respetar la forma en que están escritos: comillas, comas y llaves.
 
 ## Qué archivo es cada cosa
 
@@ -11,6 +11,7 @@ Todo lo que cambia en el sitio (charlas, próxima charla, temas) vive en esta ca
 | `proxima-charla.js` | Los datos de la próxima charla (título, disertante, fecha, hora…) | **Sí**, cada semana |
 | `correcciones.js` | Tus correcciones a las charlas ya cargadas: título, disertante, tema, año, enlaces, «destacada»… | **Sí**: es el lugar para corregir |
 | `charlas-nuevas.js` | Las charlas que se agregan de ahora en más | **Sí**: es el lugar para agregar |
+| `sitio.js` | Los datos generales: correo de contacto, redes y fotos de «Quiénes somos» | Muy de vez en cuando |
 | `temas.js` | Los temas (Geología, IA, etc.) y sus nombres cortos | Casi nunca; son 8 temas confirmados y se sumarán 2 cuando Agustina informe los nombres |
 | `charlas.js` | El catálogo de las 186 charlas (con sus videos de YouTube) | **No**: lo genera un script y se pisa cada vez que se regenera |
 | `charlas-borrador.json` | El borrador original del que salió el catálogo | **Nunca**: es solo el origen |
@@ -33,14 +34,45 @@ window.AAC_PROXIMA_CHARLA = {
   lugar: "Salón de Actos UTN FRM, Rodríguez 273, Ciudad de Mendoza",
   modalidad: "Presencial y por Zoom",
   zoom_url: "https://…",
+  calendar_url: "https://…",
   correo_inscripcion: "ateneoac.mo@gmail.com"
 };
 ```
 
 - **fecha**: siempre `DD/MM/AAAA` (día, mes, año de cuatro cifras). Ejemplo: `"14/11/2026"`.
 - **hora**: siempre `HH:MM` en 24 horas. Ejemplo: `"18:00"`.
-- **zoom_url**: pegá el enlace entre comillas cuando el Ateneo lo confirme. Mientras tanto, dejá `null` (sin comillas).
+- **zoom_url** (opcional): el enlace de Zoom entre comillas. Si está cargado, la página muestra el botón «Entrar por Zoom». Si no se quiere publicar, dejá `null` (sin comillas): el botón no aparece y no pasa nada.
+- **calendar_url** (opcional): el enlace para agendar la charla en Google Calendar. Si está cargado, la página muestra el botón «Agendar en Calendar»; con `null` no aparece.
+- Los dos enlaces tienen que empezar con `https://`.
+- Mientras el título o la fecha sigan con corchetes, la página muestra «La próxima charla se anunciará pronto» con el horario y el lugar de siempre.
 - Si todavía no sabés un dato, dejalo con corchetes, por ejemplo `"[fecha]"`. No inventes datos.
+
+## Redes y datos generales del sitio
+
+Abrí `sitio.js`. Las redes son una lista, una línea por red, en el orden en que se ven al pie de la página:
+
+```js
+redes: [
+  { nombre: "YouTube", url: "https://www.youtube.com/@…" },
+  { nombre: "Canal de WhatsApp", url: "https://whatsapp.com/channel/…" },
+  { nombre: "Instagram", url: "[enlace de Instagram]" }
+],
+```
+
+- **Agregar una red**: copiá una línea, cambiá el nombre y el enlace, y fijate que todas las líneas menos la última terminen en coma.
+- **Quitar una red**: borrá su línea.
+- **Red que todavía no existe**: dejá el enlace con corchetes o `null`. Esa red **no se muestra** en la página; el validador solo te lo recuerda con un aviso.
+- El enlace tiene que empezar con `https://`.
+
+Las **fotos** de «Quiénes somos» también son una lista. Mientras esté vacía (`fotos: []`), la galería no se ve. Para sumar una foto, guardá la imagen en la carpeta `img/` y agregá una línea con su archivo y una descripción de lo que se ve (la leen quienes usan lector de pantalla):
+
+```js
+fotos: [
+  { archivo: "img/charla-2019.jpg", alt: "Disertante exponiendo en el Salón de Actos de la UTN FRM" }
+]
+```
+
+Publicá solo fotos con permiso de las personas que aparecen. No escribas en este archivo correos ni teléfonos personales.
 
 ## Corregir una charla que ya está en el catálogo
 

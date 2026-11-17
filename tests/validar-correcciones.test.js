@@ -21,7 +21,7 @@ function datos() {
     ],
     correcciones: {},
     nuevas: [],
-    proxima: { titulo: 'T', disertante: 'D', descripcion: 'x', fecha: '14/11/2026', hora: '18:00', lugar: 'L', modalidad: 'M', zoom_url: null, correo_inscripcion: 'a@b.com' }
+    proxima: { titulo: 'T', disertante: 'D', descripcion: 'x', fecha: '14/11/2026', hora: '18:00', lugar: 'L', modalidad: 'M', calendar_url: null, zoom_url: null, correo_inscripcion: 'a@b.com' }
   };
 }
 const nueva = (extra) => ({ id: 'c003', titulo: 'Nueva', disertante: 'Dr Ana', tema: 'geologia', anio: 2026,

@@ -7,9 +7,9 @@
 > ## ✅ Roadmap validado tras la reunión del 11/11/2026
 > El Ateneo validó los mockups, las secciones y la plataforma (web de la UTN FRM, WordPress + Elementor; Google Sites descartado). El 16/11/2026 Agustina confirmó las 8 categorías de la videoteca y avisó que sumará 2 más. Fuente: reunión con el Ateneo del 11/11/2026 y documentos entregados por el Ateneo, `docs/PRD.md` v1.2 y `knowledge-base/09_decisiones_y_supuestos.md` (DD-13 a DD-20).
 >
-> - **C-01 y C-02 están cerrados.** El próximo change es **C-03** (`portada`).
+> - **C-01, C-02 y C-03 están cerrados.** Sigue el rediseño de la portada y la página «Quiénes somos» (C-03b, en propuesta) y después **C-04** (`videoteca`).
 > - **C-03 a C-06 ya no están sujetos a validación**: se pueden proponer respetando las dependencias.
-> - **Pendientes externos que no bloquean**: los nombres de las 2 categorías nuevas (no inventarlos: `data/temas.js` sigue con 8), los enlaces de Instagram y del Canal de Difusión de WhatsApp (placeholders), y el alta de Belén como editora en la web de la FRM (afecta C-06).
+> - **Pendientes externos que no bloquean**: los nombres de las 2 categorías nuevas (no inventarlos: `data/temas.js` sigue con 8), el enlace de Instagram (placeholder; el del Canal de Difusión de WhatsApp ya está, DD-14), y el alta de Belén como editora en la web de la FRM (afecta C-06).
 > - **Privacidad**: el repo es público. El listado interno de miembros del Ateneo nunca se copia ni se commitea, ni ningún correo o teléfono personal (DD-17).
 
 ---
@@ -38,7 +38,7 @@ Siguen abiertas (ninguna bloquea C-03):
 
 1. **Nombres de las 2 categorías nuevas** (los pasa Agustina). Afecta `data/temas.js`, la grilla de temas de C-03 y los chips de C-04: ambos se arman desde los datos, sin fijar la cantidad de temas.
 2. **Administrador web de la FRM**: alta de Belén como editora y si se pueden hospedar archivos o se inlinea todo. Afecta C-06.
-3. **Enlaces de Instagram y del Canal de Difusión de WhatsApp** (placeholders en la lista de redes de C-03).
+3. **Enlace de Instagram** (placeholder en la lista de redes de C-03). El del Canal de Difusión de WhatsApp ya se tiene (DD-14).
 4. Menos bloqueantes: validar el logo con el nexo (DD-18), quiénes de la Mesa Organizadora o de los fundadores aparecen en «Quiénes somos», aviso semanal de quien sube las charlas al canal.
 
 ---
@@ -48,7 +48,7 @@ Siguen abiertas (ninguna bloquea C-03):
 ```
 C-01 base-y-estilos                     ✓ cerrado
  └── C-02 datos-charlas                 ✓ cerrado
-      ├── C-03 portada                  ← PRÓXIMO
+      ├── C-03 portada                  ✓ cerrado
       │    └── C-05 responsive-a11y-carga-completa
       └── C-04 videoteca (TDD)
            └── C-05 responsive-a11y-carga-completa
@@ -145,7 +145,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 > C-03 y C-04 son paralelizables entre sí. Orden recomendado para una sola desarrolladora: C-03 y después C-04.
 
 ### [C-03] `portada`
-- **Estado**: `[ ]` pendiente — **validado el 11/11; próximo change**
+- **Estado**: `[x]` completado y archivado (2026-11-16)
 - **Scope**:
   - `index.html` según el mockup «Inicio» (escritorio y celular) en `docs/mockups/`.
   - Hero con propuesta y cifras (+100 conferencias, 310 videos, viernes 18 hs) — US-001.
@@ -154,7 +154,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - **Nuevo (11/11) — Calendar y Zoom en la próxima charla**: dos botones opcionales, «Agendar en Google Calendar» y «Entrar por Zoom». Se agrega el campo opcional `calendar_url` a `data/proxima-charla.js` (junto al `zoom_url` que ya existe), con su validación, su test y su explicación en `data/LEEME.md`; cada botón se muestra solo si su enlace está cargado (DD-15, RN-PC-04).
   - 3 últimas charlas, 3 más vistas y grilla de temas con conteo, armada desde `temas.js` sin fijar la cantidad (hoy 8; se sumarán 2 cuando Agustina informe los nombres: no inventarlos) — US-008. «Más vistas» es **automático** por el campo `vistas`, con la opción de fijar charlas destacadas a mano con `destacada: true` (campo opcional del esquema de C-02; la lógica de portada que lo usa — destacadas primero, luego por `vistas` — es de este change).
   - Configuración del sitio (contacto, redes, cifras de portada) en datos, movida desde C-02.
-  - **Requisito (D17 de C-02)**: los enlaces a **redes sociales** son una **lista configurable en los datos** (`redes: [{ nombre, url }]`): agregar o quitar una red se hace editando los datos, sin tocar el HTML. **Conjunto confirmado el 11/11 (DD-14)**: **YouTube** (URL del canal conocida), **Instagram** y **Canal de Difusión de WhatsApp**. Los enlaces de Instagram y de WhatsApp todavía no se tienen: van con placeholder `[…]` o `null` (un placeholder nunca se muestra al público).
+  - **Requisito (D17 de C-02)**: los enlaces a **redes sociales** son una **lista configurable en los datos** (`redes: [{ nombre, url }]`): agregar o quitar una red se hace editando los datos, sin tocar el HTML. **Conjunto confirmado el 11/11 (DD-14)**: **YouTube** (URL del canal conocida), **Instagram** y **Canal de Difusión de WhatsApp**. **C-03 crea la lista** (todavía no existe en `data/`) con estos valores: YouTube `https://www.youtube.com/@ateneoamigosdelasciencias`, WhatsApp `https://whatsapp.com/channel/0029VbDjwCbI7BeKsvprkr3t` (enlace oficial, informado el 16/11) e Instagram con placeholder `[…]` o `null` hasta que Agustina pase el usuario (un placeholder nunca se muestra al público: esa red se oculta).
   - **Requisito (D13 de C-02)**: leer siempre la vista combinada `AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS)`, nunca `AAC_CHARLAS` directo (se perderían las correcciones a mano).
   - **Requisito (decidido en C-02)**: un placeholder entre corchetes nunca es visible para el público. Si `titulo` sigue en `[Título]`, se muestra el `titulo_original` de la parte 1; si `disertante` es `[Disertante]`, esa línea no se muestra.
   - **Nuevo (11/11) — «Proponer una charla»**: requisitos (propuesta temática, resumen, CV abreviado, aceptación de la Declaración) y criterios de admisión (base científica o tecnológica; sin fines comerciales ni proselitismo político o religioso; RN-PR-03), el **texto completo de la Declaración de Principios v2.4 en un bloque desplegable** (`<details>`, transcripto del documento del Ateneo sin reescribirlo; reemplaza el enlace `bit.ly`; DD-16) y el botón «Enviar mi propuesta» — US-009.
@@ -187,6 +187,9 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - Enlace a playlist por tema solo si existe `playlist_url` (US-006, opcional). Agustina empezó a armar las playlists el 16/11: cargar las `playlist_url` que ya existan.
   - **Nuevo (16/11)**: los chips de tema se arman desde `temas.js`, sin fijar la cantidad: hoy son 8 y Agustina sumará 2 (no inventar los nombres; cuando los pase, se agregan a `temas.js` y se reclasifican las charlas).
   - **Opcional, antes o durante este change — cruce de disertantes (IN-07)**: completar parte de los `[Disertante]` pendientes cruzando nombres contra los títulos y descripciones de YouTube. Si se usa el listado de miembros del Ateneo como diccionario, el script lo lee desde su carpeta original **fuera del repo**; nunca se copia ni se commitea, y solo se guardan nombres que ya figuran públicamente en YouTube (DD-17).
+  - **Nuevo (16/11, tras C-03)**: leer el parámetro `?tema=<id>` de la dirección (la portada ya enlaza cada tema así) y abrir la videoteca filtrada por ese tema.
+  - **Nuevo (16/11, tras C-03)**: enlace a una charla concreta, `videoteca.html?charla=<id>` (por ejemplo `?charla=c084`), para compartir una charla puntual por WhatsApp o Instagram: la videoteca abre mostrando esa ficha destacada.
+  - Reusar la tarjeta de charla, la cabecera, el menú y el pie compartidos que deja C-03b.
   - Fuera de scope: mostrar capítulos / marcas de tiempo de los videos (idea futura, IN-09).
 - **Dependencias**: `C-02` (y estilos de `C-01`)
 - **Governance**: MEDIO
@@ -229,7 +232,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - Variante inlineada (HTML con CSS/JS/datos embebidos) si los archivos externos no se pueden hospedar (Mediateca de WP), con aislamiento CSS bajo contenedor.
   - Prueba de integración en un entorno equivalente: interferencia de estilos del tema, carga de tipografías, miniaturas de YouTube (SU-03).
   - Guía de uso para el Ateneo (entregable del 18/12), en lenguaje simple para no programadores y pensada para que **varios integrantes** (no una sola persona) carguen la próxima charla (pedido del 11/11, DD-20); probarla con miembros del Ateneo antes de la entrega. Contenido: cargar una charla, editar la próxima charla (incluidos los enlaces de Calendar y Zoom), agregar o quitar una red, validar el archivo de datos, publicar/pegar el código actualizado, qué hacer si algo falla.
-  - Lista de insumos pendientes al momento de la entrega (enlaces de Instagram y del Canal de Difusión de WhatsApp, validación del logo con el nexo, categorías nuevas si todavía faltan).
+  - Lista de insumos pendientes al momento de la entrega (enlace de Instagram, validación del logo con el nexo, categorías nuevas si todavía faltan).
   - Revisión de privacidad antes de publicar: ningún correo o teléfono personal en el código ni en los datos (DD-17).
 - **Dependencias**: `C-05`
 - **Governance**: ALTO
@@ -248,7 +251,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 |----|--------|------|--------------|------------|--------|------------|
 | C-01 | `base-y-estilos` | 1 | — | BAJO | `[x]` | Cerrado |
 | C-02 | `datos-charlas` | 1 | C-01 | MEDIO | `[x]` | Cerrado |
-| C-03 | `portada` | 2 | C-02 | BAJO | `[ ]` | Validado 11/11 (próximo) |
+| C-03 | `portada` | 2 | C-02 | BAJO | `[x]` | Cerrado |
 | C-04 | `videoteca` | 2 | C-02 | MEDIO | `[ ]` | Validado 11/11 |
 | C-05 | `responsive-a11y-carga-completa` | 3 | C-03, C-04 | MEDIO | `[ ]` | Validado 11/11 |
 | C-06 | `integracion-y-guia` | 3 | C-05 | ALTO | `[ ]` | Validado 11/11 |
@@ -273,6 +276,4 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 
 ---
 
-**Próximo change**: `C-03` (`portada`). Después: `C-04` (`videoteca`, con TDD).
-
-Para arrancar: `/opsx:propose C-03-portada` (nombre OpenSpec en kebab-case: `portada`).
+**Próximo change**: `C-03b` (rediseño de portada, página «Quiénes somos» y cabecera/pie compartidos). Después: `C-04` (`videoteca`, con TDD).

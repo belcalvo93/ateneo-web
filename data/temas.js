@@ -1,6 +1,6 @@
 /*
   TEMAS DEL ATENEO — lista única de temas del sitio.
-  PROVISORIO hasta la reunión del 11/11: los temas pueden cambiar.
+  Son 8 temas confirmados (16/11/2026). Se van a sumar 2 más: se agregan acá cuando se sepan los nombres.
 
   Cómo editar:
   - "id": identificador interno (minúsculas y guiones). NO lo cambies si ya hay charlas que lo usan.

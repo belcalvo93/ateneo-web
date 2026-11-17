@@ -25,7 +25,7 @@ Los tests (`npm test`) cubren estos módulos y no usan internet ni `yt-dlp`.
 Se ejecuta como módulo de Python, así no depende de que esté en el `PATH`:
 
 ```sh
-python -m yt_dlp --flat-playlist --print-to-file "%(.{id,title,duration,view_count})j" scripts/salida/canal.jsonl "https://www.youtube.com/@ateneoamigosdelasciencias-2269/videos"
+python -m yt_dlp --flat-playlist --print-to-file "%(.{id,title,duration,view_count})j" scripts/salida/canal.jsonl "https://www.youtube.com/@ateneoamigosdelasciencias/videos"
 ```
 
 - Se usa `--print-to-file` (y no `> archivo`) porque en PowerShell 5 la redirección guarda el archivo en UTF-16 y rompe las tildes.

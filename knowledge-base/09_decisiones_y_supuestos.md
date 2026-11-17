@@ -46,7 +46,7 @@ Fuente: reunión con el Ateneo del 11/11/2026 y documentos entregados por el Ate
 **Decisión**: «Quiénes somos» y las cifras de portada cuentan la historia desde **agosto de 2015** (grupo informal de amigos), no desde 2017. **Contexto**: los documentos fundacionales entregados por el Ateneo fijan el nacimiento en agosto de 2015, la constitución formal el 6 de enero de 2016 y la consolidación con el nombre definitivo entre 2016 y 2017. **Consecuencia**: el texto «desde 2017» de los mockups se reemplaza por 2015; el diseño no cambia. Resuelve IN-01. Detalle en `01` §Historia e identidad.
 
 ### DD-14 — Redes: YouTube, Instagram y Canal de Difusión de WhatsApp
-**Decisión**: la lista configurable de redes (`redes: [{ nombre, url }]`, C-03) lleva YouTube, Instagram y el Canal de Difusión de WhatsApp (ya creado por Agustina; permite suscribirse sin aprobación previa). **Estado**: los enlaces de Instagram y de WhatsApp todavía no se tienen: van como placeholder y no se muestran al público hasta cargarlos. Facebook y TikTok quedan fuera del conjunto confirmado (si más adelante se suman, es agregar un elemento a la lista).
+**Decisión**: la lista configurable de redes (`redes: [{ nombre, url }]`, C-03) lleva YouTube, Instagram y el Canal de Difusión de WhatsApp (ya creado por Agustina; permite suscribirse sin aprobación previa). **Estado**: el enlace oficial del canal de WhatsApp es `https://whatsapp.com/channel/0029VbDjwCbI7BeKsvprkr3t` (informado el 16/11/2026); el de Instagram todavía no se tiene: va como placeholder y no se muestra al público hasta cargarlo. La lista aún no existe en `data/`: la crea C-03 con estos valores. Facebook y TikTok quedan fuera del conjunto confirmado (si más adelante se suman, es agregar un elemento a la lista).
 
 ### DD-15 — Próxima charla con «Agendar en Google Calendar» y Zoom
 **Decisión**: la tarjeta «Próxima charla» ofrece dos enlaces opcionales: agendar la charla en Google Calendar y entrar por Zoom. **Modelo**: `zoom_url` (ya existe desde C-02) y un campo nuevo `calendar_url`, ambos `string | null`; cada botón se muestra solo si su enlace está cargado. **Alternativa descartada**: renombrar a `url_zoom`/`url_calendar` (obligaría a tocar datos, validador y tests de C-02 sin beneficio). Se implementa en C-03.
@@ -66,13 +66,19 @@ Fuente: reunión con el Ateneo del 11/11/2026 y documentos entregados por el Ate
 ### DD-20 — Guía de uso para varios integrantes
 **Decisión**: los ingenieros pidieron que actualizar la página sea muy simple y recibir una guía clara para que **varios integrantes** (no una sola persona) puedan cargar la próxima charla al terminar la beca. Condiciona C-06 y la simplicidad de `data/proxima-charla.js`.
 
+### DD-21 — Los ids y enlaces de los videos se mantienen al editar el canal
+**Hecho confirmado por Agustina el 16/11/2026**: edita desde YouTube Studio, así que los ids y enlaces de los videos **se mantienen fijos** aunque cambie títulos, descripciones, capítulos o playlists. Si alguna vez vuelve a subir un video (lo que sí cambia su id), avisa para actualizar el enlace. **Consecuencia**: el diseño de correcciones por id de charla (DD-10) y la regeneración conservadora (DD-11) se mantienen sin cambios; siguen cubriendo el caso de un video resubido.
+
+### DD-22 — Visualizaciones por charla y orden de «últimas» (C-03)
+**Decisión (16/11/2026)**: las visualizaciones de una charla son la **suma** de las de sus partes (la unidad es la charla; los valores del mockup eran ilustrativos). «Últimas charlas» se ordena por año y, a igual año, por el orden del catálogo, con las agregadas a mano primero; **cuando haya fechas reales** (sitio viejo del Ateneo, archivo de actividades por ciclo 2020–2026) se pasa a ordenar por fecha exacta. En celular las secciones van en el mismo orden que en escritorio, para que el orden visual y el de teclado coincidan. Una red sin enlace es solo un aviso del validador (no corta el modo estricto), porque la página la oculta.
+
 ## Supuestos inferidos
 
 ### SU-01 — La sección se crea con cuentas de la facultad
 **Origen**: PRD. **Riesgo si es falso**: no hay forma de publicar. **Estado**: la integración en la web de la FRM se confirmó el 11/11; falta el alta de Belén como editora (contacto del administrador web pendiente).
 
 ### SU-02 — El Ateneo aporta textos, logo e información de eventos
-**Origen**: PRD. **Riesgo**: placeholders sin completar. **Estado**: ya entregaron la Declaración de Principios, documentos históricos, el logo y 4 fotos (quedan fuera del repo hasta usarlos en C-03). Faltan: usuario de Instagram, enlace del canal de WhatsApp y datos de cada próxima charla.
+**Origen**: PRD. **Riesgo**: placeholders sin completar. **Estado**: ya entregaron la Declaración de Principios, documentos históricos, el logo y 4 fotos (quedan fuera del repo hasta usarlos en C-03). Faltan: usuario de Instagram y datos de cada próxima charla.
 
 ### SU-03 — Las miniaturas pueden derivarse de la URL de YouTube
 **Origen**: inferencia (mockups muestran «Miniatura de YouTube»). **Riesgo**: dependencia de formato de URL externo/hotlinking. **Validar**: probar `img.youtube.com/vi/<id>/hqdefault.jpg` en el entorno WP.

@@ -11,6 +11,7 @@ window.AAC_PROXIMA_CHARLA = {
   hora: "18:00",                             // Formato HH:MM, 24 horas. Ejemplo: "18:00"
   lugar: "Salón de Actos UTN FRM, Rodríguez 273, Ciudad de Mendoza", // Dónde es la charla presencial
   modalidad: "Presencial y por Zoom",        // Ejemplo: "Presencial y por Zoom"
-  zoom_url: null,                            // Pegar el enlace de Zoom entre comillas cuando el Ateneo lo confirme. Ejemplo: "https://..."
+  zoom_url: null,                            // OPCIONAL. Enlace de Zoom entre comillas, o null (sin comillas) si no se publica. Ejemplo: "https://..."
+  calendar_url: null,                        // OPCIONAL. Enlace para agendar la charla en Google Calendar, o null. Ejemplo: "https://..."
   correo_inscripcion: "ateneoac.mo@gmail.com" // Correo donde se anotan las personas
 };

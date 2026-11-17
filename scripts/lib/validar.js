@@ -8,19 +8,27 @@ const ARCHIVO_CHARLAS = 'data/charlas.js';
 const ARCHIVO_PROXIMA = 'data/proxima-charla.js';
 const ARCHIVO_NUEVAS = 'data/charlas-nuevas.js';
 const ARCHIVO_CORRECCIONES = 'data/correcciones.js';
+const ARCHIVO_SITIO = 'data/sitio.js';
 
 const CAMPOS_TEMA = ['id', 'nombre', 'etiqueta', 'playlist_url'];
 const CAMPOS_CHARLA = ['id', 'titulo', 'disertante', 'tema', 'anio', 'partes', 'revisar', 'destacada'];
 const CAMPOS_CORRECCION = ['titulo', 'disertante', 'tema', 'anio', 'destacada', 'confirmados', 'partes'];
 const MARCAS_REVISAR = ['titulo', 'disertante', 'vistas', 'partes'];
 const CAMPOS_PARTE = ['duracion', 'url', 'vistas', 'titulo_original'];
-const CAMPOS_PROXIMA = ['titulo', 'disertante', 'descripcion', 'fecha', 'hora', 'lugar', 'modalidad', 'zoom_url', 'correo_inscripcion'];
+const CAMPOS_PROXIMA = ['titulo', 'disertante', 'descripcion', 'fecha', 'hora', 'lugar', 'modalidad', 'zoom_url', 'calendar_url', 'correo_inscripcion'];
+// Enlaces opcionales de la próxima charla: null es un estado válido y permanente, no un pendiente.
+const ENLACES_PROXIMA = ['zoom_url', 'calendar_url'];
+const CAMPOS_SITIO = ['correo', 'canal_youtube', 'conferencias', 'redes', 'fotos'];
+const CAMPOS_RED = ['nombre', 'url'];
+const CAMPOS_FOTO = ['archivo', 'alt'];
 
 const RE_ID_TEMA = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const RE_PLACEHOLDER = /^\s*\[.*\]\s*$/;
 const RE_YOUTUBE = /^https:\/\/(?:www\.)?(?:youtube\.com\/watch\?(?:[^#]*&)?v=[\w-]{11}(?:[&#].*)?|youtu\.be\/[\w-]{11}(?:[?#].*)?)$/;
 const RE_FECHA = /^(\d{2})\/(\d{2})\/(\d{4})$/;
 const RE_HORA = /^([01]\d|2[0-3]):([0-5]\d)$/;
+const RE_HTTPS = /^https:\/\/\S+$/;
+const RE_CORREO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const esObjeto = (x) => typeof x === 'object' && x !== null && !Array.isArray(x);
 const esTextoNoVacio = (x) => typeof x === 'string' && x.trim() !== '';
@@ -34,7 +42,8 @@ function fechaValida(texto) {
   return f.getUTCFullYear() === a && f.getUTCMonth() === mes - 1 && f.getUTCDate() === d;
 }
 
-// validar({ temas, charlas, proxima }, { estricto, anioActual }) -> { errores, avisos, resumen, fallo }
+// validar({ temas, charlas, proxima, sitio }, { estricto, anioActual }) -> { errores, avisos, resumen, fallo }
+// `sitio` es opcional: si no se pasa, la configuración del sitio no se valida.
 // Cada error/aviso: { archivo, charla, parte, campo, mensaje } (+ tipo en los avisos).
 function validar(datos, opciones) {
   const opt = opciones || {};
@@ -198,7 +207,7 @@ function validar(datos, opciones) {
   }
 
   // ---- vista combinada: pendientes y resumen ----
-  const resumen = { charlas: 0, partes: 0, placeholders: 0, charlasConRevisar: 0, entradasRevisar: 0, partesSinUrl: 0, temasVacios: 0 };
+  const resumen = { charlas: 0, partes: 0, placeholders: 0, charlasConRevisar: 0, entradasRevisar: 0, partesSinUrl: 0, temasVacios: 0, redesPendientes: 0 };
   const usoPorTema = new Map();
   const combinada = aplicarCorrecciones(generadas || [], esObjeto(corr) ? corr : {}, nuevas);
   combinada.forEach((c, i) => {
@@ -251,7 +260,7 @@ function validar(datos, opciones) {
       if (!(k in p)) errP(k, 'falta el campo');
     }
     for (const k of CAMPOS_PROXIMA) {
-      if (!(k in p) || k === 'zoom_url') continue;
+      if (!(k in p) || ENLACES_PROXIMA.includes(k)) continue;
       if (!esTextoNoVacio(p[k])) errP(k, 'tiene que ser texto entre comillas');
       else if (esPlaceholder(p[k])) {
         resumen.placeholders += 1;
@@ -262,8 +271,63 @@ function validar(datos, opciones) {
         errP('hora', 'hora inválida (' + JSON.stringify(p.hora) + '); usá HH:MM en 24 horas, por ejemplo "18:00"');
       }
     }
-    if ('zoom_url' in p && p.zoom_url !== null && !(typeof p.zoom_url === 'string' && /^https?:\/\//.test(p.zoom_url))) {
-      errP('zoom_url', 'tiene que ser un enlace que empiece con https:// o null');
+    for (const k of ENLACES_PROXIMA) {
+      if (k in p && p[k] !== null && !(typeof p[k] === 'string' && RE_HTTPS.test(p[k]))) {
+        errP(k, 'tiene que ser un enlace que empiece con https:// o null');
+      }
+    }
+  }
+
+  // ---- configuración del sitio ----
+  const s = datos.sitio;
+  const errS = (ref, campo, msg) => error(ARCHIVO_SITIO, ref, null, campo, msg);
+  if (s !== undefined && !esObjeto(s)) {
+    errS(null, 'AAC_SITIO', 'tiene que ser un objeto con la configuración del sitio');
+  } else if (esObjeto(s)) {
+    for (const k of Object.keys(s)) {
+      if (!CAMPOS_SITIO.includes(k)) errS(null, k, 'campo desconocido (¿error de tipeo? campos válidos: ' + CAMPOS_SITIO.join(', ') + ')');
+    }
+    for (const k of CAMPOS_SITIO) {
+      if (!(k in s)) errS(null, k, 'falta el campo');
+    }
+    if ('correo' in s && !(typeof s.correo === 'string' && RE_CORREO.test(s.correo))) {
+      errS(null, 'correo', 'tiene que ser una dirección de correo entre comillas');
+    }
+    if ('canal_youtube' in s && !(typeof s.canal_youtube === 'string' && RE_HTTPS.test(s.canal_youtube))) {
+      errS(null, 'canal_youtube', 'tiene que ser un enlace que empiece con https://');
+    }
+    if ('conferencias' in s && !esTextoNoVacio(s.conferencias)) {
+      errS(null, 'conferencias', 'tiene que ser texto entre comillas (por ejemplo "+100")');
+    }
+    if ('redes' in s) {
+      if (!Array.isArray(s.redes)) errS(null, 'redes', 'tiene que ser una lista de redes (puede estar vacía: [])');
+      else s.redes.forEach((r, i) => {
+        const ref = esObjeto(r) && esTextoNoVacio(r.nombre) ? r.nombre : 'red #' + (i + 1);
+        if (!esObjeto(r)) return errS(ref, 'redes', 'cada red tiene que ser { nombre: "…", url: "…" }');
+        for (const k of Object.keys(r)) {
+          if (!CAMPOS_RED.includes(k)) errS(ref, k, 'campo desconocido (una red solo tiene nombre y url)');
+        }
+        if (!esTextoNoVacio(r.nombre)) errS(ref, 'nombre', 'falta el nombre de la red');
+        if (!('url' in r)) errS(ref, 'url', 'falta la url de ' + ref + ' (o null si todavía no existe)');
+        else if (r.url === null || esPlaceholder(r.url)) {
+          resumen.redesPendientes += 1;
+          aviso('red-pendiente', ARCHIVO_SITIO, ref, null, 'url', 'la red ' + ref + ' todavía no tiene enlace (no se muestra en la página)');
+        } else if (!(typeof r.url === 'string' && RE_HTTPS.test(r.url))) {
+          errS(ref, 'url', 'el enlace de ' + ref + ' tiene que empezar con https:// (o ser null)');
+        }
+      });
+    }
+    if ('fotos' in s) {
+      if (!Array.isArray(s.fotos)) errS(null, 'fotos', 'tiene que ser una lista de fotos (puede estar vacía: [])');
+      else s.fotos.forEach((f, i) => {
+        const ref = 'foto #' + (i + 1);
+        if (!esObjeto(f)) return errS(ref, 'fotos', 'cada foto tiene que ser { archivo: "…", alt: "…" }');
+        for (const k of Object.keys(f)) {
+          if (!CAMPOS_FOTO.includes(k)) errS(ref, k, 'campo desconocido (una foto solo tiene archivo y alt)');
+        }
+        if (!esTextoNoVacio(f.archivo)) errS(ref, 'archivo', 'falta la ruta de la imagen');
+        if (!esTextoNoVacio(f.alt)) errS(ref, 'alt', 'falta el texto alternativo que describe la foto');
+      });
     }
   }
 

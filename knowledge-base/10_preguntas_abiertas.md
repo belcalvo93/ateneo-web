@@ -17,7 +17,7 @@ Actualizado el 16/11/2026 con los acuerdos de la reunión del 11/11/2026 y las n
 Se guardan ambos (`nombre` y `etiqueta`) en `data/temas.js`.
 
 ### IN-04 — Datos de próxima charla y redes son placeholders — ABIERTA
-Los mockups usan `[fecha]`, `[Título…]`, `[usuario a confirmar]`. El conjunto de redes ya está definido (DD-14), pero **faltan los enlaces de Instagram y del Canal de Difusión de WhatsApp**: quedan como placeholder en la lista configurable y no se muestran al público. Los datos de cada próxima charla (incluidos los enlaces de Calendar y Zoom, DD-15) se cargan semana a semana.
+Los mockups usan `[fecha]`, `[Título…]`, `[usuario a confirmar]`. El conjunto de redes ya está definido (DD-14), y el enlace del Canal de Difusión de WhatsApp ya se tiene; **falta el de Instagram**: queda como placeholder en la lista configurable y no se muestra al público. Los datos de cada próxima charla (incluidos los enlaces de Calendar y Zoom, DD-15) se cargan semana a semana.
 
 ### IN-05 — Alcance de «nombres» en mockups — ABIERTA
 El mockup de Videoteca muestra 12 charlas reales con títulos/disertantes limpios (p. ej. Entrelazamiento cuántico — Dr. Ernesto Gandolfo Raso, 2023); el borrador tiene `titulo`/`disertante` en `null` para las 186. Hay que cargarlas (ver IN-07).
@@ -45,9 +45,11 @@ Agustina va a agregar capítulos (marcas de tiempo) a los videos largos. La vide
 | Prioridad | Pregunta | Bloquea | Decisor |
 |---|---|---|---|
 | Alta | ¿Quién es el administrador web de la FRM y cómo se da de alta a Belén como editora? ¿Los archivos de datos/CSS/JS pueden hospedarse (Mediateca) o se inlinea todo en el widget? | Formato final de entrega (C-06) | Nexo / FRM |
+| Media | **Vista previa al compartir (para el administrador web de la FRM)**: cuando se comparte el enlace de la página por WhatsApp o Instagram, ¿se puede definir el título, la descripción y la imagen de la vista previa dentro de WordPress (por página)? Desde el widget HTML no se controla | Llegada desde redes (C-06) | Administrador web FRM |
 | Alta | ¿Cuáles son las **2 categorías nuevas** de la videoteca? (No inventar nombres: `temas.js` sigue con 8 hasta entonces) | `data/temas.js`, chips de C-04, grilla de temas de C-03 | Agustina |
 | Alta | Completar `titulo`, `disertante` y `url` de las 186 charlas (310 videos) | Videoteca completa (C-05) | Dev + Ateneo |
-| Media | Enlace del perfil de **Instagram** y del **Canal de Difusión de WhatsApp** (placeholders en la lista de redes) | Redes de C-03 | Agustina |
+| Media | **Zoom (para Eduardo, Mesa Organizadora)**: ¿el enlace de Zoom de los viernes es fijo (reunión recurrente) o cambia en cada charla? Si es fijo, se podría mover a `data/sitio.js` como valor por defecto para no cargarlo cada semana. ¿Están de acuerdo con que el enlace de Zoom sea público en la web? Mientras tanto `zoom_url` queda en `proxima-charla.js` y el botón solo aparece si está cargado; el diseño no cambia hasta tener la respuesta | Próxima charla (C-03) y guía de uso (C-06) | Eduardo / Mesa |
+| Media | Enlace del perfil de **Instagram** (placeholder en la lista de redes) | Redes de C-03 | Agustina |
 | Media | Validar con el nexo que el logo «AAC» con la llama es el oficial (DD-18: confirmado solo por archivos) | Marca | Nexo |
 | Media | ¿Quiénes integran la Mesa Organizadora y quieren aparecer? ¿Se nombra a los fundadores en «Quiénes somos»? | Quiénes somos (C-03) | Nexo / Mesa |
 | Media | ¿Qué fotos van en la galería y con qué texto alternativo/epígrafe? ¿Las personas que aparecen están de acuerdo con publicarlas? | Galería de Quiénes somos (C-03) | Nexo |
@@ -71,6 +73,8 @@ Agustina va a agregar capítulos (marcas de tiempo) a los videos largos. La vide
 | ¿Podemos usar el logo actual? | «AAC» con la llama, confirmado por los archivos entregados; falta validarlo con el nexo (DD-18) | 16/11/2026 |
 | ¿Sigue vigente la Declaración de Principios (`bit.ly/3ai4qQx`)? | Vigente la v2.4; se muestra desplegable en la página y se deja de usar el `bit.ly` (DD-16) | 11/11/2026 |
 | ¿Conjunto final de redes? | YouTube, Instagram y Canal de Difusión de WhatsApp (DD-14) | 11/11/2026 |
+| ¿Cambian los ids o enlaces de los videos cuando Agustina edita el canal? | No: edita desde YouTube Studio y los ids se mantienen; si resube un video, avisa (DD-21) | 16/11/2026 |
+| ¿Enlace del Canal de Difusión de WhatsApp? | `https://whatsapp.com/channel/0029VbDjwCbI7BeKsvprkr3t` (DD-14) | 16/11/2026 |
 | ¿Hay enlace de Zoom en la próxima charla? | Sí, junto con el de agendar en Google Calendar; ambos opcionales (DD-15) | 11/11/2026 |
 | ¿«Más vistas»: automático o curado? | Automático por `vistas`, con `destacada: true` opcional (decidido en C-02). El orden exacto de «últimas» se define en C-03 | 11/11/2026 |
 | ¿Quién mantiene la página después de la beca? | Varios integrantes del Ateneo, con una guía de uso simple (DD-20) | 11/11/2026 |

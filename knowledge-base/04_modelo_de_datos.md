@@ -41,7 +41,7 @@ Los mockups usan etiquetas cortas (Historia y cultura, Agua y ambiente, IA y tec
 | `data/charlas-nuevas.js` | `AAC_CHARLAS_NUEVAS` | Charlas agregadas a mano, mismo esquema que una charla; ids siguientes a `c186` | Editor |
 | `data/correcciones.js` | `AAC_CORRECCIONES` | `{ cXXX: { titulo, disertante, tema, anio, destacada, confirmados, partes: { N: { url } } } }`, clave = id de charla (nunca título ni id de video) | Editor |
 | `data/temas.js`, `data/proxima-charla.js` | `AAC_TEMAS`, `AAC_PROXIMA_CHARLA` | Temas y próxima charla | Editor |
-| `redes` (**C-03**, aún no existe) | — | Configuración del sitio: **lista configurable de redes** `[{ nombre, url }]`; `url` con placeholder `[…]` o `null` mientras no exista la red; agregar o quitar una red no toca el HTML. Conjunto confirmado el 11/11 (DD-14): **YouTube** (URL conocida), **Instagram** y **Canal de Difusión de WhatsApp** (ambos sin enlace todavía: placeholder) | Editor |
+| `redes` (**C-03**, aún no existe) | — | Configuración del sitio: **lista configurable de redes** `[{ nombre, url }]`; `url` con placeholder `[…]` o `null` mientras no exista la red; agregar o quitar una red no toca el HTML. Conjunto confirmado el 11/11 (DD-14): **YouTube** (`https://www.youtube.com/@ateneoamigosdelasciencias`), **Canal de Difusión de WhatsApp** (`https://whatsapp.com/channel/0029VbDjwCbI7BeKsvprkr3t`, enlace oficial informado el 16/11/2026) e **Instagram** (sin enlace todavía: placeholder, no se muestra). C-03 crea la lista con estos valores | Editor |
 
 `AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS)` devuelve la **vista combinada** que usan las páginas: una corrección que completa `titulo` o `disertante` borra su marca de `revisar`; `confirmados` borra las marcas listadas.
 
