@@ -6,14 +6,22 @@ Define qué muestra la página de Inicio del Ateneo y cómo se comporta cuando l
 ## Requirements
 
 ### Requirement: Secciones de la portada
-`index.html` SHALL mostrar, en este orden y dentro del contenedor `.aac-web`: hero con cifras, próxima charla, últimas charlas, temas, más vistas, quiénes somos, proponer una charla y pie con contacto, redes y dirección. Las secciones «Próxima charla», «Quiénes somos», «Proponer una charla» y «Contacto» SHALL ser alcanzables desde el menú principal.
+`index.html` SHALL mostrar, en este orden y dentro del contenedor `.aac-web`: encabezado con la presentación del Ateneo, próxima charla, cifras, franja «Seguinos», últimas charlas, temas, más vistas e invitación a proponer una charla. El orden MUST ser el mismo en celular y en escritorio. La próxima charla SHALL ser alcanzable por enlace directo (`index.html#proxima-charla`).
 
 #### Scenario: Navegación por anclas
-- **WHEN** se activa «Quiénes somos» en el menú principal
-- **THEN** la página se desplaza a esa sección
+- **WHEN** se activa «Contacto» en el menú principal
+- **THEN** la página se desplaza al pie con los datos de contacto
+
+#### Scenario: Próxima charla sin desplazarse de más
+- **WHEN** se abre la portada en un celular de 390×844 px
+- **THEN** el comienzo de la tarjeta de próxima charla queda dentro de las dos primeras pantallas, sin ninguna otra sección entre la presentación y la tarjeta
+
+#### Scenario: Enlace directo a la próxima charla
+- **WHEN** se abre `index.html#proxima-charla`
+- **THEN** la página se muestra en la tarjeta de próxima charla
 
 #### Scenario: Acceso a la videoteca
-- **WHEN** se activa «Ver la videoteca» en el hero o «Ver todas en la videoteca» en últimas charlas
+- **WHEN** se activa «Ver la videoteca» en el encabezado o «Ver todas en la videoteca» en últimas charlas
 - **THEN** se abre `videoteca.html`
 
 ### Requirement: Ningún placeholder visible para el público
@@ -47,7 +55,7 @@ La portada SHALL mostrar la próxima charla con los datos de `data/proxima-charl
 - **THEN** la tarjeta se muestra sin la descripción
 
 ### Requirement: Enlaces opcionales de Calendar y Zoom
-La tarjeta de próxima charla SHALL mostrar un botón «Agendar en Calendar» solo si `calendar_url` tiene un enlace, y un botón «Entrar por Zoom» solo si `zoom_url` tiene un enlace. La tarjeta MUST funcionar con ambos, con uno solo o con ninguno. Los dos abren en una pestaña nueva.
+La tarjeta de próxima charla SHALL mostrar un botón «Agendar en mi calendario» solo si `calendar_url` tiene un enlace, y un botón «Entrar por Zoom» solo si `zoom_url` tiene un enlace. La tarjeta MUST funcionar con ambos, con uno solo o con ninguno. Los dos abren en una pestaña nueva y lo avisan a los lectores de pantalla.
 
 #### Scenario: Ambos enlaces cargados
 - **WHEN** `calendar_url` y `zoom_url` tienen un enlace `https://`
@@ -55,7 +63,7 @@ La tarjeta de próxima charla SHALL mostrar un botón «Agendar en Calendar» so
 
 #### Scenario: El Ateneo no publica el enlace de Zoom
 - **WHEN** `zoom_url` es `null` y `calendar_url` tiene un enlace
-- **THEN** la tarjeta muestra «Agendar en Calendar» y no muestra ningún botón de Zoom ni un espacio vacío en su lugar
+- **THEN** la tarjeta muestra «Agendar en mi calendario» y no muestra ningún botón de Zoom ni un espacio vacío en su lugar
 
 #### Scenario: Ningún enlace cargado
 - **WHEN** `calendar_url` y `zoom_url` son `null`
@@ -77,7 +85,7 @@ La portada SHALL mostrar las 3 charlas más recientes de la vista combinada del 
 - **THEN** la tarjeta se muestra sin miniatura de YouTube y sin enlace roto
 
 ### Requirement: Charlas más vistas
-La portada SHALL mostrar 3 charlas en «Las más vistas», numeradas: primero las marcadas `destacada: true` y luego las de más visualizaciones, sin repetir ninguna. Las visualizaciones de una charla SHALL ser la suma de las de todas sus partes. Cada una muestra título, disertante y cantidad de visualizaciones.
+La portada SHALL mostrar 3 charlas en «Las más vistas», numeradas, con la misma tarjeta con miniatura que «Últimas charlas»: primero las marcadas `destacada: true` y luego las de más visualizaciones, sin repetir ninguna. Las visualizaciones de una charla SHALL ser la suma de las de todas sus partes. Cada una muestra título, disertante y cantidad de visualizaciones.
 
 #### Scenario: Charla en varias partes
 - **WHEN** una charla tiene dos partes con 1.000 y 500 visualizaciones
@@ -95,6 +103,10 @@ La portada SHALL mostrar 3 charlas en «Las más vistas», numeradas: primero la
 - **WHEN** una charla destacada no tiene visualizaciones registradas
 - **THEN** se muestra sin la línea de visualizaciones
 
+#### Scenario: Misma tarjeta que las últimas
+- **WHEN** se comparan una tarjeta de «Últimas charlas» y una de «Las más vistas»
+- **THEN** las dos tienen miniatura, título y disertante con el mismo aspecto, y la de más vistas suma su número de puesto y sus visualizaciones
+
 ### Requirement: Temas con conteo
 La portada SHALL listar todos los temas de `data/temas.js`, en su orden, cada uno con la cantidad de charlas que tiene en la vista combinada y un enlace a la videoteca filtrada por ese tema. La cantidad de temas MUST NOT estar fija en la página.
 
@@ -105,46 +117,6 @@ La portada SHALL listar todos los temas de `data/temas.js`, en su orden, cada un
 #### Scenario: Enlace de un tema
 - **WHEN** se activa la tarjeta de un tema
 - **THEN** se abre `videoteca.html` con ese tema indicado en la dirección
-
-### Requirement: Quiénes somos
-La sección «Quiénes somos» SHALL presentar la historia del Ateneo desde agosto de 2015, su bajada institucional y sus valores (rigor científico, clima amistoso y horizontal, acceso libre), según el PRD v1.2. MUST NOT nombrar personas ni afirmar que el Ateneo nació en 2017.
-
-#### Scenario: Año de origen
-- **WHEN** se lee la portada completa
-- **THEN** la historia y las cifras cuentan desde 2015
-
-### Requirement: Galería de fotos preparada
-«Quiénes somos» SHALL mostrar una galería con las fotos listadas en la configuración del sitio, cada una con su texto alternativo. Si la lista está vacía, la galería MUST NOT mostrarse ni dejar un hueco.
-
-#### Scenario: Sin fotos confirmadas
-- **WHEN** la lista de fotos de la configuración está vacía
-- **THEN** «Quiénes somos» se muestra completa y sin galería
-
-#### Scenario: Fotos cargadas
-- **WHEN** la configuración lista dos fotos con su texto alternativo
-- **THEN** la galería muestra esas dos fotos con ese texto alternativo
-
-### Requirement: Proponer una charla
-La sección SHALL listar los requisitos para proponer una charla y los criterios de admisión de la Declaración de Principios, ofrecer el texto completo de la Declaración v2.4 en un bloque desplegable de la propia página y un botón «Enviar mi propuesta» que abre un correo al Ateneo. MUST NOT enlazar a `bit.ly`.
-
-#### Scenario: Leer la Declaración
-- **WHEN** se activa el bloque desplegable con el mouse o con el teclado
-- **THEN** se muestra el texto completo de la Declaración de Principios sin salir de la página
-
-#### Scenario: Enviar una propuesta
-- **WHEN** se activa «Enviar mi propuesta»
-- **THEN** se abre un correo dirigido al correo de contacto del Ateneo
-
-### Requirement: Redes desde la lista configurable
-El pie SHALL mostrar un enlace por cada red de la lista de la configuración del sitio que tenga un enlace real, en el orden de la lista. Una red cuyo enlace sea `null` o un placeholder MUST NOT mostrarse.
-
-#### Scenario: Estado inicial
-- **WHEN** la lista tiene YouTube y WhatsApp con enlace e Instagram con placeholder
-- **THEN** el pie muestra YouTube y WhatsApp y no menciona Instagram
-
-#### Scenario: Se completa una red
-- **WHEN** se reemplaza el placeholder de Instagram por su enlace
-- **THEN** el pie muestra Instagram sin cambios en el HTML
 
 ### Requirement: Fallo en la carga de datos
 Si los datos del catálogo, de la próxima charla o de la configuración no están disponibles, la portada SHALL mostrar un mensaje claro con un enlace al canal de YouTube en lugar de las secciones que dependen de esos datos, y MUST seguir mostrando el contenido fijo y el correo de contacto.
@@ -182,3 +154,62 @@ La portada SHALL cumplir las reglas de accesibilidad del proyecto: texto base de
 #### Scenario: Sin desborde en celular
 - **WHEN** se abre la portada a 390 px de ancho
 - **THEN** no hay desplazamiento horizontal
+
+### Requirement: Duración en la miniatura
+Cada tarjeta de charla SHALL mostrar sobre la miniatura la duración de la charla. Si la charla tiene varias partes, la duración SHALL ser la suma de todas y la tarjeta SHALL indicar cuántas partes son. Si no se puede calcular, la tarjeta se muestra sin duración.
+
+#### Scenario: Charla de una parte
+- **WHEN** una charla tiene una sola parte de 31:40
+- **THEN** su miniatura muestra «31:40»
+
+#### Scenario: Charla en varias partes
+- **WHEN** una charla tiene dos partes de 1:54:45 y 32:46
+- **THEN** su miniatura muestra «2:27:31» y la tarjeta indica «2 partes»
+
+#### Scenario: Duración inválida
+- **WHEN** una parte tiene una duración mal escrita
+- **THEN** la tarjeta se muestra sin duración y sin texto roto
+
+### Requirement: Franja de redes
+La portada SHALL mostrar, después de la próxima charla, una franja «Seguinos» con un botón por cada red de la lista configurable que tenga un enlace real, cada uno con el nombre de la red como texto visible y de al menos 44 px. Si ninguna red tiene enlace, la franja MUST NOT mostrarse.
+
+#### Scenario: Estado inicial
+- **WHEN** la lista tiene YouTube y WhatsApp con enlace e Instagram con placeholder
+- **THEN** la franja muestra dos botones, «YouTube» y «Canal de WhatsApp», y no menciona Instagram
+
+#### Scenario: Sin redes
+- **WHEN** ninguna red de la lista tiene un enlace real
+- **THEN** la portada no muestra la franja ni su título
+
+### Requirement: Presentación del Ateneo en el encabezado
+El encabezado de la portada SHALL decir qué es el Ateneo antes de la próxima charla, con: el rótulo «Ateneo Amigos de la Ciencia · UTN Mendoza», el título, una descripción breve basada en la bajada institucional (agrupación sin fines de lucro, desde 2015, charlas gratuitas y abiertas), el horario habitual con la modalidad «en el Salón de Actos de la UTN FRM y/o por Zoom», y los botones «Ver la videoteca» y «Conocé al Ateneo». MUST NOT nombrar personas ni afirmar que el Ateneo nació en 2017.
+
+#### Scenario: Qué es el Ateneo a primera vista
+- **WHEN** alguien abre la portada sin conocer al Ateneo
+- **THEN** antes de la tarjeta de próxima charla lee el rótulo, el título, la descripción y el horario
+
+#### Scenario: Conocer al Ateneo
+- **WHEN** se activa «Conocé al Ateneo»
+- **THEN** se abre `quienes-somos.html`
+
+#### Scenario: Sin botón duplicado de próxima charla
+- **WHEN** se revisan los botones del encabezado
+- **THEN** son solo «Ver la videoteca» y «Conocé al Ateneo»
+
+### Requirement: Invitación a proponer una charla en la portada
+La portada SHALL cerrar con una invitación breve, de una o dos líneas, con un enlace visible «Proponer una charla» que abre esa sección de la página Quiénes somos. MUST NOT repetir la presentación del Ateneo que ya está en el encabezado.
+
+#### Scenario: Proponer una charla desde la portada
+- **WHEN** se activa «Proponer una charla» en la portada
+- **THEN** se abre `quienes-somos.html` en la sección para proponer una charla
+
+### Requirement: Gancho de tema opcional
+Cada tarjeta de tema SHALL mostrar el gancho del tema debajo de su nombre solo si el tema tiene un gancho con texto. Un tema sin gancho se muestra como hasta ahora, sin hueco.
+
+#### Scenario: Temas sin gancho
+- **WHEN** ningún tema tiene gancho cargado
+- **THEN** las tarjetas de tema muestran solo el nombre y la cantidad de charlas
+
+#### Scenario: Tema con gancho
+- **WHEN** se carga un gancho en un tema
+- **THEN** la tarjeta de ese tema muestra ese texto entre el nombre y la cantidad de charlas

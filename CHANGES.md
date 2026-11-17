@@ -16,7 +16,7 @@
 
 ## Cómo usar este documento
 
-1. Identificá el próximo change pendiente (`[ ]`) cuyas dependencias estén todas `[x]`. **Hoy: C-03 y C-04** (C-01 y C-02 están cerrados).
+1. Identificá el próximo change pendiente (`[ ]`) cuyas dependencias estén todas `[x]`. **Hoy: C-03c (refinamiento visual) y después C-04** (C-01 a C-03b están cerrados).
 2. Leé los archivos de "Leer antes" de ese change en `knowledge-base/`.
 3. Ejecutá `/opsx:propose C-NN-nombre` (y después `/opsx:apply`). La lógica de buscador/filtro (C-04) va con **Strict TDD** (`node:test`, sin dependencias).
 4. Al terminar: verificá y `/opsx:archive`.
@@ -49,8 +49,10 @@ Siguen abiertas (ninguna bloquea C-03):
 C-01 base-y-estilos                     ✓ cerrado
  └── C-02 datos-charlas                 ✓ cerrado
       ├── C-03 portada                  ✓ cerrado
-      │    └── C-05 responsive-a11y-carga-completa
-      └── C-04 videoteca (TDD)
+      │    └── C-03b rediseño portada + quiénes somos   ✓ cerrado
+      │         ├── C-04 videoteca (TDD)
+      │         └── C-05 responsive-a11y-carga-completa
+      └── C-04 videoteca (TDD)          (usa el marco y la tarjeta de C-03b)
            └── C-05 responsive-a11y-carga-completa
                 └── C-06 integracion-y-guia
 ```
@@ -174,6 +176,20 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - `knowledge-base/09_decisiones_y_supuestos.md` §DD-13 a §DD-18
   - `knowledge-base/10_preguntas_abiertas.md` §IN-04
 
+### [C-03b] `rediseno-portada-y-quienes-somos`
+- **Estado**: `[x]` completado y archivado (2026-11-17)
+- **Scope**:
+  - Rediseño para dos públicos (DD-23): encabezado de la portada que dice qué es el Ateneo, próxima charla inmediatamente debajo, cifras compactas, franja «Seguinos», más vistas con la misma tarjeta que las últimas, duración en la miniatura, invitación final a proponer una charla.
+  - Página nueva `quienes-somos.html`: historia en 4 hitos, 4 valores, cómo funcionamos, galería oculta y «Proponer una charla» con la Declaración desplegable.
+  - Menú de 4 ítems con botón «Menú» accesible en el celular; cabecera, menú y pie compartidos desde `js/marco.js`; tarjeta de charla en `js/ficha.js`.
+  - Datos: `gancho` opcional en los temas; `direccion` y `mapa_url` («Cómo llegar») en `data/sitio.js`; validador y guía.
+  - Design system: componentes nuevos en `components.html` y capturas regeneradas (revisión 1, sin tokens nuevos).
+- **Dependencias**: `C-03`
+- **Governance**: BAJO
+- **Leer antes**:
+  - `openspec/changes/c-03b-rediseno-portada-y-quienes-somos/` (proposal, design, specs)
+  - `knowledge-base/09_decisiones_y_supuestos.md` §DD-23
+
 ### [C-04] `videoteca`
 - **Estado**: `[ ]` pendiente — **validado el 11/11**
 - **Scope**:
@@ -191,7 +207,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - **Nuevo (16/11, tras C-03)**: enlace a una charla concreta, `videoteca.html?charla=<id>` (por ejemplo `?charla=c084`), para compartir una charla puntual por WhatsApp o Instagram: la videoteca abre mostrando esa ficha destacada.
   - Reusar la tarjeta de charla, la cabecera, el menú y el pie compartidos que deja C-03b.
   - Fuera de scope: mostrar capítulos / marcas de tiempo de los videos (idea futura, IN-09).
-- **Dependencias**: `C-02` (y estilos de `C-01`)
+- **Dependencias**: `C-02` y `C-03b` (marco compartido y tarjeta de charla)
 - **Governance**: MEDIO
 - **Leer antes**:
   - `knowledge-base/06_funcionalidades.md` §US-004, §US-005, §US-006
@@ -208,7 +224,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 ### [C-05] `responsive-a11y-carga-completa`
 - **Estado**: `[ ]` pendiente — **validado el 11/11**
 - **Scope**:
-  - Responsive en celular (390 px), tablet y escritorio (1440 px), mobile-first (RN-AC-02); menú hamburguesa accesible.
+  - Auditoría responsive en celular (390 px), tablet y escritorio (1440 px), mobile-first (RN-AC-02). El menú hamburguesa accesible ya lo hizo C-03b: acá solo se audita.
   - Accesibilidad RN-AC-01: base 18 px, contraste AA (revisar texto sobre `--aac-llama` y gris sobre blanco), `alt`, navegación por teclado en menú/chips/fichas, objetivos ≥ 44 px, foco visible.
   - Carga completa de las 186 charlas: `titulo` limpio (formato *Tema – Disertante (año)* o el que defina el Ateneo), `disertante` y `url` de cada uno de los 310 videos; revisión de `anio` (aproximado) y de los temas (los 8 confirmados más las 2 categorías nuevas cuando Agustina las informe; reclasificar con las playlists si conviene, IN-08).
   - **Nuevo (11/11)**: accesibilidad de lo que suma C-03: textos alternativos y peso de las fotos de la galería, bloque desplegable de la Declaración usable con teclado, botones de Calendar y Zoom con objetivo ≥ 44 px.
@@ -252,7 +268,8 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 | C-01 | `base-y-estilos` | 1 | — | BAJO | `[x]` | Cerrado |
 | C-02 | `datos-charlas` | 1 | C-01 | MEDIO | `[x]` | Cerrado |
 | C-03 | `portada` | 2 | C-02 | BAJO | `[x]` | Cerrado |
-| C-04 | `videoteca` | 2 | C-02 | MEDIO | `[ ]` | Validado 11/11 |
+| C-03b | `rediseno-portada-y-quienes-somos` | 2 | C-03 | BAJO | `[x]` | Cerrado |
+| C-04 | `videoteca` | 2 | C-02, C-03b | MEDIO | `[ ]` | Validado 11/11 |
 | C-05 | `responsive-a11y-carga-completa` | 3 | C-03, C-04 | MEDIO | `[ ]` | Validado 11/11 |
 | C-06 | `integracion-y-guia` | 3 | C-05 | ALTO | `[ ]` | Validado 11/11 |
 
@@ -276,4 +293,4 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 
 ---
 
-**Próximo change**: `C-03b` (rediseño de portada, página «Quiénes somos» y cabecera/pie compartidos). Después: `C-04` (`videoteca`, con TDD).
+**Próximo change**: `C-03c` (refinamiento visual). Después: `C-04` (`videoteca`, con TDD).

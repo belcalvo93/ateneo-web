@@ -5,9 +5,9 @@
 ## Épica 1: Presentación y contacto
 ### US-001 — Conocer al Ateneo (RF-01, Alta)
 **Como** visitante **quiero** saber quiénes son y qué hacen **para** decidir si me interesa participar.
-- [ ] Sección «Quiénes somos»: historia desde agosto de 2015 (DD-13), bajada institucional, valores (rigor científico, clima amistoso y horizontal, acceso libre), Dpto. Ing. Electrónica, apoyo de Graduadas y Graduados, De Interés para la FRM — 11/11
-- [ ] Galería con las 4 fotos históricas entregadas por el Ateneo, optimizadas y con texto alternativo descriptivo — 11/11
-- [ ] Hero con propuesta y cifras (+100 conferencias, 310 videos, viernes 18 hs)
+- [ ] Página propia «Quiénes somos» (C-03b): historia desde agosto de 2015 (DD-13), bajada institucional, valores (rigor científico, clima amistoso y horizontal, acceso libre), Dpto. Ing. Electrónica, apoyo de Graduadas y Graduados, De Interés para la FRM — 11/11
+- [ ] Galería en la página Quiénes somos, oculta hasta tener fotos con consentimiento; cada foto con texto alternativo descriptivo — 11/11
+- [ ] Encabezado de la portada que dice qué es el Ateneo (desde 2015, gratis y abierto, horario) con «Conocé al Ateneo», y cifras compactas (+100 conferencias, 310 videos) — C-03b
 **Reglas**: RN-PC-02
 
 ### US-002 — Contactar e inscribirme por correo (RF-06, Alta)
@@ -17,7 +17,7 @@
 
 ### US-003 — Enlaces a redes (RF-05, Alta)
 **Como** visitante **quiero** llegar a YouTube, Instagram y el Canal de Difusión de WhatsApp **para** seguir al Ateneo.
-- [ ] Enlaces visibles en el pie, tomados de la lista configurable de redes (DD-14) — 11/11
+- [ ] Enlaces visibles en el pie y en la franja «Seguinos» de la portada (botones con el nombre de la red), tomados de la lista configurable de redes (DD-14) — 11/11 y C-03b
 - [ ] WhatsApp usa el enlace oficial del canal (DD-14); Instagram queda como placeholder hasta tener el enlace; una red sin enlace no se muestra al público
 
 ## Épica 2: Videoteca
@@ -42,15 +42,17 @@
 ### US-007 — Próxima charla (RF-04, Alta)
 **Como** visitante **quiero** ver fecha, hora, lugar y modalidad de la próxima charla **para** asistir.
 - [ ] Tarjeta con título, disertante, descripción, cuándo, dónde, botón «Inscribirme por correo»
-- [ ] Botones opcionales «Agendar en Google Calendar» y «Entrar por Zoom»: cada uno se muestra solo si su enlace está cargado (`calendar_url`, `zoom_url`; DD-15) — 11/11
+- [ ] La tarjeta queda inmediatamente después del encabezado de la portada (C-03b)
+- [ ] Botones opcionales «Agendar en mi calendario» y «Entrar por Zoom»: cada uno se muestra solo si su enlace está cargado (`calendar_url`, `zoom_url`; DD-15) — 11/11
 - [ ] Se edita desde el archivo de datos
 **Reglas**: RN-PC-01…03
 
 ### US-008 — Últimas charlas y más vistas (RF-08, Media)
-- [ ] 3 últimas charlas, 3 más vistas, grilla de temas con conteo (hoy 8; se sumarán 2 cuando Agustina informe los nombres: la grilla se arma desde `temas.js`, sin fijar la cantidad)
+- [ ] 3 últimas charlas y 3 más vistas con la misma tarjeta (miniatura con la duración total; C-03b), grilla de temas con conteo y gancho opcional (hoy 8; se sumarán 2 cuando Agustina informe los nombres: la grilla se arma desde `temas.js`, sin fijar la cantidad)
 **Reglas**: RN-PO-01, RN-PO-02
 
 ### US-009 — Proponer una charla (RF-09, Media)
+- [ ] Sección de la página Quiénes somos (`quienes-somos.html#proponer`), enlazada desde la portada y el pie (C-03b)
 - [ ] Requisitos y criterios de admisión listados (base científica o tecnológica; sin fines comerciales ni proselitismo político o religioso) — 11/11
 - [ ] Texto completo de la Declaración de Principios v2.4 en un bloque desplegable (`<details>`), sin enlace a `bit.ly` (DD-16) — 11/11
 - [ ] Botón «Enviar mi propuesta» (por correo)

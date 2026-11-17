@@ -79,9 +79,15 @@ Pensado primero para quien llega desde el celular. Incluye público adulto mayor
 
 ## Estructura del sitio
 
-- **Inicio**: presentación, próxima charla, últimas charlas, temas, más vistas, quiénes somos, proponer una charla, contacto.
+Tres páginas (rediseño aprobado el 16/11/2026, change C-03b):
+
+- **Inicio**: presentación del Ateneo (qué es, desde 2015, horario y botones «Ver la videoteca» y «Conocé al Ateneo»), próxima charla, cifras, «Seguinos» (botones a las redes), últimas charlas, temas, más vistas e invitación a proponer una charla.
 - **Videoteca**: buscador + filtro por tema; cada charla es una ficha con sus partes (enlaces a YouTube).
-- Secciones dentro de Inicio: Quiénes somos, Proponer una charla, Contacto y redes.
+- **Quiénes somos**: bajada institucional, historia en 4 hitos desde 2015, 4 valores, cómo funcionamos, galería (oculta hasta tener fotos con consentimiento) y «Proponer una charla» con la Declaración de Principios desplegable.
+- **Menú** (igual en las tres páginas): Inicio · Videoteca · Quiénes somos · Contacto. En el celular se pliega detrás de un botón «Menú». «Proponer una charla» no está en el menú: se llega desde la portada y desde el pie.
+- **Pie** (igual en las tres páginas): «Escribinos» con el correo, redes, dirección con enlace «Cómo llegar» y enlace a «Proponer una charla».
+
+Las tarjetas de charla son iguales en todo el sitio y muestran la duración total de la charla.
 
 Los mockups aprobados (Inicio escritorio, Videoteca, Inicio celular) están en `docs/mockups/`; el Ateneo los validó en la reunión del 11/11.
 
@@ -89,7 +95,7 @@ Los mockups aprobados (Inicio escritorio, Videoteca, Inicio celular) están en `
 
 | ID | Requerimiento | Prioridad |
 | --- | --- | --- |
-| RF-01 | Presentación del Ateneo: quiénes son, historia (desde agosto de 2015), bajada institucional, valores de la Declaración de Principios y galería de fotos históricas | Alta |
+| RF-01 | Presentación del Ateneo: quiénes son, historia (desde agosto de 2015), bajada institucional, valores de la Declaración de Principios y galería de fotos históricas, en una página propia «Quiénes somos» y con un resumen en el encabezado de la portada | Alta |
 | RF-02 | Videoteca: charlas por tema, una ficha por charla con miniatura, título, disertante, año y enlaces a sus partes en YouTube | Alta |
 | RF-03 | Buscar charlas por título o disertante (sin distinguir mayúsculas ni tildes) y filtrarlas por tema (8 temas confirmados + 2 a definir por Agustina) | Alta |
 | RF-04 | Próxima charla con fecha, hora, lugar y modalidad (presencial y/o por Zoom), con enlaces opcionales para agendar en Google Calendar y entrar por Zoom | Alta |
@@ -97,7 +103,7 @@ Los mockups aprobados (Inicio escritorio, Videoteca, Inicio celular) están en `
 | RF-06 | Contacto e inscripción por correo (ateneoac.mo@gmail.com) | Alta |
 | RF-07 | Enlazar las playlists de YouTube de cada tema (en construcción por Agustina) | Media |
 | RF-08 | Portada con últimas charlas y más vistas (automático por vistas, con opción de fijar destacadas a mano) | Media |
-| RF-09 | Sección «Proponer una charla» con los criterios de admisión y el texto completo de la Declaración de Principios (v2.4) en un bloque desplegable de la propia página (reemplaza el enlace `bit.ly`) | Media |
+| RF-09 | Sección «Proponer una charla» (en la página Quiénes somos, enlazada desde la portada y el pie) con los criterios de admisión y el texto completo de la Declaración de Principios (v2.4) en un bloque desplegable de la propia página (reemplaza el enlace `bit.ly`) | Media |
 
 ## Requerimientos no funcionales
 

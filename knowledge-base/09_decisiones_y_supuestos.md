@@ -72,6 +72,16 @@ Fuente: reunión con el Ateneo del 11/11/2026 y documentos entregados por el Ate
 ### DD-22 — Visualizaciones por charla y orden de «últimas» (C-03)
 **Decisión (16/11/2026)**: las visualizaciones de una charla son la **suma** de las de sus partes (la unidad es la charla; los valores del mockup eran ilustrativos). «Últimas charlas» se ordena por año y, a igual año, por el orden del catálogo, con las agregadas a mano primero; **cuando haya fechas reales** (sitio viejo del Ateneo, archivo de actividades por ciclo 2020–2026) se pasa a ordenar por fecha exacta. En celular las secciones van en el mismo orden que en escritorio, para que el orden visual y el de teclado coincidan. Una red sin enlace es solo un aviso del validador (no corta el modo estricto), porque la página la oculta.
 
+### DD-23 — Rediseño para dos públicos y tres páginas (C-03b)
+**Decisión (16/11/2026, aprobada por la autora tras una revisión de diseño)**: la página tiene que servir a la vez a los adultos mayores que ya participan (letra grande, pocos clics, nada escondido) y a los jóvenes que llegan desde WhatsApp o Instagram con el celular. Consecuencias:
+- **Tres páginas**: Inicio, Videoteca y Quiénes somos. «Quiénes somos» y «Proponer una charla» salen de la portada.
+- **Portada**: el encabezado dice qué es el Ateneo y la próxima charla queda inmediatamente debajo; se suman la franja «Seguinos» y una invitación final a proponer una charla.
+- **Menú de 4 ítems** (Inicio · Videoteca · Quiénes somos · Contacto), plegado detrás de un botón con el texto «Menú» en el celular. «Proponer una charla» sale del menú y queda enlazada desde la portada y el pie.
+- **Cabecera, menú y pie definidos una sola vez** (`js/marco.js`), con un respaldo mínimo escrito en cada página por si no carga JavaScript. La página actual se declara con un atributo y no por el nombre del archivo, porque dentro de Elementor ese nombre no existe.
+- **Una sola tarjeta de charla** (`js/ficha.js`), con la duración total sobre la miniatura (suma de las partes).
+- **Gancho opcional por tema** (`gancho` en `data/temas.js`), vacío hasta que el Ateneo o Agustina lo escriban.
+- El menú hamburguesa se adelantó de C-05 a C-03b; C-05 queda como auditoría.
+
 ## Supuestos inferidos
 
 ### SU-01 — La sección se crea con cuentas de la facultad

@@ -71,6 +71,29 @@
   .swatches{display:grid;gap:var(--esp-3);grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
   .sw{border:1px solid var(--borde);border-radius:var(--radio-chico);overflow:hidden;background:#fff;font-size:.85rem}
   .sw i{display:block;height:48px} .sw span{display:block;padding:var(--esp-2)}
+  /* Componentes agregados el 16/11/2026 (C-03b): solo tokens existentes */
+  .menu-boton{display:inline-flex;align-items:center;gap:var(--esp-2);min-height:var(--objetivo-minimo);padding:0 var(--esp-4);background:var(--superficie-tarjeta);color:var(--texto);border:2px solid var(--utn-gris-azulado);border-radius:var(--radio-chico);font:700 1rem var(--fuente-texto);cursor:pointer}
+  .menu-boton[aria-expanded="true"]{background:var(--aac-azul);border-color:var(--aac-azul);color:var(--utn-blanco)}
+  .menu-icono{width:var(--esp-5);height:2px;background:currentColor;box-shadow:0 -6px 0 currentColor,0 6px 0 currentColor}
+  .menu-lista{list-style:none;margin:var(--esp-3) 0 0;padding:0;max-width:320px}
+  .menu-lista a{display:flex;align-items:center;min-height:var(--objetivo-minimo);border-bottom:1px solid var(--borde);font:600 1rem var(--fuente-titulos);text-transform:uppercase;letter-spacing:.03em;color:var(--texto);text-decoration:none}
+  .menu-lista a[aria-current="page"]{color:var(--aac-azul);border-bottom-color:var(--aac-rojo)}
+  .cifras{display:flex;flex-wrap:wrap;gap:var(--esp-2) var(--esp-6);margin:0}
+  .cifras div{display:flex;align-items:baseline;gap:var(--esp-2)}
+  .cifras dt{font:700 var(--texto-h3) var(--fuente-titulos);color:var(--aac-azul)}
+  .cifras dd{margin:0;color:var(--texto-suave);font-size:var(--texto-chico)}
+  .seguinos{background:var(--superficie-suave);padding:var(--esp-4);border-radius:var(--radio)}
+  .miniatura .duracion{position:absolute;right:var(--esp-2);bottom:var(--esp-2);background:var(--utn-negro);color:var(--utn-blanco);font:700 var(--texto-chico) var(--fuente-texto);padding:0 var(--esp-2);border-radius:var(--radio-chico)}
+  .miniatura .puesto{position:absolute;left:var(--esp-2);top:var(--esp-2);min-width:var(--objetivo-minimo);height:var(--objetivo-minimo);display:grid;place-items:center;background:var(--aac-llama);color:var(--utn-negro);font:700 var(--texto-h3) var(--fuente-titulos);border-radius:var(--radio-pildora)}
+  .linea-tiempo{list-style:none;margin:0;padding:0;max-width:46rem}
+  .linea-tiempo li{position:relative;padding:0 0 var(--esp-5) var(--esp-6);border-left:4px solid var(--borde)}
+  .linea-tiempo li:last-child{padding-bottom:0;border-left-color:transparent}
+  .linea-tiempo li::before{content:"";position:absolute;left:calc(-1 * var(--esp-3) - 2px);top:var(--esp-1);width:var(--esp-5);height:var(--esp-5);border-radius:50%;background:var(--aac-llama);border:4px solid var(--aac-azul)}
+  .hito-anio{margin:0;font:700 var(--texto-h2) var(--fuente-titulos);line-height:1.15;color:var(--aac-azul)}
+  .linea-tiempo p:last-child{margin:0}
+  .valores{list-style:none;margin:0;padding:0;display:grid;gap:var(--esp-4);grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .valores li{background:var(--superficie-tarjeta);border:1px solid var(--borde);border-top:4px solid var(--aac-llama);border-radius:var(--radio-chico);padding:var(--esp-4)}
+  .valores p{margin:0}
   @media (max-width:720px){.proxima{grid-template-columns:1fr}}
 </style>
 </head>
@@ -79,16 +102,15 @@
 <header class="nav"><div class="wrap">
   <img src="assets/logo.png" alt="Logo del Ateneo Amigos de la Ciencia (AAC)">
   <nav aria-label="Principal"><ul>
-    <li><a href="#">Inicio</a></li><li><a href="#" aria-current="page">Videoteca</a></li><li><a href="#">Próxima charla</a></li>
-    <li><a href="#">Quiénes somos</a></li><li><a href="#">Proponer una charla</a></li><li><a href="#">Contacto</a></li>
+    <li><a href="#">Inicio</a></li><li><a href="#" aria-current="page">Videoteca</a></li><li><a href="#">Quiénes somos</a></li><li><a href="#">Contacto</a></li>
   </ul></nav>
 </div></header>
 
 <div class="hero"><div class="wrap">
-  <p class="etq">Divulgación científica y cultural · UTN Mendoza</p>
+  <p class="etq">Ateneo Amigos de la Ciencia · UTN Mendoza</p>
   <h1>Ciencia y cultura abiertas a toda la comunidad</h1>
   <p>Una charla cada viernes a las 18 hs, en el Salón de Actos de la UTN FRM y/o por Zoom.</p>
-  <div class="fila"><a class="btn btn-blanco" href="#">Ver la videoteca</a><a class="btn btn-borde" href="#">Próxima charla</a></div>
+  <div class="fila"><a class="btn btn-blanco" href="#">Ver la videoteca</a><a class="btn btn-borde" href="#">Conocé al Ateneo</a></div>
 </div></div>
 
 <main class="wrap">
@@ -129,6 +151,26 @@
       <div class="datos"><p style="margin:0 0 var(--esp-2)"><strong>Cuándo:</strong> viernes [fecha], 18 hs</p><p style="margin:0 0 var(--esp-3)"><strong>Dónde:</strong> Salón de Actos UTN FRM (Rodríguez 273) y/o por Zoom</p><a class="btn btn-rojo" href="#">Inscribirme por correo</a></div></div>
     <div class="grilla" style="margin-top:var(--esp-5)"><a class="tema-card" href="#">Geología, minería y energía<small>35 charlas</small></a><a class="tema-card" href="#">Inteligencia artificial y tecnología<small>30 charlas</small></a></div>
     <div class="propone" style="margin-top:var(--esp-5)"><h3>Proponer una charla</h3><p>No hace falta ser profesional universitario.</p><a class="btn btn-azul" href="#">Enviar mi propuesta</a></div>
+  </section>
+  <section class="demo"><h2>Menú en celular</h2>
+    <div class="fila"><button class="menu-boton" type="button" aria-expanded="false"><span class="menu-icono"></span><span>Menú</span></button><button class="menu-boton" type="button" aria-expanded="true"><span class="menu-icono"></span><span>Menú</span></button></div>
+    <ul class="menu-lista"><li><a href="#" aria-current="page">Inicio</a></li><li><a href="#">Videoteca</a></li><li><a href="#">Quiénes somos</a></li><li><a href="#">Contacto</a></li></ul>
+    <p class="nota">Por debajo de 720 px el menú se pliega detrás del botón «Menú» (cerrado y abierto). Siempre con texto, nunca solo el ícono.</p>
+  </section>
+
+  <section class="demo"><h2>Cifras, redes y miniatura</h2>
+    <dl class="cifras"><div><dt>+100</dt><dd>conferencias desde 2015</dd></div><div><dt>310</dt><dd>videos en YouTube</dd></div></dl>
+    <div class="seguinos" style="margin-top:var(--esp-4)"><h3>Seguinos</h3><div class="fila"><a class="btn btn-contorno" href="#">YouTube</a><a class="btn btn-contorno" href="#">Canal de WhatsApp</a></div></div>
+    <div class="grilla" style="margin-top:var(--esp-4)">
+      <article class="ficha"><div class="miniatura"><span class="play"></span><span class="puesto">1</span><span class="duracion">2:27:31</span></div>
+        <div class="cuerpo"><span class="tema">Física y matemática</span><h3>Entrelazamiento cuántico</h3><p class="meta">Dr. Ernesto Gandolfo Raso · 2023 · 2 partes</p><p class="meta">12 mil visualizaciones</p></div></article>
+    </div>
+    <p class="nota">La miniatura muestra la duración total de la charla; el número de puesto solo se usa en «Las más vistas».</p>
+  </section>
+
+  <section class="demo"><h2>Línea de tiempo y valores</h2>
+    <ol class="linea-tiempo"><li><p class="hito-anio">2015</p><h3>Título del hito</h3><p>Texto corto del hito.</p></li><li><p class="hito-anio">Hoy</p><h3>Título del hito</h3><p>Texto corto del hito.</p></li></ol>
+    <ul class="valores" style="margin-top:var(--esp-5)"><li><h3>Rigor científico</h3><p>Una frase que explica el valor.</p></li><li><h3>Trato horizontal</h3><p>Una frase que explica el valor.</p></li></ul>
   </section>
 </main>
 

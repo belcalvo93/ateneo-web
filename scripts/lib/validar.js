@@ -10,7 +10,7 @@ const ARCHIVO_NUEVAS = 'data/charlas-nuevas.js';
 const ARCHIVO_CORRECCIONES = 'data/correcciones.js';
 const ARCHIVO_SITIO = 'data/sitio.js';
 
-const CAMPOS_TEMA = ['id', 'nombre', 'etiqueta', 'playlist_url'];
+const CAMPOS_TEMA = ['id', 'nombre', 'etiqueta', 'playlist_url', 'gancho'];
 const CAMPOS_CHARLA = ['id', 'titulo', 'disertante', 'tema', 'anio', 'partes', 'revisar', 'destacada'];
 const CAMPOS_CORRECCION = ['titulo', 'disertante', 'tema', 'anio', 'destacada', 'confirmados', 'partes'];
 const MARCAS_REVISAR = ['titulo', 'disertante', 'vistas', 'partes'];
@@ -18,7 +18,7 @@ const CAMPOS_PARTE = ['duracion', 'url', 'vistas', 'titulo_original'];
 const CAMPOS_PROXIMA = ['titulo', 'disertante', 'descripcion', 'fecha', 'hora', 'lugar', 'modalidad', 'zoom_url', 'calendar_url', 'correo_inscripcion'];
 // Enlaces opcionales de la próxima charla: null es un estado válido y permanente, no un pendiente.
 const ENLACES_PROXIMA = ['zoom_url', 'calendar_url'];
-const CAMPOS_SITIO = ['correo', 'canal_youtube', 'conferencias', 'redes', 'fotos'];
+const CAMPOS_SITIO = ['correo', 'canal_youtube', 'conferencias', 'direccion', 'mapa_url', 'redes', 'fotos'];
 const CAMPOS_RED = ['nombre', 'url'];
 const CAMPOS_FOTO = ['archivo', 'alt'];
 
@@ -75,6 +75,10 @@ function validar(datos, opciones) {
     if (!esTextoNoVacio(t.etiqueta)) error(ARCHIVO_TEMAS, ref, null, 'etiqueta', 'falta la etiqueta (texto corto) del tema');
     if (t.playlist_url !== null && typeof t.playlist_url !== 'string') {
       error(ARCHIVO_TEMAS, ref, null, 'playlist_url', 'tiene que ser un enlace entre comillas o null');
+    }
+    // gancho: opcional. Sin el campo o en null no es un pendiente.
+    if ('gancho' in t && t.gancho !== null && !esTextoNoVacio(t.gancho)) {
+      error(ARCHIVO_TEMAS, ref, null, 'gancho', 'tiene que ser una frase corta entre comillas o null');
     }
   });
 
@@ -298,6 +302,12 @@ function validar(datos, opciones) {
     }
     if ('conferencias' in s && !esTextoNoVacio(s.conferencias)) {
       errS(null, 'conferencias', 'tiene que ser texto entre comillas (por ejemplo "+100")');
+    }
+    if ('direccion' in s && !esTextoNoVacio(s.direccion)) {
+      errS(null, 'direccion', 'tiene que ser la dirección entre comillas');
+    }
+    if ('mapa_url' in s && s.mapa_url !== null && !(typeof s.mapa_url === 'string' && RE_HTTPS.test(s.mapa_url))) {
+      errS(null, 'mapa_url', 'tiene que ser un enlace que empiece con https:// o null');
     }
     if ('redes' in s) {
       if (!Array.isArray(s.redes)) errS(null, 'redes', 'tiene que ser una lista de redes (puede estar vacía: [])');

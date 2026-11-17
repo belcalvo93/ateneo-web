@@ -191,9 +191,9 @@ const TEMAS = [
 test('conteoPorTema: cuenta las charlas de cada tema en el orden de los temas', () => {
   const lista = [charla('c1'), charla('c2', { tema: 'agua' }), charla('c3'), charla('c4', { tema: 'no-existe' })];
   assert.deepEqual(L.conteoPorTema(TEMAS, lista), [
-    { id: 'geologia', nombre: 'Geología, minería y energía', etiqueta: 'Geología', cantidad: 2 },
-    { id: 'agua', nombre: 'Agua, ambiente y sostenibilidad', etiqueta: 'Agua y ambiente', cantidad: 1 },
-    { id: 'vacio', nombre: 'Tema sin charlas', etiqueta: 'Vacío', cantidad: 0 }
+    { id: 'geologia', nombre: 'Geología, minería y energía', etiqueta: 'Geología', gancho: null, cantidad: 2 },
+    { id: 'agua', nombre: 'Agua, ambiente y sostenibilidad', etiqueta: 'Agua y ambiente', gancho: null, cantidad: 1 },
+    { id: 'vacio', nombre: 'Tema sin charlas', etiqueta: 'Vacío', gancho: null, cantidad: 0 }
   ]);
 });
 
@@ -278,7 +278,7 @@ test('accionesProxima: cada enlace opcional agrega su botón, solo o junto al ot
   const ambos = L.accionesProxima(proxima({ calendar_url: cal, zoom_url: zoom }));
   assert.deepEqual(ambos.map((a) => [a.tipo, a.texto, a.url]), [
     ['correo', 'Inscribirme por correo', 'mailto:contacto@ejemplo.org'],
-    ['calendar', 'Agendar en Calendar', cal],
+    ['calendar', 'Agendar en mi calendario', cal],
     ['zoom', 'Entrar por Zoom', zoom]
   ]);
 });
@@ -310,6 +310,71 @@ test('horaCorta: «18:00» se lee «18 hs» y con minutos los conserva', () => {
   assert.equal(L.horaCorta('25:00'), null);
 });
 
+// ---- C-03b: duración, partes, gancho y menú ----
+
+test('duracionDeCharla: una sola parte conserva su duración', () => {
+  assert.equal(L.duracionDeCharla(charla('c1', { partes: [{ duracion: '31:40' }] })), '31:40');
+  assert.equal(L.duracionDeCharla(charla('c2', { partes: [{ duracion: '1:10:57' }] })), '1:10:57');
+  assert.equal(L.duracionDeCharla(charla('c3', { partes: [{ duracion: '9:05' }] })), '9:05');
+});
+
+test('duracionDeCharla: suma las partes y pasa a horas cuando corresponde', () => {
+  assert.equal(L.duracionDeCharla(charla('c1', { partes: [{ duracion: '1:54:45' }, { duracion: '32:46' }] })), '2:27:31');
+  assert.equal(L.duracionDeCharla(charla('c2', { partes: [{ duracion: '40:30' }, { duracion: '19:30' }, { duracion: '0:05' }] })), '1:00:05');
+  assert.equal(L.duracionDeCharla(charla('c3', { partes: [{ duracion: '10:00' }, { duracion: '5:09' }] })), '15:09');
+});
+
+test('duracionDeCharla: una duración inválida o sin partes devuelve null', () => {
+  assert.equal(L.duracionDeCharla(charla('c1', { partes: [{ duracion: '10:00' }, { duracion: '1h10' }] })), null);
+  assert.equal(L.duracionDeCharla(charla('c2', { partes: [{ duracion: '10:75' }] })), null);
+  assert.equal(L.duracionDeCharla(charla('c3', { partes: [] })), null);
+  assert.equal(L.duracionDeCharla(charla('c4', { partes: [{}] })), null);
+  assert.equal(L.duracionDeCharla(null), null);
+});
+
+test('duracionDeCharla: lee las duraciones igual que el validador', () => {
+  const { duracionASegundos } = require('../scripts/lib/normalizar.js');
+  for (const d of ['0:05', '9:05', '45:10', '59:59', '1:00:00', '1:10:57', '12:00:00', '1h10', '10:75', '1:75:00', '', 'abc', '5']) {
+    const esperado = duracionASegundos(d) === null ? null : d;
+    const obtenido = L.duracionDeCharla({ partes: [{ duracion: d }] });
+    assert.equal(obtenido === null, esperado === null, 'difieren en ' + JSON.stringify(d));
+  }
+});
+
+test('textoPartes: solo cuando la charla tiene más de una parte', () => {
+  assert.equal(L.textoPartes(charla('c1', { partes: [{}, {}] })), '2 partes');
+  assert.equal(L.textoPartes(charla('c2', { partes: [{}, {}, {}] })), '3 partes');
+  assert.equal(L.textoPartes(charla('c3')), null);
+  assert.equal(L.textoPartes(charla('c4', { partes: [] })), null);
+  assert.equal(L.textoPartes(null), null);
+});
+
+test('conteoPorTema: devuelve el gancho solo si tiene texto real', () => {
+  const temas = [
+    { id: 'a', nombre: 'A', etiqueta: 'A', gancho: '¿De dónde sale el litio?' },
+    { id: 'b', nombre: 'B', etiqueta: 'B', gancho: null },
+    { id: 'c', nombre: 'C', etiqueta: 'C' },
+    { id: 'd', nombre: 'D', etiqueta: 'D', gancho: '[gancho]' },
+    { id: 'e', nombre: 'E', etiqueta: 'E', gancho: '   ' }
+  ];
+  assert.deepEqual(L.conteoPorTema(temas, []).map((t) => t.gancho), ['¿De dónde sale el litio?', null, null, null, null]);
+});
+
+test('itemsDeMenu: cuatro ítems en orden y solo el de la página abierta marcado', () => {
+  const inicio = L.itemsDeMenu('inicio');
+  assert.deepEqual(inicio.map((i) => i.texto), ['Inicio', 'Videoteca', 'Quiénes somos', 'Contacto']);
+  assert.deepEqual(inicio.map((i) => i.url), ['index.html', 'videoteca.html', 'quienes-somos.html', '#contacto']);
+  assert.deepEqual(inicio.map((i) => i.actual), [true, false, false, false]);
+  assert.deepEqual(L.itemsDeMenu('videoteca').map((i) => i.actual), [false, true, false, false]);
+  assert.deepEqual(L.itemsDeMenu('quienes-somos').map((i) => i.actual), [false, false, true, false]);
+});
+
+test('itemsDeMenu: una página desconocida no marca ninguno y Contacto nunca es la página actual', () => {
+  assert.deepEqual(L.itemsDeMenu('otra').map((i) => i.actual), [false, false, false, false]);
+  assert.deepEqual(L.itemsDeMenu(undefined).map((i) => i.actual), [false, false, false, false]);
+  assert.deepEqual(L.itemsDeMenu('contacto').map((i) => i.actual), [false, false, false, false]);
+});
+
 // ---- 2.9 integración con los datos reales ----
 
 test('portada con los datos reales: nada de lo que se muestra tiene corchetes', () => {
@@ -331,12 +396,14 @@ test('portada con los datos reales: nada de lo que se muestra tiene corchetes', 
   for (const c of ultimas.concat(vistas)) {
     const titulo = L.tituloVisible(c);
     assert.ok(titulo, 'la charla ' + c.id + ' no tiene título visible');
-    textos.push(titulo, L.disertanteVisible(c), L.formatoVistas(L.vistasDeCharla(c)), L.miniatura(c.partes[0].url));
+    textos.push(titulo, L.disertanteVisible(c), L.formatoVistas(L.vistasDeCharla(c)), L.miniatura(c.partes[0].url), L.textoPartes(c));
+    assert.match(L.duracionDeCharla(c), /^(\d+:)?\d{1,2}:\d{2}$/, 'duración de ' + c.id);
   }
   const conteo = L.conteoPorTema(temas, lista);
   assert.equal(conteo.length, temas.length);
   assert.equal(conteo.reduce((a, t) => a + t.cantidad, 0), lista.length);
-  for (const t of conteo) textos.push(t.nombre, t.etiqueta, L.textoCantidad(t.cantidad));
+  for (const t of conteo) textos.push(t.nombre, t.etiqueta, t.gancho, L.textoCantidad(t.cantidad));
+  for (const i of L.itemsDeMenu('inicio')) textos.push(i.texto);
   for (const r of L.redesVisibles(sitio.redes)) textos.push(r.nombre, r.url);
   for (const a of L.accionesProxima(prox)) textos.push(a.texto, a.url);
   for (const campo of ['titulo', 'disertante', 'descripcion', 'lugar', 'modalidad']) textos.push(L.textoVisible(prox[campo]));

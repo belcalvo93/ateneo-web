@@ -18,9 +18,15 @@
 ateneo-web/
 ├── index.html            # Inicio
 ├── videoteca.html        # Videoteca
+├── quienes-somos.html    # Quiénes somos (historia, valores, proponer una charla)
 ├── css/estilos.css       # Variables de identidad + estilos
 ├── js/
 │   ├── aplicar-correcciones.js  # vista combinada: generado + nuevas + correcciones (script común y require)
+│   ├── portada-logica.js # Lógica pura de las páginas: regla de no mostrar placeholders, más vistas, duración, menú (testeada)
+│   ├── marco.js          # Barra, cabecera con menú desplegable y pie, iguales en las tres páginas
+│   ├── ficha.js          # Tarjeta de charla, la misma en portada y videoteca
+│   ├── portada.js        # Render de la portada
+│   ├── quienes-somos.js  # Galería de la página Quiénes somos
 │   ├── buscador.js       # Lógica pura: normalizar, buscar, filtrar (testeada)
 │   └── app.js            # Render y eventos
 ├── data/
@@ -29,6 +35,7 @@ ateneo-web/
 │   ├── charlas-nuevas.js # window.AAC_CHARLAS_NUEVAS (a mano)
 │   ├── correcciones.js   # window.AAC_CORRECCIONES por id de charla (a mano)
 │   ├── proxima-charla.js # window.AAC_PROXIMA_CHARLA
+│   ├── sitio.js          # window.AAC_SITIO: contacto, dirección y mapa, redes, fotos
 │   ├── charlas-borrador.json  # origen, no se edita
 │   └── LEEME.md          # guía para editores (borrador)
 ├── scripts/              # herramientas de desarrollo (no son parte del sitio)

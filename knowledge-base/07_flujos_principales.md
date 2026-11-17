@@ -15,10 +15,11 @@
 **Disparador**: visitante ve la tarjeta «Próxima charla».
 1. Lee cuándo/dónde/modalidad.
 2. Toca «Inscribirme por correo» → abre cliente de correo con `mailto:ateneoac.mo@gmail.com` (asunto sugerido).
-3. Si están cargados, toca «Agendar en Google Calendar» para guardar la charla en su calendario o «Entrar por Zoom» para seguirla en línea (DD-15); los dos abren en una pestaña nueva.
+3. Si están cargados, toca «Agendar en mi calendario» para guardar la charla en su calendario o «Entrar por Zoom» para seguirla en línea (DD-15); los dos abren en una pestaña nueva.
 **Errores**: sin cliente de correo → el correo también está visible como texto. Sin enlace de Calendar o de Zoom → ese botón no se muestra.
 
 ## Flujo 3: Proponer una charla
+0. Llega desde «Proponer una charla» en la portada o en el pie de cualquier página → abre `quienes-somos.html#proponer`.
 1. Visitante lee requisitos (propuesta temática, resumen, CV abreviado, aceptación de la Declaración de Principios, correo y teléfono) y los criterios de admisión (RN-PR-03).
 2. Despliega el texto completo de la Declaración de Principios en la propia página (bloque `<details>`; ya no se usa el `bit.ly`, DD-16).
 3. Toca «Enviar mi propuesta» → `mailto:` al Ateneo.

@@ -16,9 +16,9 @@ Decisión de política (06/11/2026, por la usuaria): sistema de diseño definido
 | `tokens.css` | Variables de color, tipografía, espaciado, radios, sombras, foco y movimiento (con `prefers-reduced-motion`) |
 | `brand.md` | Nombre, logo, tono y reglas de uso |
 | `brand.js` | Constante del nombre; enlaza `[data-brand-name]` |
-| `components.html` | Referencia de componentes y estados (nav, hero, botones, ficha de charla, buscador/chips, próxima charla, tema, pie) |
+| `components.html` | Referencia de componentes y estados (nav, menú en celular, hero, botones, ficha de charla con duración y puesto, buscador/chips, próxima charla, cifras, franja de redes, tema, línea de tiempo, valores, pie) |
 
-Ampliación de componentes (16/11/2026, pedida por la usuaria): se suma la variante de botón **contorno** (`.btn-contorno`, azul sobre blanco) para acciones secundarias sobre fondo claro. Usa solo tokens existentes, así que la revisión sigue siendo la 1. Las capturas de `previews/` son anteriores a esta variante.
+Ampliación de componentes (16/11/2026, pedida por la usuaria): se suma la variante de botón **contorno** (`.btn-contorno`, azul sobre blanco) para acciones secundarias sobre fondo claro. Con C-03b se agregan además el botón «Menú» y su lista desplegable, las cifras compactas, la franja de redes, la duración y el puesto sobre la miniatura, la línea de tiempo y las tarjetas de valor. Todo usa solo tokens existentes, así que la revisión sigue siendo la 1. Las capturas de `previews/` se regeneraron el 16/11/2026 e incluyen estos componentes.
 | `assets/logo.png` | Logo AAC (copia de `docs/mockups/logo-aac.png`) |
 | `previews/` | Capturas 390×844 y 1440×900 |
 

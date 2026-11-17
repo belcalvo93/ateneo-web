@@ -11,50 +11,37 @@
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-<div class="aac-web">
-  <div class="topbar"><div class="wrap"><span>UTN · Facultad Regional Mendoza</span><span>Sección de la web de la facultad</span></div></div>
-  <header class="nav"><div class="wrap">
-    <img src="design-system/assets/logo.png" alt="Logo del Ateneo Amigos de la Ciencia (AAC)">
+<div class="aac-web" data-aac-pagina="videoteca">
+  <!-- Barra, cabecera y pie: los dibuja js/marco.js. Lo escrito acá es solo el respaldo si no carga. -->
+  <div class="topbar" data-aac="barra"><div class="wrap"><span>UTN · Facultad Regional Mendoza</span></div></div>
+  <header class="nav" data-aac="cabecera"><div class="wrap">
+    <img src="design-system/assets/logo.png" alt="Logo del Ateneo Amigos de la Ciencia (AAC)" width="150" height="56">
     <nav aria-label="Principal"><ul>
       <li><a href="index.html">Inicio</a></li>
       <li><a href="videoteca.html" aria-current="page">Videoteca</a></li>
-      <li><a href="index.html#proxima-charla">Próxima charla</a></li>
-      <li><a href="index.html#quienes-somos">Quiénes somos</a></li>
-      <li><a href="index.html#proponer">Proponer una charla</a></li>
+      <li><a href="quienes-somos.html">Quiénes somos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul></nav>
   </div></header>
 
   <main class="wrap">
     <h1>Videoteca</h1>
-    <p>[Contenido pendiente: C-04]</p>
+    <p>La videoteca está en construcción. Mientras tanto, podés ver todas las charlas en <a href="https://www.youtube.com/@ateneoamigosdelasciencias" rel="noopener noreferrer" class="enlace-alto" data-aac="canal">nuestro canal de YouTube</a>.</p>
     <p><a class="btn btn-azul" href="index.html">Volver al inicio</a></p>
   </main>
 
-  <footer class="pie" id="contacto"><div class="wrap">
+  <footer class="pie" id="contacto" data-aac="pie"><div class="wrap">
     <div>
-      <h2>Contacto</h2>
-      <p><a href="mailto:ateneoac.mo@gmail.com" data-aac="correo">ateneoac.mo@gmail.com</a></p>
-      <p>Consultas e inscripción a las charlas</p>
-    </div>
-    <div>
-      <h2>Seguinos</h2>
-      <!-- Las redes salen de data/sitio.js (js/pie.js); este enlace es el respaldo si no carga -->
-      <ul class="redes" data-aac="redes">
-        <li><a href="https://www.youtube.com/@ateneoamigosdelasciencias" rel="noopener noreferrer">YouTube</a></li>
-      </ul>
-    </div>
-    <div>
-      <h2>Dónde estamos</h2>
-      <p>UTN · Facultad Regional Mendoza</p>
-      <p>Rodríguez 273, Ciudad de Mendoza</p>
+      <h2>Escribinos</h2>
+      <p><a href="mailto:ateneoac.mo@gmail.com">ateneoac.mo@gmail.com</a></p>
+      <p><a href="https://www.youtube.com/@ateneoamigosdelasciencias" rel="noopener noreferrer">YouTube</a></p>
     </div>
   </div></footer>
 </div>
 
-<!-- Pie: redes y correo desde data/sitio.js -->
+<!-- Datos y marco compartido -->
 <script src="data/sitio.js"></script>
 <script src="js/portada-logica.js"></script>
-<script src="js/pie.js"></script>
+<script src="js/marco.js"></script>
 </body>
 </html>

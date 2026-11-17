@@ -8,6 +8,8 @@ window.AAC_SITIO = {
   correo: "ateneoac.mo@gmail.com",           // Correo de contacto del Ateneo (consultas, inscripción y propuestas)
   canal_youtube: "https://www.youtube.com/@ateneoamigosdelasciencias", // Enlace al canal de YouTube
   conferencias: "+100",                      // Cantidad de conferencias que se muestra en la portada. Ejemplo: "+100"
+  direccion: "UTN · Facultad Regional Mendoza · Rodríguez 273, Ciudad de Mendoza", // Dónde funciona el Ateneo (se ve al pie)
+  mapa_url: "https://www.google.com/maps/search/?api=1&query=Rodr%C3%ADguez+273%2C+Ciudad+de+Mendoza", // Enlace «Cómo llegar». Con null (sin comillas) no se muestra
 
   // REDES: una línea por red, en el orden en que se ven en el pie de la página.
   // Para agregar una red, copiá una línea y cambiá el nombre y el enlace. Para quitarla, borrá su línea.

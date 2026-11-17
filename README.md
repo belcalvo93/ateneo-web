@@ -41,19 +41,24 @@ npm test
 
 (equivale a `node --test`). Corre los tests de `tests/` (lógica de la portada, validador y scripts de datos).
 
-## Portada (Inicio)
+## Páginas
 
-`index.html` muestra la próxima charla, las últimas charlas, los temas, las más vistas, «Quiénes somos» y «Proponer una charla». El contenido fijo está escrito en el HTML; lo que sale de los datos lo arma el navegador:
+- `index.html` (Inicio): qué es el Ateneo, la próxima charla, redes, últimas charlas, temas, más vistas e invitación a proponer una charla.
+- `videoteca.html` (Videoteca): en construcción (C-04).
+- `quienes-somos.html` (Quiénes somos): historia, valores, cómo funcionamos, galería y «Proponer una charla» con la Declaración de Principios.
 
-- `js/portada-logica.js`: las reglas (qué se muestra, en qué orden y qué se oculta). Son funciones puras, probadas en `tests/portada-logica.test.js`.
-- `js/portada.js`: dibuja la página con esas reglas.
-- `js/pie.js`: redes y correo del pie, compartido con `videoteca.html`.
+El contenido fijo está escrito en el HTML; lo que sale de los datos lo arma el navegador:
+
+- `js/portada-logica.js`: las reglas (qué se muestra, en qué orden y qué se oculta, duración, menú). Son funciones puras, probadas en `tests/portada-logica.test.js`.
+- `js/marco.js`: barra, cabecera con el menú (plegado detrás de «Menú» en el celular) y pie, iguales en las tres páginas. Cada página dice cuál es con `data-aac-pagina` y trae escrito un respaldo mínimo por si no carga JavaScript.
+- `js/ficha.js`: la tarjeta de charla, la misma en todo el sitio.
+- `js/portada.js` y `js/quienes-somos.js`: dibujan cada página.
 
 Regla de oro: un dato sin completar (entre corchetes, como `[Título]`) nunca se muestra al público. Una charla sin título limpio usa el título original del video; un disertante, una red o un botón sin dato simplemente no aparecen.
 
 ## Datos
 
-Las charlas, los temas, la próxima charla y los datos generales del sitio (`data/sitio.js`: contacto, redes y fotos) viven en `data/` como archivos `.js` (guía para editores: [data/LEEME.md](data/LEEME.md)). `data/charlas.js` es un catálogo **generado** (no se edita a mano: lo regenera `node scripts/derivar-datos.js` cuando cambia el canal de YouTube); lo que una persona corrige va en `data/correcciones.js` (por id de charla) y las charlas nuevas en `data/charlas-nuevas.js`, que ningún script pisa. El navegador junta todo con `js/aplicar-correcciones.js`, así que editar esos dos archivos no requiere correr nada. Para comprobar que están bien escritos y ver qué falta completar:
+Las charlas, los temas, la próxima charla y los datos generales del sitio (`data/sitio.js`: contacto, dirección y mapa, redes y fotos) viven en `data/` como archivos `.js` (guía para editores: [data/LEEME.md](data/LEEME.md)). `data/charlas.js` es un catálogo **generado** (no se edita a mano: lo regenera `node scripts/derivar-datos.js` cuando cambia el canal de YouTube); lo que una persona corrige va en `data/correcciones.js` (por id de charla) y las charlas nuevas en `data/charlas-nuevas.js`, que ningún script pisa. El navegador junta todo con `js/aplicar-correcciones.js`, así que editar esos dos archivos no requiere correr nada. Para comprobar que están bien escritos y ver qué falta completar:
 
 ```
 node scripts/validar-datos.js

@@ -45,11 +45,19 @@ El validador SHALL tratar como error (código 1): campos obligatorios faltantes 
 - **THEN** el validador lo informa como error
 
 ### Requirement: Coherencia de temas
-El validador SHALL comprobar que los `id` de tema son únicos, que cada tema tiene `nombre` y `etiqueta` no vacíos, y avisar si algún tema queda sin charlas.
+El validador SHALL comprobar que los `id` de tema son únicos, que cada tema tiene `nombre` y `etiqueta` no vacíos, que `gancho`, si está, es `null` o un texto no vacío, y avisar si algún tema queda sin charlas.
 
 #### Scenario: Tema vacío
 - **WHEN** un tema no tiene ninguna charla asignada
 - **THEN** el validador muestra un aviso con el nombre del tema, sin cortar con error
+
+#### Scenario: Gancho ausente o nulo
+- **WHEN** un tema no tiene `gancho` o lo tiene en `null`
+- **THEN** el validador no informa error ni aviso por ese campo, ni siquiera en modo estricto
+
+#### Scenario: Gancho mal escrito
+- **WHEN** un tema tiene `gancho: ""` o `gancho: 5`
+- **THEN** el validador informa el tema y el campo `gancho` como error
 
 ### Requirement: Avisos de pendientes
 El validador SHALL mostrar un aviso, sin cortar con error, por cada placeholder entre corchetes, cada entrada de `revisar` y cada `url` en `null`, y un resumen con la cantidad de cada tipo.
@@ -93,7 +101,7 @@ El validador SHALL tratar como error en `data/correcciones.js`: una clave que no
 - **THEN** el validador ya no muestra ese pendiente ni la marca `disertante` de `revisar`
 
 ### Requirement: Validación de la configuración del sitio
-El validador SHALL leer `data/sitio.js` y tratar como error: que no defina `window.AAC_SITIO`, un campo faltante o desconocido, `correo` que no sea una dirección de correo, `canal_youtube` que no sea un enlace `https://`, `conferencias` vacío, una red sin `nombre`, una `url` de red que no sea `null`, un placeholder ni un enlace `https://`, y una foto sin `archivo` o sin `alt`.
+El validador SHALL leer `data/sitio.js` y tratar como error: que no defina `window.AAC_SITIO`, un campo faltante o desconocido, `correo` que no sea una dirección de correo, `canal_youtube` que no sea un enlace `https://`, `conferencias` o `direccion` vacíos, `mapa_url` que no sea `null` ni un enlace `https://`, una red sin `nombre`, una `url` de red que no sea `null`, un placeholder ni un enlace `https://`, y una foto sin `archivo` o sin `alt`.
 
 #### Scenario: Configuración correcta
 - **WHEN** se corre el validador con la configuración en su estado inicial
@@ -110,6 +118,10 @@ El validador SHALL leer `data/sitio.js` y tratar como error: que no defina `wind
 #### Scenario: Campo desconocido
 - **WHEN** la configuración trae `redez: […]`
 - **THEN** el validador informa el campo `redez` como desconocido y termina con código 1
+
+#### Scenario: Mapa mal escrito
+- **WHEN** `mapa_url` es «maps.google.com/…» sin `https://`
+- **THEN** el validador informa en `data/sitio.js` el campo `mapa_url` como error
 
 ### Requirement: Avisos de redes pendientes
 El validador SHALL mostrar un aviso, sin cortar con error, por cada red cuya `url` sea `null` o un placeholder, e incluirlos en el resumen. Como la página oculta esas redes, esos avisos MUST NOT hacer fallar el modo `--estricto`.

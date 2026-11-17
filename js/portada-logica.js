@@ -18,6 +18,15 @@
   var RE_FECHA = /^(\d{2})\/(\d{2})\/(\d{4})$/;
   var RE_HORA = /^([01]\d|2[0-3]):([0-5]\d)$/;
   var RE_ID_VIDEO = /^[\w-]{11}$/;
+  var RE_DURACION = /^(?:(\d+):)?(\d{1,2}):(\d{2})$/;
+
+  // Menú principal: se define solo acá. `pagina` es el valor de data-aac-pagina de cada página.
+  var MENU = [
+    { texto: 'Inicio', url: 'index.html', pagina: 'inicio' },
+    { texto: 'Videoteca', url: 'videoteca.html', pagina: 'videoteca' },
+    { texto: 'Quiénes somos', url: 'quienes-somos.html', pagina: 'quienes-somos' },
+    { texto: 'Contacto', url: '#contacto', pagina: null }
+  ];
 
   function esObjeto(x) {
     return typeof x === 'object' && x !== null && !Array.isArray(x);
@@ -121,6 +130,52 @@
     return String(miles).replace('.', ',') + ' mil visualizaciones';
   }
 
+  // Misma lectura que el validador (scripts/lib/normalizar.js): M:SS, MM:SS o H:MM:SS.
+  function segundosDe(duracion) {
+    var m = typeof duracion === 'string' ? RE_DURACION.exec(duracion.trim()) : null;
+    if (!m) return null;
+    var horas = m[1] === undefined ? 0 : Number(m[1]);
+    var minutos = Number(m[2]);
+    var segundos = Number(m[3]);
+    if (segundos > 59 || (m[1] !== undefined && minutos > 59)) return null;
+    return horas * 3600 + minutos * 60 + segundos;
+  }
+
+  function dosCifras(n) {
+    return n < 10 ? '0' + n : String(n);
+  }
+
+  // Duración total de la charla (suma de sus partes) como "M:SS" o "H:MM:SS".
+  // null si no tiene partes o si alguna duración no se puede leer.
+  function duracionDeCharla(charla) {
+    if (!esObjeto(charla) || !Array.isArray(charla.partes) || charla.partes.length === 0) return null;
+    var total = 0;
+    for (var i = 0; i < charla.partes.length; i++) {
+      var s = esObjeto(charla.partes[i]) ? segundosDe(charla.partes[i].duracion) : null;
+      if (s === null) return null;
+      total += s;
+    }
+    var horas = Math.floor(total / 3600);
+    var minutos = Math.floor((total % 3600) / 60);
+    var segundos = total % 60;
+    return horas > 0 ? horas + ':' + dosCifras(minutos) + ':' + dosCifras(segundos) : minutos + ':' + dosCifras(segundos);
+  }
+
+  // "2 partes", "3 partes"…; null si la charla es de una sola parte.
+  function textoPartes(charla) {
+    var n = esObjeto(charla) && Array.isArray(charla.partes) ? charla.partes.length : 0;
+    return n > 1 ? n + ' partes' : null;
+  }
+
+  // ---- menú ----
+
+  // Los ítems del menú principal, con el de la página abierta marcado (y ningún otro).
+  function itemsDeMenu(pagina) {
+    return MENU.map(function (item) {
+      return { texto: item.texto, url: item.url, actual: item.pagina !== null && item.pagina === pagina };
+    });
+  }
+
   // ---- temas ----
 
   function conteoPorTema(temas, charlas) {
@@ -132,7 +187,7 @@
     lista(temas).forEach(function (t) {
       var nombre = textoVisible(t.nombre);
       if (typeof t.id !== 'string' || nombre === null) return;
-      salida.push({ id: t.id, nombre: nombre, etiqueta: textoVisible(t.etiqueta) || nombre, cantidad: cantidades[t.id] || 0 });
+      salida.push({ id: t.id, nombre: nombre, etiqueta: textoVisible(t.etiqueta) || nombre, gancho: textoVisible(t.gancho), cantidad: cantidades[t.id] || 0 });
     });
     return salida;
   }
@@ -200,7 +255,7 @@
     var correo = correoVisible(proxima.correo_inscripcion);
     if (correo !== null) acciones.push({ tipo: 'correo', texto: 'Inscribirme por correo', url: 'mailto:' + correo });
     var calendar = enlaceSeguro(proxima.calendar_url);
-    if (calendar !== null) acciones.push({ tipo: 'calendar', texto: 'Agendar en Calendar', url: calendar });
+    if (calendar !== null) acciones.push({ tipo: 'calendar', texto: 'Agendar en mi calendario', url: calendar });
     var zoom = enlaceSeguro(proxima.zoom_url);
     if (zoom !== null) acciones.push({ tipo: 'zoom', texto: 'Entrar por Zoom', url: zoom });
     return acciones;
@@ -226,7 +281,10 @@
     fechaLarga: fechaLarga,
     horaCorta: horaCorta,
     proximaAnunciada: proximaAnunciada,
-    accionesProxima: accionesProxima
+    accionesProxima: accionesProxima,
+    duracionDeCharla: duracionDeCharla,
+    textoPartes: textoPartes,
+    itemsDeMenu: itemsDeMenu
   };
 
   if (typeof module === 'object' && module.exports) module.exports = api;

@@ -65,6 +65,8 @@ redes: [
 - **Red que todavía no existe**: dejá el enlace con corchetes o `null`. Esa red **no se muestra** en la página; el validador solo te lo recuerda con un aviso.
 - El enlace tiene que empezar con `https://`.
 
+En el mismo archivo están la **dirección** (`direccion`, se ve al pie de todas las páginas) y el enlace **«Cómo llegar»** (`mapa_url`, un enlace de Google Maps que empiece con `https://`; con `null` el enlace no se muestra).
+
 Las **fotos** de «Quiénes somos» también son una lista. Mientras esté vacía (`fotos: []`), la galería no se ve. Para sumar una foto, guardá la imagen en la carpeta `img/` y agregá una línea con su archivo y una descripción de lo que se ve (la leen quienes usan lector de pantalla):
 
 ```js
@@ -74,6 +76,18 @@ fotos: [
 ```
 
 Publicá solo fotos con permiso de las personas que aparecen. No escribas en este archivo correos ni teléfonos personales.
+
+## Ganchos de los temas (opcional)
+
+Cada tema de `temas.js` puede tener un **gancho**: una frase corta y curiosa que se muestra debajo del nombre del tema, pensada para invitar a mirarlo (por ejemplo, una pregunta). Es opcional:
+
+```js
+{ id: "geologia", nombre: "Geología, minería y energía", etiqueta: "Geología, minería y energía", playlist_url: null, gancho: null },
+```
+
+- Para cargar uno, reemplazá `null` por la frase entre comillas.
+- Con `null` (sin comillas) no se muestra nada; no es un pendiente.
+- Que sea corto: una línea.
 
 ## Corregir una charla que ya está en el catálogo
 

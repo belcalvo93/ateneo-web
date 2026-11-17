@@ -13,6 +13,8 @@ function sitioValido() {
     correo: 'contacto@ejemplo.org',
     canal_youtube: 'https://www.youtube.com/@canal',
     conferencias: '+100',
+    direccion: 'Rodríguez 273, Ciudad de Mendoza',
+    mapa_url: 'https://www.google.com/maps/search/?api=1&query=Rodr%C3%ADguez+273',
     redes: [
       { nombre: 'YouTube', url: 'https://www.youtube.com/@canal' },
       { nombre: 'WhatsApp', url: 'https://whatsapp.com/channel/abc' }
@@ -174,4 +176,56 @@ test('validar: fotos tiene que ser una lista de { archivo, alt } con los dos tex
 
   d.sitio.fotos = {};
   assert.deepEqual(delSitio(validar(d, OPC)).map((x) => x.campo), ['fotos']);
+});
+
+// ---- dirección y mapa (C-03b) ----
+
+test('validar: mapa_url en null es válido y no deja avisos', () => {
+  const d = datosValidos();
+  d.sitio.mapa_url = null;
+  const r = validar(d, { ...OPC, estricto: true });
+  assert.deepEqual(r.errores, []);
+  assert.deepEqual(r.avisos, []);
+});
+
+test('validar: mapa_url sin https o que no es texto es un error', () => {
+  for (const malo of ['maps.google.com/x', 'http://maps.google.com/x', 7, '', '[mapa]']) {
+    const d = datosValidos();
+    d.sitio.mapa_url = malo;
+    assert.deepEqual(delSitio(validar(d, OPC)).map((x) => x.campo), ['mapa_url'], JSON.stringify(malo));
+  }
+});
+
+test('validar: direccion vacía o faltante, y mapa_url faltante', () => {
+  const d = datosValidos();
+  d.sitio.direccion = '  ';
+  assert.deepEqual(delSitio(validar(d, OPC)).map((x) => x.campo), ['direccion']);
+  const d2 = datosValidos();
+  delete d2.sitio.direccion;
+  delete d2.sitio.mapa_url;
+  assert.deepEqual(delSitio(validar(d2, OPC)).map((x) => x.campo).sort(), ['direccion', 'mapa_url']);
+});
+
+// ---- gancho de tema (C-03b) ----
+
+test('validar: gancho ausente, null o con texto es válido y no deja avisos en modo estricto', () => {
+  for (const gancho of [undefined, null, '¿De dónde sale el litio?']) {
+    const d = datosValidos();
+    if (gancho !== undefined) d.temas[0].gancho = gancho;
+    const r = validar(d, { ...OPC, estricto: true });
+    assert.deepEqual(r.errores, [], JSON.stringify(gancho));
+    assert.deepEqual(r.avisos, []);
+  }
+});
+
+test('validar: gancho vacío o que no es texto es un error en ese tema', () => {
+  for (const malo of ['', '   ', 5, [], true]) {
+    const d = datosValidos();
+    d.temas[0].gancho = malo;
+    const e = validar(d, OPC).errores;
+    assert.equal(e.length, 1, JSON.stringify(malo));
+    assert.equal(e[0].archivo, 'data/temas.js');
+    assert.equal(e[0].charla, 'geologia');
+    assert.equal(e[0].campo, 'gancho');
+  }
 });
