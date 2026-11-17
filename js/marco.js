@@ -1,7 +1,8 @@
 /*
-  Marco compartido de todas las páginas: barra superior, cabecera con el menú y pie.
+  Marco compartido de todas las páginas: cabecera con el menú y pie (sin barra superior desde C-03c:
+  dentro de la web de la UTN FRM la cabecera de la facultad ya cumple ese papel).
   Se define UNA sola vez acá; cada página solo deja tres contenedores marcados:
-    <div data-aac="barra"></div>   <header data-aac="cabecera">…</header>   <footer data-aac="pie">…</footer>
+    <header data-aac="cabecera">…</header>   <footer data-aac="pie">…</footer>
   y dice qué página es en su contenedor raíz:  <div class="aac-web" data-aac-pagina="inicio">
 
   - El menú (ítems y direcciones) sale de AAC_portada.itemsDeMenu(), en js/portada-logica.js.
@@ -15,6 +16,7 @@
   'use strict';
 
   var LOGO = 'design-system/assets/logo.png';
+  var LOGO_UTN = 'img/logo-utn.png'; // copia sin cambios del logo oficial de frm.utn.edu.ar; el blanco sale por CSS
   var ANCHO_MENU_PLEGADO = '(max-width: 719.98px)';
   var L;
 
@@ -41,17 +43,6 @@
     return a;
   }
 
-  // ---- barra superior ----
-
-  function dibujarBarra(nodo) {
-    vaciar(nodo);
-    nodo.className = 'topbar';
-    var wrap = crear('div', 'wrap');
-    wrap.appendChild(crear('span', '', 'UTN · Facultad Regional Mendoza'));
-    wrap.appendChild(crear('span', '', 'Sección de la web de la facultad'));
-    nodo.appendChild(wrap);
-  }
-
   // ---- cabecera y menú ----
 
   function dibujarCabecera(nodo, pagina) {
@@ -64,8 +55,8 @@
     var logo = document.createElement('img');
     logo.src = LOGO;
     logo.alt = 'Ateneo Amigos de la Ciencia: ir al inicio';
-    logo.width = 150;
-    logo.height = 56;
+    logo.width = 148; // proporción del archivo (900×438); el alto lo fija la hoja
+    logo.height = 72;
     marca.appendChild(logo);
     wrap.appendChild(marca);
 
@@ -186,6 +177,18 @@
       }
       wrap.appendChild(donde);
     }
+
+    // Una actividad de la UTN FRM: logo oficial, sin redibujar, en blanco por CSS
+    var utn = crear('div', 'pie-utn');
+    var logoUtn = document.createElement('img');
+    logoUtn.src = LOGO_UTN;
+    logoUtn.alt = 'Universidad Tecnológica Nacional – Facultad Regional Mendoza';
+    logoUtn.width = 158;
+    logoUtn.height = 41;
+    logoUtn.loading = 'lazy';
+    utn.appendChild(logoUtn);
+    utn.appendChild(crear('p', '', 'Una actividad de la UTN Facultad Regional Mendoza'));
+    wrap.appendChild(utn);
     nodo.appendChild(wrap);
   }
 
@@ -219,8 +222,6 @@
     var pagina = raiz.getAttribute('data-aac-pagina');
     var sitio = window.AAC_SITIO;
 
-    var barra = buscar(raiz, 'barra');
-    if (barra) dibujarBarra(barra);
     var cabecera = buscar(raiz, 'cabecera');
     if (cabecera) dibujarCabecera(cabecera, pagina);
 

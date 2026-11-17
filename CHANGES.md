@@ -16,7 +16,7 @@
 
 ## Cómo usar este documento
 
-1. Identificá el próximo change pendiente (`[ ]`) cuyas dependencias estén todas `[x]`. **Hoy: C-03c (refinamiento visual) y después C-04** (C-01 a C-03b están cerrados).
+1. Identificá el próximo change pendiente (`[ ]`) cuyas dependencias estén todas `[x]`. **Hoy: C-04** (C-01 a C-03c están cerrados).
 2. Leé los archivos de "Leer antes" de ese change en `knowledge-base/`.
 3. Ejecutá `/opsx:propose C-NN-nombre` (y después `/opsx:apply`). La lógica de buscador/filtro (C-04) va con **Strict TDD** (`node:test`, sin dependencias).
 4. Al terminar: verificá y `/opsx:archive`.
@@ -50,9 +50,10 @@ C-01 base-y-estilos                     ✓ cerrado
  └── C-02 datos-charlas                 ✓ cerrado
       ├── C-03 portada                  ✓ cerrado
       │    └── C-03b rediseño portada + quiénes somos   ✓ cerrado
-      │         ├── C-04 videoteca (TDD)
-      │         └── C-05 responsive-a11y-carga-completa
-      └── C-04 videoteca (TDD)          (usa el marco y la tarjeta de C-03b)
+      │         └── C-03c refinamiento visual (rev. 2)  ✓ cerrado
+      │              ├── C-04 videoteca (TDD)
+      │              └── C-05 responsive-a11y-carga-completa
+      └── C-04 videoteca (TDD)          (usa el marco y la tarjeta de C-03b/C-03c)
            └── C-05 responsive-a11y-carga-completa
                 └── C-06 integracion-y-guia
 ```
@@ -190,6 +191,13 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - `openspec/changes/c-03b-rediseno-portada-y-quienes-somos/` (proposal, design, specs)
   - `knowledge-base/09_decisiones_y_supuestos.md` §DD-23
 
+### [C-03c] `refinamiento-visual`
+- **Estado**: `[x]` completado y archivado (2026-11-17); design system rev. 2 aprobado
+- **Scope**: dirección «editorial universitario» (DD-24): Source Serif 4 en lugar de Baskervville, encabezado de la portada en dos columnas con la próxima charla, aviso por WhatsApp en la tarjeta, sin franja «Seguinos», sin cajas ni rayas de color, tarjetas de charla más limpias, temas en 4 columnas, línea de tiempo editorial, foto grupal autorizada, sin barra superior, logo de la UTN en el pie, design system rev. 2 y `DESIGN.md`.
+- **Dependencias**: `C-03b`
+- **Governance**: BAJO
+- **Leer antes**: `openspec/changes/c-03c-refinamiento-visual/`, `knowledge-base/09` §DD-24, `DESIGN.md`
+
 ### [C-04] `videoteca`
 - **Estado**: `[ ]` pendiente — **validado el 11/11**
 - **Scope**:
@@ -207,7 +215,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - **Nuevo (16/11, tras C-03)**: enlace a una charla concreta, `videoteca.html?charla=<id>` (por ejemplo `?charla=c084`), para compartir una charla puntual por WhatsApp o Instagram: la videoteca abre mostrando esa ficha destacada.
   - Reusar la tarjeta de charla, la cabecera, el menú y el pie compartidos que deja C-03b.
   - Fuera de scope: mostrar capítulos / marcas de tiempo de los videos (idea futura, IN-09).
-- **Dependencias**: `C-02` y `C-03b` (marco compartido y tarjeta de charla)
+- **Dependencias**: `C-02` y `C-03c` (marco compartido, tarjeta de charla y design system rev. 2)
 - **Governance**: MEDIO
 - **Leer antes**:
   - `knowledge-base/06_funcionalidades.md` §US-004, §US-005, §US-006
@@ -269,6 +277,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 | C-02 | `datos-charlas` | 1 | C-01 | MEDIO | `[x]` | Cerrado |
 | C-03 | `portada` | 2 | C-02 | BAJO | `[x]` | Cerrado |
 | C-03b | `rediseno-portada-y-quienes-somos` | 2 | C-03 | BAJO | `[x]` | Cerrado |
+| C-03c | `refinamiento-visual` | 2 | C-03b | BAJO | `[x]` | Cerrado |
 | C-04 | `videoteca` | 2 | C-02, C-03b | MEDIO | `[ ]` | Validado 11/11 |
 | C-05 | `responsive-a11y-carga-completa` | 3 | C-03, C-04 | MEDIO | `[ ]` | Validado 11/11 |
 | C-06 | `integracion-y-guia` | 3 | C-05 | ALTO | `[ ]` | Validado 11/11 |
@@ -293,4 +302,4 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 
 ---
 
-**Próximo change**: `C-03c` (refinamiento visual). Después: `C-04` (`videoteca`, con TDD).
+**Próximo change**: `C-04` (`videoteca`, con TDD).

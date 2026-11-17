@@ -13,10 +13,10 @@
 </head>
 <body>
 <div class="aac-web" data-aac-pagina="inicio">
-  <!-- Barra, cabecera y pie: los dibuja js/marco.js. Lo escrito acá es solo el respaldo si no carga. -->
-  <div class="topbar" data-aac="barra"><div class="wrap"><span>UTN · Facultad Regional Mendoza</span></div></div>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <!-- Cabecera y pie: los dibuja js/marco.js. Lo escrito acá es solo el respaldo si no carga. -->
   <header class="nav" data-aac="cabecera"><div class="wrap">
-    <img src="design-system/assets/logo.png" alt="Logo del Ateneo Amigos de la Ciencia (AAC)" width="150" height="56">
+    <img src="design-system/assets/logo.png" alt="Logo del Ateneo Amigos de la Ciencia (AAC)" width="148" height="72">
     <nav aria-label="Principal"><ul>
       <li><a href="index.html" aria-current="page">Inicio</a></li>
       <li><a href="videoteca.html">Videoteca</a></li>
@@ -25,25 +25,22 @@
     </ul></nav>
   </div></header>
 
-  <main>
-    <!-- Encabezado: qué es el Ateneo -->
-    <section class="hero" aria-labelledby="titulo-inicio">
-      <div class="wrap">
-        <p class="hero-etq">Ateneo Amigos de la Ciencia · UTN Mendoza</p>
-        <h1 id="titulo-inicio">Ciencia y cultura abiertas a toda la comunidad</h1>
-        <p class="hero-bajada">Somos una agrupación sin fines de lucro de graduados, docentes y amigos de la ciencia que, desde 2015, comparte charlas sobre ciencias exactas, físicas y naturales, tecnología y cultura general. Gratis y abiertas a todo público.</p>
-        <p class="hero-horario">Todos los viernes a las 18 hs, en el Salón de Actos de la UTN FRM y/o por Zoom.</p>
-        <div class="fila">
-          <a class="btn btn-blanco" href="videoteca.html">Ver la videoteca</a>
-          <a class="btn btn-borde" href="quienes-somos.html">Conocé al Ateneo</a>
+  <main id="contenido">
+    <!-- Encabezado: qué es el Ateneo y, al lado (debajo en el celular), la próxima charla -->
+    <section class="hero hero-portada" aria-labelledby="titulo-inicio">
+      <div class="wrap hero-grid">
+        <div class="hero-texto">
+          <h1 id="titulo-inicio">Ciencia y cultura abiertas a toda la comunidad</h1>
+          <p class="hero-bajada">Somos una agrupación sin fines de lucro de graduados, docentes y amigos de la ciencia que, desde 2015, comparte charlas sobre ciencias exactas, físicas y naturales, tecnología y cultura general. Gratis y abiertas a todo público.</p>
+          <p class="hero-horario">Todos los viernes a las 18 hs, en el Salón de Actos de la UTN FRM y/o por Zoom.</p>
+          <div class="fila">
+            <a class="btn btn-blanco" href="videoteca.html">Ver la videoteca</a>
+            <a class="btn btn-borde" href="quienes-somos.html">Conocé al Ateneo</a>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Próxima charla: la completa js/portada.js con data/proxima-charla.js -->
-    <section class="seccion seccion-proxima" id="proxima-charla" aria-labelledby="titulo-proxima">
-      <div class="wrap">
-        <div class="proxima" data-aac="proxima">
+        <!-- Próxima charla: la completa js/portada.js con data/proxima-charla.js -->
+        <article class="proxima" id="proxima-charla" data-aac="proxima" aria-labelledby="titulo-proxima">
           <div>
             <span class="etiqueta">Próxima charla</span>
             <h2 id="titulo-proxima">La próxima charla se anunciará pronto</h2>
@@ -55,21 +52,17 @@
             <p><strong>Inscripción:</strong> <a href="mailto:ateneoac.mo@gmail.com" data-aac="correo">ateneoac.mo@gmail.com</a></p>
             <div class="fila"><a class="btn btn-rojo" href="mailto:ateneoac.mo@gmail.com">Inscribirme por correo</a></div>
           </div>
-        </div>
+        </article>
+      </div>
+    </section>
 
+    <!-- Cifras -->
+    <section class="cifras-banda" aria-label="El Ateneo en números">
+      <div class="wrap">
         <dl class="cifras">
           <div><dt data-aac="conferencias">+100</dt><dd>conferencias desde 2015</dd></div>
           <div><dt data-aac="videos">310</dt><dd>videos en YouTube</dd></div>
         </dl>
-      </div>
-    </section>
-
-    <!-- Seguinos: un botón por cada red de data/sitio.js que tenga enlace -->
-    <section class="seccion seccion-seguinos" aria-labelledby="titulo-seguinos" hidden>
-      <div class="wrap">
-        <h2 id="titulo-seguinos">Seguinos</h2>
-        <p>Enterate de cada charla nueva.</p>
-        <div class="fila" data-aac="seguinos"></div>
       </div>
     </section>
 
@@ -87,7 +80,7 @@
     </section>
 
     <!-- Temas -->
-    <section class="seccion" aria-labelledby="titulo-temas">
+    <section class="seccion seccion-banda" aria-labelledby="titulo-temas">
       <div class="wrap">
         <h2 id="titulo-temas">Explorá la videoteca por tema</h2>
         <div class="grilla-temas" data-aac="temas">
@@ -123,6 +116,10 @@
       <h2>Escribinos</h2>
       <p><a href="mailto:ateneoac.mo@gmail.com">ateneoac.mo@gmail.com</a></p>
       <p><a href="https://www.youtube.com/@ateneoamigosdelasciencias" rel="noopener noreferrer">YouTube</a></p>
+    </div>
+    <div class="pie-utn">
+      <img src="img/logo-utn.png" alt="Universidad Tecnológica Nacional – Facultad Regional Mendoza" width="158" height="41" loading="lazy">
+      <p>Una actividad de la UTN Facultad Regional Mendoza</p>
     </div>
   </div></footer>
 </div>

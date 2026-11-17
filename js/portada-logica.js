@@ -215,6 +215,18 @@
     return salida;
   }
 
+  // Enlace al Canal de Difusión de WhatsApp para el botón «Recibí el aviso…». Se reconoce por el dominio
+  // (whatsapp.com o wa.me), no por el nombre de la red, para que renombrarla no rompa el botón.
+  function enlaceAvisoWhatsApp(redes) {
+    var visibles = redesVisibles(redes);
+    for (var i = 0; i < visibles.length; i++) {
+      var m = /^https?:\/\/([^\/?#]+)/i.exec(visibles[i].url);
+      var host = m ? m[1].toLowerCase() : '';
+      if (host === 'whatsapp.com' || host === 'www.whatsapp.com' || host === 'wa.me') return visibles[i].url;
+    }
+    return null;
+  }
+
   // ---- próxima charla ----
 
   function partesDeFecha(texto) {
@@ -278,6 +290,7 @@
     textoCantidad: textoCantidad,
     totalVideos: totalVideos,
     redesVisibles: redesVisibles,
+    enlaceAvisoWhatsApp: enlaceAvisoWhatsApp,
     fechaLarga: fechaLarga,
     horaCorta: horaCorta,
     proximaAnunciada: proximaAnunciada,

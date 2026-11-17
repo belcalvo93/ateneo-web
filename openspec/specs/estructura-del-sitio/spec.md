@@ -29,7 +29,7 @@ El repo SHALL tener en la raíz las carpetas `css/`, `js/`, `data/`, `tests/` y 
 - **THEN** no hay errores de marcado
 
 ### Requirement: Estructura semántica común
-Cada página SHALL mostrar la barra superior, un encabezado con el logo (con texto alternativo) y la navegación principal etiquetada, un `main` con su título `h1`, y el pie con el correo de contacto del Ateneo; la página actual MUST estar marcada en la navegación con `aria-current="page"`. La barra, el encabezado, la navegación y el pie provienen de la definición compartida del sitio.
+Cada página SHALL mostrar un encabezado con el logo (con texto alternativo) y la navegación principal etiquetada, un `main` con su título `h1`, y el pie con el correo de contacto del Ateneo; la página actual MUST estar marcada en la navegación con `aria-current="page"`. El encabezado, la navegación y el pie provienen de la definición compartida del sitio. Las páginas no tienen barra superior propia: dentro de la web de la UTN FRM la cabecera de la facultad cumple ese papel.
 
 #### Scenario: Página actual en Inicio
 - **WHEN** se abre `index.html`
@@ -46,6 +46,10 @@ Cada página SHALL mostrar la barra superior, un encabezado con el logo (con tex
 #### Scenario: Navegación entre páginas
 - **WHEN** se activa en el menú el enlace a otra página desde cualquiera de las tres
 - **THEN** se abre esa página
+
+#### Scenario: Sin barra superior
+- **WHEN** se abre cualquiera de las tres páginas
+- **THEN** lo primero que se ve es la cabecera con el logo y el menú
 
 ### Requirement: Sin datos inventados en los esqueletos
 Las páginas esqueleto MUST NOT contener fechas, disertantes, títulos de charlas, URLs ni usuarios de redes inventados; el contenido pendiente SHALL quedar como placeholder marcado entre corchetes (`[…]`).

@@ -29,6 +29,7 @@ ateneo-web/
 │   ├── quienes-somos.js  # Galería de la página Quiénes somos
 │   ├── buscador.js       # Lógica pura: normalizar, buscar, filtrar (testeada)
 │   └── app.js            # Render y eventos
+├── img/                  # Imágenes del sitio: ateneo-integrantes.jpg (autorizada, sin metadatos) y logo-utn.png (copia sin cambios del logo oficial)
 ├── data/
 │   ├── temas.js          # window.AAC_TEMAS
 │   ├── charlas.js        # window.AAC_CHARLAS — GENERADO, no se edita a mano
@@ -57,9 +58,9 @@ ateneo-web/
   --utn-negro:#000; --utn-blanco:#FFF; --utn-gris-azulado:#8A9BA6;
   --utn-azul-grisaceo:#7391B6; --utn-verde-graduados:#D0DFA8;
   --aac-azul:#004B95; --aac-rojo:#B90000; --aac-llama:#F5D547;
-  --fuente-titulos:'Dosis',sans-serif;   /* títulos y menú, mayúsculas */
+  --fuente-titulos:'Source Serif 4',Georgia,serif;  /* títulos, años, numerales, pie (rev. 2) */
+  --fuente-rotulos:'Dosis',sans-serif;              /* menú y rótulos cortos */
   --fuente-texto:'Open Sans',sans-serif;
-  --fuente-serif:'Baskervville',serif;   /* títulos del pie */
 }
 ```
 

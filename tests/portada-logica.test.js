@@ -375,6 +375,26 @@ test('itemsDeMenu: una página desconocida no marca ninguno y Contacto nunca es 
   assert.deepEqual(L.itemsDeMenu('contacto').map((i) => i.actual), [false, false, false, false]);
 });
 
+// ---- C-03c: aviso por WhatsApp ----
+
+test('enlaceAvisoWhatsApp: encuentra el canal de WhatsApp por el dominio, no por el nombre', () => {
+  const canal = 'https://whatsapp.com/channel/0029VbDjwCbI7BeKsvprkr3t';
+  assert.equal(L.enlaceAvisoWhatsApp([{ nombre: 'YouTube', url: 'https://www.youtube.com/@canal' }, { nombre: 'Canal de WhatsApp', url: canal }]), canal);
+  assert.equal(L.enlaceAvisoWhatsApp([{ nombre: 'Avisos', url: canal }]), canal);
+  assert.equal(L.enlaceAvisoWhatsApp([{ nombre: 'WA', url: 'https://www.whatsapp.com/channel/abc' }]), 'https://www.whatsapp.com/channel/abc');
+  assert.equal(L.enlaceAvisoWhatsApp([{ nombre: 'WA', url: 'https://wa.me/5492610000000' }]), 'https://wa.me/5492610000000');
+});
+
+test('enlaceAvisoWhatsApp: sin un enlace real a WhatsApp devuelve null', () => {
+  assert.equal(L.enlaceAvisoWhatsApp([{ nombre: 'Canal de WhatsApp', url: '[enlace]' }]), null);
+  assert.equal(L.enlaceAvisoWhatsApp([{ nombre: 'Canal de WhatsApp', url: null }]), null);
+  assert.equal(L.enlaceAvisoWhatsApp([{ nombre: 'WhatsApp', url: 'https://www.youtube.com/@canal' }]), null);
+  assert.equal(L.enlaceAvisoWhatsApp([{ nombre: 'Falso', url: 'https://whatsapp.com.ejemplo.org/x' }]), null);
+  assert.equal(L.enlaceAvisoWhatsApp([{ nombre: 'Malo', url: 'javascript:alert(1)//whatsapp.com' }]), null);
+  assert.equal(L.enlaceAvisoWhatsApp([]), null);
+  assert.equal(L.enlaceAvisoWhatsApp(undefined), null);
+});
+
 // ---- 2.9 integración con los datos reales ----
 
 test('portada con los datos reales: nada de lo que se muestra tiene corchetes', () => {
@@ -405,6 +425,7 @@ test('portada con los datos reales: nada de lo que se muestra tiene corchetes', 
   for (const t of conteo) textos.push(t.nombre, t.etiqueta, t.gancho, L.textoCantidad(t.cantidad));
   for (const i of L.itemsDeMenu('inicio')) textos.push(i.texto);
   for (const r of L.redesVisibles(sitio.redes)) textos.push(r.nombre, r.url);
+  assert.equal(L.enlaceAvisoWhatsApp(sitio.redes), 'https://whatsapp.com/channel/0029VbDjwCbI7BeKsvprkr3t');
   for (const a of L.accionesProxima(prox)) textos.push(a.texto, a.url);
   for (const campo of ['titulo', 'disertante', 'descripcion', 'lugar', 'modalidad']) textos.push(L.textoVisible(prox[campo]));
   textos.push(L.fechaLarga(prox.fecha), L.horaCorta(prox.hora), L.textoVisible(sitio.conferencias));

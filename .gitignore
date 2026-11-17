@@ -13,3 +13,4 @@ docs/CONTEXTO.md
 # Dependencias y herramientas locales
 node_modules/
 .playwright-mcp/
+img-local/

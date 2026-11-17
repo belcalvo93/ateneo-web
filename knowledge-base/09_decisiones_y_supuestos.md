@@ -82,6 +82,14 @@ Fuente: reunión con el Ateneo del 11/11/2026 y documentos entregados por el Ate
 - **Gancho opcional por tema** (`gancho` en `data/temas.js`), vacío hasta que el Ateneo o Agustina lo escriban.
 - El menú hamburguesa se adelantó de C-05 a C-03b; C-05 queda como auditoría.
 
+### DD-24 — Refinamiento visual «editorial universitario» (C-03c, design system rev. 2)
+**Decisión (17/11/2026, de la autora, tras la crítica de `impeccable`)**:
+- **Tipografía**: Source Serif 4 reemplaza a Baskervville como fuente de títulos; Dosis queda para el menú y los rótulos cortos; Open Sans para el texto. Tres familias. Se eligió entre Source Serif 4, Atkinson Hyperlegible Next y Baskervville, vistas lado a lado con textos reales: legibilidad para adultos mayores (altura de x amplia, I/l/1 distintas) y tono editorial.
+- **Jerarquía por espacio y tipografía, no por cajas**: sin bordes, sombras ni rayas de color en temas, valores y paneles; la próxima charla es el único elemento elevado.
+- **Portada**: encabezado en dos columnas con la próxima charla al lado; título «Ciencia y cultura abiertas a toda la comunidad», sin rótulo encima; sale la franja «Seguinos» y el canal de WhatsApp se ofrece dentro de la tarjeta de la próxima charla.
+- **Sale la barra superior**: dentro de la web de la UTN duplica la cabecera de la facultad. El **logo oficial de la UTN** va en el pie, en blanco por CSS (el archivo no se modifica), con «Una actividad de la UTN Facultad Regional Mendoza».
+- **Foto grupal** en Quiénes somos, autorizada por el Ateneo, achicada, sin metadatos y con las caras de dos personas del fondo desenfocadas.
+
 ## Supuestos inferidos
 
 ### SU-01 — La sección se crea con cuentas de la facultad

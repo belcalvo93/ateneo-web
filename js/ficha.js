@@ -4,7 +4,7 @@
   Uso:  var tarjeta = AAC_ficha(charla, opciones);   // devuelve un <article> o null si no hay título que mostrar
   Opciones (todas opcionales):
     etiquetasDeTema   { idDeTema: "Etiqueta" }  para mostrar el tema arriba del título
-    puesto            número de puesto (1, 2, 3…) que se muestra sobre la miniatura («Las más vistas»)
+    puesto            número de puesto (1, 2, 3…) que se muestra junto al título, fuera de la imagen («Las más vistas»)
     conVistas         true para agregar la línea de visualizaciones
 
   - Un solo enlace por tarjeta (el título), extendido a toda la tarjeta.
@@ -49,12 +49,6 @@
       img.height = 360;
       miniatura.appendChild(img);
     }
-    if (url) miniatura.appendChild(crear('span', 'play'));
-    if (typeof opt.puesto === 'number') {
-      var puesto = crear('span', 'puesto', String(opt.puesto));
-      puesto.setAttribute('aria-hidden', 'true'); // el orden ya lo da la lista numerada
-      miniatura.appendChild(puesto);
-    }
     var duracion = L.duracionDeCharla(charla);
     if (duracion) {
       var etiqueta = crear('span', 'duracion');
@@ -76,7 +70,17 @@
     } else {
       h3.textContent = titulo;
     }
-    cuerpo.appendChild(h3);
+    if (typeof opt.puesto === 'number') {
+      // Puesto fuera de la imagen, como numeral junto al título; el orden ya lo da la lista numerada.
+      var filaTitulo = crear('div', 'ficha-titulo');
+      var puesto = crear('span', 'puesto', String(opt.puesto));
+      puesto.setAttribute('aria-hidden', 'true');
+      filaTitulo.appendChild(puesto);
+      filaTitulo.appendChild(h3);
+      cuerpo.appendChild(filaTitulo);
+    } else {
+      cuerpo.appendChild(h3);
+    }
     var meta = unir([
       L.disertanteVisible(charla),
       typeof charla.anio === 'number' ? String(charla.anio) : null,

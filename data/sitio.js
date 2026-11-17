@@ -20,7 +20,10 @@ window.AAC_SITIO = {
   ],
 
   // FOTOS de «Quiénes somos». Vacío = la galería no se muestra.
-  // Solo fotos con permiso de quienes aparecen. Ejemplo:
+  // Solo fotos que el Ateneo autorizó para la web, achicadas y sin metadatos. Ejemplo:
   //   { archivo: "img/charla-2019.jpg", alt: "Disertante exponiendo en el Salón de Actos de la UTN FRM" }
-  fotos: []
+  fotos: [
+    // Autorizada por el Ateneo (17/11/2026). Las caras de dos personas del fondo están desenfocadas.
+    { archivo: "img/ateneo-integrantes.jpg", alt: "Siete integrantes del Ateneo Amigos de la Ciencia, abrazados y sonrientes, durante un encuentro del grupo en 2019." }
+  ]
 };

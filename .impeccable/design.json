@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T09:01:49+00:00",
+  "title": "Design System: Ateneo Amigos de la Ciencia",
+  "extensions": {
+    "colorMeta": {
+      "azul-ateneo": {
+        "role": "primary",
+        "displayName": "Azul Ateneo",
+        "canonical": "#004B95",
+        "tonalRamp": [
+          "#010B1E",
+          "#072242",
+          "#143B69",
+          "#275EA0",
+          "#4882CA",
+          "#7AA7E2",
+          "#ACCDF9",
+          "#DAF1FF"
+        ]
+      },
+      "rojo-ateneo": {
+        "role": "secondary",
+        "displayName": "Rojo Ateneo",
+        "canonical": "#B90000",
+        "tonalRamp": [
+          "#200000",
+          "#470100",
+          "#710A06",
+          "#AC1D14",
+          "#D94638",
+          "#F27E6E",
+          "#FFB1A3",
+          "#FFDED5"
+        ]
+      },
+      "llama": {
+        "role": "tertiary",
+        "displayName": "Llama",
+        "canonical": "#F5D547",
+        "tonalRamp": [
+          "#120A00",
+          "#2D2000",
+          "#4B3800",
+          "#755B00",
+          "#9A7E00",
+          "#BAA44A",
+          "#DACB8D",
+          "#F9EFC8"
+        ]
+      },
+      "blanco": {
+        "role": "neutral",
+        "displayName": "Blanco",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#222222",
+          "#3A3A3A",
+          "#5D5D5D",
+          "#808080",
+          "#A4A4A4",
+          "#CACACA",
+          "#EEEEEE"
+        ]
+      },
+      "papel-frio": {
+        "role": "neutral",
+        "displayName": "Papel frío",
+        "canonical": "#F1F3F8",
+        "tonalRamp": [
+          "#0B0B0C",
+          "#212223",
+          "#393A3D",
+          "#5C5D61",
+          "#7E8084",
+          "#A3A4A8",
+          "#C9CACD",
+          "#EEEEF0"
+        ]
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#1A1F26",
+        "tonalRamp": [
+          "#0A0B0D",
+          "#1F2225",
+          "#373B40",
+          "#595E65",
+          "#7B8189",
+          "#A0A5AC",
+          "#C7CBD0",
+          "#ECEFF2"
+        ]
+      },
+      "tinta-suave": {
+        "role": "neutral",
+        "displayName": "Tinta suave",
+        "canonical": "#4A5560",
+        "tonalRamp": [
+          "#090B0E",
+          "#1D2227",
+          "#343B42",
+          "#555F69",
+          "#77828C",
+          "#9DA6AF",
+          "#C5CBD2",
+          "#EBEFF3"
+        ]
+      },
+      "filete": {
+        "role": "neutral",
+        "displayName": "Filete",
+        "canonical": "#D9DEE6",
+        "tonalRamp": [
+          "#0A0B0D",
+          "#202225",
+          "#383B3F",
+          "#5A5E64",
+          "#7C8087",
+          "#A1A5AA",
+          "#C8CBCF",
+          "#EDEEF1"
+        ]
+      },
+      "negro-utn": {
+        "role": "neutral",
+        "displayName": "Negro UTN",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#222222",
+          "#3A3A3A",
+          "#5D5D5D",
+          "#808080",
+          "#A4A4A4",
+          "#CACACA",
+          "#EEEEEE"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Título de la portada."
+      },
+      "headline": {
+        "displayName": "Título de sección",
+        "purpose": "Títulos de página y de sección."
+      },
+      "title": {
+        "displayName": "Título de tarjeta",
+        "purpose": "Tarjetas, hitos, valores y pie."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Años, cifras y puestos."
+      },
+      "body": {
+        "displayName": "Texto",
+        "purpose": "Texto corrido a 18 px."
+      },
+      "meta": {
+        "displayName": "Metadatos",
+        "purpose": "Disertante, año, partes."
+      },
+      "label": {
+        "displayName": "Rótulo",
+        "purpose": "Menú y tema de la tarjeta."
+      }
+    },
+    "shadows": [
+      {
+        "name": "elevada",
+        "value": "0 2px 4px rgba(0,0,0,.08), 0 18px 40px rgba(0,0,0,.22)",
+        "purpose": "Solo la tarjeta de la próxima charla."
+      }
+    ],
+    "motion": [
+      {
+        "name": "transicion",
+        "value": "160ms ease",
+        "purpose": "Cambios de color y escala en hover; 0 ms con movimiento reducido."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "menu-desplegado",
+        "value": "720px"
+      },
+      {
+        "name": "dos-columnas",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "La acción principal de un bloque (inscripción).",
+      "html": "<a class=\"ds-btn-rojo\" href=\"#\">Inscribirme por correo</a>",
+      "css": ".ds-btn-rojo{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 24px;border-radius:8px;font:700 16px/1.3 'Open Sans',sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background 160ms ease;background:#B90000;color:#fff}.ds-btn-rojo:hover{background:#8F0000}.ds-btn-rojo:focus-visible{outline:3px solid #F5D547;box-shadow:0 0 0 2px #000;outline-offset:2px}"
+    },
+    {
+      "name": "Botón de sección",
+      "kind": "button",
+      "refersTo": "button-section",
+      "description": "La acción de una sección (proponer una charla).",
+      "html": "<a class=\"ds-btn-azul\" href=\"#\">Proponer una charla</a>",
+      "css": ".ds-btn-azul{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 24px;border-radius:8px;font:700 16px/1.3 'Open Sans',sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background 160ms ease;background:#004B95;color:#fff}.ds-btn-azul:hover{background:#003A73}.ds-btn-azul:focus-visible{outline:3px solid #F5D547;box-shadow:0 0 0 2px #000;outline-offset:2px}"
+    },
+    {
+      "name": "Botón de contorno",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Acción secundaria sobre fondo claro (agendar, Zoom, aviso por WhatsApp).",
+      "html": "<a class=\"ds-btn-contorno\" href=\"#\">Recibí el aviso de cada charla por WhatsApp</a>",
+      "css": ".ds-btn-contorno{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 24px;border-radius:8px;font:700 16px/1.3 'Open Sans',sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background 160ms ease;background:#fff;color:#004B95;border-color:#004B95}.ds-btn-contorno:hover{background:#EAF0F8;color:#003A73}.ds-btn-contorno:focus-visible{outline:3px solid #F5D547;box-shadow:0 0 0 2px #000;outline-offset:2px}"
+    },
+    {
+      "name": "Menú principal",
+      "kind": "nav",
+      "refersTo": "label",
+      "description": "Cuatro ítems en Dosis mayúscula; página actual en azul con subrayado rojo.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Inicio</a><a href=\"#\">Videoteca</a><a href=\"#\">Quiénes somos</a><a href=\"#\">Contacto</a></nav>",
+      "css": ".ds-nav{display:flex;gap:24px;background:#fff;padding:12px 16px;border-bottom:1px solid #D9DEE6}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;font:600 16px 'Dosis',sans-serif;text-transform:uppercase;letter-spacing:.04em;color:#1A1F26;text-decoration:none;border-bottom:3px solid transparent}.ds-nav a:hover{color:#004B95}.ds-nav a[aria-current=page]{color:#004B95;border-bottom-color:#B90000}.ds-nav a:focus-visible{outline:3px solid #F5D547;box-shadow:0 0 0 2px #000;outline-offset:2px}"
+    },
+    {
+      "name": "Tarjeta de charla",
+      "kind": "card",
+      "refersTo": "duration-tag",
+      "description": "Sin caja: miniatura con la duración, tema, título subrayado y metadatos.",
+      "html": "<article class=\"ds-ficha\"><div class=\"ds-mini\"><span>2:27:31</span></div><p class=\"ds-tema\">Física y matemática</p><h3><a href=\"#\">Entrelazamiento cuántico</a></h3><p class=\"ds-meta\">2023 · 2 partes</p></article>",
+      "css": ".ds-ficha{max-width:320px;font-family:'Open Sans',sans-serif}.ds-mini{position:relative;aspect-ratio:16/9;background:#0D2B50;border-radius:12px}.ds-mini span{position:absolute;right:8px;bottom:8px;background:#000;color:#fff;font:700 16px 'Open Sans',sans-serif;padding:0 8px;border-radius:8px}.ds-tema{margin:16px 0 8px;font:600 16px 'Dosis',sans-serif;color:#004B95}.ds-ficha h3{margin:0;font:600 22px/1.12 'Source Serif 4',Georgia,serif}.ds-ficha h3 a{color:#1A1F26;text-decoration:underline;text-decoration-color:#004B95;text-underline-offset:.2em}.ds-ficha h3 a:hover{color:#004B95}.ds-ficha h3 a:focus-visible{outline:3px solid #F5D547;box-shadow:0 0 0 2px #000;outline-offset:2px}.ds-meta{margin:8px 0 0;font-size:16px;color:#4A5560}"
+    },
+    {
+      "name": "Próxima charla",
+      "kind": "custom",
+      "refersTo": "next-talk-card",
+      "description": "El único elemento elevado: etiqueta, título, datos y acciones.",
+      "html": "<article class=\"ds-proxima\"><span class=\"ds-etq\">Próxima charla</span><h2>La próxima charla se anunciará pronto</h2><p>Los viernes a las 18 hs</p><a href=\"#\">Inscribirme por correo</a></article>",
+      "css": ".ds-proxima{max-width:420px;background:#fff;color:#1A1F26;border-radius:12px;padding:32px;box-shadow:0 2px 4px rgba(0,0,0,.08),0 18px 40px rgba(0,0,0,.22);font:18px/1.6 'Open Sans',sans-serif}.ds-etq{display:inline-block;background:#F5D547;color:#000;font:700 16px 'Open Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:8px}.ds-proxima h2{margin:12px 0 8px;font:600 32px/1.12 'Source Serif 4',Georgia,serif}.ds-proxima p{margin:16px 0 0;padding-top:16px;border-top:1px solid #D9DEE6}.ds-proxima a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 24px;border-radius:8px;font:700 16px/1.3 'Open Sans',sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background 160ms ease;margin-top:16px;background:#B90000;color:#fff}.ds-proxima a:hover{background:#8F0000}.ds-proxima a:focus-visible{outline:3px solid #F5D547;box-shadow:0 0 0 2px #000;outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Editorial universitario",
+    "overview": "Un grupo de amigos que desde 2015 se junta los viernes a aprender, presentado con la voz de una publicación universitaria: institucional, elegante y cálida. La jerarquía la dan la tipografía y el espacio, no las cajas. Los títulos en una serif contemporánea dan el tono editorial; el texto, en la sans de la web de la UTN, se lee cómodo a 18 px. El sitio convive dentro de la web de la UTN Facultad Regional Mendoza y no compite con ella.\n\nSirve a dos públicos a la vez: los adultos mayores que ya participan (letra grande, contraste alto, pocos clics, nada escondido) y los jóvenes que llegan desde WhatsApp o Instagram con el celular. Lo moderno no viene de efectos sino de aire, orden y una sola cosa importante por pantalla: la próxima charla.\n\nRechazos confirmados por la autora: todo en cajas con borde y sombra, rayas de color arriba de las tarjetas, rótulos chicos encima de los títulos, franjas sueltas que parecen agregadas, verse «para viejos» o «para chicos».",
+    "keyCharacteristics": [
+      "Tres familias: Source Serif 4 (títulos), Dosis (menú y rótulos), Open Sans (texto).",
+      "Sin cajas: espacio y filetes de 1 px separan los contenidos.",
+      "Un solo elemento elevado por página: la tarjeta de la próxima charla.",
+      "Azul del Ateneo como superficie del encabezado; rojo solo para la acción principal y los puestos.",
+      "Todo objetivo táctil de 44 px o más, foco amarillo visible, contraste AA o mejor."
+    ],
+    "rules": [
+      {
+        "name": "La regla del rojo escaso",
+        "body": "El rojo marca una sola acción por bloque (la inscripción) y el puesto de las más vistas. No se usa para decorar."
+      },
+      {
+        "name": "La regla de la mayúscula contada",
+        "body": "Mayúscula espaciada solo en el menú y en la etiqueta «Próxima charla». Todo lo demás, en minúscula: se lee mejor."
+      },
+      {
+        "name": "La regla de las líneas parejas",
+        "body": "Títulos con `text-wrap: balance` y párrafos con `text-wrap: pretty`: nada de palabras sueltas al final."
+      },
+      {
+        "name": "La regla de lo único elevado",
+        "body": "Por página hay como mucho un elemento con sombra: el que la persona vino a buscar."
+      }
+    ],
+    "dos": [
+      "**Do** separar contenidos con espacio y filetes de 1 px (`--filete`).",
+      "**Do** usar Source Serif 4 para todo título y Open Sans para todo texto corrido.",
+      "**Do** mantener 44 px como alto mínimo de cualquier enlace o botón, incluso los que están dentro de un texto.",
+      "**Do** dejar la próxima charla como lo primero útil de la portada y como único elemento con sombra.",
+      "**Do** subrayar los títulos que son enlaces, para que se reconozcan sin mouse.",
+      "**Do** tomar colores, fuentes y espaciados solo de las variables de `design-system/tokens.css`."
+    ],
+    "donts": [
+      "**Don't** usar cajas con borde y sombra para temas, valores o bloques de texto.",
+      "**Don't** poner rayas de color gruesas arriba o al costado de un bloque.",
+      "**Don't** poner un rótulo chico encima de un título.",
+      "**Don't** superponer nada a una miniatura salvo la duración.",
+      "**Don't** agregar una cuarta familia tipográfica ni volver a Baskervville.",
+      "**Don't** redibujar el logo de la UTN: se usa el archivo oficial y el blanco se logra con CSS.",
+      "**Don't** mostrar un dato incompleto entre corchetes al público."
+    ]
+  }
+}

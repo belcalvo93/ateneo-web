@@ -1,6 +1,6 @@
 /*
   Portada (Inicio): arma en la página lo que sale de los datos de data/.
-  - Próxima charla, cifras, franja «Seguinos», últimas charlas, temas y más vistas.
+  - Próxima charla (con el aviso por WhatsApp), cifras, últimas charlas, temas y más vistas.
   - Toda la lógica (qué mostrar, en qué orden, qué ocultar) está en js/portada-logica.js; acá solo se dibuja.
   - La tarjeta de charla es la de js/ficha.js, la misma para «Últimas» y «Las más vistas».
   - Los textos se insertan siempre con textContent; nunca se interpreta HTML de los datos.
@@ -69,7 +69,7 @@
     return p;
   }
 
-  function dibujarProxima(contenedor, proxima) {
+  function dibujarProxima(contenedor, proxima, redes) {
     var anunciada = L.proximaAnunciada(proxima);
     var hora = L.horaCorta(proxima.hora);
     var lugar = L.textoVisible(proxima.lugar);
@@ -120,19 +120,11 @@
       });
       datos.appendChild(fila);
     }
+
+    // Aviso por WhatsApp: se muestra también con la charla sin anunciar; sin canal, no hay botón.
+    var whatsapp = L.enlaceAvisoWhatsApp(redes);
+    if (whatsapp) datos.appendChild(enlaceExterno('btn btn-contorno aviso-whatsapp', 'Recibí el aviso de cada charla por WhatsApp', whatsapp, true));
     contenedor.appendChild(datos);
-  }
-
-  // ---- franja «Seguinos» ----
-
-  function dibujarSeguinos(contenedor, redes) {
-    var visibles = L.redesVisibles(redes);
-    vaciar(contenedor);
-    visibles.forEach(function (red) {
-      contenedor.appendChild(enlaceExterno('btn btn-contorno', red.nombre, red.url, false));
-    });
-    var seccion = seccionDe(contenedor);
-    if (seccion) seccion.hidden = visibles.length === 0;
   }
 
   // ---- charlas ----
@@ -191,7 +183,6 @@
     var temasNodo = buscar('temas');
     var masVistas = buscar('mas-vistas');
     var proximaNodo = buscar('proxima');
-    var seguinos = buscar('seguinos');
     var sitio = window.AAC_SITIO;
 
     if (hayCatalogo) {
@@ -212,14 +203,13 @@
 
     // Si no cargó la próxima charla, queda la tarjeta fija del HTML (horario y lugar habituales).
     if (proximaNodo && typeof window.AAC_PROXIMA_CHARLA === 'object' && window.AAC_PROXIMA_CHARLA !== null) {
-      dibujarProxima(proximaNodo, window.AAC_PROXIMA_CHARLA);
+      dibujarProxima(proximaNodo, window.AAC_PROXIMA_CHARLA, sitio && sitio.redes);
     }
 
     if (typeof sitio === 'object' && sitio !== null) {
       var conferencias = buscar('conferencias');
       var cifra = L.textoVisible(sitio.conferencias);
       if (conferencias && cifra) conferencias.textContent = cifra;
-      if (seguinos) dibujarSeguinos(seguinos, sitio.redes);
     }
   }
 

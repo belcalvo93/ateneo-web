@@ -13,10 +13,10 @@
 </head>
 <body>
 <div class="aac-web" data-aac-pagina="quienes-somos">
-  <!-- Barra, cabecera y pie: los dibuja js/marco.js. Lo escrito acá es solo el respaldo si no carga. -->
-  <div class="topbar" data-aac="barra"><div class="wrap"><span>UTN · Facultad Regional Mendoza</span></div></div>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <!-- Cabecera y pie: los dibuja js/marco.js. Lo escrito acá es solo el respaldo si no carga. -->
   <header class="nav" data-aac="cabecera"><div class="wrap">
-    <img src="design-system/assets/logo.png" alt="Logo del Ateneo Amigos de la Ciencia (AAC)" width="150" height="56">
+    <img src="design-system/assets/logo.png" alt="Logo del Ateneo Amigos de la Ciencia (AAC)" width="148" height="72">
     <nav aria-label="Principal"><ul>
       <li><a href="index.html">Inicio</a></li>
       <li><a href="videoteca.html">Videoteca</a></li>
@@ -25,11 +25,10 @@
     </ul></nav>
   </div></header>
 
-  <main>
+  <main id="contenido">
     <!-- Encabezado -->
     <section class="hero hero-pagina" aria-labelledby="titulo-quienes">
       <div class="wrap">
-        <p class="hero-etq">Ateneo Amigos de la Ciencia · UTN Mendoza</p>
         <h1 id="titulo-quienes">Quiénes somos</h1>
         <p class="hero-bajada">Entidad autónoma sin fines de lucro dedicada a la divulgación de las Ciencias Exactas, Físicas y Naturales y cultura general.</p>
       </div>
@@ -64,8 +63,16 @@
       </div>
     </section>
 
+    <!-- Galería: se llena sola con las fotos de data/sitio.js; vacía no se muestra -->
+    <section class="seccion" aria-labelledby="titulo-galeria" hidden>
+      <div class="wrap">
+        <h2 id="titulo-galeria">El Ateneo en fotos</h2>
+        <div class="galeria" data-aac="galeria"></div>
+      </div>
+    </section>
+
     <!-- Valores -->
-    <section class="seccion" aria-labelledby="titulo-valores">
+    <section class="seccion seccion-banda" aria-labelledby="titulo-valores">
       <div class="wrap">
         <h2 id="titulo-valores">Nuestros valores</h2>
         <ul class="valores">
@@ -104,13 +111,6 @@
       </div>
     </section>
 
-    <!-- Galería: se llena sola con las fotos de data/sitio.js; vacía no se muestra -->
-    <section class="seccion" aria-labelledby="titulo-galeria" hidden>
-      <div class="wrap">
-        <h2 id="titulo-galeria">El Ateneo en fotos</h2>
-        <div class="galeria" data-aac="galeria"></div>
-      </div>
-    </section>
 
     <!-- Proponer una charla -->
     <section class="seccion" aria-label="Proponer una charla">
@@ -197,6 +197,10 @@
       <h2>Escribinos</h2>
       <p><a href="mailto:ateneoac.mo@gmail.com">ateneoac.mo@gmail.com</a></p>
       <p><a href="https://www.youtube.com/@ateneoamigosdelasciencias" rel="noopener noreferrer">YouTube</a></p>
+    </div>
+    <div class="pie-utn">
+      <img src="img/logo-utn.png" alt="Universidad Tecnológica Nacional – Facultad Regional Mendoza" width="158" height="41" loading="lazy">
+      <p>Una actividad de la UTN Facultad Regional Mendoza</p>
     </div>
   </div></footer>
 </div>

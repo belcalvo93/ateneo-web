@@ -40,6 +40,13 @@ Agustina empezó a armar las playlists por tema el 16/11/2026. El script podría
 ### IN-09 — Capítulos / marcas de tiempo en la videoteca (idea futura)
 Agustina va a agregar capítulos (marcas de tiempo) a los videos largos. La videoteca podría mostrarlos en la ficha de cada charla para ir directo a cada tema del video (enlace a YouTube con el tiempo de inicio). No implementado y fuera del scope de C-04; depende de que los capítulos existan en el canal y de poder leerlos con `yt-dlp` (metadatos por video).
 
+### IN-10 — Más fotos en Quiénes somos (idea, para consultar con el nexo)
+Sumar más fotos a Quiénes somos, siempre en una **grilla fija** (no carrusel: el contenido que se mueve solo o se esconde detrás de flechas es difícil para adultos mayores). Opciones a consultar, que pueden combinarse:
+1. **Galería de momentos** de charlas y encuentros.
+2. **Sección «Mesa Organizadora»** con foto, nombre y rol de sus 7 integrantes.
+
+Condiciones: cada persona que aparezca con su nombre tiene que autorizarlo, y las fotos siguen las reglas de DD-17 (sin metadatos; personas ajenas desenfocadas). Cuidar el valor de **trato horizontal**: nadie se presenta como «principal» (mismo tamaño, mismo formato y orden alfabético). No implementado.
+
 ## Preguntas abiertas (priorizadas)
 
 | Prioridad | Pregunta | Bloquea | Decisor |
@@ -53,7 +60,8 @@ Agustina va a agregar capítulos (marcas de tiempo) a los videos largos. La vide
 | Media | Enlace del perfil de **Instagram** (placeholder en la lista de redes) | Redes de C-03 | Agustina |
 | Media | Validar con el nexo que el logo «AAC» con la llama es el oficial (DD-18: confirmado solo por archivos) | Marca | Nexo |
 | Media | ¿Quiénes integran la Mesa Organizadora y quieren aparecer? ¿Se nombra a los fundadores en «Quiénes somos»? | Quiénes somos (C-03) | Nexo / Mesa |
-| Media | ¿Qué fotos van en la galería y con qué texto alternativo/epígrafe? ¿Las personas que aparecen están de acuerdo con publicarlas? | Galería de Quiénes somos (C-03) | Nexo |
+| Media | **Más fotos en Quiénes somos (IN-10, para el nexo)**: ¿quieren una galería de momentos de charlas y encuentros, una sección «Mesa Organizadora» con foto, nombre y rol de sus 7 integrantes, o ambas? Cada persona nombrada tiene que autorizarlo; siempre en grilla fija y sin destacar a nadie | Quiénes somos | Nexo |
+| Media | ¿Se suman otras fotos a la galería? Cada foto nueva necesita la autorización del Ateneo antes de publicarse (la foto grupal ya está autorizada, ver preguntas cerradas) | Galería de Quiénes somos | Nexo |
 | Media | ¿Cómo y cuándo avisa quien graba las charlas que subió un video nuevo? ¿Quién vuelve a correr el cruce (`derivar-datos.js`) tras los cambios de Agustina en el canal? | Enlaces del catálogo al día | Dev / Agustina / Ateneo |
 | Media | ¿Quiénes del Ateneo cargarán la próxima charla después de la beca? (Ya se sabe que serán varios, DD-20; faltan los nombres para probar la guía con ellos) | Guía de uso (C-06) | Nexo / Mesa |
 | Media | Caja del Ateneo en la portada de la UTN FRM: ¿quién la agrega en Elementor, qué color, ícono y número? (IN-06) | C-07 (idea) | Ateneo / FRM |
@@ -71,6 +79,7 @@ Agustina va a agregar capítulos (marcas de tiempo) a los videos largos. La vide
 | ¿Desde qué año se cuenta la historia? | Agosto de 2015 (DD-13) | 11/11/2026 |
 | ¿Acceso al canal para armar playlists por tema (RF-07)? | Las arma Agustina; ya empezó | 16/11/2026 |
 | ¿Hay fotos de las charlas? | Sí: 4 fotos históricas entregadas por el Ateneo | 11/11/2026 |
+| ¿Se puede publicar la foto grupal de integrantes? | Sí: el Ateneo la entregó para la web, así que su consentimiento queda resuelto. Se publica optimizada y sin metadatos (el original tenía ubicación GPS) como `img/ateneo-integrantes.jpg`, en Quiénes somos (C-03c). Cualquier otra foto sigue necesitando autorización | 17/11/2026 |
 | ¿Podemos usar el logo actual? | «AAC» con la llama, confirmado por los archivos entregados; falta validarlo con el nexo (DD-18) | 16/11/2026 |
 | ¿Sigue vigente la Declaración de Principios (`bit.ly/3ai4qQx`)? | Vigente la v2.4; se muestra desplegable en la página y se deja de usar el `bit.ly` (DD-16) | 11/11/2026 |
 | ¿Conjunto final de redes? | YouTube, Instagram y Canal de Difusión de WhatsApp (DD-14) | 11/11/2026 |

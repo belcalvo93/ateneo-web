@@ -75,7 +75,7 @@ fotos: [
 ]
 ```
 
-Publicá solo fotos con permiso de las personas que aparecen. No escribas en este archivo correos ni teléfonos personales.
+**Antes de sumar una foto hace falta la autorización del Ateneo.** Achicala a 1600 px de ancho como máximo y sacale los metadatos (pueden incluir la ubicación donde se sacó). Si aparecen personas que no son del Ateneo, hay que desenfocarlas. No escribas en este archivo correos ni teléfonos personales.
 
 ## Ganchos de los temas (opcional)
 

@@ -6,7 +6,7 @@ Define qué muestra la página de Inicio del Ateneo y cómo se comporta cuando l
 ## Requirements
 
 ### Requirement: Secciones de la portada
-`index.html` SHALL mostrar, en este orden y dentro del contenedor `.aac-web`: encabezado con la presentación del Ateneo, próxima charla, cifras, franja «Seguinos», últimas charlas, temas, más vistas e invitación a proponer una charla. El orden MUST ser el mismo en celular y en escritorio. La próxima charla SHALL ser alcanzable por enlace directo (`index.html#proxima-charla`).
+`index.html` SHALL mostrar, en este orden y dentro del contenedor `.aac-web`: encabezado con la presentación del Ateneo y la tarjeta de la próxima charla, cifras, últimas charlas, temas, más vistas e invitación a proponer una charla. El orden de lectura y de teclado MUST ser el mismo en celular y en escritorio. La próxima charla SHALL ser alcanzable por enlace directo (`index.html#proxima-charla`).
 
 #### Scenario: Navegación por anclas
 - **WHEN** se activa «Contacto» en el menú principal
@@ -23,6 +23,10 @@ Define qué muestra la página de Inicio del Ateneo y cómo se comporta cuando l
 #### Scenario: Acceso a la videoteca
 - **WHEN** se activa «Ver la videoteca» en el encabezado o «Ver todas en la videoteca» en últimas charlas
 - **THEN** se abre `videoteca.html`
+
+#### Scenario: Sin franja de redes
+- **WHEN** se recorre la portada
+- **THEN** no hay una sección «Seguinos»; las redes están en el pie y el aviso por WhatsApp en la tarjeta de la próxima charla
 
 ### Requirement: Ningún placeholder visible para el público
 La portada MUST NOT mostrar ningún texto de datos que sea un placeholder entre corchetes (`[…]`), ni usarlo como destino de un enlace. Un dato sin completar SHALL reemplazarse por su alternativa documentada u ocultarse.
@@ -170,23 +174,16 @@ Cada tarjeta de charla SHALL mostrar sobre la miniatura la duración de la charl
 - **WHEN** una parte tiene una duración mal escrita
 - **THEN** la tarjeta se muestra sin duración y sin texto roto
 
-### Requirement: Franja de redes
-La portada SHALL mostrar, después de la próxima charla, una franja «Seguinos» con un botón por cada red de la lista configurable que tenga un enlace real, cada uno con el nombre de la red como texto visible y de al menos 44 px. Si ninguna red tiene enlace, la franja MUST NOT mostrarse.
-
-#### Scenario: Estado inicial
-- **WHEN** la lista tiene YouTube y WhatsApp con enlace e Instagram con placeholder
-- **THEN** la franja muestra dos botones, «YouTube» y «Canal de WhatsApp», y no menciona Instagram
-
-#### Scenario: Sin redes
-- **WHEN** ninguna red de la lista tiene un enlace real
-- **THEN** la portada no muestra la franja ni su título
-
 ### Requirement: Presentación del Ateneo en el encabezado
-El encabezado de la portada SHALL decir qué es el Ateneo antes de la próxima charla, con: el rótulo «Ateneo Amigos de la Ciencia · UTN Mendoza», el título, una descripción breve basada en la bajada institucional (agrupación sin fines de lucro, desde 2015, charlas gratuitas y abiertas), el horario habitual con la modalidad «en el Salón de Actos de la UTN FRM y/o por Zoom», y los botones «Ver la videoteca» y «Conocé al Ateneo». MUST NOT nombrar personas ni afirmar que el Ateneo nació en 2017.
+El encabezado de la portada SHALL presentar al Ateneo antes de la próxima charla: el título «Ciencia y cultura abiertas a toda la comunidad», una descripción basada en la bajada institucional (agrupación sin fines de lucro, desde 2015, charlas gratuitas y abiertas), el horario con la modalidad «en el Salón de Actos de la UTN FRM y/o por Zoom» y los botones «Ver la videoteca» y «Conocé al Ateneo». Sin rótulo encima del título; MUST NOT nombrar personas ni afirmar que el Ateneo nació en 2017.
 
 #### Scenario: Qué es el Ateneo a primera vista
 - **WHEN** alguien abre la portada sin conocer al Ateneo
-- **THEN** antes de la tarjeta de próxima charla lee el rótulo, el título, la descripción y el horario
+- **THEN** antes de la tarjeta de próxima charla lee el título, la descripción y el horario
+
+#### Scenario: Sin rótulo sobre el título
+- **WHEN** se revisa el encabezado
+- **THEN** el primer texto del encabezado es el título, sin una línea chica encima
 
 #### Scenario: Conocer al Ateneo
 - **WHEN** se activa «Conocé al Ateneo»
@@ -195,6 +192,17 @@ El encabezado de la portada SHALL decir qué es el Ateneo antes de la próxima c
 #### Scenario: Sin botón duplicado de próxima charla
 - **WHEN** se revisan los botones del encabezado
 - **THEN** son solo «Ver la videoteca» y «Conocé al Ateneo»
+
+### Requirement: Encabezado y próxima charla en la misma fila
+En pantallas anchas, la presentación del Ateneo y la tarjeta de la próxima charla SHALL compartir la primera fila, una al lado de la otra; en pantallas angostas se apilan en ese mismo orden.
+
+#### Scenario: Dos columnas en escritorio
+- **WHEN** se abre la portada a 1440×900
+- **THEN** la presentación ocupa la columna izquierda y la tarjeta de la próxima charla la derecha, ambas visibles sin desplazarse
+
+#### Scenario: Apiladas en el celular
+- **WHEN** se abre la portada a 390 px de ancho
+- **THEN** la presentación va primero y la tarjeta de la próxima charla inmediatamente debajo
 
 ### Requirement: Invitación a proponer una charla en la portada
 La portada SHALL cerrar con una invitación breve, de una o dos líneas, con un enlace visible «Proponer una charla» que abre esa sección de la página Quiénes somos. MUST NOT repetir la presentación del Ateneo que ya está en el encabezado.
@@ -213,3 +221,29 @@ Cada tarjeta de tema SHALL mostrar el gancho del tema debajo de su nombre solo s
 #### Scenario: Tema con gancho
 - **WHEN** se carga un gancho en un tema
 - **THEN** la tarjeta de ese tema muestra ese texto entre el nombre y la cantidad de charlas
+
+### Requirement: Aviso por WhatsApp en la próxima charla
+La tarjeta de la próxima charla SHALL ofrecer un botón «Recibí el aviso de cada charla por WhatsApp» que abre el Canal de Difusión de WhatsApp de la lista configurable de redes, en una pestaña nueva y avisándolo a los lectores de pantalla. Si la lista no tiene un enlace real a un canal de WhatsApp, el botón MUST NOT mostrarse ni dejar un hueco. El botón aparece tanto con la charla anunciada como sin anunciar.
+
+#### Scenario: Estado inicial
+- **WHEN** la lista de redes tiene el Canal de WhatsApp con su enlace oficial
+- **THEN** la tarjeta muestra «Recibí el aviso de cada charla por WhatsApp» y al activarlo se abre ese canal
+
+#### Scenario: Sin canal de WhatsApp
+- **WHEN** la lista de redes no tiene ningún enlace a WhatsApp, o lo tiene como placeholder
+- **THEN** la tarjeta no muestra ese botón
+
+#### Scenario: Charla sin anunciar
+- **WHEN** la próxima charla todavía no tiene título ni fecha
+- **THEN** la tarjeta muestra «La próxima charla se anunciará pronto» y también el botón del aviso por WhatsApp
+
+### Requirement: Títulos de tarjeta reconocibles como enlace
+El título de cada tarjeta de charla SHALL verse como enlace sin necesidad de pasar el mouse (por ejemplo, subrayado), y la miniatura MUST NOT tener superpuesto otro elemento que la duración de la charla.
+
+#### Scenario: En el celular
+- **WHEN** se ve una tarjeta de charla en una pantalla táctil, sin mouse
+- **THEN** su título se distingue como enlace
+
+#### Scenario: Miniatura limpia
+- **WHEN** se ve una tarjeta de «Las más vistas»
+- **THEN** sobre la miniatura solo aparece la duración, y el número de puesto está fuera de la imagen, junto al título

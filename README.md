@@ -50,8 +50,11 @@ npm test
 El contenido fijo está escrito en el HTML; lo que sale de los datos lo arma el navegador:
 
 - `js/portada-logica.js`: las reglas (qué se muestra, en qué orden y qué se oculta, duración, menú). Son funciones puras, probadas en `tests/portada-logica.test.js`.
-- `js/marco.js`: barra, cabecera con el menú (plegado detrás de «Menú» en el celular) y pie, iguales en las tres páginas. Cada página dice cuál es con `data-aac-pagina` y trae escrito un respaldo mínimo por si no carga JavaScript.
+- `js/marco.js`: cabecera con el menú (plegado detrás de «Menú» en el celular) y pie con el logo de la UTN, iguales en las tres páginas. Cada página dice cuál es con `data-aac-pagina` y trae escrito un respaldo mínimo por si no carga JavaScript.
 - `js/ficha.js`: la tarjeta de charla, la misma en todo el sitio.
+- `img/`: la foto grupal autorizada (sin metadatos) y una copia sin cambios del logo oficial de la UTN.
+
+El diseño está documentado en [DESIGN.md](DESIGN.md) y en el [design system](design-system/README.md) (revisión 2). `tests/tokens.test.js` comprueba que `css/estilos.css` tenga las mismas variables que `design-system/tokens.css`.
 - `js/portada.js` y `js/quienes-somos.js`: dibujan cada página.
 
 Regla de oro: un dato sin completar (entre corchetes, como `[Título]`) nunca se muestra al público. Una charla sin título limpio usa el título original del video; un disertante, una red o un botón sin dato simplemente no aparecen.

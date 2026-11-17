@@ -1,7 +1,10 @@
-/* Design tokens — Ateneo Amigos de la Ciencia. Revision 1.
+/* Design tokens — Ateneo Amigos de la Ciencia. Revision 2 (17/11/2026).
    Valores de marca tomados de docs/PRD.md ("Identidad visual").
-   Los derivados (superficies, texto, espaciado) salen de los mockups aprobados. */
-@import url('https://fonts.googleapis.com/css2?family=Baskervville:wght@400;600&family=Dosis:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap');
+   Revisión 2: Source Serif 4 reemplaza a Baskervville y pasa a ser la fuente de títulos;
+   Dosis queda para el menú y los rótulos cortos; Open Sans para el texto. Tres familias en total.
+   Se suman la escala de títulos, el filete fino, la sombra de la próxima charla (el único
+   elemento elevado) y los colores de hover que en la revisión 1 estaban sueltos en la hoja. */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Dosis:wght@600&family=Open+Sans:wght@400;600;700&display=swap');
 
 :root {
   /* UTN FRM */
@@ -16,35 +19,53 @@
   --aac-llama: #F5D547;
 
   /* Derivados (AA verificados sobre su fondo previsto) */
-  --superficie-pagina: #F1F3F8;      /* fondo general */
-  --superficie-tarjeta: #FFFFFF;
-  --superficie-suave: #EAF0F8;       /* botones de parte, panel de datos */
-  --superficie-media: #0D2B50;       /* miniatura/placeholder de video */
+  --superficie-pagina: #F1F3F8;      /* banda suave (temas) */
+  --superficie-tarjeta: #FFFFFF;     /* fondo general y tarjeta de próxima charla */
+  --superficie-suave: #EAF0F8;       /* hover de enlaces de bloque */
+  --superficie-media: #0D2B50;       /* miniatura sin imagen */
   --texto: #1A1F26;                  /* 16:1 sobre blanco */
   --texto-suave: #4A5560;            /* 7.5:1 sobre blanco */
+  --texto-sobre-oscuro: #D5DAE1;     /* 14:1 sobre negro (pie) */
   --borde: #D9DEE6;
+  --borde-sobre-oscuro: #3A3F47;     /* filete dentro del pie negro */
 
-  /* Tipografías (Google Fonts, las mismas de frm.utn.edu.ar) */
-  --fuente-titulos: 'Dosis', sans-serif;      /* títulos y menú, mayúsculas */
-  --fuente-texto: 'Open Sans', sans-serif;    /* texto */
-  --fuente-serif: 'Baskervville', serif;      /* títulos del pie */
+  /* Estados (antes sueltos en la hoja, rev. 1) */
+  --aac-rojo-hover: #8F0000;
+  --aac-azul-hover: #003A73;
+  --blanco-translucido: rgba(255,255,255,.14);
+
+  /* Tipografías (Google Fonts) */
+  --fuente-titulos: 'Source Serif 4', Georgia, serif;   /* títulos, años, numerales, citas, pie */
+  --fuente-rotulos: 'Dosis', sans-serif;                /* menú y rótulos cortos */
+  --fuente-texto: 'Open Sans', sans-serif;              /* texto */
 
   /* Escala tipográfica (base 18 px obligatoria) */
   --texto-base: 1.125rem;   /* 18 px */
   --texto-chico: 1rem;      /* 16 px, mínimo para metadatos */
+  --texto-boton: 1rem;
   --texto-h3: 1.375rem;
-  --texto-h2: 2rem;
-  --texto-h1: clamp(2.25rem, 5vw, 3.5rem);
+  --texto-h2: clamp(1.75rem, 3vw, 2.25rem);
+  --texto-h1: clamp(2.25rem, 4.5vw, 3.25rem);
+  --texto-display: clamp(2.5rem, 5.2vw, 4rem);   /* título de la portada */
+  --texto-numeral: clamp(2rem, 3.5vw, 2.5rem);   /* años, puestos, cifras */
   --interlineado: 1.6;
+  --interlineado-titulos: 1.12;
+  --ancho-lectura: 65ch;
 
   /* Espaciado */
   --esp-1: .25rem; --esp-2: .5rem; --esp-3: .75rem; --esp-4: 1rem;
   --esp-5: 1.5rem; --esp-6: 2rem; --esp-7: 3rem; --esp-8: 4rem;
+  --espaciado-seccion: clamp(3rem, 7vw, 5rem);
   --ancho-contenido: 1200px;
 
-  /* Radios y sombras */
+  /* Radios, filetes y la única sombra */
   --radio-chico: 8px; --radio: 12px; --radio-pildora: 999px;
-  --sombra-tarjeta: 0 1px 2px rgba(0,0,0,.06), 0 4px 14px rgba(13,43,80,.08);
+  --filete: 1px solid var(--borde);
+  --sombra-elevada: 0 2px 4px rgba(0,0,0,.08), 0 18px 40px rgba(0,0,0,.22);
+
+  /* Enlaces */
+  --subrayado-grosor: .075em;
+  --subrayado-separacion: .2em;
 
   /* Interacción */
   --objetivo-minimo: 44px;   /* alto mínimo de botones/enlaces táctiles */

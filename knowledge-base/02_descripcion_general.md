@@ -9,7 +9,7 @@
 | Lógica | JavaScript puro (ES modules NO: debe pegarse en un widget) | Sin bundler ni build |
 | Datos | Archivos `.js` editables por no programadores en `data/` (`temas.js`, `charlas.js`, `proxima-charla.js`; cada uno asigna una global `window.AAC_*`) | Separado del diseño; admiten comentarios y se pueden pegar en línea (DD-03) |
 | Tests | `node:test` (Node nativo) | Buscador y filtro, más los scripts de datos (derivación, validación, cruce con YouTube); sin dependencias |
-| Tipografías | Google Fonts: Dosis, Open Sans, Baskervville | Las mismas de frm.utn.edu.ar |
+| Tipografías | Google Fonts: Source Serif 4 (títulos), Dosis (menú y rótulos) y Open Sans (texto) | Dosis y Open Sans son las de frm.utn.edu.ar; Source Serif 4 reemplazó a Baskervville en la rev. 2 del design system (DD-24) |
 | Hosting | WordPress + Elementor Pro 4.2 de la FRM (widget HTML) | Confirmado el 11/11/2026; Google Sites descartado (DD-02). Falta el alta de Belén como editora |
 | Costo | Cero | RNF |
 

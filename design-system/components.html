@@ -3,182 +3,154 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Design system — Ateneo Amigos de la Ciencia</title>
-<link rel="stylesheet" href="tokens.css">
+<title>Componentes — Ateneo Amigos de la Ciencia (revisión 2)</title>
+<!-- Revisión 2: usa la hoja real del sitio, así esta referencia no se desincroniza de las páginas. -->
+<link rel="stylesheet" href="../css/estilos.css">
 <style>
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--superficie-pagina);color:var(--texto);font:var(--texto-base)/var(--interlineado) var(--fuente-texto)}
-  h1,h2,h3{font-family:var(--fuente-titulos);line-height:1.15;margin:0 0 var(--esp-3)}
-  h1{font-size:var(--texto-h1)} h2{font-size:var(--texto-h2)} h3{font-size:var(--texto-h3)}
-  a{color:var(--aac-azul)}
-  :focus-visible{outline:var(--foco);box-shadow:var(--foco-contorno);outline-offset:2px}
-  .wrap{max-width:var(--ancho-contenido);margin:0 auto;padding:0 var(--esp-4)}
-  section.demo{padding:var(--esp-6) 0;border-bottom:1px solid var(--borde)}
-  .nota{color:var(--texto-suave);font-size:var(--texto-chico)}
-  /* Barra superior + navegación */
-  .topbar{background:var(--utn-negro);color:#fff;font:600 .8rem var(--fuente-titulos);letter-spacing:.06em;text-transform:uppercase;padding:var(--esp-2) 0}
-  .topbar .wrap{display:flex;justify-content:space-between;gap:var(--esp-4);flex-wrap:wrap}
-  .nav{background:#fff;border-bottom:1px solid var(--borde)}
-  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--esp-4);flex-wrap:wrap;padding-top:var(--esp-2);padding-bottom:var(--esp-2)}
-  .nav img{height:56px;width:auto;display:block}
-  .nav ul{list-style:none;display:flex;gap:var(--esp-2) var(--esp-5);margin:0;padding:0;flex-wrap:wrap}
-  .nav a{display:inline-flex;align-items:center;min-height:var(--objetivo-minimo);font:600 1rem var(--fuente-titulos);text-transform:uppercase;letter-spacing:.03em;color:var(--texto);text-decoration:none;border-bottom:3px solid transparent}
-  .nav a[aria-current="page"]{color:var(--aac-azul);border-bottom-color:var(--aac-rojo)}
-  /* Hero */
-  .hero{background:var(--aac-azul);color:#fff;padding:var(--esp-7) 0}
-  .hero .etq{color:var(--aac-llama);font:600 .95rem var(--fuente-titulos);letter-spacing:.08em;text-transform:uppercase;margin:0 0 var(--esp-3)}
-  .hero h1{max-width:18ch}
-  /* Botones */
-  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:var(--objetivo-minimo);padding:0 var(--esp-5);border-radius:var(--radio-chico);font:700 1rem var(--fuente-texto);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background var(--transicion),color var(--transicion)}
-  .btn-rojo{background:var(--aac-rojo);color:#fff} .btn-rojo:hover{background:#8f0000}
-  .btn-azul{background:var(--aac-azul);color:#fff} .btn-azul:hover{background:#003a73}
-  .btn-blanco{background:#fff;color:var(--aac-azul)} .btn-blanco:hover{background:var(--superficie-suave)}
-  .btn-borde{background:transparent;color:#fff;border-color:#fff} .btn-borde:hover{background:rgba(255,255,255,.14)}
-  .btn-contorno{background:var(--superficie-tarjeta);color:var(--aac-azul);border-color:var(--aac-azul)} .btn-contorno:hover{background:var(--superficie-suave)}
-  .fila{display:flex;gap:var(--esp-3);flex-wrap:wrap;align-items:center}
-  /* Tarjeta de charla */
-  .grilla{display:grid;gap:var(--esp-5);grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-  .ficha{background:var(--superficie-tarjeta);border:1px solid var(--borde);border-radius:var(--radio);box-shadow:var(--sombra-tarjeta);overflow:hidden;display:flex;flex-direction:column}
-  .miniatura{position:relative;aspect-ratio:16/9;background:var(--superficie-media);display:grid;place-items:center;color:#c9d6e8;font-size:.8rem}
-  .miniatura .play{width:56px;height:56px;border-radius:50%;background:var(--aac-rojo);display:grid;place-items:center}
-  .miniatura .play::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
-  .cuerpo{padding:var(--esp-4);display:flex;flex-direction:column;gap:var(--esp-2);flex:1}
-  .tema{font:700 .85rem var(--fuente-texto);letter-spacing:.06em;text-transform:uppercase;color:var(--aac-azul)}
-  .ficha h3{font-size:1.25rem;margin:0}
-  .meta{color:var(--texto-suave);font-size:var(--texto-chico);margin:0}
-  .partes{display:flex;gap:var(--esp-2);flex-wrap:wrap;margin-top:auto;padding-top:var(--esp-2)}
-  .parte{display:inline-flex;align-items:center;gap:var(--esp-2);min-height:var(--objetivo-minimo);padding:0 var(--esp-3);background:var(--superficie-suave);color:var(--aac-azul);border-radius:var(--radio-chico);font:600 .95rem var(--fuente-texto);text-decoration:none}
-  .parte::before{content:"";border-left:9px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent}
-  .parte:hover{background:#d6e3f4}
-  /* Buscador y chips */
-  label.campo{display:block;font-weight:700;margin-bottom:var(--esp-2)}
-  input[type=search]{width:100%;max-width:560px;min-height:48px;padding:0 var(--esp-4);font:var(--texto-base) var(--fuente-texto);border:2px solid var(--utn-gris-azulado);border-radius:var(--radio-chico);background:#fff}
-  .chips{display:flex;flex-wrap:wrap;gap:var(--esp-2);margin-top:var(--esp-4)}
-  .chip{min-height:var(--objetivo-minimo);padding:0 var(--esp-4);border-radius:var(--radio-pildora);border:2px solid var(--utn-gris-azulado);background:#fff;color:var(--texto);font:600 1rem var(--fuente-texto);cursor:pointer}
-  .chip[aria-pressed="true"]{background:var(--aac-azul);border-color:var(--aac-azul);color:#fff}
-  /* Próxima charla */
-  .proxima{background:#fff;border-radius:var(--radio);box-shadow:var(--sombra-tarjeta);padding:var(--esp-5);display:grid;gap:var(--esp-5);grid-template-columns:1.4fr 1fr}
-  .etiqueta{display:inline-block;background:var(--aac-llama);color:var(--utn-negro);font:700 .85rem var(--fuente-texto);letter-spacing:.06em;text-transform:uppercase;padding:var(--esp-1) var(--esp-3);border-radius:var(--radio-chico)}
-  .datos{background:var(--superficie-pagina);border-radius:var(--radio);padding:var(--esp-4)}
-  /* Tema (tarjeta de explorar) */
-  .tema-card{background:#fff;border:1px solid var(--borde);border-top:4px solid var(--aac-azul);border-radius:var(--radio-chico);padding:var(--esp-4);min-height:var(--objetivo-minimo);font:600 1.1rem var(--fuente-titulos);color:var(--texto);text-decoration:none;display:block}
-  .tema-card small{display:block;color:var(--texto-suave);font:var(--texto-chico) var(--fuente-texto)}
-  .propone{border-top:4px solid var(--aac-rojo);background:#fff;border-radius:var(--radio);padding:var(--esp-5);box-shadow:var(--sombra-tarjeta)}
-  /* Pie */
-  footer{background:var(--utn-negro);color:#fff;padding:var(--esp-6) 0}
-  footer h3{font-family:var(--fuente-serif);font-weight:600}
-  footer a{color:#fff}
-  .swatches{display:grid;gap:var(--esp-3);grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
-  .sw{border:1px solid var(--borde);border-radius:var(--radio-chico);overflow:hidden;background:#fff;font-size:.85rem}
-  .sw i{display:block;height:48px} .sw span{display:block;padding:var(--esp-2)}
-  /* Componentes agregados el 16/11/2026 (C-03b): solo tokens existentes */
-  .menu-boton{display:inline-flex;align-items:center;gap:var(--esp-2);min-height:var(--objetivo-minimo);padding:0 var(--esp-4);background:var(--superficie-tarjeta);color:var(--texto);border:2px solid var(--utn-gris-azulado);border-radius:var(--radio-chico);font:700 1rem var(--fuente-texto);cursor:pointer}
-  .menu-boton[aria-expanded="true"]{background:var(--aac-azul);border-color:var(--aac-azul);color:var(--utn-blanco)}
-  .menu-icono{width:var(--esp-5);height:2px;background:currentColor;box-shadow:0 -6px 0 currentColor,0 6px 0 currentColor}
-  .menu-lista{list-style:none;margin:var(--esp-3) 0 0;padding:0;max-width:320px}
-  .menu-lista a{display:flex;align-items:center;min-height:var(--objetivo-minimo);border-bottom:1px solid var(--borde);font:600 1rem var(--fuente-titulos);text-transform:uppercase;letter-spacing:.03em;color:var(--texto);text-decoration:none}
-  .menu-lista a[aria-current="page"]{color:var(--aac-azul);border-bottom-color:var(--aac-rojo)}
-  .cifras{display:flex;flex-wrap:wrap;gap:var(--esp-2) var(--esp-6);margin:0}
-  .cifras div{display:flex;align-items:baseline;gap:var(--esp-2)}
-  .cifras dt{font:700 var(--texto-h3) var(--fuente-titulos);color:var(--aac-azul)}
-  .cifras dd{margin:0;color:var(--texto-suave);font-size:var(--texto-chico)}
-  .seguinos{background:var(--superficie-suave);padding:var(--esp-4);border-radius:var(--radio)}
-  .miniatura .duracion{position:absolute;right:var(--esp-2);bottom:var(--esp-2);background:var(--utn-negro);color:var(--utn-blanco);font:700 var(--texto-chico) var(--fuente-texto);padding:0 var(--esp-2);border-radius:var(--radio-chico)}
-  .miniatura .puesto{position:absolute;left:var(--esp-2);top:var(--esp-2);min-width:var(--objetivo-minimo);height:var(--objetivo-minimo);display:grid;place-items:center;background:var(--aac-llama);color:var(--utn-negro);font:700 var(--texto-h3) var(--fuente-titulos);border-radius:var(--radio-pildora)}
-  .linea-tiempo{list-style:none;margin:0;padding:0;max-width:46rem}
-  .linea-tiempo li{position:relative;padding:0 0 var(--esp-5) var(--esp-6);border-left:4px solid var(--borde)}
-  .linea-tiempo li:last-child{padding-bottom:0;border-left-color:transparent}
-  .linea-tiempo li::before{content:"";position:absolute;left:calc(-1 * var(--esp-3) - 2px);top:var(--esp-1);width:var(--esp-5);height:var(--esp-5);border-radius:50%;background:var(--aac-llama);border:4px solid var(--aac-azul)}
-  .hito-anio{margin:0;font:700 var(--texto-h2) var(--fuente-titulos);line-height:1.15;color:var(--aac-azul)}
-  .linea-tiempo p:last-child{margin:0}
-  .valores{list-style:none;margin:0;padding:0;display:grid;gap:var(--esp-4);grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-  .valores li{background:var(--superficie-tarjeta);border:1px solid var(--borde);border-top:4px solid var(--aac-llama);border-radius:var(--radio-chico);padding:var(--esp-4)}
-  .valores p{margin:0}
-  @media (max-width:720px){.proxima{grid-template-columns:1fr}}
+  /* Solo para presentar la referencia (no es parte del sitio) */
+  body { margin: 0; }
+  .ref { padding: var(--esp-7) 0; border-top: var(--filete); }
+  .ref > .wrap > h2 { margin-bottom: var(--esp-2); }
+  .ref .nota { max-width: var(--ancho-lectura); margin: 0 0 var(--esp-5); }
+  .muestras { display: grid; gap: var(--esp-4); grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .muestras div { font-size: var(--texto-chico); }
+  .muestras i { display: block; height: 56px; border-radius: var(--radio-chico); border: var(--filete); margin-bottom: var(--esp-2); }
+  .roles p { margin: 0 0 var(--esp-4); }
+  .roles .rotulo-demo { font: 600 var(--texto-boton) var(--fuente-rotulos); text-transform: uppercase; letter-spacing: .04em; }
+  .fondo-azul { background: var(--aac-azul); padding: var(--esp-5); border-radius: var(--radio); }
 </style>
 </head>
 <body>
-<div class="topbar"><div class="wrap"><span>UTN · Facultad Regional Mendoza</span><span>Sección de la web de la facultad</span></div></div>
-<header class="nav"><div class="wrap">
-  <img src="assets/logo.png" alt="Logo del Ateneo Amigos de la Ciencia (AAC)">
-  <nav aria-label="Principal"><ul>
-    <li><a href="#">Inicio</a></li><li><a href="#" aria-current="page">Videoteca</a></li><li><a href="#">Quiénes somos</a></li><li><a href="#">Contacto</a></li>
-  </ul></nav>
-</div></header>
+<div class="aac-web">
+  <header class="nav"><div class="wrap">
+    <a class="nav-marca" href="#"><img src="assets/logo.png" alt="Ateneo Amigos de la Ciencia: ir al inicio" width="148" height="72"></a>
+    <nav aria-label="Principal"><ul>
+      <li><a href="#" aria-current="page">Inicio</a></li><li><a href="#">Videoteca</a></li><li><a href="#">Quiénes somos</a></li><li><a href="#">Contacto</a></li>
+    </ul></nav>
+  </div></header>
 
-<div class="hero"><div class="wrap">
-  <p class="etq">Ateneo Amigos de la Ciencia · UTN Mendoza</p>
-  <h1>Ciencia y cultura abiertas a toda la comunidad</h1>
-  <p>Una charla cada viernes a las 18 hs, en el Salón de Actos de la UTN FRM y/o por Zoom.</p>
-  <div class="fila"><a class="btn btn-blanco" href="#">Ver la videoteca</a><a class="btn btn-borde" href="#">Conocé al Ateneo</a></div>
-</div></div>
+  <main>
+    <section class="hero hero-portada" aria-labelledby="ref-hero">
+      <div class="wrap hero-grid">
+        <div class="hero-texto">
+          <h1 id="ref-hero">Ciencia y cultura abiertas a toda la comunidad</h1>
+          <p class="hero-bajada">Encabezado de la portada: título en Source Serif 4, bajada en Open Sans y el horario resaltado en llama. Sin rótulo encima del título.</p>
+          <p class="hero-horario">Todos los viernes a las 18 hs, en el Salón de Actos de la UTN FRM y/o por Zoom.</p>
+          <div class="fila"><a class="btn btn-blanco" href="#">Ver la videoteca</a><a class="btn btn-borde" href="#">Conocé al Ateneo</a></div>
+        </div>
+        <article class="proxima" aria-labelledby="ref-proxima">
+          <div>
+            <span class="etiqueta">Próxima charla</span>
+            <h2 id="ref-proxima">[Título de la próxima charla]</h2>
+            <p class="meta">A cargo de [Disertante] · [descripción breve]</p>
+          </div>
+          <div class="datos">
+            <p><strong>Cuándo:</strong> viernes [fecha], 18 hs</p>
+            <p><strong>Dónde:</strong> Salón de Actos UTN FRM y/o por Zoom</p>
+            <div class="fila"><a class="btn btn-rojo" href="#">Inscribirme por correo</a><a class="btn btn-contorno" href="#">Agendar en mi calendario</a></div>
+            <a class="btn btn-contorno aviso-whatsapp" href="#">Recibí el aviso de cada charla por WhatsApp</a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-<main class="wrap">
-  <section class="demo"><h2>Colores</h2>
-    <div class="swatches" id="sw"></div>
-    <p class="nota">Texto sobre azul AAC: blanco (8,6:1) y llama (5,9:1). Texto suave sobre blanco: 7,6:1. Blanco sobre rojo AAC: 6,9:1.</p>
-  </section>
+    <section class="cifras-banda" aria-label="Cifras"><div class="wrap">
+      <dl class="cifras"><div><dt>+100</dt><dd>conferencias desde 2015</dd></div><div><dt>310</dt><dd>videos en YouTube</dd></div></dl>
+    </div></section>
 
-  <section class="demo"><h2>Botones</h2>
-    <div class="fila"><a class="btn btn-rojo" href="#">Inscribirme por correo</a><a class="btn btn-azul" href="#">Enviar mi propuesta</a><a class="btn btn-blanco" href="#" style="outline:1px solid var(--borde)">Ver la videoteca</a><a class="btn btn-contorno" href="#">Agendar en Calendar</a></div>
-    <p class="nota">«Contorno» (azul sobre blanco): acción secundaria sobre fondo claro, por ejemplo los enlaces opcionales de la próxima charla.</p>
-    <p class="nota">Alto mínimo 44 px. Foco visible: anillo amarillo con contorno negro (pulsá Tab).</p>
-  </section>
+    <section class="ref" aria-labelledby="ref-colores"><div class="wrap">
+      <h2 id="ref-colores">Colores</h2>
+      <p class="nota">Texto sobre azul AAC: blanco 8,6:1 y llama 5,9:1. Azul sobre blanco 8,6:1. Rojo sobre blanco 6,9:1. Texto suave sobre la banda 6,9:1. Texto del pie sobre negro 15:1.</p>
+      <div class="muestras">
+        <div><i style="background:var(--aac-azul)"></i>--aac-azul</div>
+        <div><i style="background:var(--aac-rojo)"></i>--aac-rojo</div>
+        <div><i style="background:var(--aac-llama)"></i>--aac-llama</div>
+        <div><i style="background:var(--utn-negro)"></i>--utn-negro</div>
+        <div><i style="background:var(--superficie-tarjeta)"></i>--superficie-tarjeta</div>
+        <div><i style="background:var(--superficie-pagina)"></i>--superficie-pagina</div>
+        <div><i style="background:var(--texto)"></i>--texto</div>
+        <div><i style="background:var(--texto-suave)"></i>--texto-suave</div>
+      </div>
+    </div></section>
 
-  <section class="demo"><h2>Fichas de charla</h2>
-    <div class="grilla">
-      <article class="ficha"><div class="miniatura" role="img" aria-label="Miniatura de YouTube"><span class="play"></span></div>
-        <div class="cuerpo"><span class="tema">Física y matemática</span><h3>Entrelazamiento cuántico</h3><p class="meta">Dr. Ernesto Gandolfo Raso · 2023</p>
-        <div class="partes"><a class="parte" href="#">Parte 1 · 1:54:45</a><a class="parte" href="#">Parte 2 · 32:46</a></div></div></article>
-      <article class="ficha"><div class="miniatura" role="img" aria-label="Miniatura de YouTube"><span class="play"></span></div>
-        <div class="cuerpo"><span class="tema">Agua y ambiente</span><h3>Reciclado químico de residuos plásticos</h3><p class="meta">Dra. Elangeni Gilbert · 2026</p>
-        <div class="partes"><a class="parte" href="#">Charla · 31:40</a></div></div></article>
+    <section class="ref" aria-labelledby="ref-tipo"><div class="wrap roles">
+      <h2 id="ref-tipo">Tipografía: tres familias</h2>
+      <p class="nota">Source Serif 4 para títulos, años, numerales y el pie; Dosis solo para el menú y la etiqueta «Próxima charla»; Open Sans para el texto. Títulos con líneas balanceadas y párrafos sin palabras sueltas.</p>
+      <h1>Título de página (h1)</h1>
+      <h2>Título de sección (h2)</h2>
+      <h3>Título de tarjeta o de hito (h3)</h3>
+      <p class="rotulo-demo">Menú · Dosis</p>
+      <p>Texto corrido en Open Sans a 18 px, con un ancho de lectura de hasta 65 caracteres por línea para que se lea cómodo también en pantallas grandes.</p>
+      <p class="meta">Metadatos en Open Sans a 16 px, color texto suave.</p>
+    </div></section>
+
+    <section class="ref" aria-labelledby="ref-botones"><div class="wrap">
+      <h2 id="ref-botones">Botones</h2>
+      <p class="nota">Rojo: acción principal. Azul: acción de una sección. Contorno: acción secundaria sobre fondo claro. Blanco y borde: sobre el azul del encabezado. Todos de 44 px o más.</p>
+      <div class="fila"><a class="btn btn-rojo" href="#">Inscribirme por correo</a><a class="btn btn-azul" href="#">Enviar mi propuesta</a><a class="btn btn-contorno" href="#">Ver la videoteca</a></div>
+      <div class="fila fondo-azul" style="margin-top:var(--esp-4)"><a class="btn btn-blanco" href="#">Ver la videoteca</a><a class="btn btn-borde" href="#">Conocé al Ateneo</a></div>
+    </div></section>
+
+    <section class="ref" aria-labelledby="ref-menu"><div class="wrap">
+      <h2 id="ref-menu">Menú en el celular</h2>
+      <p class="nota">Por debajo de 720 px el menú se pliega detrás del botón «Menú», cerrado o abierto. Siempre con texto, nunca solo el ícono.</p>
+      <div class="fila"><button class="menu-boton" type="button" aria-expanded="false"><span class="menu-icono"></span><span>Menú</span></button><button class="menu-boton" type="button" aria-expanded="true"><span class="menu-icono"></span><span>Menú</span></button></div>
+    </div></section>
+
+    <section class="ref" aria-labelledby="ref-fichas"><div class="wrap">
+      <h2 id="ref-fichas">Tarjetas de charla</h2>
+      <p class="nota">Sin caja: miniatura con la duración total como único elemento encima, tema en Dosis, título subrayado (se ve como enlace sin pasar el mouse). En «Las más vistas», el puesto es un numeral fuera de la imagen.</p>
+      <div class="grilla">
+        <article class="ficha"><div class="miniatura"><span class="duracion">31:40</span></div>
+          <div class="cuerpo"><span class="tema">Agua y ambiente</span><h3><a class="enlace-tarjeta" href="#">Reciclado químico de residuos plásticos</a></h3><p class="meta">Dra Elangeni Gilbert · 2026</p></div></article>
+        <article class="ficha"><div class="miniatura"><span class="duracion">2:27:31</span></div>
+          <div class="cuerpo"><span class="tema">Física y matemática</span><div class="ficha-titulo"><span class="puesto" aria-hidden="true">1</span><h3><a class="enlace-tarjeta" href="#">Entrelazamiento cuántico</a></h3></div><p class="meta">Dr Ernesto Gandolfo Raso · 2023 · 2 partes</p><p class="meta">12 mil visualizaciones</p></div></article>
+      </div>
+    </div></section>
+
+    <section class="seccion-banda ref" aria-labelledby="ref-temas"><div class="wrap">
+      <h2 id="ref-temas">Temas</h2>
+      <p class="nota">Grilla de 4 columnas en escritorio y 2 en el celular, separadas por filetes, sin cajas. El gancho aparece solo si el tema lo tiene.</p>
+      <div class="grilla-temas">
+        <a class="tema-card" href="#"><span class="tema-nombre">Geología, minería y energía</span><small>35 charlas</small></a>
+        <a class="tema-card" href="#"><span class="tema-nombre">Inteligencia artificial y tecnología</span><span class="tema-gancho">[Gancho opcional del tema]</span><small>30 charlas</small></a>
+        <a class="tema-card" href="#"><span class="tema-nombre">Agua, ambiente y sostenibilidad</span><small>27 charlas</small></a>
+        <a class="tema-card" href="#"><span class="tema-nombre">Neurociencia, salud y psicología</span><small>26 charlas</small></a>
+      </div>
+    </div></section>
+
+    <section class="ref" aria-labelledby="ref-tiempo"><div class="wrap">
+      <h2 id="ref-tiempo">Línea de tiempo y valores</h2>
+      <p class="nota">Año grande en Source Serif, línea fina, sin puntos. Valores en dos columnas, título y frase, sin cajas.</p>
+      <ol class="linea-tiempo">
+        <li><p class="hito-anio">2015</p><h3>Título del hito</h3><p>Texto corto del hito.</p></li>
+        <li><p class="hito-anio">Hoy</p><h3>Título del hito</h3><p>Texto corto del hito.</p></li>
+      </ol>
+      <ul class="valores" style="margin-top:var(--esp-6)">
+        <li><h3>Rigor científico</h3><p>Una frase que explica el valor.</p></li>
+        <li><h3>Trato horizontal</h3><p>Una frase que explica el valor.</p></li>
+      </ul>
+    </div></section>
+
+    <section class="ref" aria-labelledby="ref-otros"><div class="wrap">
+      <h2 id="ref-otros">Desplegable e invitación</h2>
+      <details class="declaracion"><summary>Leer la Declaración de Principios completa</summary><div class="declaracion-texto"><p>Texto completo, sin caja propia: un filete arriba y otro abajo.</p></div></details>
+      <div class="invitacion" style="margin-top:var(--esp-7)">
+        <div><h2>¿Querés dar una charla?</h2><p>Invitación de cierre: un filete arriba, título, una línea y el botón.</p></div>
+        <a class="btn btn-azul" href="#">Proponer una charla</a>
+      </div>
+    </div></section>
+  </main>
+
+  <footer class="pie"><div class="wrap">
+    <div><h2>Escribinos</h2><p><a class="pie-correo" href="#">ateneoac.mo@gmail.com</a></p><p>Consultas e inscripción a las charlas</p></div>
+    <div><h2>Seguinos</h2><ul class="redes"><li><a href="#">YouTube</a></li><li><a href="#">Canal de WhatsApp</a></li></ul></div>
+    <div><h2>Dónde estamos</h2><p>Rodríguez 273, Ciudad de Mendoza</p><p><a href="#">Cómo llegar</a></p></div>
+    <div class="pie-utn">
+      <img src="../img/logo-utn.png" alt="Universidad Tecnológica Nacional – Facultad Regional Mendoza" width="158" height="41">
+      <p>Una actividad de la UTN Facultad Regional Mendoza</p>
     </div>
-  </section>
-
-  <section class="demo"><h2>Buscador y filtros</h2>
-    <label class="campo" for="q">Buscar por título o disertante</label>
-    <input id="q" type="search" placeholder="Ej.: litio, Seltzer, sismo">
-    <div class="chips" role="group" aria-label="Filtrar por tema">
-      <button class="chip" aria-pressed="true">Todos los temas</button><button class="chip" aria-pressed="false">Geología, minería y energía</button>
-      <button class="chip" aria-pressed="false">IA y tecnología</button><button class="chip" aria-pressed="false">Agua y ambiente</button>
-    </div>
-    <p class="nota" style="margin-top:var(--esp-4)">Mostrando 12 charlas</p>
-  </section>
-
-  <section class="demo"><h2>Próxima charla y temas</h2>
-    <div class="proxima"><div><span class="etiqueta">Próxima charla</span><h2 style="margin-top:var(--esp-3)">[Título de la próxima charla]</h2><p class="meta">A cargo de [Disertante] · [descripción breve]</p></div>
-      <div class="datos"><p style="margin:0 0 var(--esp-2)"><strong>Cuándo:</strong> viernes [fecha], 18 hs</p><p style="margin:0 0 var(--esp-3)"><strong>Dónde:</strong> Salón de Actos UTN FRM (Rodríguez 273) y/o por Zoom</p><a class="btn btn-rojo" href="#">Inscribirme por correo</a></div></div>
-    <div class="grilla" style="margin-top:var(--esp-5)"><a class="tema-card" href="#">Geología, minería y energía<small>35 charlas</small></a><a class="tema-card" href="#">Inteligencia artificial y tecnología<small>30 charlas</small></a></div>
-    <div class="propone" style="margin-top:var(--esp-5)"><h3>Proponer una charla</h3><p>No hace falta ser profesional universitario.</p><a class="btn btn-azul" href="#">Enviar mi propuesta</a></div>
-  </section>
-  <section class="demo"><h2>Menú en celular</h2>
-    <div class="fila"><button class="menu-boton" type="button" aria-expanded="false"><span class="menu-icono"></span><span>Menú</span></button><button class="menu-boton" type="button" aria-expanded="true"><span class="menu-icono"></span><span>Menú</span></button></div>
-    <ul class="menu-lista"><li><a href="#" aria-current="page">Inicio</a></li><li><a href="#">Videoteca</a></li><li><a href="#">Quiénes somos</a></li><li><a href="#">Contacto</a></li></ul>
-    <p class="nota">Por debajo de 720 px el menú se pliega detrás del botón «Menú» (cerrado y abierto). Siempre con texto, nunca solo el ícono.</p>
-  </section>
-
-  <section class="demo"><h2>Cifras, redes y miniatura</h2>
-    <dl class="cifras"><div><dt>+100</dt><dd>conferencias desde 2015</dd></div><div><dt>310</dt><dd>videos en YouTube</dd></div></dl>
-    <div class="seguinos" style="margin-top:var(--esp-4)"><h3>Seguinos</h3><div class="fila"><a class="btn btn-contorno" href="#">YouTube</a><a class="btn btn-contorno" href="#">Canal de WhatsApp</a></div></div>
-    <div class="grilla" style="margin-top:var(--esp-4)">
-      <article class="ficha"><div class="miniatura"><span class="play"></span><span class="puesto">1</span><span class="duracion">2:27:31</span></div>
-        <div class="cuerpo"><span class="tema">Física y matemática</span><h3>Entrelazamiento cuántico</h3><p class="meta">Dr. Ernesto Gandolfo Raso · 2023 · 2 partes</p><p class="meta">12 mil visualizaciones</p></div></article>
-    </div>
-    <p class="nota">La miniatura muestra la duración total de la charla; el número de puesto solo se usa en «Las más vistas».</p>
-  </section>
-
-  <section class="demo"><h2>Línea de tiempo y valores</h2>
-    <ol class="linea-tiempo"><li><p class="hito-anio">2015</p><h3>Título del hito</h3><p>Texto corto del hito.</p></li><li><p class="hito-anio">Hoy</p><h3>Título del hito</h3><p>Texto corto del hito.</p></li></ol>
-    <ul class="valores" style="margin-top:var(--esp-5)"><li><h3>Rigor científico</h3><p>Una frase que explica el valor.</p></li><li><h3>Trato horizontal</h3><p>Una frase que explica el valor.</p></li></ul>
-  </section>
-</main>
-
-<footer><div class="wrap"><h3>Contacto</h3><p><a href="mailto:ateneoac.mo@gmail.com">ateneoac.mo@gmail.com</a></p><p>UTN · Facultad Regional Mendoza · Rodríguez 273, Ciudad de Mendoza</p></div></footer>
-<script src="brand.js"></script>
-<script>
-  var sw=[['--aac-azul','#004B95'],['--aac-rojo','#B90000'],['--aac-llama','#F5D547'],['--utn-negro','#000000'],['--utn-gris-azulado','#8A9BA6'],['--utn-azul-grisaceo','#7391B6'],['--utn-verde-graduados','#D0DFA8'],['--superficie-pagina','#F1F3F8']];
-  document.getElementById('sw').innerHTML=sw.map(function(c){return '<div class="sw"><i style="background:'+c[1]+'"></i><span><b>'+c[0]+'</b><br>'+c[1]+'</span></div>'}).join('');
-</script>
+  </div></footer>
+</div>
 </body>
 </html>

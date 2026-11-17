@@ -128,12 +128,16 @@ Los mockups aprobados (Inicio escritorio, Videoteca, Inicio celular) están en `
   --aac-azul: #004B95;
   --aac-rojo: #B90000;
   --aac-llama: #F5D547;
-  /* Tipografías (Google Fonts, las mismas que usa frm.utn.edu.ar) */
-  --fuente-titulos: 'Dosis', sans-serif;      /* títulos y menú, mayúsculas */
-  --fuente-texto: 'Open Sans', sans-serif;    /* texto */
-  --fuente-serif: 'Baskervville', serif;      /* títulos del pie */
+  /* Tipografías (Google Fonts). Revisión 2 del design system (17/11/2026) */
+  --fuente-titulos: 'Source Serif 4', Georgia, serif;  /* títulos, años, numerales, pie */
+  --fuente-rotulos: 'Dosis', sans-serif;               /* menú y rótulos cortos (como frm.utn.edu.ar) */
+  --fuente-texto: 'Open Sans', sans-serif;             /* texto (como frm.utn.edu.ar) */
 }
 ```
+
+Tipografía: en la revisión 2 del design system (17/11/2026) Source Serif 4 reemplazó a Baskervville como fuente de títulos; se eligió entre tres opciones por su legibilidad (altura de x amplia, I, l y 1 bien distintas) y su tono editorial. El sitio usa tres familias. Los valores completos viven en `design-system/tokens.css`.
+
+Logo de la UTN: el logo oficial de frm.utn.edu.ar va en el pie, en blanco, con la línea «Una actividad de la UTN Facultad Regional Mendoza»; no en la cabecera, porque dentro de la web de la facultad ya está arriba.
 
 Logo del Ateneo: «AAC» con la llama, en azul, rojo y amarillo. Se toma como oficial porque es el que el Ateneo entregó en sus archivos (logo patrón y video institucional de 2022); en la reunión del 11/11 no se trató, así que queda **confirmado por archivos, a validar con el nexo**.
 
