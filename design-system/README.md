@@ -26,7 +26,7 @@ Base 18 px · contraste AA · objetivos ≥ 44 px · foco visible · nombres de 
 ## Decisiones abiertas (TBD)
 - Logo en SVG/alta calidad (hoy PNG; vive en `assets/logo.png`, reemplazar ese archivo mantiene las rutas).
 - Fotos de las charlas.
-- Usuarios de Instagram y Facebook para el pie.
+- Enlaces de Instagram y del Canal de Difusión de WhatsApp para el pie (redes confirmadas el 11/11/2026; ver `knowledge-base/09` DD-14).
 
 ## Cómo reemplazar
 - Nombre: editar `BRAND_NAME` en `brand.js`.

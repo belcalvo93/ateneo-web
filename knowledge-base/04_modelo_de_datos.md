@@ -18,7 +18,7 @@ ProximaCharla (singleton, independiente)
 ## Entidades
 
 ### Tema
-- `id` (string único en minúsculas y guiones, p. ej. `agua-ambiente`; las charlas lo referencian), `nombre` (string completo), `etiqueta` (string corto, el de los chips) y `playlist_url` (string | null). Viven en `data/temas.js`. Ocho temas propuestos (validación pendiente del Ateneo):
+- `id` (string único en minúsculas y guiones, p. ej. `agua-ambiente`; las charlas lo referencian), `nombre` (string completo), `etiqueta` (string corto, el de los chips) y `playlist_url` (string | null). Viven en `data/temas.js`. **Ocho temas confirmados** por Agustina el 16/11/2026 (DD-05). Sumará **2 temas más**, con nombres todavía sin informar: no se agregan ni se inventan hasta que los pase; cuando lleguen se suman a `temas.js` y se reclasifican las charlas que correspondan.
 
 | Tema | Charlas | Videos |
 |---|---|---|
@@ -31,7 +31,7 @@ ProximaCharla (singleton, independiente)
 | Física y matemática | 17 | 27 |
 | Ingeniería, sismos e infraestructura | 15 | 25 |
 
-Los mockups usan etiquetas cortas (Historia y cultura, Agua y ambiente, IA y tecnología, Neurociencia y salud, Ingeniería y sismos); el mapeo nombre completo ↔ etiqueta está en `etiqueta` (ver `10` IN-03). `playlist_url` queda en `null` hasta que exista la lista (RF-07). Ids: `geologia`, `ia-tecnologia`, `agua-ambiente`, `neurociencia-salud`, `historia-cultura`, `espacio-astronomia`, `fisica-matematica`, `ingenieria-sismos`.
+Los mockups usan etiquetas cortas (Historia y cultura, Agua y ambiente, IA y tecnología, Neurociencia y salud, Ingeniería y sismos); el mapeo nombre completo ↔ etiqueta está en `etiqueta` (ver `10` IN-03). `playlist_url` queda en `null` hasta que exista la lista (RF-07); Agustina empezó a armar las playlists por tema el 16/11/2026, lo que habilita IN-08. Ids: `geologia`, `ia-tecnologia`, `agua-ambiente`, `neurociencia-salud`, `historia-cultura`, `espacio-astronomia`, `fisica-matematica`, `ingenieria-sismos`.
 
 ### Archivos de datos y quién los escribe
 
@@ -41,7 +41,7 @@ Los mockups usan etiquetas cortas (Historia y cultura, Agua y ambiente, IA y tec
 | `data/charlas-nuevas.js` | `AAC_CHARLAS_NUEVAS` | Charlas agregadas a mano, mismo esquema que una charla; ids siguientes a `c186` | Editor |
 | `data/correcciones.js` | `AAC_CORRECCIONES` | `{ cXXX: { titulo, disertante, tema, anio, destacada, confirmados, partes: { N: { url } } } }`, clave = id de charla (nunca título ni id de video) | Editor |
 | `data/temas.js`, `data/proxima-charla.js` | `AAC_TEMAS`, `AAC_PROXIMA_CHARLA` | Temas y próxima charla | Editor |
-| `redes` (**C-03**, aún no existe) | — | Configuración del sitio: **lista configurable de redes** `[{ nombre, url }]`; `url` con placeholder `[…]` o `null` mientras no exista la red; agregar o quitar una red no toca el HTML | Editor |
+| `redes` (**C-03**, aún no existe) | — | Configuración del sitio: **lista configurable de redes** `[{ nombre, url }]`; `url` con placeholder `[…]` o `null` mientras no exista la red; agregar o quitar una red no toca el HTML. Conjunto confirmado el 11/11 (DD-14): **YouTube** (URL conocida), **Instagram** y **Canal de Difusión de WhatsApp** (ambos sin enlace todavía: placeholder) | Editor |
 
 `AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS)` devuelve la **vista combinada** que usan las páginas: una corrección que completa `titulo` o `disertante` borra su marca de `revisar`; `confirmados` borra las marcas listadas.
 
@@ -69,10 +69,18 @@ El nombre visible **no se guarda**: «Charla» si hay 1 parte; «Parte N» si ha
 186 charlas, 310 videos, 104 charlas con más de un video, años 2020–2026.
 
 ### ProximaCharla (`data/proxima-charla.js`)
-Campos según RF-04: `titulo`, `disertante`, `descripcion` (1–2 líneas), `fecha` (`DD/MM/AAAA`), `hora` (`HH:MM`, 24 h), `lugar`, `modalidad` (presencial + Zoom), `zoom_url` (string | null, a confirmar) y `correo_inscripcion`. Los valores no confirmados quedan como placeholder entre corchetes; solo se precargan los documentados (RN-PC-02/03).
+Campos según RF-04: `titulo`, `disertante`, `descripcion` (1–2 líneas), `fecha` (`DD/MM/AAAA`), `hora` (`HH:MM`, 24 h), `lugar`, `modalidad` (presencial + Zoom), `zoom_url` (string | null) y `correo_inscripcion`. Los valores no confirmados quedan como placeholder entre corchetes; solo se precargan los documentados (RN-PC-02/03).
+
+**Ampliación acordada el 11/11 (DD-15, se implementa en C-03)**: se suma un campo opcional `calendar_url` (string | null) con el enlace para agendar la charla en Google Calendar. Junto con `zoom_url` (que ya existe) alimenta dos botones opcionales de la tarjeta «Próxima charla»: cada botón se muestra solo si su enlace está cargado. Se conserva el nombre `zoom_url` del esquema de C-02 y el nuevo campo sigue el mismo patrón (`calendar_url`), en lugar de renombrar a `url_zoom`/`url_calendar`. Todavía no está en `data/proxima-charla.js` ni en el validador.
+
+### Contenido institucional (C-03)
+
+- **Fotos históricas**: 4 fotos reales entregadas por el Ateneo para la galería de «Quiénes somos». Hoy están fuera del repo; en C-03 se copian optimizadas (peso y tamaño) a una carpeta de imágenes del repo, con texto alternativo descriptivo.
+- **Declaración de Principios v2.4**: su texto completo se muestra en un bloque desplegable de «Proponer una charla» (DD-16). Se transcribe del documento entregado por el Ateneo, sin reescribirlo.
 
 ## Seed data inicial
 
 - Las 186 charlas del borrador, con temas ya asignados.
 - Las 3 más vistas conocidas: Entrelazamiento cuántico (~12 mil), Depósitos de litio (~2 mil), Evolución geológica de Mendoza (~1,2 mil).
+- Para completar disertantes se puede cruzar el listado interno de miembros contra los títulos y descripciones de YouTube (IN-07), respetando DD-17: el listado se lee desde fuera del repo y no se guarda nada que no sea ya público en YouTube.
 - Faltan por completar manualmente: `titulo` y `disertante` de la mayoría de las charlas (la derivación completa solo los de alta confianza, ≈ 30) y las `url` que el cruce con el canal no resuelva; la miniatura se deriva de la URL de YouTube.

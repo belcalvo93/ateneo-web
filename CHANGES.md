@@ -4,18 +4,19 @@
 > Cada change es atómico: un agente puede implementarlo en una sesión (~4-6 horas).
 > **Leer este archivo antes de ejecutar cualquier `/opsx:propose`.**
 
-> ## ⚠️ ROADMAP PROVISIONAL — C-03 a C-06 SUJETOS A VALIDACIÓN
-> Este roadmap se revisa después de la **reunión con el Ateneo del 11/11/2026**, donde pueden pedir cambios en los temas de la videoteca, las secciones y la plataforma (Elementor o Google Sites).
+> ## ✅ Roadmap validado tras la reunión del 11/11/2026
+> El Ateneo validó los mockups, las secciones y la plataforma (web de la UTN FRM, WordPress + Elementor; Google Sites descartado). El 16/11/2026 Agustina confirmó las 8 categorías de la videoteca y avisó que sumará 2 más. Fuente: reunión con el Ateneo del 11/11/2026 y documentos entregados por el Ateneo, `docs/PRD.md` v1.2 y `knowledge-base/09_decisiones_y_supuestos.md` (DD-13 a DD-20).
 >
-> - **Punto de partida (camino crítico, inicio): C-01 y C-02.** No dependen de ninguna de esas decisiones, así que se arrancan ya.
-> - **C-03, C-04, C-05 y C-06 están SUJETOS A VALIDACIÓN** tras la reunión: su scope, orden o incluso su existencia pueden cambiar. No hacer `/opsx:propose` de ninguno hasta confirmar.
-> - Si cambian los temas o las secciones, se retoca el scope de C-02 (esquema de temas) y de C-03/C-04. Si cambia la plataforma, se rehace sobre todo C-06.
+> - **C-01 y C-02 están cerrados.** El próximo change es **C-03** (`portada`).
+> - **C-03 a C-06 ya no están sujetos a validación**: se pueden proponer respetando las dependencias.
+> - **Pendientes externos que no bloquean**: los nombres de las 2 categorías nuevas (no inventarlos: `data/temas.js` sigue con 8), los enlaces de Instagram y del Canal de Difusión de WhatsApp (placeholders), y el alta de Belén como editora en la web de la FRM (afecta C-06).
+> - **Privacidad**: el repo es público. El listado interno de miembros del Ateneo nunca se copia ni se commitea, ni ningún correo o teléfono personal (DD-17).
 
 ---
 
 ## Cómo usar este documento
 
-1. Identificá el próximo change pendiente (`[ ]`) cuyas dependencias estén todas `[x]`. **Hoy: solo C-01 y C-02.**
+1. Identificá el próximo change pendiente (`[ ]`) cuyas dependencias estén todas `[x]`. **Hoy: C-03 y C-04** (C-01 y C-02 están cerrados).
 2. Leé los archivos de "Leer antes" de ese change en `knowledge-base/`.
 3. Ejecutá `/opsx:propose C-NN-nombre` (y después `/opsx:apply`). La lógica de buscador/filtro (C-04) va con **Strict TDD** (`node:test`, sin dependencias).
 4. Al terminar: verificá y `/opsx:archive`.
@@ -25,48 +26,55 @@ Diseño: el sistema de diseño (`design-system/`, modo `system-only`, revisión 
 
 ### Preguntas abiertas que condicionan el roadmap
 
-Fuente: `knowledge-base/10_preguntas_abiertas.md` e `09_decisiones_y_supuestos.md`. Se resuelven en la reunión del 11/11.
+Fuente: `knowledge-base/10_preguntas_abiertas.md` e `09_decisiones_y_supuestos.md`.
 
-1. **Plataforma final de integración: ¿Elementor (WordPress FRM) o Google Sites?** Define dónde viven datos/CSS/JS, si se inlinea todo y cómo es la guía de uso. Afecta C-06 (y el formato de entrega de C-02/C-05). Ver DD-02, IN-02.
-2. **Validación de los 8 temas propuestos** (y de las etiquetas cortas). Afecta el esquema de temas de C-02 y la clasificación de las 186 charlas en C-05. Ver DD-05, IN-03.
-3. **¿Quién mantiene la página después de la beca?** Define el nivel de simplicidad de la edición de datos (C-02) y el público de la guía de uso (C-06). Ver US-010, RN-CO-02.
+Resueltas en la reunión del 11/11 y con las novedades del 16/11:
 
-Otras abiertas, menos bloqueantes: criterio de «últimas»/«más vistas» (curado vs. automático, afecta C-03), playlists por tema (US-006, requiere acceso al canal), logo en alta calidad, usuarios de Instagram/Facebook, enlace de Zoom.
+1. **Plataforma**: web de la UTN FRM (WordPress + Elementor). Google Sites descartado (DD-02).
+2. **Temas**: los 8 se mantienen y se sumarán 2 (DD-05).
+3. **Mantenimiento después de la beca**: varios integrantes del Ateneo, con una guía de uso simple (DD-20).
+
+Siguen abiertas (ninguna bloquea C-03):
+
+1. **Nombres de las 2 categorías nuevas** (los pasa Agustina). Afecta `data/temas.js`, la grilla de temas de C-03 y los chips de C-04: ambos se arman desde los datos, sin fijar la cantidad de temas.
+2. **Administrador web de la FRM**: alta de Belén como editora y si se pueden hospedar archivos o se inlinea todo. Afecta C-06.
+3. **Enlaces de Instagram y del Canal de Difusión de WhatsApp** (placeholders en la lista de redes de C-03).
+4. Menos bloqueantes: validar el logo con el nexo (DD-18), quiénes de la Mesa Organizadora o de los fundadores aparecen en «Quiénes somos», aviso semanal de quien sube las charlas al canal.
 
 ---
 
 ## Árbol de dependencias
 
 ```
-C-01 base-y-estilos                     ← ARRANQUE (no depende de la reunión)
- └── C-02 datos-charlas                 ← ARRANQUE (no depende de la reunión)
-      ├── C-03 portada                  ⚠ sujeto a validación (11/11)
-      │    └── C-05 responsive-a11y-carga-completa   ⚠
-      └── C-04 videoteca (TDD)          ⚠ sujeto a validación (11/11)
-           └── C-05 responsive-a11y-carga-completa   ⚠
-                └── C-06 integracion-y-guia          ⚠
+C-01 base-y-estilos                     ✓ cerrado
+ └── C-02 datos-charlas                 ✓ cerrado
+      ├── C-03 portada                  ← PRÓXIMO
+      │    └── C-05 responsive-a11y-carga-completa
+      └── C-04 videoteca (TDD)
+           └── C-05 responsive-a11y-carga-completa
+                └── C-06 integracion-y-guia
 ```
 
 ### Paralelismo por fase
 
 ```
-GATE 0: (nada)                                  ← ARRANQUE
+GATE 0: (nada)                                  ✓ hecho
   → C-01 base-y-estilos                [Agente A]
 
 GATE 1: C-01 ✓
   → C-02 datos-charlas                 [Agente A]
 
---- Acá se hace la reunión del 11/11. Revisar C-03..C-06 antes de seguir. ---
+--- Reunión del 11/11 hecha: C-03..C-06 validados (ver encabezado). ---
 
-GATE 2: C-02 ✓                                  ← FORK (⚠ sujeto a validación)
+GATE 2: C-02 ✓                                  ← FORK (estamos acá)
   → C-03 portada                       [Agente A]
   → C-04 videoteca (TDD)               [Agente B]
 
-GATE 3: C-03 ✓ + C-04 ✓                         (⚠ sujeto a validación)
+GATE 3: C-03 ✓ + C-04 ✓
   → C-05 responsive-a11y-carga-completa  [Agente A: a11y/responsive]
   → (carga de las 186 charlas con el Ateneo en paralelo)  [Agente B — si C-02 ✓]
 
-GATE 4: C-05 ✓                                  (⚠ sujeto a validación)
+GATE 4: C-05 ✓
   → C-06 integracion-y-guia            [Agente A]
 ```
 
@@ -74,7 +82,7 @@ GATE 4: C-05 ✓                                  (⚠ sujeto a validación)
 
 `C-01 → C-02 → C-04* → C-05 → C-06`
 
-\* C-03 es la otra rama de GATE 2; C-05 espera a ambas, así que cualquiera de las dos puede ser la última. La videoteca (C-04) es la más larga por el TDD. Tramo confirmado hoy: **C-01 → C-02**; el resto depende de la reunión del 11/11. Hito duro: guía entregada el **18/12** (revisión con el Ateneo 09/12–15/12).
+\* C-03 es la otra rama de GATE 2; C-05 espera a ambas, así que cualquiera de las dos puede ser la última. La videoteca (C-04) es la más larga por el TDD. Tramo cerrado: **C-01 → C-02**; el resto quedó validado en la reunión del 11/11. Hito duro: guía entregada el **18/12** (revisión con el Ateneo 09/12–15/12).
 
 ### Plan óptimo con 3 agentes
 
@@ -84,15 +92,15 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 |------|-------------------------|----------------------------|------------------------|
 | 1 | C-01 base-y-estilos | — | — |
 | 2 | C-02 datos-charlas | — | — |
-| 3 ⚠ | C-03 portada | C-04 videoteca (TDD) | — |
-| 4 ⚠ | C-05 responsive + a11y | C-05 carga completa de las 186 charlas | — |
-| 5 ⚠ | — | — | C-06 integración y guía |
+| 3 | C-03 portada | C-04 videoteca (TDD) | — |
+| 4 | C-05 responsive + a11y | C-05 carga completa de las 186 charlas | — |
+| 5 | — | — | C-06 integración y guía |
 
 ---
 
-## FASE 1 — Fundación (ARRANQUE, no depende de la reunión)
+## FASE 1 — Fundación (cerrada)
 
-> Estos dos changes se pueden empezar ya. Son el punto de partida del roadmap.
+> Los dos changes están completados y archivados.
 
 ### [C-01] `base-y-estilos`
 - **Estado**: `[x]` completado y archivado (2026-11-06)
@@ -132,35 +140,42 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 
 ---
 
-## FASE 2 — Páginas (⚠ SUJETA A VALIDACIÓN tras la reunión del 11/11)
+## FASE 2 — Páginas (validada en la reunión del 11/11)
 
-> C-03 y C-04 son paralelizables entre sí. No arrancar hasta revisar este roadmap con lo que se decida con el Ateneo (secciones, temas, plataforma).
+> C-03 y C-04 son paralelizables entre sí. Orden recomendado para una sola desarrolladora: C-03 y después C-04.
 
 ### [C-03] `portada`
-- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (11/11)**
+- **Estado**: `[ ]` pendiente — **validado el 11/11; próximo change**
 - **Scope**:
   - `index.html` según el mockup «Inicio» (escritorio y celular) en `docs/mockups/`.
-  - Hero con propuesta y cifras (+100 conferencias, 310 videos, viernes 18 hs); sección «Quiénes somos» (2017, Dpto. Ing. Electrónica) — US-001.
+  - Hero con propuesta y cifras (+100 conferencias, 310 videos, viernes 18 hs) — US-001.
+  - **Nuevo (11/11) — «Quiénes somos»**: historia desde **agosto de 2015** (reemplaza el «desde 2017» de los mockups; DD-13), bajada institucional («Entidad autónoma sin fines de lucro…»), valores (rigor científico, clima amistoso y horizontal, acceso libre), Dpto. Ing. Electrónica y declaración De Interés para la FRM. **Galería con las 4 fotos históricas** entregadas por el Ateneo: se copian al repo optimizadas (peso y tamaño), con texto alternativo descriptivo. No nombrar personas (fundadores, Mesa Organizadora) hasta confirmarlo con el nexo — US-001.
   - Tarjeta «Próxima charla» renderizada desde datos, con botón `mailto:ateneoac.mo@gmail.com` y correo visible como texto — US-007.
-  - 3 últimas charlas, 3 más vistas y grilla de 8 temas con conteo — US-008. «Más vistas» es **automático** por el campo `vistas`, con la opción de fijar charlas destacadas a mano con `destacada: true` (campo opcional del esquema de C-02; la lógica de portada que lo usa — destacadas primero, luego por `vistas` — es de este change).
+  - **Nuevo (11/11) — Calendar y Zoom en la próxima charla**: dos botones opcionales, «Agendar en Google Calendar» y «Entrar por Zoom». Se agrega el campo opcional `calendar_url` a `data/proxima-charla.js` (junto al `zoom_url` que ya existe), con su validación, su test y su explicación en `data/LEEME.md`; cada botón se muestra solo si su enlace está cargado (DD-15, RN-PC-04).
+  - 3 últimas charlas, 3 más vistas y grilla de temas con conteo, armada desde `temas.js` sin fijar la cantidad (hoy 8; se sumarán 2 cuando Agustina informe los nombres: no inventarlos) — US-008. «Más vistas» es **automático** por el campo `vistas`, con la opción de fijar charlas destacadas a mano con `destacada: true` (campo opcional del esquema de C-02; la lógica de portada que lo usa — destacadas primero, luego por `vistas` — es de este change).
   - Configuración del sitio (contacto, redes, cifras de portada) en datos, movida desde C-02.
-  - **Requisito (D17 de C-02)**: los enlaces a **redes sociales** son una **lista configurable en los datos** (`redes: [{ nombre, url }]`): agregar o quitar una red se hace editando los datos, sin tocar el HTML. Agustina creará Instagram y además TikTok o Facebook (sin decidir); mientras no exista el usuario, `url` con placeholder `[…]` o `null` (un placeholder nunca se muestra al público).
+  - **Requisito (D17 de C-02)**: los enlaces a **redes sociales** son una **lista configurable en los datos** (`redes: [{ nombre, url }]`): agregar o quitar una red se hace editando los datos, sin tocar el HTML. **Conjunto confirmado el 11/11 (DD-14)**: **YouTube** (URL del canal conocida), **Instagram** y **Canal de Difusión de WhatsApp**. Los enlaces de Instagram y de WhatsApp todavía no se tienen: van con placeholder `[…]` o `null` (un placeholder nunca se muestra al público).
   - **Requisito (D13 de C-02)**: leer siempre la vista combinada `AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS)`, nunca `AAC_CHARLAS` directo (se perderían las correcciones a mano).
   - **Requisito (decidido en C-02)**: un placeholder entre corchetes nunca es visible para el público. Si `titulo` sigue en `[Título]`, se muestra el `titulo_original` de la parte 1; si `disertante` es `[Disertante]`, esa línea no se muestra.
-  - Sección «Proponer una charla» (requisitos + Declaración de Principios + «Enviar mi propuesta») — US-009.
-  - Pie con redes (YouTube, Instagram, Facebook; usuarios pendientes como placeholder) — US-003.
+  - **Nuevo (11/11) — «Proponer una charla»**: requisitos (propuesta temática, resumen, CV abreviado, aceptación de la Declaración) y criterios de admisión (base científica o tecnológica; sin fines comerciales ni proselitismo político o religioso; RN-PR-03), el **texto completo de la Declaración de Principios v2.4 en un bloque desplegable** (`<details>`, transcripto del documento del Ateneo sin reescribirlo; reemplaza el enlace `bit.ly`; DD-16) y el botón «Enviar mi propuesta» — US-009.
+  - Pie con redes tomadas de la lista configurable (YouTube, Instagram, Canal de Difusión de WhatsApp) — US-003.
+  - **Privacidad (DD-17)**: los insumos del Ateneo (fotos, Declaración) se toman de su carpeta fuera del repo; el listado de miembros no se copia ni se usa en este change.
   - Manejo de error si falla la carga de datos: mensaje + enlace al canal de YouTube.
   - Render con `textContent`, enlaces externos con `rel="noopener noreferrer"`.
 - **Dependencias**: `C-02`
 - **Governance**: BAJO
 - **Leer antes**:
+  - `docs/PRD.md` v1.2 §Cambios de la versión 1.2, §Contexto y problema, §Requerimientos funcionales
+  - `knowledge-base/01_vision_y_objetivos.md` §Historia e identidad del Ateneo
+  - `knowledge-base/04_modelo_de_datos.md` §ProximaCharla, §Contenido institucional
   - `knowledge-base/06_funcionalidades.md` §Épica 1, §Épica 3
   - `knowledge-base/07_flujos_principales.md` §Flujo 1, §Flujo 2, §Flujo 3
   - `knowledge-base/05_reglas_de_negocio.md` §RN-PC, §RN-PO, §RN-PR
-  - `knowledge-base/10_preguntas_abiertas.md` §IN-01, §IN-04
+  - `knowledge-base/09_decisiones_y_supuestos.md` §DD-13 a §DD-18
+  - `knowledge-base/10_preguntas_abiertas.md` §IN-04
 
 ### [C-04] `videoteca`
-- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (11/11)**
+- **Estado**: `[ ]` pendiente — **validado el 11/11**
 - **Scope**:
   - **Strict TDD** con `node:test` (sin dependencias): `js/buscador.js` con funciones puras `normalizar`, `buscar`, `filtrarPorTema`, `combinar`; tests en `tests/buscador.test.js` escritos antes del código.
   - Tests esperados: normalización de mayúsculas y tildes, búsqueda por título o disertante (RN-BU-01/02), filtro por tema, combinación búsqueda + tema, «Todos los temas» por defecto, sin resultados, mínimo 2 casos por comportamiento.
@@ -169,7 +184,10 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - **Requisito (decidido en C-02)**: un placeholder entre corchetes nunca es visible para el público. Si `titulo` sigue en `[Título]`, la ficha muestra el `titulo_original` de la parte 1; si `disertante` es `[Disertante]`, esa línea no se muestra. Las partes con `url: null` no deben romper la ficha.
   - Estado vacío «No encontramos charlas…» con acción de limpiar filtros; mensaje si falla la carga de datos.
   - Búsqueda nunca insertada con `innerHTML`; enlaces con `rel="noopener noreferrer"`.
-  - Enlace a playlist por tema solo si existe `playlist_url` (US-006, opcional).
+  - Enlace a playlist por tema solo si existe `playlist_url` (US-006, opcional). Agustina empezó a armar las playlists el 16/11: cargar las `playlist_url` que ya existan.
+  - **Nuevo (16/11)**: los chips de tema se arman desde `temas.js`, sin fijar la cantidad: hoy son 8 y Agustina sumará 2 (no inventar los nombres; cuando los pase, se agregan a `temas.js` y se reclasifican las charlas).
+  - **Opcional, antes o durante este change — cruce de disertantes (IN-07)**: completar parte de los `[Disertante]` pendientes cruzando nombres contra los títulos y descripciones de YouTube. Si se usa el listado de miembros del Ateneo como diccionario, el script lo lee desde su carpeta original **fuera del repo**; nunca se copia ni se commitea, y solo se guardan nombres que ya figuran públicamente en YouTube (DD-17).
+  - Fuera de scope: mostrar capítulos / marcas de tiempo de los videos (idea futura, IN-09).
 - **Dependencias**: `C-02` (y estilos de `C-01`)
 - **Governance**: MEDIO
 - **Leer antes**:
@@ -177,18 +195,21 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - `knowledge-base/05_reglas_de_negocio.md` §RN-VI, §RN-BU
   - `knowledge-base/07_flujos_principales.md` §Flujo 1
   - `knowledge-base/08_arquitectura_propuesta.md` §Patrones aplicados, §Seguridad, §Testing
-  - `knowledge-base/09_decisiones_y_supuestos.md` §DD-06, §SU-03
+  - `knowledge-base/09_decisiones_y_supuestos.md` §DD-05, §DD-06, §DD-17, §SU-03
+  - `knowledge-base/10_preguntas_abiertas.md` §IN-07, §IN-08
 
 ---
 
-## FASE 3 — Calidad y contenido (⚠ SUJETA A VALIDACIÓN tras la reunión del 11/11)
+## FASE 3 — Calidad y contenido (validada en la reunión del 11/11)
 
 ### [C-05] `responsive-a11y-carga-completa`
-- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (11/11)**
+- **Estado**: `[ ]` pendiente — **validado el 11/11**
 - **Scope**:
   - Responsive en celular (390 px), tablet y escritorio (1440 px), mobile-first (RN-AC-02); menú hamburguesa accesible.
   - Accesibilidad RN-AC-01: base 18 px, contraste AA (revisar texto sobre `--aac-llama` y gris sobre blanco), `alt`, navegación por teclado en menú/chips/fichas, objetivos ≥ 44 px, foco visible.
-  - Carga completa de las 186 charlas: `titulo` limpio (formato *Tema – Disertante (año)* o el que defina el Ateneo), `disertante` y `url` de cada uno de los 310 videos; revisión de `anio` (aproximado) y de los 8 temas con el Ateneo.
+  - Carga completa de las 186 charlas: `titulo` limpio (formato *Tema – Disertante (año)* o el que defina el Ateneo), `disertante` y `url` de cada uno de los 310 videos; revisión de `anio` (aproximado) y de los temas (los 8 confirmados más las 2 categorías nuevas cuando Agustina las informe; reclasificar con las playlists si conviene, IN-08).
+  - **Nuevo (11/11)**: accesibilidad de lo que suma C-03: textos alternativos y peso de las fotos de la galería, bloque desplegable de la Declaración usable con teclado, botones de Calendar y Zoom con objetivo ≥ 44 px.
+  - El cruce de disertantes (IN-07) respeta DD-17: el listado de miembros se lee desde fuera del repo y solo se guardan nombres ya públicos en YouTube.
   - Validador de datos (C-02) ejecutado en modo estricto (`node scripts/validar-datos.js --estricto`) sobre el catálogo completo: sin placeholders, sin `revisar` y sin `url` en `null`.
   - Verificación manual contra mockups en 390×844 y 1440×900, sin errores de consola ni requests fallidos.
   - Tests: re-ejecutar `node --test` y el validador de datos.
@@ -202,19 +223,19 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
   - `design-system/README.md` §Reglas clave
 
 ### [C-06] `integracion-y-guia`
-- **Estado**: `[ ]` pendiente — ⚠ **sujeto a validación (11/11)**; depende de la plataforma elegida
+- **Estado**: `[ ]` pendiente — **validado el 11/11**; plataforma confirmada
 - **Scope**:
-  - Empaquetado para la plataforma confirmada: **Elementor (widget HTML)** o **Google Sites (Insertar → Código)**.
+  - Empaquetado para la plataforma confirmada el 11/11: **widget HTML de Elementor en la web de la UTN FRM** (Google Sites descartado, DD-02). Requiere gestionar con el administrador web de la FRM el alta de Belén como editora.
   - Variante inlineada (HTML con CSS/JS/datos embebidos) si los archivos externos no se pueden hospedar (Mediateca de WP), con aislamiento CSS bajo contenedor.
   - Prueba de integración en un entorno equivalente: interferencia de estilos del tema, carga de tipografías, miniaturas de YouTube (SU-03).
-  - Guía de uso para el Ateneo (entregable del 18/12), en lenguaje simple para no programadores: cargar una charla, editar la próxima charla, validar el archivo de datos, publicar/pegar el código actualizado, qué hacer si algo falla.
-  - Lista de insumos pendientes del Ateneo (logo en alta calidad, usuarios de redes, enlace de Zoom).
-  - Adaptación de la guía a quien mantenga la página después de la beca (pregunta abierta 3).
+  - Guía de uso para el Ateneo (entregable del 18/12), en lenguaje simple para no programadores y pensada para que **varios integrantes** (no una sola persona) carguen la próxima charla (pedido del 11/11, DD-20); probarla con miembros del Ateneo antes de la entrega. Contenido: cargar una charla, editar la próxima charla (incluidos los enlaces de Calendar y Zoom), agregar o quitar una red, validar el archivo de datos, publicar/pegar el código actualizado, qué hacer si algo falla.
+  - Lista de insumos pendientes al momento de la entrega (enlaces de Instagram y del Canal de Difusión de WhatsApp, validación del logo con el nexo, categorías nuevas si todavía faltan).
+  - Revisión de privacidad antes de publicar: ningún correo o teléfono personal en el código ni en los datos (DD-17).
 - **Dependencias**: `C-05`
 - **Governance**: ALTO
 - **Leer antes**:
   - `knowledge-base/07_flujos_principales.md` §Flujo 4, §Flujo 5
-  - `knowledge-base/09_decisiones_y_supuestos.md` §DD-01, §DD-02, §SU-01, §SU-02
+  - `knowledge-base/09_decisiones_y_supuestos.md` §DD-01, §DD-02, §DD-17, §DD-20, §SU-01, §SU-02
   - `knowledge-base/08_arquitectura_propuesta.md` §Restricción clave
   - `knowledge-base/10_preguntas_abiertas.md` §IN-02
   - `design-system/README.md` §Integración Elementor
@@ -225,29 +246,33 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 
 | ID | Change | Fase | Dependencias | Governance | Estado | Validación |
 |----|--------|------|--------------|------------|--------|------------|
-| C-01 | `base-y-estilos` | 1 | — | BAJO | `[x]` | Firme (arrancar ya) |
-| C-02 | `datos-charlas` | 1 | C-01 | MEDIO | `[x]` | Firme (arrancar ya) |
-| C-03 | `portada` | 2 | C-02 | BAJO | `[ ]` | ⚠ Tras reunión 11/11 |
-| C-04 | `videoteca` | 2 | C-02 | MEDIO | `[ ]` | ⚠ Tras reunión 11/11 |
-| C-05 | `responsive-a11y-carga-completa` | 3 | C-03, C-04 | MEDIO | `[ ]` | ⚠ Tras reunión 11/11 |
-| C-06 | `integracion-y-guia` | 3 | C-05 | ALTO | `[ ]` | ⚠ Tras reunión 11/11 |
+| C-01 | `base-y-estilos` | 1 | — | BAJO | `[x]` | Cerrado |
+| C-02 | `datos-charlas` | 1 | C-01 | MEDIO | `[x]` | Cerrado |
+| C-03 | `portada` | 2 | C-02 | BAJO | `[ ]` | Validado 11/11 (próximo) |
+| C-04 | `videoteca` | 2 | C-02 | MEDIO | `[ ]` | Validado 11/11 |
+| C-05 | `responsive-a11y-carga-completa` | 3 | C-03, C-04 | MEDIO | `[ ]` | Validado 11/11 |
+| C-06 | `integracion-y-guia` | 3 | C-05 | ALTO | `[ ]` | Validado 11/11 |
 
 ## Ideas / changes futuros
 
 > No son parte del roadmap C-01 a C-06 ni están empezados. Quedan registrados para decidirlos con el Ateneo.
 
 ### [C-07] `tarjeta-en-portada-utn` (idea)
-- **Estado**: no empezado — sujeto a la reunión con el Ateneo.
+- **Estado**: no empezado — idea registrada (IN-06); no se definió en la reunión del 11/11.
 - **Idea**: la portada de la UTN FRM tiene cajas de colores (Cursos, Tecnicaturas, Licenciaturas, etc.), cada una con ícono, número, nombre y una etiqueta debajo, que enlazan a cada sección. El Ateneo tendría una caja que lleve a su página.
 - **Pendiente de definir**: quién la agrega en Elementor, un color que no choque con los existentes, el ícono y el número.
 
 ### Ideas sobre los datos de YouTube
-- **Completar disertantes y títulos desde las descripciones de los videos**: `python -m yt_dlp --skip-download --dump-json <video>` (por video, solo metadatos de lectura) trae la descripción; un script podría proponer `titulo`/`disertante` y dejar al Ateneo solo lo que no se pueda obtener.
-- **Tema desde las playlists**: si Agustina arma playlists por tema, el script podría listar cada playlist (`yt-dlp --flat-playlist`) y asignar el tema por pertenencia (playlist → id de tema; `temas.js` ya tiene `playlist_url`).
+- **Completar disertantes y títulos desde las descripciones de los videos** (IN-07): `python -m yt_dlp --skip-download --dump-json <video>` (por video, solo metadatos de lectura) trae la descripción; un script podría proponer `titulo`/`disertante` y dejar al Ateneo solo lo que no se pueda obtener. El listado de miembros del Ateneo puede servir de diccionario de nombres, siempre leído desde fuera del repo y sin guardar nada que no sea ya público en YouTube (DD-17).
+- **Tema desde las playlists** (IN-08): Agustina empezó a armar las playlists por tema el 16/11; el script podría listar cada playlist (`yt-dlp --flat-playlist`) y asignar el tema por pertenencia (playlist → id de tema; `temas.js` ya tiene `playlist_url`).
 - **«Más vistas» automático con `destacada` opcional**: ya está definido en C-03 (ver arriba); no se duplica acá.
+- **Capítulos / marcas de tiempo en las fichas** (IN-09): Agustina va a agregar capítulos a los videos largos; la videoteca podría mostrarlos para ir directo a cada tema del video.
+
+### Contexto (fuera del alcance de la web)
+- **Banner y flyer**: los hace Agustina. Banner permanente de ~1 × 1 m con bolsillo para el flyer A3 semanal; el flyer lleva dos QR (Canal de Difusión de WhatsApp y agendar en Calendar con el enlace de Zoom). La web solo comparte esos dos enlaces.
 
 ---
 
-**Primer change recomendado**: `C-01` (`base-y-estilos`). Siguiente: `C-02` (`datos-charlas`). Después, parar y revisar el roadmap con lo que salga de la reunión del 11/11.
+**Próximo change**: `C-03` (`portada`). Después: `C-04` (`videoteca`, con TDD).
 
-Para arrancar: `/opsx:propose C-01-base-y-estilos` (nombre OpenSpec en kebab-case: `base-y-estilos`).
+Para arrancar: `/opsx:propose C-03-portada` (nombre OpenSpec en kebab-case: `portada`).

@@ -1,6 +1,6 @@
 # Web del Ateneo Amigos de la Ciencia — Base de Conocimiento
 
-Generada a partir de `docs/PRD.md`, `docs/mockups/` y `data/charlas-borrador.json`.
+Generada a partir de `docs/PRD.md`, `docs/mockups/` y `data/charlas-borrador.json`. Actualizada el 16/11/2026 con `docs/PRD.md` v1.2, la reunión con el Ateneo del 11/11/2026, los documentos entregados por el Ateneo y las novedades de Agustina del 16/11/2026.
 
 ## Índice de Archivos
 

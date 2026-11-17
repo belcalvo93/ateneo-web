@@ -1,11 +1,12 @@
 # Funcionalidades
 
-Épicas e historias derivadas de RF-01 a RF-09 del PRD. No se agregan requisitos nuevos.
+Épicas e historias derivadas de RF-01 a RF-09 del PRD (v1.2). Los criterios marcados «11/11» salen de los acuerdos de la reunión del 11/11/2026 (ver `09` DD-13 a DD-20).
 
 ## Épica 1: Presentación y contacto
 ### US-001 — Conocer al Ateneo (RF-01, Alta)
 **Como** visitante **quiero** saber quiénes son y qué hacen **para** decidir si me interesa participar.
-- [ ] Sección «Quiénes somos» (nacido en 2017, Dpto. Ing. Electrónica, apoyo de Graduadas y Graduados, De Interés para la FRM)
+- [ ] Sección «Quiénes somos»: historia desde agosto de 2015 (DD-13), bajada institucional, valores (rigor científico, clima amistoso y horizontal, acceso libre), Dpto. Ing. Electrónica, apoyo de Graduadas y Graduados, De Interés para la FRM — 11/11
+- [ ] Galería con las 4 fotos históricas entregadas por el Ateneo, optimizadas y con texto alternativo descriptivo — 11/11
 - [ ] Hero con propuesta y cifras (+100 conferencias, 310 videos, viernes 18 hs)
 **Reglas**: RN-PC-02
 
@@ -15,8 +16,9 @@
 **Reglas**: RN-PC-03
 
 ### US-003 — Enlaces a redes (RF-05, Alta)
-**Como** visitante **quiero** llegar a YouTube, Instagram y Facebook **para** seguir al Ateneo.
-- [ ] Enlaces visibles en el pie (usuarios de Instagram/Facebook a confirmar)
+**Como** visitante **quiero** llegar a YouTube, Instagram y el Canal de Difusión de WhatsApp **para** seguir al Ateneo.
+- [ ] Enlaces visibles en el pie, tomados de la lista configurable de redes (DD-14) — 11/11
+- [ ] Instagram y WhatsApp quedan como placeholder hasta tener el enlace; una red sin enlace no se muestra al público
 
 ## Épica 2: Videoteca
 ### US-004 — Explorar charlas por tema (RF-02, Alta)
@@ -34,28 +36,31 @@
 
 ### US-006 — Playlists por tema (RF-07, Media)
 **Como** visitante **quiero** abrir la playlist de un tema en YouTube.
-- [ ] Enlace por tema (depende de acceso al canal para crear playlists)
+- [ ] Enlace por tema, solo si el tema tiene `playlist_url` (Agustina empezó a armar las playlists el 16/11/2026)
 
 ## Épica 3: Portada y difusión
 ### US-007 — Próxima charla (RF-04, Alta)
 **Como** visitante **quiero** ver fecha, hora, lugar y modalidad de la próxima charla **para** asistir.
 - [ ] Tarjeta con título, disertante, descripción, cuándo, dónde, botón «Inscribirme por correo»
+- [ ] Botones opcionales «Agendar en Google Calendar» y «Entrar por Zoom»: cada uno se muestra solo si su enlace está cargado (`calendar_url`, `zoom_url`; DD-15) — 11/11
 - [ ] Se edita desde el archivo de datos
 **Reglas**: RN-PC-01…03
 
 ### US-008 — Últimas charlas y más vistas (RF-08, Media)
-- [ ] 3 últimas charlas, 3 más vistas, grilla de 8 temas con conteo
+- [ ] 3 últimas charlas, 3 más vistas, grilla de temas con conteo (hoy 8; se sumarán 2 cuando Agustina informe los nombres: la grilla se arma desde `temas.js`, sin fijar la cantidad)
 **Reglas**: RN-PO-01, RN-PO-02
 
 ### US-009 — Proponer una charla (RF-09, Media)
-- [ ] Requisitos listados, enlace a la Declaración de Principios, botón «Enviar mi propuesta» (por correo)
-**Reglas**: RN-PR-01, RN-PR-02
+- [ ] Requisitos y criterios de admisión listados (base científica o tecnológica; sin fines comerciales ni proselitismo político o religioso) — 11/11
+- [ ] Texto completo de la Declaración de Principios v2.4 en un bloque desplegable (`<details>`), sin enlace a `bit.ly` (DD-16) — 11/11
+- [ ] Botón «Enviar mi propuesta» (por correo)
+**Reglas**: RN-PR-01 a RN-PR-04
 
 ## Épica 4: Mantenimiento
 ### US-010 — Cargar contenido sin programar
 **Como** integrante del Ateneo **quiero** editar un archivo de datos y seguir una guía **para** publicar una charla o evento sin ayuda.
 - [ ] Archivo de datos simple y validado/documentado
-- [ ] Guía de uso entregada el 18/12
+- [ ] Guía de uso entregada el 18/12, pensada para que varios integrantes (no una sola persona) carguen la próxima charla (DD-20) — 11/11
 **Reglas**: RN-CO-01, RN-CO-02
 
 ## Transversal: Accesibilidad y portabilidad

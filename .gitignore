@@ -4,6 +4,9 @@
 scripts/salida/*
 !scripts/salida/.gitkeep
 
+# Documento de traspaso local (no va al repo público)
+docs/CONTEXTO.md
+
 # Dependencias y herramientas locales
 node_modules/
 .playwright-mcp/

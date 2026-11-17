@@ -10,7 +10,7 @@
 | Datos | Archivos `.js` editables por no programadores en `data/` (`temas.js`, `charlas.js`, `proxima-charla.js`; cada uno asigna una global `window.AAC_*`) | Separado del diseño; admiten comentarios y se pueden pegar en línea (DD-03) |
 | Tests | `node:test` (Node nativo) | Buscador y filtro, más los scripts de datos (derivación, validación, cruce con YouTube); sin dependencias |
 | Tipografías | Google Fonts: Dosis, Open Sans, Baskervville | Las mismas de frm.utn.edu.ar |
-| Hosting | WordPress + Elementor Pro 4.2 de la FRM (widget HTML) | Alternativa: Google Sites → Insertar → Código. A confirmar el 11/11 |
+| Hosting | WordPress + Elementor Pro 4.2 de la FRM (widget HTML) | Confirmado el 11/11/2026; Google Sites descartado (DD-02). Falta el alta de Belén como editora |
 | Costo | Cero | RNF |
 
 ## Arquitectura general
@@ -27,7 +27,7 @@ Desarrollo en local (este repo) → entrega pegando el código en el widget HTML
 
 ## Páginas / estructura
 
-- **Inicio**: hero, estadísticas (+100 conferencias desde 2017, 310 videos, viernes 18 hs), próxima charla, últimas charlas, explorar por tema, más vistas, Quiénes somos, Proponer una charla, pie con contacto/redes/dirección.
+- **Inicio**: hero, estadísticas (+100 conferencias, desde 2015 — DD-13; 310 videos, viernes 18 hs), próxima charla (con enlaces opcionales a Google Calendar y Zoom), últimas charlas, explorar por tema, más vistas, Quiénes somos (historia, valores y fotos históricas), Proponer una charla (con la Declaración de Principios desplegable), pie con contacto/redes/dirección.
 - **Videoteca**: buscador + chips de tema + grilla de fichas (una ficha por charla con sus partes).
 - Menú: Inicio · Videoteca · Próxima charla · Quiénes somos · Proponer una charla · Contacto. Barra superior negra «UTN · Facultad Regional Mendoza».
 - Mockups aprobados: `docs/mockups/` (inicio-escritorio, videoteca-escritorio, inicio-celular, logo-aac).
@@ -37,11 +37,12 @@ Desarrollo en local (este repo) → entrega pegando el código en el widget HTML
 | Servicio | Propósito | Tipo |
 |---|---|---|
 | YouTube (canal @ateneoamigosdelasciencias-2269) | Videos, miniaturas, playlists por tema | Enlaces / miniaturas por URL, sin API |
-| Instagram, Facebook | Redes (gestionadas por Agustina, becaria de medios y redes) | Enlaces (usuarios a confirmar) |
+| Instagram, Canal de Difusión de WhatsApp | Redes (gestionadas por Agustina, becaria de medios y redes) | Enlaces en la lista configurable (todavía sin enlace: placeholder) |
+| Google Calendar, Zoom | Agendar la próxima charla y entrar a la transmisión | Enlaces opcionales en la próxima charla (DD-15) |
 | Correo ateneoac.mo@gmail.com | Consultas, inscripción, propuestas | `mailto:` |
 | Zoom | Modalidad virtual de la próxima charla | Enlace |
 | Google Fonts | Tipografías | CSS remoto |
-| Declaración de Principios (bit.ly/3ai4qQx) | Requisito de «Proponer una charla» | Enlace (vigencia a confirmar) |
+| Declaración de Principios (v2.4) | Requisito de «Proponer una charla» | Texto completo en un bloque desplegable de la página; ya no se usa el `bit.ly` (DD-16) |
 | Logo UTN oficial (frm.utn.edu.ar/wp-content/uploads/2021/05/UTN_marca-negro-transparente2026.png) | Marca en cabecera/pie | Imagen remota |
 
 ## API REST

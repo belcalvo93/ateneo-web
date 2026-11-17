@@ -15,7 +15,7 @@
 | Datos | Archivos JS de datos en `data/*.js`, editables por no programadores salvo `charlas.js`, que es **generado** por `scripts/derivar-datos.js` (`window.AAC_TEMAS`, `AAC_CHARLAS`, `AAC_CHARLAS_NUEVAS`, `AAC_CORRECCIONES` y `AAC_PROXIMA_CHARLA`; las correcciones a mano van en `correcciones.js`/`charlas-nuevas.js`, que se combinan en el navegador con `js/aplicar-correcciones.js`; concatenables en un solo `<script>`) | — |
 | Tests | `node:test` (buscador, filtro y scripts de datos de `scripts/lib/`; sin dependencias) | Node nativo |
 | Tipografías | Google Fonts: Dosis, Open Sans, Baskervville | — |
-| Entrega | Widget HTML de Elementor (WordPress FRM); alternativa Google Sites | a confirmar 11/11 |
+| Entrega | Widget HTML de Elementor en la web de la UTN FRM (WordPress); Google Sites descartado | confirmado 11/11 |
 
 Detalle completo: [knowledge-base/02_descripcion_general.md](knowledge-base/02_descripcion_general.md)
 
@@ -39,7 +39,7 @@ La fuente de verdad del dominio vive en `knowledge-base/`. **Leé el archivo rel
 | [09_decisiones_y_supuestos.md](knowledge-base/09_decisiones_y_supuestos.md) | DD-XX / SU-XX |
 | [10_preguntas_abiertas.md](knowledge-base/10_preguntas_abiertas.md) | ⚠️ Inconsistencias a resolver ANTES de codear |
 
-> ⚠️ Resolver las preguntas de prioridad **Alta** de `10_preguntas_abiertas.md` (plataforma de integración, hosting de archivos, validación de los 8 temas, carga de títulos/disertantes/URLs) antes de depender de ellas. Hoy solo C-01 y C-02 son seguros.
+> ⚠️ Resolver las preguntas de prioridad **Alta** de `10_preguntas_abiertas.md` (administrador web de la FRM y hosting de archivos, nombres de las 2 categorías nuevas, carga de títulos/disertantes/URLs) antes de depender de ellas. La plataforma, los 8 temas y las secciones quedaron validados el 11/11 y el 16/11/2026.
 
 ---
 
@@ -65,8 +65,8 @@ El plan completo está en [CHANGES.md](CHANGES.md). Resumen:
 
 - **Total**: 6 changes en 3 fases (Fundación, Páginas, Calidad y contenido).
 - **Camino crítico** (5): `C-01 → C-02 → C-04 → C-05 → C-06` (C-03 es la otra rama tras C-02).
-- **Primer change**: `C-01` (`base-y-estilos`), luego `C-02` (`datos-charlas`).
-- ⚠️ **Roadmap provisorio**: C-03 a C-06 quedan **sujetos a validación** tras la reunión con el Ateneo del 11/11/2026 (temas, secciones, plataforma Elementor o Google Sites). Empezar solo por C-01 y C-02.
+- **Estado**: `C-01` (`base-y-estilos`) y `C-02` (`datos-charlas`) cerrados. **Próximo change**: `C-03` (`portada`).
+- ✅ **Roadmap validado** en la reunión con el Ateneo del 11/11/2026 (mockups, secciones y plataforma Elementor): C-03 a C-06 ya no están sujetos a validación.
 
 **Antes de cualquier `/opsx:propose`**: leé [CHANGES.md](CHANGES.md), identificá las dependencias del change y los archivos de "Leer antes".
 
@@ -88,7 +88,9 @@ El plan completo está en [CHANGES.md](CHANGES.md). Resumen:
 
 **Contenido y roadmap**
 - NUNCA inventar datos (fechas, disertantes, títulos, URLs, usuarios de redes) → dejar placeholders `[…]` o preguntar.
-- NUNCA hacer `/opsx:propose` de C-03 a C-06 antes de la validación posterior a la reunión del 11/11 → empezar por C-01 y C-02.
+- NUNCA inventar los nombres de las 2 categorías nuevas de la videoteca → siguen siendo 8 temas hasta que Agustina los informe.
+- NUNCA copiar ni commitear el listado de miembros del Ateneo, ni ningún correo o teléfono personal (el repo es público) → si se cruza para completar disertantes, el script lo lee desde su carpeta original fuera del repo y solo se guardan nombres ya públicos en los títulos o descripciones de YouTube.
+- Respetar las dependencias de `CHANGES.md` al proponer changes (C-03 a C-06 quedaron validados el 11/11).
 - Tests `node:test` solo donde hay lógica (buscador: sin distinguir mayúsculas/tildes; filtro por tema), con TDD.
 
 **Git (universales que el global no cubre)**

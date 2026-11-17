@@ -15,11 +15,12 @@
 **Disparador**: visitante ve la tarjeta «Próxima charla».
 1. Lee cuándo/dónde/modalidad.
 2. Toca «Inscribirme por correo» → abre cliente de correo con `mailto:ateneoac.mo@gmail.com` (asunto sugerido).
-**Errores**: sin cliente de correo → el correo también está visible como texto.
+3. Si están cargados, toca «Agendar en Google Calendar» para guardar la charla en su calendario o «Entrar por Zoom» para seguirla en línea (DD-15); los dos abren en una pestaña nueva.
+**Errores**: sin cliente de correo → el correo también está visible como texto. Sin enlace de Calendar o de Zoom → ese botón no se muestra.
 
 ## Flujo 3: Proponer una charla
-1. Visitante lee requisitos (resumen, CV abreviado, Declaración de Principios, correo y teléfono).
-2. Abre la Declaración de Principios (bit.ly/3ai4qQx).
+1. Visitante lee requisitos (propuesta temática, resumen, CV abreviado, aceptación de la Declaración de Principios, correo y teléfono) y los criterios de admisión (RN-PR-03).
+2. Despliega el texto completo de la Declaración de Principios en la propia página (bloque `<details>`; ya no se usa el `bit.ly`, DD-16).
 3. Toca «Enviar mi propuesta» → `mailto:` al Ateneo.
 
 ## Flujo 4: Cargar una charla/evento nuevo (Ateneo)
@@ -33,4 +34,4 @@
 ## Flujo 5: Entrega e integración (desarrolladora → FRM)
 1. Desarrollo en local en este repo.
 2. Revisión con el Ateneo (09/12–15/12).
-3. 18/12: se pega el código en el widget HTML de Elementor (o se envía a la admin FRM) + guía de uso.
+3. 18/12: se pega el código en el widget HTML de Elementor de la web de la UTN FRM (con el alta de Belén como editora, o se envía a la admin FRM) + guía de uso probada con miembros del Ateneo.
