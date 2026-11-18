@@ -65,7 +65,7 @@ El plan completo está en [CHANGES.md](CHANGES.md). Resumen:
 
 - **Total**: 6 changes en 3 fases (Fundación, Páginas, Calidad y contenido).
 - **Camino crítico** (5): `C-01 → C-02 → C-04 → C-05 → C-06` (C-03 es la otra rama tras C-02).
-- **Estado**: `C-01` (`base-y-estilos`), `C-02` (`datos-charlas`), `C-03` (`portada`), `C-03b` (rediseño de portada y Quiénes somos), `C-03c` (refinamiento visual) y `C-02b` (archivo del sitio viejo y Quiénes somos) cerrados. **Próximo change**: el que indique `CHANGES.md`.
+- **Estado**: `C-01` (`base-y-estilos`), `C-02` (`datos-charlas`), `C-03` (`portada`), `C-03b` (rediseño de portada y Quiénes somos), `C-03c` (refinamiento visual), `C-02b` (archivo del sitio viejo y Quiénes somos) y `C-02c` (contador de la próxima charla) cerrados. **Próximo change**: el que indique `CHANGES.md`.
 - ✅ **Roadmap validado** en la reunión con el Ateneo del 11/11/2026 (mockups, secciones y plataforma Elementor): C-03 a C-06 ya no están sujetos a validación.
 
 **Antes de cualquier `/opsx:propose`**: leé [CHANGES.md](CHANGES.md), identificá las dependencias del change y los archivos de "Leer antes".

@@ -255,6 +255,68 @@
     return f === null ? null : DIAS[f.getUTCDay()] + ' ' + f.getUTCDate() + ' de ' + MESES[f.getUTCMonth()];
   }
 
+  // ---- contador de la próxima charla (C-02c) ----
+  // Todo en hora de Argentina (UTC-3, sin horario de verano), sin importar la zona horaria del visitante.
+
+  var HORA_ARGENTINA = 3 * 3600 * 1000; // UTC-3
+  var DURACION_POR_DEFECTO = 90;
+
+  function plural(n, uno, varios) {
+    return n + ' ' + (n === 1 ? uno : varios);
+  }
+
+  // Inicio de la charla en milisegundos (UTC); null si la fecha o la hora no son válidas.
+  function inicioDeCharla(proxima) {
+    if (!esObjeto(proxima)) return null;
+    var f = partesDeFecha(proxima.fecha);
+    var h = typeof proxima.hora === 'string' ? RE_HORA.exec(proxima.hora.trim()) : null;
+    if (f === null || !h) return null;
+    return f.getTime() + (Number(h[1]) * 60 + Number(h[2])) * 60000 + HORA_ARGENTINA;
+  }
+
+  // Día en Argentina de un instante, como número comparable.
+  function diaArgentino(ms) {
+    return Math.floor((ms - HORA_ARGENTINA) / 86400000);
+  }
+
+  // Estado del contador: { tipo, texto, inicioMs }.
+  // tipo: 'sin-fecha' | 'faltan' | 'hoy' | 'pronto' | 'en-vivo' | 'terminada'.
+  function estadoProxima(ahoraMs, proxima, duracionMin) {
+    var inicio = inicioDeCharla(proxima);
+    if (inicio === null || typeof ahoraMs !== 'number' || !isFinite(ahoraMs)) return { tipo: 'sin-fecha', texto: null, inicioMs: null };
+    var duracion = typeof duracionMin === 'number' && isFinite(duracionMin) && duracionMin > 0 ? duracionMin : DURACION_POR_DEFECTO;
+    var falta = inicio - ahoraMs;
+    var mismoDia = diaArgentino(ahoraMs) === diaArgentino(inicio);
+    var r = function (tipo, texto) { return { tipo: tipo, texto: texto, inicioMs: inicio }; };
+    if (falta <= 0) {
+      if (-falta < duracion * 60000) return r('en-vivo', 'En vivo ahora');
+      return r('terminada', mismoDia ? 'La charla de hoy terminó' : 'La última charla ya terminó');
+    }
+    if (falta <= 3600000) return r('pronto', 'Empieza en ' + plural(Math.ceil(falta / 60000), 'minuto', 'minutos'));
+    if (mismoDia) return r('hoy', 'Hoy a las ' + horaCorta(proxima.hora) + ' (hora de Argentina)');
+    var horas = Math.floor(falta / 3600000);
+    var dias = Math.floor(horas / 24);
+    horas = horas % 24;
+    var partes = [];
+    if (dias > 0) partes.push(plural(dias, 'día', 'días'));
+    if (horas > 0) partes.push(plural(horas, 'hora', 'horas'));
+    return r('faltan', 'Faltan ' + partes.join(' y '));
+  }
+
+  // «Entrar por Zoom» solo con una charla con fecha cargada, antes o durante la charla: terminada o sin fecha
+  // se oculta, para que nadie entre a una sala vacía (el link del semestre es fijo).
+  function mostrarZoom(tipo) {
+    return tipo === 'faltan' || tipo === 'hoy' || tipo === 'pronto' || tipo === 'en-vivo';
+  }
+
+  // Texto de «Cuándo»: con fecha, «viernes 13 de noviembre, 18 hs (hora de Argentina)»; sin fecha, el horario habitual.
+  function textoCuando(proxima) {
+    var hora = esObjeto(proxima) ? horaCorta(proxima.hora) : null;
+    var fecha = esObjeto(proxima) ? fechaLarga(proxima.fecha) : null;
+    if (fecha !== null) return fecha + (hora ? ', ' + hora : '') + ' (hora de Argentina)';
+    return 'Todos los viernes' + (hora ? ' a las ' + hora : '') + ' (hora de Argentina)';
+  }
+
   // Botón «Volver arriba»: se muestra solo después de bajar más de una pantalla.
   function debeMostrarVolverArriba(desplazado, altoPantalla) {
     return typeof desplazado === 'number' && typeof altoPantalla === 'number' &&
@@ -361,6 +423,9 @@
     fechaLarga: fechaLarga,
     textoFecha: textoFecha,
     debeMostrarVolverArriba: debeMostrarVolverArriba,
+    estadoProxima: estadoProxima,
+    textoCuando: textoCuando,
+    mostrarZoom: mostrarZoom,
     entrevistasVisibles: entrevistasVisibles,
     videoDePresentacion: videoDePresentacion,
     integrantesOrdenados: integrantesOrdenados,

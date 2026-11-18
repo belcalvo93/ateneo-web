@@ -319,6 +319,22 @@ test('validar: entrevistas de radio válidas, vacías o mal escritas', () => {
   assert.deepEqual(campos, ['fecha', 'otro', 'titulo', 'url']);
 });
 
+// ---- Duración de la charla para el contador (C-02c) ----
+
+test('validar: duracion_charla_min entero entre 15 y 300, opcional', () => {
+  const d = datosValidos();
+  d.sitio.duracion_charla_min = 90;
+  assert.deepEqual(delSitio(validar(d, OPC)), []);
+  delete d.sitio.duracion_charla_min;
+  assert.deepEqual(delSitio(validar(d, OPC)), []);
+  for (const malo of ['90', 5, 301, 90.5, null]) {
+    d.sitio.duracion_charla_min = malo;
+    const e = delSitio(validar(d, OPC));
+    assert.equal(e.length, 1, JSON.stringify(malo));
+    assert.equal(e[0].campo, 'duracion_charla_min');
+  }
+});
+
 test('validar: video_presentacion null o un video de YouTube; otra cosa es error', () => {
   const d = datosValidos();
   d.sitio.video_presentacion = null;

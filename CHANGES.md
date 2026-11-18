@@ -16,7 +16,7 @@
 
 ## Cómo usar este documento
 
-1. Identificá el próximo change pendiente (`[ ]`) cuyas dependencias estén todas `[x]`. **Hoy: C-04** (C-01 a C-03c y C-02b están cerrados).
+1. Identificá el próximo change pendiente (`[ ]`) cuyas dependencias estén todas `[x]`. **Hoy: C-04** (C-01 a C-03c, C-02b y C-02c están cerrados).
 2. Leé los archivos de "Leer antes" de ese change en `knowledge-base/`.
 3. Ejecutá `/opsx:propose C-NN-nombre` (y después `/opsx:apply`). La lógica de buscador/filtro (C-04) va con **Strict TDD** (`node:test`, sin dependencias).
 4. Al terminar: verificá y `/opsx:archive`.
@@ -52,6 +52,7 @@ C-01 base-y-estilos                     ✓ cerrado
       │    └── C-03b rediseño portada + quiénes somos   ✓ cerrado
       │         └── C-03c refinamiento visual (rev. 2)  ✓ cerrado
       │              └── C-02b archivo del sitio viejo + Quiénes somos + rev. 3   ✓ cerrado
+      │                   └── C-02c contador de la próxima charla                 ✓ cerrado
       │              ├── C-04 videoteca (TDD)
       │              └── C-05 responsive-a11y-carga-completa
       └── C-04 videoteca (TDD)          (usa el marco y la tarjeta de C-03b/C-03c)
@@ -206,6 +207,13 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 - **Governance**: MEDIO (pipeline de datos; la autora revisa las dudosas antes de cargarlas)
 - **Leer antes**: `openspec/changes/c-02b-archivo-y-quienes-somos/`, `docs/fuentes/sitio-viejo.md`, `knowledge-base/10`
 
+### [C-02c] `contador-proxima-charla`
+- **Estado**: `[x]` completado y archivado (2026-11-17)
+- **Scope**: contador en la tarjeta de la próxima charla, desde su `fecha` y `hora` en hora de Argentina: faltan / hoy / empieza en N minutos / en vivo (con «Entrar por Zoom» destacado, durante `duracion_charla_min`) / terminada; «Entrar por Zoom» solo con fecha cargada y antes o durante la charla. Sin `aria-live` por minuto; anuncio único al pasar a en vivo. Lógica pura con TDD.
+- **Dependencias**: `C-02b` (Zoom del semestre); se archiva después de C-02b
+- **Governance**: BAJO
+- **Leer antes**: `openspec/changes/c-02c-contador-proxima-charla/`
+
 ### [C-04] `videoteca`
 - **Estado**: `[ ]` pendiente — **validado el 11/11**
 - **Scope**:
@@ -287,6 +295,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 | C-03b | `rediseno-portada-y-quienes-somos` | 2 | C-03 | BAJO | `[x]` | Cerrado |
 | C-03c | `refinamiento-visual` | 2 | C-03b | BAJO | `[x]` | Cerrado |
 | C-02b | `archivo-y-quienes-somos` | 2 | C-02, C-03c | MEDIO | `[x]` | Cerrado |
+| C-02c | `contador-proxima-charla` | 2 | C-02b | BAJO | `[x]` | Cerrado |
 | C-04 | `videoteca` | 2 | C-02, C-03b | MEDIO | `[ ]` | Validado 11/11 |
 | C-05 | `responsive-a11y-carga-completa` | 3 | C-03, C-04 | MEDIO | `[ ]` | Validado 11/11 |
 | C-06 | `integracion-y-guia` | 3 | C-05 | ALTO | `[ ]` | Validado 11/11 |

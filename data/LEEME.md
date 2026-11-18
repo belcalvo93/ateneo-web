@@ -47,12 +47,21 @@ window.AAC_PROXIMA_CHARLA = {
 - **zoom_url** (opcional): **solo si esta charla tiene un link de Zoom propio**. Normalmente queda en `null` y la tarjeta usa el link del semestre (ver «El link de Zoom del semestre», más abajo).
 - **calendar_url** (opcional): el enlace para agendar la charla en Google Calendar. Si está cargado, la página muestra el botón «Agendar en Calendar»; con `null` no aparece.
 - Los dos enlaces tienen que empezar con `https://`.
-- Mientras el título o la fecha sigan con corchetes, la página muestra «La próxima charla se anunciará pronto» con el horario de siempre y el botón «Entrar por Zoom» del semestre.
+- Mientras el título o la fecha sigan con corchetes, la página muestra «La próxima charla se anunciará pronto» con el horario de siempre (sin botón de Zoom hasta que se cargue la fecha).
 - Si todavía no sabés un dato, dejalo con corchetes, por ejemplo `"[fecha]"`. No inventes datos.
+
+### El contador de la próxima charla
+
+La tarjeta de la próxima charla muestra cuánto falta («Faltan 3 días y 2 horas», «Hoy a las 18 hs (hora de Argentina)», «Empieza en 45 minutos»), dice «En vivo ahora» mientras dura la charla (con «Entrar por Zoom» como botón principal) y, cuando termina, «La charla de hoy terminó» y «La próxima charla se anunciará pronto».
+
+- **Para que funcione hay que cargar `fecha` y `hora`** de la próxima charla en `proxima-charla.js`. Sin fecha no hay contador y la tarjeta dice «Todos los viernes a las 18 hs (hora de Argentina)». Se usa la fecha cargada, no «cualquier viernes»: en el receso no hay charla todas las semanas.
+- La hora es siempre la de Argentina, aunque quien mire esté en otro país.
+- Cuánto dura «En vivo ahora» se cambia en `sitio.js`, en `duracion_charla_min` (90 minutos; un número entero entre 15 y 300, sin comillas).
+- Cuando pasa la charla, cargá la siguiente: hasta entonces la tarjeta queda en «La próxima charla se anunciará pronto».
 
 ### El link de Zoom del semestre
 
-El Ateneo usa un link de Zoom recurrente que **cambia una vez por semestre**. Está en `data/sitio.js`, en `zoom_url_semestre`, y la tarjeta de la próxima charla muestra el botón «Entrar por Zoom» con ese link, también mientras la charla todavía no está anunciada.
+El Ateneo usa un link de Zoom recurrente que **cambia una vez por semestre**. Está en `data/sitio.js`, en `zoom_url_semestre`, y la tarjeta de la próxima charla muestra el botón «Entrar por Zoom» con ese link **solo cuando la próxima charla tiene fecha y hora cargadas**, desde antes de la charla hasta que termina. Sin fecha, o cuando la charla ya terminó, el botón no aparece: así nadie entra a una sala vacía.
 
 - **Cuando empieza un semestre nuevo**: reemplazá el link en `zoom_url_semestre` (entre comillas, empezando con `https://`).
 - **Si una charla puntual tiene un link propio**: cargalo en `zoom_url` de `data/proxima-charla.js`; para esa charla manda ese. Cuando pasa la charla, volvé a dejar `zoom_url: null`.

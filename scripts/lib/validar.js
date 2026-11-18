@@ -26,7 +26,7 @@ const CAMPOS_SITIO = ['correo', 'canal_youtube', 'conferencias', 'direccion', 'm
 const CAMPOS_RED = ['nombre', 'url'];
 const CAMPOS_FOTO = ['archivo', 'alt'];
 // Opcionales (C-02b): si faltan, la página no muestra esa parte.
-const CAMPOS_SITIO_OPCIONALES = ['formulario_inscripcion', 'mesa_organizadora', 'declaracion_pdf', 'foto_principal', 'zoom_url_semestre', 'entrevistas_radio', 'video_presentacion'];
+const CAMPOS_SITIO_OPCIONALES = ['formulario_inscripcion', 'mesa_organizadora', 'declaracion_pdf', 'foto_principal', 'zoom_url_semestre', 'entrevistas_radio', 'duracion_charla_min', 'video_presentacion'];
 const CAMPOS_ENTREVISTA = ['titulo', 'url', 'fecha'];
 const CAMPOS_MESA = ['mostrar', 'nombre', 'integrantes'];
 const CAMPOS_INTEGRANTE = ['nombre', 'apellido'];
@@ -413,6 +413,9 @@ function validar(datos, opciones) {
     }
     if ('zoom_url_semestre' in s && s.zoom_url_semestre !== null && !(typeof s.zoom_url_semestre === 'string' && RE_HTTPS.test(s.zoom_url_semestre))) {
       errS(null, 'zoom_url_semestre', 'tiene que ser el enlace de Zoom del semestre, empezando con https:// (o null)');
+    }
+    if ('duracion_charla_min' in s && !(Number.isInteger(s.duracion_charla_min) && s.duracion_charla_min >= 15 && s.duracion_charla_min <= 300)) {
+      errS(null, 'duracion_charla_min', 'tiene que ser la duración en minutos, un número entero entre 15 y 300 sin comillas (por ejemplo 90)');
     }
     if ('video_presentacion' in s && s.video_presentacion !== null && !(typeof s.video_presentacion === 'string' && RE_YOUTUBE.test(s.video_presentacion))) {
       errS(null, 'video_presentacion', 'tiene que ser el enlace de un video de YouTube (https://www.youtube.com/watch?v=…) o null');

@@ -566,6 +566,71 @@ test('entrevistasVisibles: lista vacía o ausente -> []', () => {
   assert.deepEqual(L.entrevistasVisibles(undefined), []);
 });
 
+// ---- Contador de la próxima charla (C-02c) ----
+
+// Instante de una hora de Argentina (UTC-3) como milisegundos: no depende de la zona horaria de la máquina.
+const ART = (d, m, a, h, min) => Date.UTC(a, m - 1, d, h + 3, min || 0);
+const charla13 = { fecha: '13/11/2026', hora: '18:00' };
+
+test('estadoProxima: sin fecha u hora válidas no hay contador', () => {
+  assert.equal(L.estadoProxima(ART(10, 11, 2026, 15), { fecha: '[fecha]', hora: '18:00' }, 90).tipo, 'sin-fecha');
+  assert.equal(L.estadoProxima(ART(10, 11, 2026, 15), { fecha: '13/11/2026', hora: '[hora]' }, 90).tipo, 'sin-fecha');
+  assert.equal(L.estadoProxima(ART(10, 11, 2026, 15), { fecha: '31/02/2026', hora: '18:00' }, 90).tipo, 'sin-fecha');
+  assert.equal(L.estadoProxima(ART(10, 11, 2026, 15), null, 90).tipo, 'sin-fecha');
+});
+
+test('estadoProxima: otro día -> «Faltan N días y N horas», con singular y sin ceros', () => {
+  assert.deepEqual(L.estadoProxima(ART(10, 11, 2026, 15), charla13, 90).texto, 'Faltan 3 días y 3 horas');
+  assert.equal(L.estadoProxima(ART(12, 11, 2026, 17), charla13, 90).texto, 'Faltan 1 día y 1 hora');
+  assert.equal(L.estadoProxima(ART(12, 11, 2026, 20), charla13, 90).texto, 'Faltan 22 horas');
+  assert.equal(L.estadoProxima(ART(10, 11, 2026, 18), charla13, 90).texto, 'Faltan 3 días');
+  assert.equal(L.estadoProxima(ART(10, 11, 2026, 15), charla13, 90).tipo, 'faltan');
+});
+
+test('estadoProxima: el mismo día con más de una hora -> «Hoy a las 18 hs (hora de Argentina)»', () => {
+  const r = L.estadoProxima(ART(13, 11, 2026, 0, 5), charla13, 90);
+  assert.equal(r.tipo, 'hoy');
+  assert.equal(r.texto, 'Hoy a las 18 hs (hora de Argentina)');
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 10), { fecha: '13/11/2026', hora: '18:30' }, 90).texto, 'Hoy a las 18:30 hs (hora de Argentina)');
+});
+
+test('estadoProxima: última hora -> «Empieza en N minutos», redondeando hacia arriba', () => {
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 17, 15), charla13, 90).texto, 'Empieza en 45 minutos');
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 17, 0), charla13, 90).texto, 'Empieza en 60 minutos');
+  const r = L.estadoProxima(ART(13, 11, 2026, 17, 59) + 30000, charla13, 90);
+  assert.equal(r.tipo, 'pronto');
+  assert.equal(r.texto, 'Empieza en 1 minuto');
+});
+
+test('estadoProxima: en vivo desde el inicio (incluido) hasta la duración (excluida)', () => {
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 18), charla13, 90).tipo, 'en-vivo');
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 19, 29), charla13, 90).texto, 'En vivo ahora');
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 19, 30), charla13, 90).tipo, 'terminada');
+});
+
+test('estadoProxima: terminada el mismo día y días después', () => {
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 21), charla13, 90).texto, 'La charla de hoy terminó');
+  assert.equal(L.estadoProxima(ART(15, 11, 2026, 10), charla13, 90).texto, 'La última charla ya terminó');
+});
+
+test('estadoProxima: duración configurable; inválida o ausente usa 90', () => {
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 19, 5), charla13, 60).tipo, 'terminada');
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 19, 5), charla13, undefined).tipo, 'en-vivo');
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 19, 5), charla13, 'mucho').tipo, 'en-vivo');
+  assert.equal(L.estadoProxima(ART(13, 11, 2026, 19, 5), charla13, -5).tipo, 'en-vivo');
+});
+
+test('estadoProxima: un visitante de Madrid a las 22:30 de su hora ve la charla en vivo', () => {
+  const madrid2230 = Date.UTC(2026, 10, 13, 21, 30); // 22:30 en Madrid (UTC+1) = 18:30 en Argentina
+  assert.equal(L.estadoProxima(madrid2230, charla13, 90).tipo, 'en-vivo');
+});
+
+test('textoCuando: con fecha y hora, o el horario habitual, siempre en hora de Argentina', () => {
+  assert.equal(L.textoCuando(charla13), 'viernes 13 de noviembre, 18 hs (hora de Argentina)');
+  assert.equal(L.textoCuando({ fecha: '[fecha]', hora: '18:00' }), 'Todos los viernes a las 18 hs (hora de Argentina)');
+  assert.equal(L.textoCuando({ fecha: '[fecha]', hora: '[hora]' }), 'Todos los viernes (hora de Argentina)');
+});
+
 // ---- Video de presentación (C-02b, 17/11/2026) ----
 
 test('videoDePresentacion: un video de YouTube -> enlace y miniatura', () => {
@@ -581,4 +646,9 @@ test('videoDePresentacion: null, placeholder o un enlace que no es de YouTube ->
   assert.equal(L.videoDePresentacion('[enlace del video]'), null);
   assert.equal(L.videoDePresentacion('https://vimeo.com/123'), null);
   assert.equal(L.videoDePresentacion('javascript:alert(1)'), null);
+});
+
+test('mostrarZoom: solo con fecha cargada y antes o durante la charla (faltan, hoy, pronto, en vivo)', () => {
+  for (const tipo of ['faltan', 'hoy', 'pronto', 'en-vivo']) assert.equal(L.mostrarZoom(tipo), true, tipo);
+  for (const tipo of ['terminada', 'sin-fecha', undefined, 'otro']) assert.equal(L.mostrarZoom(tipo), false, String(tipo));
 });

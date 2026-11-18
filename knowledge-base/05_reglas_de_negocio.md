@@ -16,7 +16,8 @@ Códigos `RN-{DOMINIO}-{NN}`. Todas derivadas de `docs/PRD.md`; las marcadas **(
 - **RN-BU-03**: El filtro por tema se combina con la búsqueda; «Todos los temas» es el estado por defecto (Mockup).
 
 ## Dominio: Próxima charla (RN-PC)
-- **RN-PC-01**: Muestra fecha, hora y modalidad (por Zoom); el lugar, solo si la charla es presencial (RF-04). El botón «Entrar por Zoom» usa el `zoom_url` de la charla o, si no tiene, el `zoom_url_semestre` de `data/sitio.js`, y se muestra también mientras la charla no está anunciada.
+- **RN-PC-01**: Muestra fecha, hora y modalidad (por Zoom); el lugar, solo si la charla es presencial (RF-04). El botón «Entrar por Zoom» usa el `zoom_url` de la charla o, si no tiene, el `zoom_url_semestre` de `data/sitio.js`, y se muestra solo con una charla con fecha cargada, antes o durante la charla (C-02c): sin fecha o terminada se oculta.
+- **RN-PC-04** (C-02c): La tarjeta de la próxima charla muestra un contador calculado con su `fecha` y `hora` en hora de Argentina (UTC−3): «Faltan N días y N horas», «Hoy a las 18 hs (hora de Argentina)», «Empieza en N minutos», «En vivo ahora» durante `duracion_charla_min` (90 por defecto, en `data/sitio.js`) y «La charla de hoy terminó» después. Sin fecha no hay contador. No se anuncia cada minuto; el paso a en vivo se anuncia una vez.
 - **RN-PC-02**: Las charlas son los viernes a las 18 hs por Zoom; presencial solo en casos excepcionales, en el Salón de Actos UTN FRM (Rodríguez 273). Confirmado por la Mesa Organizadora el 17/11/2026. La dirección del pie es la sede del Ateneo.
 - **RN-PC-03**: La inscripción y consultas son por correo a ateneoac.mo@gmail.com; no hay inscripción online (fuera de alcance).
 - **RN-PC-04**: Los enlaces para agendar en Google Calendar y para entrar por Zoom son opcionales: cada botón se muestra solo si su enlace está cargado (DD-15).

@@ -40,6 +40,10 @@ window.AAC_SITIO = {
   // Si una charla puntual tiene un link propio, se carga zoom_url en data/proxima-charla.js y manda ese.
   zoom_url_semestre: "https://utn.zoom.us/j/88394809866?pwd=GavNQgGKD6gPBTqR5sDoxWMXP6S1Vh.1",
 
+  // DURACIÓN de una charla, en minutos: el tiempo que la tarjeta de la próxima charla dice «En vivo ahora»
+  // (desde la hora de inicio). Número entero entre 15 y 300, sin comillas.
+  duracion_charla_min: 90,
+
   // FORMULARIO para hacerse miembro (botón «Sumate al Ateneo» en «Quiénes somos»). Con null no se muestra el botón.
   formulario_inscripcion: "https://docs.google.com/forms/d/e/1FAIpQLSc1mJHPDX0IZ7EGemwlh3mX4J7Xj3QHYpgxd9cv1wj4PL7hKQ/viewform",
 

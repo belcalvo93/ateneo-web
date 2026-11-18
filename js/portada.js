@@ -69,10 +69,12 @@
     return p;
   }
 
-  function dibujarProxima(contenedor, proxima, sitio) {
+  // estado: el del contador (L.estadoProxima). Terminada la charla, la tarjeta vuelve a «se anunciará pronto»
+  // hasta que se cargue la siguiente; en vivo, «Entrar por Zoom» pasa a ser el botón principal.
+  function dibujarProxima(contenedor, proxima, sitio, estado) {
     var redes = typeof sitio === 'object' && sitio !== null ? sitio.redes : undefined;
-    var anunciada = L.proximaAnunciada(proxima);
-    var hora = L.horaCorta(proxima.hora);
+    var tipo = estado ? estado.tipo : 'sin-fecha';
+    var anunciada = L.proximaAnunciada(proxima) && tipo !== 'terminada';
     var lugar = L.textoVisible(proxima.lugar);
     var modalidad = L.textoVisible(proxima.modalidad);
     var correo = L.correoVisible(proxima.correo_inscripcion);
@@ -82,7 +84,14 @@
     info.appendChild(crear('span', 'etiqueta', 'Próxima charla'));
     var titulo = crear('h2', '', anunciada ? L.textoVisible(proxima.titulo) : 'La próxima charla se anunciará pronto');
     titulo.id = 'titulo-proxima';
+    if (tipo === 'terminada') info.appendChild(crear('p', 'contador contador-terminada', estado.texto + '.'));
     info.appendChild(titulo);
+    // Contador: texto común, sin aria-live (no se anuncia cada minuto). El paso a «En vivo» lo anuncia la región de estado.
+    if (tipo !== 'sin-fecha' && tipo !== 'terminada') {
+      var contador = crear('p', 'contador' + (tipo === 'en-vivo' ? ' en-vivo' : ''), estado.texto);
+      contador.setAttribute('data-aac', 'contador');
+      info.appendChild(contador);
+    }
     if (anunciada) {
       var disertante = L.textoVisible(proxima.disertante);
       var descripcion = L.textoVisible(proxima.descripcion);
@@ -94,10 +103,7 @@
     contenedor.appendChild(info);
 
     var datos = crear('div', 'datos');
-    var cuando = anunciada
-      ? unir([L.fechaLarga(proxima.fecha), hora], ', ')
-      : 'los viernes' + (hora ? ' a las ' + hora : '');
-    datos.appendChild(dato('Cuándo', cuando));
+    datos.appendChild(dato('Cuándo', L.textoCuando(anunciada ? proxima : { hora: proxima.hora })));
     var donde = unir([lugar, modalidad], ' · ');
     if (donde) datos.appendChild(dato('Dónde', donde));
     if (correo) {
@@ -108,15 +114,24 @@
 
     // Botones: el de correo siempre; calendario y Zoom solo si su enlace está cargado.
     var acciones = L.accionesProxima(proxima, sitio);
+    var enVivo = tipo === 'en-vivo';
+    if (!L.mostrarZoom(tipo)) acciones = acciones.filter(function (x) { return x.tipo !== 'zoom'; });
+    if (enVivo) {
+      // En vivo: Zoom primero y como botón principal.
+      acciones = acciones.filter(function (x) { return x.tipo === 'zoom'; })
+        .concat(acciones.filter(function (x) { return x.tipo !== 'zoom'; }));
+    }
     if (acciones.length > 0) {
       var fila = crear('div', 'fila');
       acciones.forEach(function (accion) {
+        var principal = enVivo ? accion.tipo === 'zoom' : accion.tipo === 'correo';
+        var clase = 'btn ' + (principal ? 'btn-rojo' : 'btn-contorno');
         if (accion.tipo === 'correo') {
-          var boton = crear('a', 'btn btn-rojo', accion.texto);
+          var boton = crear('a', clase, accion.texto);
           boton.href = accion.url;
           fila.appendChild(boton);
         } else {
-          fila.appendChild(enlaceExterno('btn btn-contorno', accion.texto, accion.url, true));
+          fila.appendChild(enlaceExterno(clase, accion.texto, accion.url, true));
         }
       });
       datos.appendChild(fila);
@@ -126,6 +141,43 @@
     var whatsapp = L.enlaceAvisoWhatsApp(redes);
     if (whatsapp) datos.appendChild(enlaceExterno('btn btn-contorno aviso-whatsapp', 'Recibí el aviso de cada charla por WhatsApp', whatsapp, true));
     contenedor.appendChild(datos);
+  }
+
+  // ---- contador (C-02c) ----
+
+  // Recalcula cada minuto (alineado al cambio de minuto) y al volver a la pestaña. Si cambia el estado,
+  // redibuja la tarjeta; si no, solo cambia el texto del contador. El paso a «En vivo» se anuncia una vez.
+  function iniciarContador(contenedor, proxima, sitio) {
+    var duracion = typeof sitio === 'object' && sitio !== null ? sitio.duracion_charla_min : undefined;
+    var region = crear('p', 'solo-lectores');
+    region.setAttribute('role', 'status');
+    contenedor.parentNode.insertBefore(region, contenedor.nextSibling);
+    var anterior = null;
+
+    function ciclo() {
+      var estado = L.estadoProxima(Date.now(), proxima, duracion);
+      if (anterior === null || estado.tipo !== anterior) {
+        dibujarProxima(contenedor, proxima, sitio, estado);
+        if (anterior !== null && estado.tipo === 'en-vivo') region.textContent = 'La charla está en vivo ahora';
+        anterior = estado.tipo;
+      } else {
+        var nodo = contenedor.querySelector('[data-aac="contador"]');
+        if (nodo && nodo.textContent !== estado.texto) nodo.textContent = estado.texto;
+      }
+      return estado;
+    }
+
+    var temporizador = null;
+    function programar() {
+      clearTimeout(temporizador);
+      var estado = ciclo();
+      if (estado.tipo === 'sin-fecha') return; // sin fecha no hay nada que actualizar
+      temporizador = setTimeout(programar, 60000 - (Date.now() % 60000) + 50);
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) programar();
+    });
+    programar();
   }
 
   // ---- charlas ----
@@ -206,9 +258,9 @@
       if (temasNodo) aviso(temasNodo, 'No pudimos cargar los temas en este momento.');
     }
 
-    // Si no cargó la próxima charla, queda la tarjeta fija del HTML (horario y lugar habituales).
+    // Si no cargó la próxima charla, queda la tarjeta fija del HTML (horario habitual).
     if (proximaNodo && typeof window.AAC_PROXIMA_CHARLA === 'object' && window.AAC_PROXIMA_CHARLA !== null) {
-      dibujarProxima(proximaNodo, window.AAC_PROXIMA_CHARLA, sitio);
+      iniciarContador(proximaNodo, window.AAC_PROXIMA_CHARLA, sitio);
     }
 
     if (typeof sitio === 'object' && sitio !== null) {
