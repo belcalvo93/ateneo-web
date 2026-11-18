@@ -63,6 +63,28 @@ Se escribe cada vez que se regenera. Secciones:
 - **Videos nuevos o sin charla**: videos del canal que ninguna parte usa. Si es una charla nueva, se agrega en `data/charlas-nuevas.js`.
 - **Enlaces conservados con título cambiado**, **asignadas por título** y **líneas inválidas** del archivo del canal.
 
+## Cruce con el archivo de charlas del sitio viejo (`scripts/cruzar-archivo.js`)
+
+El sitio viejo del Ateneo tiene el archivo de charlas 2020–2026 con fecha exacta, título y disertante (copiado en `docs/fuentes/sitio-viejo.md`). Para cruzarlo con el catálogo:
+
+```
+node scripts/cruzar-archivo.js
+```
+
+- Lee solo `docs/fuentes/sitio-viejo.md`, `data/charlas.js` y `data/correcciones.js` (nunca el listado de miembros).
+- Escribe `data/archivo-charlas.js` con las coincidencias **seguras** (fecha, disertante tal como figura en el archivo y título solo donde el catálogo dice `[Título]`) y `scripts/salida/cruce-archivo.md` con las **dudosas** (con candidatos y la línea de ejemplo para `data/correcciones.js`), las que no tienen par en el canal y las proyecciones de videos ajenos, que se ignoran.
+- Una coincidencia es segura solo si coinciden título y disertante, el año aproximado del catálogo difiere a lo sumo en 1, le saca ventaja clara al segundo candidato y ninguna otra entrada puede ser la misma charla. Ante la duda, va al reporte.
+- **Fecha de subida a YouTube (opcional, ayuda con las dudosas)**: si existe `scripts/salida/subidas.jsonl`, el script resuelve las dudosas y las que no tenían par cuando **una sola** charla candidata se subió entre el día anterior y los 30 días siguientes a la fecha del archivo y coincide en parte del título o en el disertante. El reporte las lista aparte. Para obtener el archivo (lee datos públicos de cada video, sin descargar nada; tarda unos 20 minutos):
+
+  ```
+  node -e "const fs=require('fs');fs.writeFileSync('scripts/salida/ids.txt',fs.readFileSync('scripts/salida/canal.jsonl','utf8').split(/?
+/).filter(Boolean).map(l=>'https://www.youtube.com/watch?v='+JSON.parse(l).id).join('
+'))"
+  python -m yt_dlp --skip-download --ignore-errors --print-to-file "%(.{id,upload_date})j" scripts/salida/subidas.jsonl --batch-file scripts/salida/ids.txt
+  ```
+
+- Correrlo de nuevo con los mismos archivos da el mismo resultado. Después: `node scripts/validar-datos.js`.
+
 ## `scripts/salida/` no se sube a git
 
 Todo lo que hay en `scripts/salida/` (la foto `canal.jsonl` y el reporte) se vuelve a generar y cambia cada vez que cambia el canal, así que `.gitignore` lo deja afuera (solo queda `.gitkeep` para que exista la carpeta). Lo que el sitio necesita de la foto queda guardado en `data/charlas.js`: los enlaces, las vistas, y en su cabecera la fecha de la foto y la cantidad de videos. Para volver a tener la carpeta completa en otra computadora, se obtiene `canal.jsonl` con el comando de arriba y se corre `node scripts/derivar-datos.js --comprobar` para verificar.

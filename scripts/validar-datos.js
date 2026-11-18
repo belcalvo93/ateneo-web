@@ -33,13 +33,14 @@ const archivos = [
   ['sitio.js', 'AAC_SITIO', 'sitio'],
   // opcionales: si faltan, se toman vacíos
   ['charlas-nuevas.js', 'AAC_CHARLAS_NUEVAS', 'nuevas', []],
-  ['correcciones.js', 'AAC_CORRECCIONES', 'correcciones', {}]
+  ['correcciones.js', 'AAC_CORRECCIONES', 'correcciones', {}],
+  ['archivo-charlas.js', 'AAC_ARCHIVO_CHARLAS', 'archivo', undefined, true] // generado; si falta, no se valida
 ];
 const datos = {};
 const fallosDeCarga = [];
-for (const [nombre, variable, clave, vacio] of archivos) {
-  if (vacio !== undefined && !fs.existsSync(path.join(carpeta, nombre))) {
-    datos[clave] = vacio;
+for (const [nombre, variable, clave, vacio, opcional] of archivos) {
+  if ((vacio !== undefined || opcional) && !fs.existsSync(path.join(carpeta, nombre))) {
+    if (vacio !== undefined) datos[clave] = vacio;
     continue;
   }
   try {
@@ -55,7 +56,10 @@ if (fallosDeCarga.length > 0) {
   process.exit(1);
 }
 
-const r = validar(datos, { estricto });
+const dos = (n) => String(n).padStart(2, '0');
+const ahora = new Date();
+const hoy = dos(ahora.getDate()) + '/' + dos(ahora.getMonth() + 1) + '/' + ahora.getFullYear();
+const r = validar(datos, { estricto, hoy });
 
 // ---- errores ----
 if (r.errores.length > 0) {
@@ -65,7 +69,8 @@ if (r.errores.length > 0) {
 }
 
 // ---- pendientes, agrupados por charla para que no sean cientos de líneas ----
-const pendientes = r.avisos.filter((a) => a.tipo !== 'tema-vacio' && a.tipo !== 'red-pendiente');
+const SUELTOS = ['tema-vacio', 'red-pendiente', 'fecha-futura'];
+const pendientes = r.avisos.filter((a) => !SUELTOS.includes(a.tipo));
 const grupos = new Map();
 for (const a of pendientes) {
   const clave = a.archivo + ' · ' + (a.charla || '(general)');
@@ -86,8 +91,8 @@ if (grupos.size > 0) {
   }
   console.log('');
 }
-for (const a of r.avisos.filter((x) => x.tipo === 'tema-vacio' || x.tipo === 'red-pendiente')) {
-  console.log('  ! ' + a.archivo + ' · ' + a.mensaje);
+for (const a of r.avisos.filter((x) => SUELTOS.includes(x.tipo))) {
+  console.log('  ! ' + a.archivo + ' · ' + (a.tipo === 'fecha-futura' ? a.charla + ' — ' : '') + a.mensaje);
 }
 
 // ---- resumen ----

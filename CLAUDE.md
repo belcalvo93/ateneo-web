@@ -12,14 +12,14 @@
 | Marcado | HTML5 puro | — |
 | Estilos | CSS puro con variables (`:root`) | — |
 | Lógica | JavaScript puro (sin ES modules en el código a pegar en el widget) | — |
-| Datos | Archivos JS de datos en `data/*.js`, editables por no programadores salvo `charlas.js`, que es **generado** por `scripts/derivar-datos.js` (`window.AAC_TEMAS`, `AAC_CHARLAS`, `AAC_CHARLAS_NUEVAS`, `AAC_CORRECCIONES` y `AAC_PROXIMA_CHARLA`; las correcciones a mano van en `correcciones.js`/`charlas-nuevas.js`, que se combinan en el navegador con `js/aplicar-correcciones.js`; concatenables en un solo `<script>`) | — |
+| Datos | Archivos JS de datos en `data/*.js`, editables por no programadores salvo `charlas.js` y `archivo-charlas.js`, que son **generados** por `scripts/derivar-datos.js` y `scripts/cruzar-archivo.js` (este último, con la fecha exacta, el título y el disertante del archivo 2020–2026 del sitio viejo) (`window.AAC_TEMAS`, `AAC_CHARLAS`, `AAC_CHARLAS_NUEVAS`, `AAC_CORRECCIONES` y `AAC_PROXIMA_CHARLA`; las correcciones a mano van en `correcciones.js`/`charlas-nuevas.js`, que se combinan en el navegador con `js/aplicar-correcciones.js`; concatenables en un solo `<script>`) | — |
 | Tests | `node:test` (buscador, filtro y scripts de datos de `scripts/lib/`; sin dependencias) | Node nativo |
-| Tipografías | Google Fonts: Source Serif 4 (títulos), Dosis (menú y rótulos) y Open Sans (texto) | design system rev. 2 |
+| Tipografías | Google Fonts: Source Serif 4 (títulos), Dosis (menú y rótulos) y Open Sans (texto) | design system rev. 3 (aprobada) |
 | Entrega | Widget HTML de Elementor en la web de la UTN FRM (WordPress); Google Sites descartado | confirmado 11/11 |
 
 Detalle completo: [knowledge-base/02_descripcion_general.md](knowledge-base/02_descripcion_general.md)
 
-Sistema de diseño aprobado (modo `system-only`, rev. 2): [design-system/README.md](design-system/README.md). Los mockups de `docs/mockups/` son el contrato visual.
+Sistema de diseño aprobado (modo `system-only`, rev. 3): [design-system/README.md](design-system/README.md). Los mockups de `docs/mockups/` son el contrato visual.
 
 ---
 
@@ -65,7 +65,7 @@ El plan completo está en [CHANGES.md](CHANGES.md). Resumen:
 
 - **Total**: 6 changes en 3 fases (Fundación, Páginas, Calidad y contenido).
 - **Camino crítico** (5): `C-01 → C-02 → C-04 → C-05 → C-06` (C-03 es la otra rama tras C-02).
-- **Estado**: `C-01` (`base-y-estilos`), `C-02` (`datos-charlas`), `C-03` (`portada`), `C-03b` (rediseño de portada y Quiénes somos) y `C-03c` (refinamiento visual) cerrados. **Próximo change**: el que indique `CHANGES.md`.
+- **Estado**: `C-01` (`base-y-estilos`), `C-02` (`datos-charlas`), `C-03` (`portada`), `C-03b` (rediseño de portada y Quiénes somos), `C-03c` (refinamiento visual) y `C-02b` (archivo del sitio viejo y Quiénes somos) cerrados. **Próximo change**: el que indique `CHANGES.md`.
 - ✅ **Roadmap validado** en la reunión con el Ateneo del 11/11/2026 (mockups, secciones y plataforma Elementor): C-03 a C-06 ya no están sujetos a validación.
 
 **Antes de cualquier `/opsx:propose`**: leé [CHANGES.md](CHANGES.md), identificá las dependencias del change y los archivos de "Leer antes".

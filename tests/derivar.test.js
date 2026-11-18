@@ -44,7 +44,7 @@ test('derivar: charla de una parte conserva título original, duración y vistas
   assert.deepEqual(c.partes, [
     { duracion: '31:40', url: null, vistas: 15, titulo_original: 'RECICLADO QUIMICO DE RESIDUOS PLASTICOS - Dra Elangeni Gilbert' }
   ]);
-  assert.equal(c.disertante, 'Dra Elangeni Gilbert');
+  assert.equal(c.disertante, 'Elangeni Gilbert'); // sin títulos (Ateneo, 17/11/2026)
   assert.equal(c.titulo, 'RECICLADO QUIMICO DE RESIDUOS PLASTICOS');
   assert.deepEqual(c.revisar, ['titulo']);
 });
@@ -53,7 +53,7 @@ test('derivar: reordena partes en orden inverso y parsea vistas K', () => {
   const c = por(derivar(sinTemaMalo, TEMAS), 'm002');
   assert.deepEqual(c.partes.map((p) => p.duracion), ['1:02:03', '50:00', '45:10']);
   assert.deepEqual(c.partes.map((p) => p.vistas), [1000, 12000, 1200]);
-  assert.equal(c.disertante, 'Dra Ana Luna');
+  assert.equal(c.disertante, 'Ana Luna');
   assert.equal(c.titulo, 'Mitos del cielo');
   assert.deepEqual(c.revisar, []);
 });

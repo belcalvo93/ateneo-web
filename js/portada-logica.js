@@ -90,16 +90,28 @@
       .map(function (x) { return x.valor; });
   }
 
-  // Las n charlas más recientes. Las charlas no tienen fecha, solo año: a igual año van primero las
-  // agregadas a mano (idsNuevas, la última agregada antes) y después las del catálogo en su orden,
-  // que ya es de más nueva a más vieja. Cuando haya fechas reales, se ordena por fecha acá.
+  // "dd/mm/aaaa" -> "aaaammdd" para comparar fechas como texto; null si no es una fecha válida.
+  function claveDeFecha(texto) {
+    return partesDeFecha(texto) === null ? null : texto.slice(6) + texto.slice(3, 5) + texto.slice(0, 2);
+  }
+
+  // Las n charlas más recientes, por año. Dentro del año: primero las agregadas a mano sin fecha
+  // (idsNuevas, la última agregada antes), después las que tienen fecha real de la más nueva a la más
+  // vieja, y al final las del catálogo sin fecha, en su orden (ya va de más nueva a más vieja).
   function ultimasCharlas(charlas, n, idsNuevas) {
     var nuevas = Array.isArray(idsNuevas) ? idsNuevas : [];
     var anio = function (c) { return typeof c.anio === 'number' ? c.anio : 0; };
     var puesto = function (c) { return nuevas.indexOf(c.id); }; // -1 = del catálogo
+    var grupo = function (c) {
+      if (claveDeFecha(c.fecha) !== null) return 1;
+      return puesto(c) >= 0 ? 0 : 2;
+    };
     return ordenar(lista(charlas), function (a, b) {
       if (anio(a) !== anio(b)) return anio(b) - anio(a);
-      return puesto(b) - puesto(a);
+      if (grupo(a) !== grupo(b)) return grupo(a) - grupo(b);
+      if (grupo(a) === 0) return puesto(b) - puesto(a);
+      if (grupo(a) === 1) return claveDeFecha(a.fecha) < claveDeFecha(b.fecha) ? 1 : claveDeFecha(a.fecha) > claveDeFecha(b.fecha) ? -1 : 0;
+      return 0;
     }).slice(0, n);
   }
 
@@ -243,6 +255,53 @@
     return f === null ? null : DIAS[f.getUTCDay()] + ' ' + f.getUTCDate() + ' de ' + MESES[f.getUTCMonth()];
   }
 
+  // Botón «Volver arriba»: se muestra solo después de bajar más de una pantalla.
+  function debeMostrarVolverArriba(desplazado, altoPantalla) {
+    return typeof desplazado === 'number' && typeof altoPantalla === 'number' &&
+      isFinite(desplazado) && altoPantalla > 0 && desplazado > altoPantalla;
+  }
+
+  // Entrevistas de radio para «Quiénes somos»: solo las que tienen título real y enlace https.
+  function entrevistasVisibles(lista) {
+    if (!Array.isArray(lista)) return [];
+    return lista
+      .filter(function (x) { return esObjeto(x) && textoVisible(x.titulo) !== null && enlaceHttps(x.url) !== null; })
+      .map(function (x) { return { titulo: textoVisible(x.titulo), url: enlaceHttps(x.url), fecha: textoFecha(x.fecha) }; });
+  }
+
+  // Video de presentación de «Quiénes somos»: solo un video de YouTube -> { url, miniatura }; si no, null.
+  function videoDePresentacion(url) {
+    var seguro = enlaceHttps(url);
+    var imagen = seguro === null ? null : miniatura(seguro);
+    return imagen === null ? null : { url: seguro, miniatura: imagen };
+  }
+
+  // Integrantes de la Mesa Organizadora ({ nombre, apellido }) -> "Nombre Apellido", en orden alfabético por
+  // apellido y luego por nombre, sin distinguir tildes ni mayúsculas. Descarta los incompletos.
+  function integrantesOrdenados(lista) {
+    if (!Array.isArray(lista)) return [];
+    var comparar = function (a, b) { return a.localeCompare(b, 'es', { sensitivity: 'base' }); };
+    return lista
+      .filter(function (x) { return esObjeto(x) && textoVisible(x.nombre) !== null && textoVisible(x.apellido) !== null; })
+      .map(function (x) { return { nombre: textoVisible(x.nombre), apellido: textoVisible(x.apellido) }; })
+      .sort(function (a, b) { return comparar(a.apellido, b.apellido) || comparar(a.nombre, b.nombre); })
+      .map(function (x) { return x.nombre + ' ' + x.apellido; });
+  }
+
+  // "09/10/2026" -> "9 de octubre de 2026"; null si la fecha no es válida.
+  function textoFecha(texto) {
+    var f = partesDeFecha(texto);
+    return f === null ? null : f.getUTCDate() + ' de ' + MESES[f.getUTCMonth()] + ' de ' + f.getUTCFullYear();
+  }
+
+  // Lo que muestra la tarjeta: la fecha exacta si la tiene; si no, el año; si no, null.
+  function fechaDeCharla(charla) {
+    if (!esObjeto(charla)) return null;
+    var fecha = textoFecha(charla.fecha);
+    if (fecha !== null) return fecha;
+    return typeof charla.anio === 'number' ? String(charla.anio) : null;
+  }
+
   // "18:00" -> "18 hs"; "09:30" -> "9:30 hs"; null si la hora no es válida.
   function horaCorta(texto) {
     var m = typeof texto === 'string' ? RE_HORA.exec(texto.trim()) : null;
@@ -255,20 +314,28 @@
     return esObjeto(proxima) && textoVisible(proxima.titulo) !== null && fechaLarga(proxima.fecha) !== null;
   }
 
+  // Enlace seguro que además es https (Zoom, entrevistas).
+  function enlaceHttps(x) {
+    var url = enlaceSeguro(x);
+    return url !== null && /^https:\/\//i.test(url) ? url : null;
+  }
+
   function correoVisible(x) {
     var limpio = textoVisible(x);
     return limpio !== null && RE_CORREO.test(limpio) ? limpio : null;
   }
 
   // Los botones de la tarjeta, en orden. Calendar y Zoom son opcionales: sin enlace no hay botón.
-  function accionesProxima(proxima) {
+  // Zoom: el link propio de la charla (proxima.zoom_url) o, si no tiene, el del semestre (sitio.zoom_url_semestre),
+  // también mientras la charla no está anunciada. Solo enlaces https.
+  function accionesProxima(proxima, sitio) {
     if (!esObjeto(proxima)) return [];
     var acciones = [];
     var correo = correoVisible(proxima.correo_inscripcion);
     if (correo !== null) acciones.push({ tipo: 'correo', texto: 'Inscribirme por correo', url: 'mailto:' + correo });
     var calendar = enlaceSeguro(proxima.calendar_url);
     if (calendar !== null) acciones.push({ tipo: 'calendar', texto: 'Agendar en mi calendario', url: calendar });
-    var zoom = enlaceSeguro(proxima.zoom_url);
+    var zoom = enlaceHttps(proxima.zoom_url) || (esObjeto(sitio) ? enlaceHttps(sitio.zoom_url_semestre) : null);
     if (zoom !== null) acciones.push({ tipo: 'zoom', texto: 'Entrar por Zoom', url: zoom });
     return acciones;
   }
@@ -292,6 +359,12 @@
     redesVisibles: redesVisibles,
     enlaceAvisoWhatsApp: enlaceAvisoWhatsApp,
     fechaLarga: fechaLarga,
+    textoFecha: textoFecha,
+    debeMostrarVolverArriba: debeMostrarVolverArriba,
+    entrevistasVisibles: entrevistasVisibles,
+    videoDePresentacion: videoDePresentacion,
+    integrantesOrdenados: integrantesOrdenados,
+    fechaDeCharla: fechaDeCharla,
     horaCorta: horaCorta,
     proximaAnunciada: proximaAnunciada,
     accionesProxima: accionesProxima,

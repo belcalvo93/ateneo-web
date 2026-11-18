@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Dosis:wght@600&family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&family=Dosis:wght@600&family=Open+Sans:wght@400;600;700&display=swap');
 
 /* Ateneo Amigos de la Ciencia — hoja de estilos del sitio.
    Tokens: design-system rev. 2 (design-system/tokens.css es la fuente de verdad).
@@ -25,6 +25,8 @@
   --superficie-pagina: #F1F3F8;
   --superficie-tarjeta: #FFFFFF;
   --superficie-suave: #EAF0F8;
+  --aac-celeste: #DCE8F7;           /* rev. 3: fondo de las tarjetas de temas (tinte de --aac-azul) */
+  --aac-celeste-hover: #C7DAF1;     /* rev. 3: hover de esas tarjetas; texto-suave 5.3:1 */
   --superficie-media: #0D2B50;
   --texto: #1A1F26;
   --texto-suave: #4A5560;
@@ -65,6 +67,7 @@
   --radio-chico: 8px; --radio: 12px; --radio-pildora: 999px;
   --filete: 1px solid var(--borde);
   --sombra-elevada: 0 2px 4px rgba(0,0,0,.08), 0 18px 40px rgba(0,0,0,.22);
+  --sombra-suave: 0 6px 18px rgba(0,0,0,.12); /* rev. 3: tarjeta de charla al pasar el cursor */
 
   /* Enlaces */
   --subrayado-grosor: .075em;
@@ -206,32 +209,40 @@
 
 /* ===== Tarjeta de charla (la misma en todo el sitio) ===== */
 .aac-web .grilla { display: grid; gap: var(--esp-7) var(--esp-6); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.aac-web .ficha { position: relative; display: flex; flex-direction: column; width: 100%; }
-.aac-web .miniatura { position: relative; aspect-ratio: 16 / 9; background: var(--superficie-media); border-radius: var(--radio); overflow: hidden; }
+.aac-web .ficha { position: relative; display: flex; flex-direction: column; width: 100%; transition: transform var(--transicion); }
+.aac-web .ficha:hover .miniatura { box-shadow: var(--sombra-suave); }
+.aac-web .miniatura { position: relative; aspect-ratio: 16 / 9; background: var(--superficie-media); border-radius: var(--radio); overflow: hidden; transition: box-shadow var(--transicion); }
 .aac-web .miniatura img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--transicion); }
-.aac-web .ficha:hover .miniatura img { transform: scale(1.02); }
+/* Movimiento al pasar el cursor solo si no se pidió reducirlo; con movimiento reducido cambia solo el color */
+@media (prefers-reduced-motion: no-preference) {
+  .aac-web .ficha:hover { transform: translateY(-2px); }
+  .aac-web .ficha:hover .miniatura img { transform: scale(1.02); }
+  .aac-web .tema-card:hover .tema-flecha { transform: translateX(3px); }
+}
 .aac-web .miniatura .duracion { position: absolute; right: var(--esp-2); bottom: var(--esp-2); background: var(--utn-negro); color: var(--utn-blanco); font: 700 var(--texto-chico) var(--fuente-texto); padding: 0 var(--esp-2); border-radius: var(--radio-chico); }
 .aac-web .cuerpo { padding-top: var(--esp-4); display: flex; flex-direction: column; gap: var(--esp-2); flex: 1; }
 .aac-web .tema { font: 600 var(--texto-chico) var(--fuente-rotulos); letter-spacing: .02em; color: var(--aac-azul); }
 .aac-web .ficha-titulo { display: flex; align-items: baseline; gap: var(--esp-3); }
 .aac-web .puesto { flex: none; font: 700 var(--texto-numeral)/1 var(--fuente-titulos); color: var(--aac-rojo); }
 .aac-web .ficha h3 { font-size: var(--texto-h3); margin: 0; overflow-wrap: anywhere; }
-/* Un solo enlace por tarjeta (el título, siempre subrayado), que se extiende a toda la tarjeta */
-.aac-web .enlace-tarjeta { color: var(--texto); text-decoration: underline; text-decoration-color: var(--aac-azul); }
+/* Toda la tarjeta es el enlace (el del título, extendido); sin subrayado: la tarjeta con miniatura ya dice que se abre.
+   Al pasar el cursor: la tarjeta sube apenas y el título pasa a azul (rev. 3). */
+.aac-web .enlace-tarjeta { color: var(--texto); text-decoration: none; transition: color var(--transicion); }
 .aac-web .enlace-tarjeta::after { content: ""; position: absolute; inset: 0; }
-.aac-web .enlace-tarjeta:hover { color: var(--aac-azul); }
+.aac-web .ficha:hover .enlace-tarjeta, .aac-web .enlace-tarjeta:focus-visible { color: var(--aac-azul); }
 .aac-web .enlace-tarjeta:focus-visible { outline: none; box-shadow: none; }
 .aac-web .enlace-tarjeta:focus-visible::after { outline: var(--foco); box-shadow: var(--foco-contorno); outline-offset: 4px; border-radius: var(--radio); }
 .aac-web .mas-vistas { list-style: none; margin: 0; padding: 0; }
 .aac-web .mas-vistas li { display: flex; }
 
 /* ===== Temas ===== */
-.aac-web .grilla-temas { display: grid; gap: 0 var(--esp-6); grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.aac-web .tema-card { display: flex; flex-direction: column; gap: var(--esp-2); min-height: var(--objetivo-minimo); padding: var(--esp-4) var(--esp-2) var(--esp-5); border-top: var(--filete); color: var(--texto); text-decoration: none; transition: background var(--transicion); }
-.aac-web .tema-nombre { font: 600 var(--texto-h3)/1.2 var(--fuente-titulos); text-decoration: underline; text-decoration-color: var(--aac-azul); text-decoration-thickness: var(--subrayado-grosor); text-underline-offset: var(--subrayado-separacion); }
+.aac-web .grilla-temas { display: grid; gap: var(--esp-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.aac-web .tema-card { display: flex; flex-direction: column; gap: var(--esp-2); min-height: var(--objetivo-minimo); padding: var(--esp-4) var(--esp-4) var(--esp-5); border-radius: var(--radio); background: var(--aac-celeste); color: var(--texto); text-decoration: none; transition: background var(--transicion); }
+.aac-web .tema-nombre { font: 600 var(--texto-h3)/1.2 var(--fuente-titulos); }
 .aac-web .tema-gancho { font-size: var(--texto-chico); line-height: 1.45; }
-.aac-web .tema-card small { margin-top: auto; color: var(--texto-suave); font: var(--texto-chico) var(--fuente-texto); }
-.aac-web .tema-card:hover { background: var(--superficie-tarjeta); }
+.aac-web .tema-card small { margin-top: auto; display: flex; align-items: center; gap: var(--esp-2); color: var(--texto-suave); font: var(--texto-chico) var(--fuente-texto); }
+.aac-web .tema-flecha { font-weight: 700; color: var(--aac-azul); transition: transform var(--transicion); }
+.aac-web .tema-card:hover { background: var(--aac-celeste-hover); color: var(--texto); }
 .aac-web .tema-card:hover .tema-nombre { color: var(--aac-azul); }
 
 /* ===== Invitación a proponer una charla ===== */
@@ -268,6 +279,32 @@
 .aac-web .galeria img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radio); display: block; }
 .aac-web .galeria:has(> img:only-child) { grid-template-columns: minmax(0, 1fr); max-width: 60rem; }
 
+/* Foto principal de «Quiénes somos», junto al título */
+.aac-web .foto-principal { margin: 0; }
+.aac-web .foto-principal img { width: 100%; max-width: 46rem; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radio); display: block; }
+
+/* Video de presentación: texto con la cita de Palas Atenea y la miniatura del video, que es el enlace */
+.aac-web .video-presentacion { display: grid; gap: var(--esp-5) var(--esp-7); grid-template-columns: minmax(0, 1fr); align-items: center; }
+.aac-web .cita { margin: 0 0 var(--esp-4); }
+.aac-web .cita p { font: italic 600 var(--texto-h3)/1.4 var(--fuente-titulos); color: var(--aac-azul); }
+.aac-web .video-enlace { display: flex; flex-direction: column; gap: var(--esp-3); color: var(--texto); text-decoration: none; font-weight: 700; }
+.aac-web .video-enlace img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.aac-web .video-enlace:hover .video-texto { color: var(--aac-azul); }
+.aac-web .video-texto { display: inline-flex; align-items: center; min-height: var(--objetivo-minimo); }
+
+/* Mesa Organizadora: nombres en columnas, sin fotos ni cargos */
+.aac-web .mesa { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 var(--esp-7); grid-template-columns: minmax(0, 1fr); }
+.aac-web .mesa li { border-top: var(--filete); padding: var(--esp-3) 0; }
+
+/* En la radio: lista de entrevistas, una por renglón */
+.aac-web .radio { list-style: none; margin: 0; padding: 0; max-width: var(--ancho-lectura); }
+.aac-web .radio li { border-top: var(--filete); padding: var(--esp-2) 0; color: var(--texto-suave); }
+.aac-web .radio a { display: inline-flex; align-items: center; min-height: var(--objetivo-minimo); font-weight: 600; }
+
+/* Sumate al Ateneo */
+.aac-web .sumate { display: grid; gap: var(--esp-4) var(--esp-7); grid-template-columns: minmax(0, 1fr); align-items: center; }
+.aac-web .sumate p { margin: 0; max-width: var(--ancho-lectura); }
+
 /* Declaración de Principios (desplegable, sin caja propia) */
 .aac-web .declaracion { margin-top: var(--esp-5); border-top: var(--filete); border-bottom: var(--filete); max-width: 56rem; }
 .aac-web .declaracion summary { display: flex; align-items: center; gap: var(--esp-2); min-height: var(--objetivo-minimo); padding: var(--esp-3) 0; font-weight: 700; color: var(--aac-azul); cursor: pointer; list-style: none; }
@@ -291,6 +328,13 @@
 .aac-web .pie-utn img { width: 158px; height: auto; display: block; filter: brightness(0) invert(1); }
 .aac-web .pie-utn p { margin: 0; font-size: var(--texto-chico); }
 
+/* ===== Volver arriba (lo maneja js/marco.js) =====
+   Fijo abajo a la derecha. El borde blanco lo recorta tanto sobre el blanco de la página como sobre el negro del pie;
+   el pie tiene lugar de sobra abajo para que el botón nunca tape su último renglón. */
+.aac-web .volver-arriba { position: fixed; right: var(--esp-4); bottom: var(--esp-4); z-index: 5; display: inline-flex; align-items: center; gap: var(--esp-2); min-height: var(--objetivo-minimo); min-width: var(--objetivo-minimo); padding: var(--esp-2) var(--esp-4); border: 2px solid var(--utn-blanco); border-radius: var(--radio-pildora); background: var(--aac-azul); color: var(--utn-blanco); font: 700 var(--texto-boton)/1.2 var(--fuente-texto); text-decoration: none; box-shadow: var(--sombra-suave); transition: background var(--transicion); }
+.aac-web .volver-arriba:hover { background: var(--aac-azul-hover); color: var(--utn-blanco); }
+.aac-web .pie { padding-bottom: calc(var(--esp-6) + var(--objetivo-minimo) + var(--esp-4)); }
+
 /* ===== Pantallas más anchas ===== */
 @media (min-width: 720px) {
   .aac-web .nav img { height: 72px; }
@@ -305,8 +349,11 @@
   .aac-web .linea-tiempo li > * { grid-column: 2; }
   .aac-web .linea-tiempo .hito-anio { grid-column: 1; grid-row: 1 / span 2; }
   .aac-web .valores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aac-web .mesa { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aac-web .sumate { grid-template-columns: minmax(0, 1fr) auto; }
 }
 @media (min-width: 1024px) {
   .aac-web .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--esp-8); }
   .aac-web .grilla-temas { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .aac-web .video-presentacion { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }

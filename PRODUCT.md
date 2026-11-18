@@ -27,7 +27,7 @@ Entidad autónoma sin fines de lucro dedicada a la divulgación de las Ciencias 
 
 ## Operating Context
 
-- Una charla cada viernes a las 18 hs (con el receso del calendario académico), en el Salón de Actos de la UTN FRM (Rodríguez 273, Ciudad de Mendoza) y/o por Zoom. Desde la pandemia la mayoría son solo por Zoom; el texto «y/o por Zoom» es provisorio (KB 10).
+- Una charla cada viernes a las 18 hs (con el receso del calendario académico), por Zoom (presencial solo por excepción, en el Salón de Actos de la UTN FRM). El link de Zoom del semestre es público y está en la tarjeta de la próxima charla.
 - Inscripción, consultas y propuestas de charla por correo: ateneoac.mo@gmail.com.
 - Difusión semanal por un Canal de Difusión de WhatsApp y por YouTube; Instagram está pendiente. Banner y flyer impresos los hace otra becaria y quedan fuera de la web.
 - Las charlas grabadas viven en el canal de YouTube (310 videos ≈ 186 charlas, muchas en varias partes).
@@ -39,7 +39,7 @@ Entidad autónoma sin fines de lucro dedicada a la divulgación de las Ciencias 
 - Los datos viven en `data/*.js`, separados del diseño, editables por personas que no programan.
 - Un dato sin completar (entre corchetes) nunca se muestra al público.
 - Costo cero. Sin login, pagos ni formularios con base de datos.
-- Pendientes de decisión: textos de los ganchos por tema, dos categorías nuevas de la videoteca, enlace de Instagram, si las charlas vuelven a ser presenciales (KB 10).
+- Pendientes de decisión: textos de los ganchos por tema, dos categorías nuevas de la videoteca, enlace de Instagram, logo oficial, foto actual del Ateneo y nueva Declaración de Principios (KB 10).
 
 ## Brand Commitments
 

@@ -11,9 +11,10 @@ Todo lo que cambia en el sitio (charlas, próxima charla, temas, redes) vive en 
 | `proxima-charla.js` | Los datos de la próxima charla (título, disertante, fecha, hora…) | **Sí**, cada semana |
 | `correcciones.js` | Tus correcciones a las charlas ya cargadas: título, disertante, tema, año, enlaces, «destacada»… | **Sí**: es el lugar para corregir |
 | `charlas-nuevas.js` | Las charlas que se agregan de ahora en más | **Sí**: es el lugar para agregar |
-| `sitio.js` | Los datos generales: correo de contacto, redes y fotos de «Quiénes somos» | Muy de vez en cuando |
+| `sitio.js` | Los datos generales: correo de contacto, redes, link de Zoom del semestre, video de presentación, fotos de «Quiénes somos», formulario «Sumate al Ateneo», Mesa Organizadora (con `mostrar: true/false`), entrevistas de radio y PDF de la Declaración | Muy de vez en cuando |
 | `temas.js` | Los temas (Geología, IA, etc.) y sus nombres cortos | Casi nunca; son 8 temas confirmados y se sumarán 2 cuando Agustina informe los nombres |
 | `charlas.js` | El catálogo de las 186 charlas (con sus videos de YouTube) | **No**: lo genera un script y se pisa cada vez que se regenera |
+| `archivo-charlas.js` | Fecha exacta, disertante y título de las charlas que coinciden con seguridad con el archivo 2020–2026 del sitio viejo | **No**: lo genera `scripts/cruzar-archivo.js`; lo que escribas en `correcciones.js` manda sobre él |
 | `charlas-borrador.json` | El borrador original del que salió el catálogo | **Nunca**: es solo el origen |
 
 Cada archivo empieza con un comentario (el texto entre `/*` y `*/`, o después de `//`) que explica cómo se escribe. Lo que está en un comentario no afecta al sitio.
@@ -31,22 +32,31 @@ window.AAC_PROXIMA_CHARLA = {
   descripcion: "Cómo funcionan los paneles solares y qué se instala hoy.",
   fecha: "14/11/2026",
   hora: "18:00",
-  lugar: "Salón de Actos UTN FRM, Rodríguez 273, Ciudad de Mendoza",
-  modalidad: "Solo por Zoom",
-  zoom_url: "https://…",
+  lugar: null,
+  modalidad: "Por Zoom",
+  zoom_url: null,
   calendar_url: "https://…",
   correo_inscripcion: "ateneoac.mo@gmail.com"
 };
 ```
 
-- **modalidad**: cómo es esa charla en particular: `"Presencial y por Zoom"`, `"Solo por Zoom"` o `"Presencial"`. Mientras no se sepa, queda `"Presencial y/o por Zoom"`.
+- **modalidad**: las charlas son por Zoom, así que normalmente queda `"Por Zoom"`. Si una charla puntual es presencial: `"Presencial y por Zoom"` o `"Presencial"`.
+- **lugar**: solo si la charla es presencial (es excepcional). Ejemplo: `"Salón de Actos UTN FRM, Rodríguez 273, Ciudad de Mendoza"`. Si es por Zoom, dejá `null` (sin comillas): la tarjeta no muestra ningún lugar.
 - **fecha**: siempre `DD/MM/AAAA` (día, mes, año de cuatro cifras). Ejemplo: `"14/11/2026"`.
 - **hora**: siempre `HH:MM` en 24 horas. Ejemplo: `"18:00"`.
-- **zoom_url** (opcional): el enlace de Zoom entre comillas. Si está cargado, la página muestra el botón «Entrar por Zoom». Si no se quiere publicar, dejá `null` (sin comillas): el botón no aparece y no pasa nada.
+- **zoom_url** (opcional): **solo si esta charla tiene un link de Zoom propio**. Normalmente queda en `null` y la tarjeta usa el link del semestre (ver «El link de Zoom del semestre», más abajo).
 - **calendar_url** (opcional): el enlace para agendar la charla en Google Calendar. Si está cargado, la página muestra el botón «Agendar en Calendar»; con `null` no aparece.
 - Los dos enlaces tienen que empezar con `https://`.
-- Mientras el título o la fecha sigan con corchetes, la página muestra «La próxima charla se anunciará pronto» con el horario y el lugar de siempre.
+- Mientras el título o la fecha sigan con corchetes, la página muestra «La próxima charla se anunciará pronto» con el horario de siempre y el botón «Entrar por Zoom» del semestre.
 - Si todavía no sabés un dato, dejalo con corchetes, por ejemplo `"[fecha]"`. No inventes datos.
+
+### El link de Zoom del semestre
+
+El Ateneo usa un link de Zoom recurrente que **cambia una vez por semestre**. Está en `data/sitio.js`, en `zoom_url_semestre`, y la tarjeta de la próxima charla muestra el botón «Entrar por Zoom» con ese link, también mientras la charla todavía no está anunciada.
+
+- **Cuando empieza un semestre nuevo**: reemplazá el link en `zoom_url_semestre` (entre comillas, empezando con `https://`).
+- **Si una charla puntual tiene un link propio**: cargalo en `zoom_url` de `data/proxima-charla.js`; para esa charla manda ese. Cuando pasa la charla, volvé a dejar `zoom_url: null`.
+- **Si no hay link**: `zoom_url_semestre: null` y la tarjeta no muestra el botón.
 
 ## Redes y datos generales del sitio
 
@@ -106,6 +116,7 @@ Separá cada charla de la siguiente con una coma (la última no lleva coma). Qu�
 - **titulo**, **disertante**: el dato real, entre comillas. Al completarlos con un texto real (no entre corchetes), la marca correspondiente de `revisar` se borra sola.
 - **tema**: uno de los ids de `temas.js` (más abajo).
 - **anio**: un número de cuatro cifras, sin comillas.
+- **fecha**: la fecha exacta, entre comillas y con el formato `"DD/MM/AAAA"` (por ejemplo `"11/11/2022"`). Con fecha no hace falta `anio`: sale de la fecha. La portada ordena «Últimas charlas» por esta fecha y la muestra en la tarjeta.
 - **destacada**: `true` fija la charla como destacada en la portada. Las «más vistas» se arman solas a partir de las vistas.
 - **confirmados**: lista de marcas de `revisar` que ya revisaste y están bien como están (`titulo`, `disertante`, `vistas`, `partes`). Sirve, por ejemplo, para un título que está todo en mayúsculas y es correcto.
 - **partes**: el enlace de una parte. El número es el de «Parte N» que ve el público (`1`, `2`…). Con `url: null` la parte queda sin enlace (para anular uno automático equivocado).

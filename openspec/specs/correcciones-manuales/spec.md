@@ -7,7 +7,7 @@ Separa lo que corrigen o agregan las personas de lo que genera la máquina, para
 ## Requirements
 
 ### Requirement: Archivo de correcciones por id de charla
-`data/correcciones.js` SHALL definir `window.AAC_CORRECCIONES`: un objeto cuyas claves son ids de charla (`c001`…) y cuyos valores admiten `titulo`, `disertante`, `tema`, `anio`, `destacada`, `confirmados` (marcas de `revisar` ya confirmadas) y `partes` (`{ número de parte en el orden final: { url } }`, con `url` de YouTube o `null`). Las correcciones MUST NOT indexarse por título ni por id de video, y ningún script SHALL escribir este archivo.
+`data/correcciones.js` SHALL definir `window.AAC_CORRECCIONES`: un objeto cuyas claves son ids de charla (`c001`…) y cuyos valores admiten `titulo`, `disertante`, `tema`, `anio`, `fecha` (`dd/mm/aaaa`), `destacada`, `confirmados` (marcas de `revisar` ya confirmadas) y `partes` (`{ número de parte en el orden final: { url } }`, con `url` de YouTube o `null`). Las correcciones MUST NOT indexarse por título ni por id de video, y ningún script SHALL escribir este archivo.
 
 #### Scenario: Estado inicial
 - **WHEN** se crea el archivo en este change
@@ -16,6 +16,10 @@ Separa lo que corrigen o agregan las personas de lo que genera la máquina, para
 #### Scenario: Enlace resuelto a mano
 - **WHEN** quien edita escribe `c124: { partes: { 2: { url: "https://www.youtube.com/watch?v=<id>" } } }`
 - **THEN** en la vista combinada la parte 2 de `c124` tiene ese enlace, sin importar el título del video ni el enlace generado
+
+#### Scenario: Fecha confirmada a mano
+- **WHEN** quien edita escribe `c084: { fecha: "11/11/2022" }`
+- **THEN** en la vista combinada `c084` tiene esa fecha y `anio: 2022`
 
 ### Requirement: Catálogo generado
 `data/charlas.js` SHALL ser salida generada por `scripts/derivar-datos.js`, con un comentario de cabecera que diga «ARCHIVO GENERADO», que no se edita a mano, la fecha de la foto del canal y la cantidad de videos de esa foto, y dónde van las correcciones y las charlas nuevas.
@@ -36,7 +40,7 @@ Separa lo que corrigen o agregan las personas de lo que genera la máquina, para
 - **THEN** el validador informa el id repetido como error en `data/charlas-nuevas.js`
 
 ### Requirement: Vista combinada en el navegador
-`js/aplicar-correcciones.js` SHALL proveer una función pura `aplicarCorrecciones(generadas, correcciones, nuevas)` que devuelve las generadas, seguidas de las nuevas, con las correcciones aplicadas por id, sin modificar sus argumentos. MUST funcionar como `<script>` común (solo define `window.AAC_aplicarCorrecciones`) y con `require()` en Node, sin `import`/`export`. Lo que no corresponda (id, campo o parte inexistente) SHALL ignorarse sin lanzar errores.
+`js/aplicar-correcciones.js` SHALL proveer una función pura `aplicarCorrecciones(generadas, correcciones, nuevas, archivo)` que devuelve las generadas, seguidas de las nuevas, con el archivo cruzado y luego las correcciones aplicados por id (lo manual gana), sin modificar sus argumentos; con `fecha`, `anio` sale de la fecha. MUST funcionar como `<script>` común y con `require()` en Node. Lo que no corresponda SHALL ignorarse sin lanzar errores.
 
 #### Scenario: Sin correcciones
 - **WHEN** se aplica con correcciones vacías y sin charlas nuevas
@@ -53,6 +57,14 @@ Separa lo que corrigen o agregan las personas de lo que genera la máquina, para
 #### Scenario: Corrección mal escrita en el navegador
 - **WHEN** una corrección apunta a `c999` (inexistente) o trae un campo `titlo`
 - **THEN** la función no lanza errores y la vista combinada no incluye ese dato
+
+#### Scenario: Archivo cruzado y corrección a la vez
+- **WHEN** el archivo cruzado trae `disertante: "José María Amoretti"` para `c001` y la corrección trae `disertante: "J. M. Amoretti"`
+- **THEN** la vista combinada muestra el disertante de la corrección y la fecha del archivo cruzado
+
+#### Scenario: Sin archivo cruzado
+- **WHEN** se llama sin el cuarto argumento (o `data/archivo-charlas.js` no carga)
+- **THEN** el resultado es el mismo que antes de este change
 
 ### Requirement: Las correcciones limpian `revisar`
 En la vista combinada, una corrección que completa `titulo` o `disertante` con texto que no sea un placeholder entre corchetes SHALL quitar esa marca de `revisar`; cada valor de `confirmados` SHALL quitar la marca del mismo nombre. Un placeholder entre corchetes no quita la marca.

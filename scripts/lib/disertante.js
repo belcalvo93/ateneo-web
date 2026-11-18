@@ -58,6 +58,19 @@ function esDisertante(segmento) {
   return !/\s(?:y|e|con)\s/i.test(segmento);
 }
 
+// Saca los títulos profesionales del comienzo de un nombre («Dr Ing Miguel Tornello» -> «Miguel Tornello»).
+// El Ateneo prefiere no usarlos (17/11/2026); si quiere uno para una eminencia, se carga a mano en data/correcciones.js.
+const RE_TITULO_INICIAL = new RegExp('^' + TITULOS_PROF.source + /\.?\s+/.source, 'iu');
+function quitarTitulos(nombre) {
+  let t = String(nombre).trim();
+  let siguiente = t.replace(RE_TITULO_INICIAL, '');
+  while (siguiente !== t && siguiente.trim() !== '') {
+    t = siguiente.trim();
+    siguiente = t.replace(RE_TITULO_INICIAL, '');
+  }
+  return t;
+}
+
 const NO_ENCONTRADO = () => ({ titulo: '[Título]', disertante: '[Disertante]', revisar: ['titulo', 'disertante'] });
 
 // Categoría A: «Título - Dr/Dra/Ing/... Nombre Apellido» al final. Cualquier otro caso: placeholders.
@@ -71,7 +84,7 @@ function extraerDisertanteYTitulo(tituloOriginal) {
   // Si a la izquierda queda una marca de parte/capítulo, el título no es confiable.
   if (numeroDeParte(izquierda) !== null) return NO_ENCONTRADO();
   const revisar = /[a-záéíóúñ]/.test(izquierda) ? [] : ['titulo'];
-  return { titulo: izquierda, disertante: derecha, revisar };
+  return { titulo: izquierda, disertante: quitarTitulos(derecha), revisar };
 }
 
 // Ordena por número de parte. { partes, revisar } — revisar=true si el orden no es confiable.
@@ -86,4 +99,4 @@ function ordenarPartes(partes) {
   return { partes: orden.map((x) => x.p), revisar: !sinHuecos };
 }
 
-module.exports = { quitarMarcaParte, numeroDeParte, extraerDisertanteYTitulo, ordenarPartes };
+module.exports = { quitarMarcaParte, numeroDeParte, extraerDisertanteYTitulo, quitarTitulos, ordenarPartes };

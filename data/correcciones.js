@@ -9,7 +9,8 @@
     titulo       "Texto"          título real de la charla
     disertante   "Texto"          nombre de quien disertó
     tema         "geologia"       id de un tema de data/temas.js
-    anio         2023             año real, número sin comillas
+    anio         2023             año real, número sin comillas (si ponés fecha, no hace falta)
+    fecha        "11/11/2022"     fecha exacta, DD/MM/AAAA; el año sale de acá
     destacada    true             fija la charla como destacada en la portada
     confirmados  ["titulo"]       marcas de "revisar" que ya revisaste y están bien tal como están
                                   (se puede confirmar: titulo, disertante, vistas, partes)
@@ -31,11 +32,13 @@
 */
 window.AAC_CORRECCIONES = {
   // Charlas que salen en la portada (últimas y más vistas). Título y disertante tomados del título
-  // del video en YouTube, solo ordenando mayúsculas y tildes. Falta confirmar con el Ateneo el
-  // tratamiento de cada persona (Dr., Ing., Lic.) y, en c003, quiénes integraron la mesa.
-  c001: { titulo: "Pinceladas sanmartinianas", disertante: "J. M. Amoretti" },
+  // del video en YouTube, solo ordenando mayúsculas y tildes. Los disertantes van sin títulos (Dr., Ing., Lic.),
+  // salvo que el Ateneo pida uno para una eminencia: ese caso se escribe acá, a mano.
+  // c001 y c181: el disertante y la fecha salen del archivo del sitio viejo (data/archivo-charlas.js).
+  c001: { titulo: "Pinceladas sanmartinianas" },
   c002: { titulo: "Reciclado químico de residuos plásticos" },
-  c003: { titulo: "La IH junto a la IA", disertante: "Mesa redonda" },
-  c181: { titulo: "Depósitos de litio", disertante: "Pabla Tognoli" },
+  // c003: fecha confirmada por la autora (17/11/2026); disertantes tal como figuran en el archivo del sitio viejo.
+  c003: { titulo: "La IH junto a la IA", disertante: "Antonio Álvarez; Adolfo Anunziata; Roberto Lauro y Alberto Salassa", fecha: "09/10/2026" },
+  c181: { titulo: "Depósitos de litio" },
   c182: { titulo: "Teledetección y geología espectral", disertante: "Alejandro Caballero" }
 };

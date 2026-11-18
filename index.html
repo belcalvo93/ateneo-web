@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-<div class="aac-web" data-aac-pagina="inicio">
+<div class="aac-web" id="inicio" data-aac-pagina="inicio">
   <a class="saltar" href="#contenido">Saltar al contenido</a>
   <!-- Cabecera y pie: los dibuja js/marco.js. Lo escrito acá es solo el respaldo si no carga. -->
   <header class="nav" data-aac="cabecera"><div class="wrap">
@@ -32,7 +32,7 @@
         <div class="hero-texto">
           <h1 id="titulo-inicio">Ciencia y cultura abiertas a toda la comunidad</h1>
           <p class="hero-bajada">Somos una agrupación sin fines de lucro de graduados, docentes y amigos de la ciencia que, desde 2015, comparte charlas sobre ciencias exactas, físicas y naturales, tecnología y cultura general. Gratis y abiertas a todo público.</p>
-          <p class="hero-horario">Todos los viernes a las 18 hs, en el Salón de Actos de la UTN FRM y/o por Zoom.</p>
+          <p class="hero-horario">Todos los viernes a las 18 hs, por Zoom.</p>
           <div class="fila">
             <a class="btn btn-blanco" href="videoteca.html">Ver la videoteca</a>
             <a class="btn btn-borde" href="quienes-somos.html">Conocé al Ateneo</a>
@@ -48,7 +48,7 @@
           </div>
           <div class="datos">
             <p><strong>Cuándo:</strong> los viernes a las 18 hs</p>
-            <p><strong>Dónde:</strong> Salón de Actos UTN FRM, Rodríguez 273, Ciudad de Mendoza, y/o por Zoom</p>
+            <p><strong>Dónde:</strong> por Zoom</p>
             <p><strong>Inscripción:</strong> <a href="mailto:ateneoac.mo@gmail.com" data-aac="correo">ateneoac.mo@gmail.com</a></p>
             <div class="fila"><a class="btn btn-rojo" href="mailto:ateneoac.mo@gmail.com">Inscribirme por correo</a></div>
           </div>
@@ -122,12 +122,15 @@
       <p>Una actividad de la UTN Facultad Regional Mendoza</p>
     </div>
   </div></footer>
+  <!-- Volver arriba: lo maneja js/marco.js; sin JavaScript es un enlace común al inicio -->
+  <a class="volver-arriba" href="#inicio" data-aac="volver-arriba" aria-label="Subir: volver al inicio de la página"><span aria-hidden="true">↑</span> Subir</a>
 </div>
 
 <!-- Datos (se editan en data/) -->
 <script src="data/temas.js"></script>
 <script src="data/charlas.js"></script>
 <script src="data/charlas-nuevas.js"></script>
+<script src="data/archivo-charlas.js"></script>
 <script src="data/correcciones.js"></script>
 <script src="data/proxima-charla.js"></script>
 <script src="data/sitio.js"></script>

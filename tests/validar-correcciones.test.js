@@ -156,3 +156,59 @@ test('un pendiente de una charla nueva se atribuye a charlas-nuevas.js', () => {
   const a = validar(d, OPC).avisos.find((x) => x.tipo === 'placeholder' && x.charla === 'c003');
   assert.equal(a.archivo, 'data/charlas-nuevas.js');
 });
+
+// ---- fechas y archivo cruzado (C-02b) ----
+
+test('fecha válida en una corrección: sin errores y el año sale de ella', () => {
+  const d = datos();
+  d.correcciones = { c001: { fecha: '11/11/2022' } };
+  assert.deepEqual(err(d), []);
+});
+
+test('fecha imposible o mal escrita en una corrección: error', () => {
+  const d = datos();
+  d.correcciones = { c001: { fecha: '31/02/2023' }, c002: { fecha: '2022-11-11' } };
+  const e = enArchivo(err(d), 'data/correcciones.js');
+  assert.equal(e.length, 2);
+  assert.ok(e.every((x) => x.campo === 'fecha'));
+});
+
+test('año contradictorio con la fecha en la misma corrección: error', () => {
+  const d = datos();
+  d.correcciones = { c001: { fecha: '11/11/2022', anio: 2023 } };
+  const e = enArchivo(err(d), 'data/correcciones.js');
+  assert.equal(e.length, 1);
+  assert.match(e[0].mensaje, /2022/);
+});
+
+test('fecha futura en una charla publicada: aviso, no error', () => {
+  const d = datos();
+  d.correcciones = { c001: { fecha: '01/12/2026' } };
+  const r = validar(d, { anioActual: 2026, hoy: '17/11/2026' });
+  assert.deepEqual(r.errores, []);
+  assert.ok(r.avisos.some((a) => a.tipo === 'fecha-futura' && a.charla === 'c001'));
+});
+
+test('archivo cruzado válido: sin errores y se aplica en la vista combinada', () => {
+  const d = datos();
+  d.archivo = { c001: { fecha: '25/09/2024', disertante: 'Ana Luna', titulo: 'Litio' } };
+  const r = validar(d, OPC);
+  assert.deepEqual(r.errores, []);
+  assert.ok(!r.avisos.some((a) => a.charla === 'c001' && a.tipo === 'placeholder'));
+});
+
+test('archivo cruzado: id inexistente, campo desconocido y tipo incorrecto son errores', () => {
+  const d = datos();
+  d.archivo = { c999: { fecha: '01/01/2020' }, c001: { fechas: 'x' }, c002: { fecha: '40/01/2020', disertante: 3 } };
+  const e = enArchivo(err(d), 'data/archivo-charlas.js');
+  assert.ok(e.some((x) => x.charla === 'c999'));
+  assert.ok(e.some((x) => x.charla === 'c001' && x.campo === 'fechas'));
+  assert.ok(e.some((x) => x.charla === 'c002' && x.campo === 'fecha'));
+  assert.ok(e.some((x) => x.charla === 'c002' && x.campo === 'disertante'));
+});
+
+test('archivo cruzado ausente: sin error', () => {
+  const d = datos();
+  delete d.archivo;
+  assert.deepEqual(err(d), []);
+});

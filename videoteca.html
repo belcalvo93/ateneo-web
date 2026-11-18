@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-<div class="aac-web" data-aac-pagina="videoteca">
+<div class="aac-web" id="inicio" data-aac-pagina="videoteca">
   <a class="saltar" href="#contenido">Saltar al contenido</a>
   <!-- Cabecera y pie: los dibuja js/marco.js. Lo escrito acá es solo el respaldo si no carga. -->
   <header class="nav" data-aac="cabecera"><div class="wrap">
@@ -41,6 +41,8 @@
       <p>Una actividad de la UTN Facultad Regional Mendoza</p>
     </div>
   </div></footer>
+  <!-- Volver arriba: lo maneja js/marco.js; sin JavaScript es un enlace común al inicio -->
+  <a class="volver-arriba" href="#inicio" data-aac="volver-arriba" aria-label="Subir: volver al inicio de la página"><span aria-hidden="true">↑</span> Subir</a>
 </div>
 
 <!-- Datos y marco compartido -->

@@ -29,15 +29,19 @@ Define el archivo editable con los datos de la próxima charla del Ateneo, separ
 - **THEN** el validador informa un error en `fecha`
 
 ### Requirement: Sin datos inventados en la próxima charla
-Los valores no confirmados MUST quedar como placeholder entre corchetes; solo se precargan valores documentados en la knowledge base: `lugar` (Salón de Actos UTN FRM, Rodríguez 273), `hora` habitual 18:00, `modalidad` (presencial y/o por Zoom) y `correo_inscripcion` (ateneoac.mo@gmail.com). `zoom_url` y `calendar_url` quedan en `null` hasta que el Ateneo cargue cada enlace.
+Los valores no confirmados MUST quedar como placeholder entre corchetes; solo se precargan valores documentados en la knowledge base: `hora` habitual 18:00, `modalidad` «Por Zoom» (las charlas son por Zoom; presencial solo por excepción), `lugar` en `null` (se completa solo si una charla es presencial) y `correo_inscripcion` (ateneoac.mo@gmail.com). `zoom_url` y `calendar_url` quedan en `null`: el Zoom habitual es el del semestre de `data/sitio.js`.
 
 #### Scenario: Estado inicial
 - **WHEN** se actualiza el archivo en este change
-- **THEN** `titulo`, `disertante`, `descripcion` y `fecha` son placeholders entre corchetes, y `zoom_url` y `calendar_url` son `null`
+- **THEN** `titulo`, `disertante`, `descripcion` y `fecha` son placeholders entre corchetes, `lugar`, `zoom_url` y `calendar_url` son `null` y `modalidad` es «Por Zoom»
 
 #### Scenario: Placeholder visible para el validador
 - **WHEN** se corre el validador con la próxima charla en su estado inicial
 - **THEN** informa un aviso por cada placeholder sin cortar con error
+
+#### Scenario: Charla presencial excepcional
+- **WHEN** una charla es presencial y se completa `lugar` con el Salón de Actos
+- **THEN** la tarjeta muestra el lugar junto a la modalidad; con `lugar: null` muestra solo «Por Zoom»
 
 ### Requirement: Enlaces opcionales de la próxima charla
 `zoom_url` y `calendar_url` SHALL ser opcionales e independientes entre sí: cada uno es `null` o un enlace que empieza con `https://`. Dejar cualquiera de los dos en `null` MUST ser un estado válido y permanente, no un pendiente.

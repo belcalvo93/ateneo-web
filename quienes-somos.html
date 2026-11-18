@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-<div class="aac-web" data-aac-pagina="quienes-somos">
+<div class="aac-web" id="inicio" data-aac-pagina="quienes-somos">
   <a class="saltar" href="#contenido">Saltar al contenido</a>
   <!-- Cabecera y pie: los dibuja js/marco.js. Lo escrito acá es solo el respaldo si no carga. -->
   <header class="nav" data-aac="cabecera"><div class="wrap">
@@ -28,9 +28,30 @@
   <main id="contenido">
     <!-- Encabezado -->
     <section class="hero hero-pagina" aria-labelledby="titulo-quienes">
-      <div class="wrap">
-        <h1 id="titulo-quienes">Quiénes somos</h1>
-        <p class="hero-bajada">Entidad autónoma sin fines de lucro dedicada a la divulgación de las Ciencias Exactas, Físicas y Naturales y cultura general.</p>
+      <div class="wrap hero-grid">
+        <div>
+          <h1 id="titulo-quienes">Quiénes somos</h1>
+          <p class="hero-bajada">Entidad autónoma sin fines de lucro dedicada a la divulgación de las Ciencias Exactas, Físicas y Naturales y cultura general.</p>
+        </div>
+        <!-- Foto principal: sale de data/sitio.js (foto_principal); sin foto no se muestra -->
+        <figure class="foto-principal" data-aac="foto-principal" hidden></figure>
+      </div>
+    </section>
+
+    <!-- Video de presentación: se muestra solo si data/sitio.js tiene video_presentacion -->
+    <section class="seccion" aria-labelledby="titulo-video" data-aac="video" hidden>
+      <div class="wrap video-presentacion">
+        <div>
+          <h2 id="titulo-video">Conocé al Ateneo</h2>
+          <blockquote class="cita">
+            <p>La palabra griega ateneo designaba el templo de Palas Atenea, donde se reunían poetas, filósofos y oradores para leer y compartir sus obras.</p>
+          </blockquote>
+          <p>En pocos minutos, quiénes somos y qué hacemos.</p>
+        </div>
+        <a class="video-enlace" data-aac="video-enlace" href="#" rel="noopener noreferrer">
+          <span class="miniatura" data-aac="video-miniatura"></span>
+          <span class="video-texto">Ver el video de presentación en YouTube</span>
+        </a>
       </div>
     </section>
 
@@ -101,7 +122,7 @@
       <div class="wrap">
         <div class="panel panel-como">
           <h2 id="titulo-como">Cómo funcionamos</h2>
-          <p>Todos los viernes a las 18 hs, con el receso del calendario académico, una persona idónea comparte un tema de ciencia, tecnología o cultura en el Salón de Actos de la UTN FRM y/o por Zoom.</p>
+          <p>Todos los viernes a las 18 hs, con el receso del calendario académico, una persona idónea comparte un tema de ciencia, tecnología o cultura por Zoom.</p>
           <p>La entrada es libre y gratuita, y no hace falta ser de la universidad para participar. Funcionamos en el Departamento de Ingeniería Electrónica, con el apoyo de la Dirección de Graduadas y Graduados.</p>
           <div class="fila">
             <a class="btn btn-azul" href="index.html#proxima-charla">Ver la próxima charla</a>
@@ -111,6 +132,36 @@
       </div>
     </section>
 
+
+    <!-- Mesa Organizadora: se muestra solo con mesa_organizadora.mostrar: true en data/sitio.js -->
+    <section class="seccion" aria-labelledby="titulo-mesa" data-aac="mesa" hidden>
+      <div class="wrap">
+        <h2 id="titulo-mesa" data-aac="mesa-nombre">Mesa Organizadora</h2>
+        <p data-aac="mesa-intro">La Mesa Organizadora está integrada por:</p>
+        <ul class="mesa" data-aac="mesa-integrantes"></ul>
+      </div>
+    </section>
+
+    <!-- En la radio: se muestra solo si data/sitio.js tiene entrevistas_radio -->
+    <section class="seccion" aria-labelledby="titulo-radio" data-aac="radio" hidden>
+      <div class="wrap">
+        <h2 id="titulo-radio">En la radio</h2>
+        <p>Entrevistas al Ateneo para escuchar en línea.</p>
+        <ul class="radio" data-aac="radio-lista"></ul>
+      </div>
+    </section>
+
+    <!-- Sumate al Ateneo -->
+    <section class="seccion seccion-banda" aria-labelledby="titulo-sumate">
+      <div class="wrap sumate">
+        <div>
+          <h2 id="titulo-sumate">Sumate al Ateneo</h2>
+          <p>Puede ser miembro toda persona que comparta los objetivos del Ateneo y acepte su <a href="#proponer">Declaración de Principios</a>. Es gratis, no implica ninguna obligación y podés darte de baja cuando quieras.</p>
+        </div>
+        <!-- El enlace sale de data/sitio.js (formulario_inscripcion); sin enlace no se muestra -->
+        <div class="fila" data-aac="sumate" hidden></div>
+      </div>
+    </section>
 
     <!-- Proponer una charla -->
     <section class="seccion" aria-label="Proponer una charla">
@@ -186,7 +237,7 @@
               <p>La frecuencia de las actividades será semanal, según lo establezca la MO de acuerdo con las posibilidades y conveniencias del conjunto de miembros del Ateneo Amigos de la Ciencia.</p>
             </div>
           </details>
-          <div class="fila"><a class="btn btn-azul" href="mailto:ateneoac.mo@gmail.com?subject=Propuesta%20de%20charla" data-aac="correo-propuesta">Enviar mi propuesta</a></div>
+          <div class="fila" data-aac="acciones-propuesta"><a class="btn btn-azul" href="mailto:ateneoac.mo@gmail.com?subject=Propuesta%20de%20charla" data-aac="correo-propuesta">Enviar mi propuesta</a></div>
         </article>
       </div>
     </section>
@@ -203,6 +254,8 @@
       <p>Una actividad de la UTN Facultad Regional Mendoza</p>
     </div>
   </div></footer>
+  <!-- Volver arriba: lo maneja js/marco.js; sin JavaScript es un enlace común al inicio -->
+  <a class="volver-arriba" href="#inicio" data-aac="volver-arriba" aria-label="Subir: volver al inicio de la página"><span aria-hidden="true">↑</span> Subir</a>
 </div>
 
 <!-- Datos (se editan en data/) -->

@@ -69,7 +69,8 @@
     return p;
   }
 
-  function dibujarProxima(contenedor, proxima, redes) {
+  function dibujarProxima(contenedor, proxima, sitio) {
+    var redes = typeof sitio === 'object' && sitio !== null ? sitio.redes : undefined;
     var anunciada = L.proximaAnunciada(proxima);
     var hora = L.horaCorta(proxima.hora);
     var lugar = L.textoVisible(proxima.lugar);
@@ -106,7 +107,7 @@
     }
 
     // Botones: el de correo siempre; calendario y Zoom solo si su enlace está cargado.
-    var acciones = L.accionesProxima(proxima);
+    var acciones = L.accionesProxima(proxima, sitio);
     if (acciones.length > 0) {
       var fila = crear('div', 'fila');
       acciones.forEach(function (accion) {
@@ -165,7 +166,11 @@
       a.href = 'videoteca.html?tema=' + encodeURIComponent(tema.id);
       a.appendChild(crear('span', 'tema-nombre', tema.nombre));
       if (tema.gancho) a.appendChild(crear('span', 'tema-gancho', tema.gancho));
-      a.appendChild(crear('small', '', L.textoCantidad(tema.cantidad)));
+      var cantidad = crear('small', '', L.textoCantidad(tema.cantidad));
+      var flecha = crear('span', 'tema-flecha', '→'); // decorativa: el enlace ya dice adónde va
+      flecha.setAttribute('aria-hidden', 'true');
+      cantidad.appendChild(flecha);
+      a.appendChild(cantidad);
       contenedor.appendChild(a);
     });
   }
@@ -187,7 +192,7 @@
 
     if (hayCatalogo) {
       var nuevas = Array.isArray(window.AAC_CHARLAS_NUEVAS) ? window.AAC_CHARLAS_NUEVAS : [];
-      var charlas = combinar(window.AAC_CHARLAS, window.AAC_CORRECCIONES, nuevas);
+      var charlas = combinar(window.AAC_CHARLAS, window.AAC_CORRECCIONES, nuevas, window.AAC_ARCHIVO_CHARLAS);
       var idsNuevas = nuevas.map(function (c) { return c && c.id; });
       var etiquetas = etiquetasDeTema(window.AAC_TEMAS);
       if (ultimas) dibujarUltimas(ultimas, charlas, etiquetas, idsNuevas);
@@ -203,7 +208,7 @@
 
     // Si no cargó la próxima charla, queda la tarjeta fija del HTML (horario y lugar habituales).
     if (proximaNodo && typeof window.AAC_PROXIMA_CHARLA === 'object' && window.AAC_PROXIMA_CHARLA !== null) {
-      dibujarProxima(proximaNodo, window.AAC_PROXIMA_CHARLA, sitio && sitio.redes);
+      dibujarProxima(proximaNodo, window.AAC_PROXIMA_CHARLA, sitio);
     }
 
     if (typeof sitio === 'object' && sitio !== null) {

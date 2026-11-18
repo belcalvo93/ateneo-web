@@ -5,6 +5,7 @@ const {
   quitarMarcaParte,
   numeroDeParte,
   extraerDisertanteYTitulo,
+  quitarTitulos,
   ordenarPartes
 } = require('../scripts/lib/disertante.js');
 
@@ -48,18 +49,18 @@ test('quitarMarcaParte: sin marca solo colapsa espacios', () => {
 test('extraer: título profesional al final -> disertante y título', () => {
   assert.deepEqual(
     extraerDisertanteYTitulo('RECICLADO QUIMICO DE RESIDUOS PLASTICOS - Dra Elangeni Gilbert'),
-    { titulo: 'RECICLADO QUIMICO DE RESIDUOS PLASTICOS', disertante: 'Dra Elangeni Gilbert', revisar: ['titulo'] }
+    { titulo: 'RECICLADO QUIMICO DE RESIDUOS PLASTICOS', disertante: 'Elangeni Gilbert', revisar: ['titulo'] }
   );
   assert.deepEqual(
     extraerDisertanteYTitulo('Entrelazamiento cuántico - Dr Ernesto Gandolfo Raso - primera parte'),
-    { titulo: 'Entrelazamiento cuántico', disertante: 'Dr Ernesto Gandolfo Raso', revisar: [] }
+    { titulo: 'Entrelazamiento cuántico', disertante: 'Ernesto Gandolfo Raso', revisar: [] }
   );
   assert.deepEqual(
     extraerDisertanteYTitulo('Respuestas para el riesgo sísmico en Mendoza -  Dr Ing Miguel Tornello'),
-    { titulo: 'Respuestas para el riesgo sísmico en Mendoza', disertante: 'Dr Ing Miguel Tornello', revisar: [] }
+    { titulo: 'Respuestas para el riesgo sísmico en Mendoza', disertante: 'Miguel Tornello', revisar: [] }
   );
   const r = extraerDisertanteYTitulo('RADIACIONES NO IONIZANTES - ING. JOSÉ BALACCO');
-  assert.equal(r.disertante, 'ING. JOSÉ BALACCO');
+  assert.equal(r.disertante, 'JOSÉ BALACCO');
   assert.equal(r.titulo, 'RADIACIONES NO IONIZANTES');
 });
 
@@ -142,4 +143,23 @@ test('ordenarPartes: una sola parte no necesita revisión', () => {
   const r = ordenarPartes(p('Solo una charla'));
   assert.deepEqual(idxs(r), [0]);
   assert.equal(r.revisar, false);
+});
+
+// ---- sin títulos honoríficos (respuesta del Ateneo, 17/11/2026) ----
+
+test('quitarTitulos: saca Dr, Dra, Ing, Lic, Arq, Prof, Mg y combinaciones, con o sin punto', () => {
+  assert.equal(quitarTitulos('Dra Alicia Seltzer'), 'Alicia Seltzer');
+  assert.equal(quitarTitulos('Dr Ing Miguel Tornello'), 'Miguel Tornello');
+  assert.equal(quitarTitulos('Lic. Guillermo Pensado'), 'Guillermo Pensado');
+  assert.equal(quitarTitulos('ING. JOSÉ BALACCO'), 'JOSÉ BALACCO');
+  assert.equal(quitarTitulos('Mg. Ing. Raúl Pía'), 'Raúl Pía');
+  assert.equal(quitarTitulos('Arq Graciela Moretti'), 'Graciela Moretti');
+});
+
+test('quitarTitulos: no toca nombres sin título ni palabras que solo empiezan igual', () => {
+  assert.equal(quitarTitulos('Raul E. Rivarola'), 'Raul E. Rivarola');
+  assert.equal(quitarTitulos('Ingrid Lara'), 'Ingrid Lara');
+  assert.equal(quitarTitulos('Drago Petrov'), 'Drago Petrov');
+  assert.equal(quitarTitulos('Dr'), 'Dr');
+  assert.equal(quitarTitulos('[Disertante]'), '[Disertante]');
 });

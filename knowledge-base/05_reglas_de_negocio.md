@@ -16,13 +16,13 @@ Códigos `RN-{DOMINIO}-{NN}`. Todas derivadas de `docs/PRD.md`; las marcadas **(
 - **RN-BU-03**: El filtro por tema se combina con la búsqueda; «Todos los temas» es el estado por defecto (Mockup).
 
 ## Dominio: Próxima charla (RN-PC)
-- **RN-PC-01**: Muestra fecha, hora, lugar y modalidad (presencial y/o por Zoom) (RF-04).
-- **RN-PC-02**: Las charlas son los viernes a las 18 hs, Salón de Actos UTN FRM (Rodríguez 273) y/o por Zoom (texto provisorio: desde la pandemia la mayoría de las charlas son solo por Zoom; ver `10`).
+- **RN-PC-01**: Muestra fecha, hora y modalidad (por Zoom); el lugar, solo si la charla es presencial (RF-04). El botón «Entrar por Zoom» usa el `zoom_url` de la charla o, si no tiene, el `zoom_url_semestre` de `data/sitio.js`, y se muestra también mientras la charla no está anunciada.
+- **RN-PC-02**: Las charlas son los viernes a las 18 hs por Zoom; presencial solo en casos excepcionales, en el Salón de Actos UTN FRM (Rodríguez 273). Confirmado por la Mesa Organizadora el 17/11/2026. La dirección del pie es la sede del Ateneo.
 - **RN-PC-03**: La inscripción y consultas son por correo a ateneoac.mo@gmail.com; no hay inscripción online (fuera de alcance).
 - **RN-PC-04**: Los enlaces para agendar en Google Calendar y para entrar por Zoom son opcionales: cada botón se muestra solo si su enlace está cargado (DD-15).
 
 ## Dominio: Portada (RN-PO)
-- **RN-PO-01**: Muestra últimas charlas y más vistas (RF-08). Criterio: «más vistas» es automático por `vistas`, con la opción de fijar charlas a mano con `destacada: true` (destacadas primero); el orden exacto de «últimas» (año/orden de los datos) se define en C-03.
+- **RN-PO-01**: Muestra últimas charlas y más vistas (RF-08). Criterio: «más vistas» es automático por `vistas`, con la opción de fijar charlas a mano con `destacada: true` (destacadas primero); «últimas» se ordena por año y, dentro del año (C-02b): primero las agregadas a mano sin fecha, luego las que tienen fecha real de la más nueva a la más vieja y al final las demás en el orden del catálogo; la tarjeta muestra la fecha exacta («9 de octubre de 2026») o, si no la hay, el año.
 - **RN-PO-02**: Cada tema se lista con su cantidad de charlas (Mockup).
 
 ## Dominio: Proponer una charla (RN-PR)
@@ -33,6 +33,9 @@ Códigos `RN-{DOMINIO}-{NN}`. Todas derivadas de `docs/PRD.md`; las marcadas **(
 
 ## Dominio: Contenido y mantenimiento (RN-CO)
 - **RN-CO-01**: Datos (charlas, próxima charla) separados del diseño en archivo fácil de editar sin programar.
+- **RN-CO-03** (C-02b): La fecha exacta y el disertante de las charlas salen del archivo 2020–2026 del sitio viejo solo cuando la coincidencia es segura; las dudosas las confirma una persona en `data/correcciones.js`. Los disertantes se escriben sin títulos (Dr., Dra., Ing., Lic. y similares), tanto los del archivo como los derivados del canal; solo si el Ateneo lo indica para una eminencia, el título se carga a mano en `data/correcciones.js` (DD-25).
+- **RN-CO-04** (C-02b): La sección de la Mesa Organizadora se muestra con `mesa_organizadora.mostrar: true` en `data/sitio.js` (hoy activada, 6 integrantes confirmados el 17/11/2026), con nombre y apellido en orden alfabético, sin fotos, cargos ni datos de contacto.
+- **RN-CO-05** (C-02b): La sección «En la radio» de Quiénes somos aparece solo si `entrevistas_radio` tiene al menos una entrevista con título y enlace `https`.
 - **RN-CO-02**: Al 18/12 debe existir guía de uso con la que alguien del Ateneo cargue un evento solo.
 
 ## Dominio: Accesibilidad y marca (RN-AC)

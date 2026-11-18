@@ -21,7 +21,7 @@ Fuente: documentos fundacionales y Declaración de Principios v2.4 entregados po
 - **Visión**: ser reconocidos por la FRM-UTN y la comunidad por el aporte y la calidad de sus estudios, haciendo accesible la ciencia a toda la sociedad y generando sinergia con otras instituciones afines.
 - **Valores**: rigor científico; clima amistoso y horizontal (trato por nombre de pila o sobrenombre, sin solemnidades ni jerarquías); acceso libre (sin fines de lucro: no cobra entrada ni paga honorarios).
 - **Organización**: Mesa Organizadora (MO) de 7 miembros elegidos por consenso, con mandato de 3 años.
-- **Funcionamiento**: una charla abierta todos los viernes a las 18 hs (con el receso del calendario académico de la UTN FRM), en el Salón de Actos de la UTN FRM (Rodríguez 273, Ciudad de Mendoza) y/o por Zoom. Desde la pandemia la mayoría de las charlas son solo por Zoom: los textos del sitio dicen «y/o por Zoom» de forma provisoria (ver `10`). Funciona en el Departamento de Ingeniería Electrónica, con apoyo de la Dirección de Graduadas y Graduados.
+- **Funcionamiento**: una charla abierta todos los viernes a las 18 hs (con el receso del calendario académico de la UTN FRM), por Zoom (confirmado el 17/11/2026: presencial solo en casos excepcionales, en el Salón de Actos de la UTN FRM, Rodríguez 273, Ciudad de Mendoza). El link de Zoom es uno por semestre y es público. Funciona en el Departamento de Ingeniería Electrónica, con apoyo de la Dirección de Graduadas y Graduados.
 
 ## Objetivo central
 

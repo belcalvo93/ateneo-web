@@ -12,15 +12,24 @@ const ARCHIVO_SITIO = 'data/sitio.js';
 
 const CAMPOS_TEMA = ['id', 'nombre', 'etiqueta', 'playlist_url', 'gancho'];
 const CAMPOS_CHARLA = ['id', 'titulo', 'disertante', 'tema', 'anio', 'partes', 'revisar', 'destacada'];
-const CAMPOS_CORRECCION = ['titulo', 'disertante', 'tema', 'anio', 'destacada', 'confirmados', 'partes'];
+const ARCHIVO_CRUZADO = 'data/archivo-charlas.js';
+const CAMPOS_CORRECCION = ['titulo', 'disertante', 'tema', 'anio', 'fecha', 'destacada', 'confirmados', 'partes'];
+const CAMPOS_CRUZADO = ['fecha', 'disertante', 'titulo'];
 const MARCAS_REVISAR = ['titulo', 'disertante', 'vistas', 'partes'];
 const CAMPOS_PARTE = ['duracion', 'url', 'vistas', 'titulo_original'];
 const CAMPOS_PROXIMA = ['titulo', 'disertante', 'descripcion', 'fecha', 'hora', 'lugar', 'modalidad', 'zoom_url', 'calendar_url', 'correo_inscripcion'];
 // Enlaces opcionales de la próxima charla: null es un estado válido y permanente, no un pendiente.
 const ENLACES_PROXIMA = ['zoom_url', 'calendar_url'];
+// Texto opcional de la próxima charla: null = no se muestra (lugar: solo si la charla es presencial).
+const OPCIONALES_PROXIMA = ['lugar'];
 const CAMPOS_SITIO = ['correo', 'canal_youtube', 'conferencias', 'direccion', 'mapa_url', 'redes', 'fotos'];
 const CAMPOS_RED = ['nombre', 'url'];
 const CAMPOS_FOTO = ['archivo', 'alt'];
+// Opcionales (C-02b): si faltan, la página no muestra esa parte.
+const CAMPOS_SITIO_OPCIONALES = ['formulario_inscripcion', 'mesa_organizadora', 'declaracion_pdf', 'foto_principal', 'zoom_url_semestre', 'entrevistas_radio', 'video_presentacion'];
+const CAMPOS_ENTREVISTA = ['titulo', 'url', 'fecha'];
+const CAMPOS_MESA = ['mostrar', 'nombre', 'integrantes'];
+const CAMPOS_INTEGRANTE = ['nombre', 'apellido'];
 
 const RE_ID_TEMA = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const RE_PLACEHOLDER = /^\s*\[.*\]\s*$/;
@@ -174,6 +183,12 @@ function validar(datos, opciones) {
         } else if (k === 'anio') {
           if (!Number.isInteger(c.anio)) e('tiene que ser un número entero (por ejemplo 2024)');
           else if (c.anio < 2017 || c.anio > anioActual) e('el año ' + c.anio + ' está fuera de 2017–' + anioActual);
+        } else if (k === 'fecha') {
+          if (typeof c.fecha !== 'string' || !fechaValida(c.fecha)) {
+            e('fecha inválida (' + JSON.stringify(c.fecha) + '); usá DD/MM/AAAA, por ejemplo "11/11/2022"');
+          } else if (Number.isInteger(c.anio) && c.anio !== Number(c.fecha.slice(6))) {
+            e('la fecha es de ' + c.fecha.slice(6) + ' pero "anio" dice ' + c.anio + ' (con fecha, no hace falta anio)');
+          }
         } else if (k === 'destacada') {
           if (typeof c.destacada !== 'boolean') e('tiene que ser true o false (sin comillas)');
         } else if (k === 'confirmados') {
@@ -210,15 +225,40 @@ function validar(datos, opciones) {
     }
   }
 
+  // ---- archivo cruzado del sitio viejo (generado por scripts/cruzar-archivo.js; opcional) ----
+  const cruzado = datos.archivo;
+  const errA = (charla, campo, msg) => error(ARCHIVO_CRUZADO, charla, null, campo, msg);
+  const idsGeneradas = new Set((generadas || []).filter(esObjeto).map((c) => c.id));
+  if (cruzado !== undefined && !esObjeto(cruzado)) {
+    errA(null, 'AAC_ARCHIVO_CHARLAS', 'tiene que ser un objeto con una entrada por charla (volvé a correr node scripts/cruzar-archivo.js)');
+  } else if (esObjeto(cruzado)) {
+    for (const id of Object.keys(cruzado)) {
+      const c = cruzado[id];
+      if (!idsGeneradas.has(id)) { errA(id, 'charla', 'la charla ' + id + ' no existe en data/charlas.js'); continue; }
+      if (!esObjeto(c)) { errA(id, 'charla', 'tiene que ser un objeto { fecha, disertante, titulo }'); continue; }
+      for (const k of Object.keys(c)) {
+        if (!CAMPOS_CRUZADO.includes(k)) errA(id, k, 'campo desconocido (solo fecha, disertante y titulo)');
+        else if (k === 'fecha') {
+          if (typeof c.fecha !== 'string' || !fechaValida(c.fecha)) errA(id, 'fecha', 'fecha inválida (' + JSON.stringify(c.fecha) + ')');
+        } else if (!esTextoNoVacio(c[k])) errA(id, k, 'tiene que ser texto entre comillas');
+      }
+    }
+  }
+
   // ---- vista combinada: pendientes y resumen ----
   const resumen = { charlas: 0, partes: 0, placeholders: 0, charlasConRevisar: 0, entradasRevisar: 0, partesSinUrl: 0, temasVacios: 0, redesPendientes: 0 };
   const usoPorTema = new Map();
-  const combinada = aplicarCorrecciones(generadas || [], esObjeto(corr) ? corr : {}, nuevas);
+  const combinada = aplicarCorrecciones(generadas || [], esObjeto(corr) ? corr : {}, nuevas, esObjeto(cruzado) ? cruzado : undefined);
+  const hoy = typeof opt.hoy === 'string' && fechaValida(opt.hoy) ? opt.hoy : null;
+  const clave = (f) => f.slice(6) + f.slice(3, 5) + f.slice(0, 2);
   combinada.forEach((c, i) => {
     resumen.charlas += 1;
     if (!esObjeto(c)) return;
     const ref = esTextoNoVacio(c.id) ? c.id : '#' + (i + 1);
     const archivo = i < (generadas || []).length ? ARCHIVO_CHARLAS : ARCHIVO_NUEVAS;
+    if (hoy && typeof c.fecha === 'string' && clave(c.fecha) > clave(hoy)) {
+      aviso('fecha-futura', archivo, ref, null, 'fecha', 'la fecha ' + c.fecha + ' es posterior a hoy y la charla ya está publicada');
+    }
     for (const campo of ['titulo', 'disertante']) {
       if (esTextoNoVacio(c[campo]) && esPlaceholder(c[campo])) {
         resumen.placeholders += 1;
@@ -265,6 +305,7 @@ function validar(datos, opciones) {
     }
     for (const k of CAMPOS_PROXIMA) {
       if (!(k in p) || ENLACES_PROXIMA.includes(k)) continue;
+      if (OPCIONALES_PROXIMA.includes(k) && p[k] === null) continue;
       if (!esTextoNoVacio(p[k])) errP(k, 'tiene que ser texto entre comillas');
       else if (esPlaceholder(p[k])) {
         resumen.placeholders += 1;
@@ -289,7 +330,9 @@ function validar(datos, opciones) {
     errS(null, 'AAC_SITIO', 'tiene que ser un objeto con la configuración del sitio');
   } else if (esObjeto(s)) {
     for (const k of Object.keys(s)) {
-      if (!CAMPOS_SITIO.includes(k)) errS(null, k, 'campo desconocido (¿error de tipeo? campos válidos: ' + CAMPOS_SITIO.join(', ') + ')');
+      if (!CAMPOS_SITIO.includes(k) && !CAMPOS_SITIO_OPCIONALES.includes(k)) {
+        errS(null, k, 'campo desconocido (¿error de tipeo? campos válidos: ' + CAMPOS_SITIO.concat(CAMPOS_SITIO_OPCIONALES).join(', ') + ')');
+      }
     }
     for (const k of CAMPOS_SITIO) {
       if (!(k in s)) errS(null, k, 'falta el campo');
@@ -338,6 +381,64 @@ function validar(datos, opciones) {
         if (!esTextoNoVacio(f.archivo)) errS(ref, 'archivo', 'falta la ruta de la imagen');
         if (!esTextoNoVacio(f.alt)) errS(ref, 'alt', 'falta el texto alternativo que describe la foto');
       });
+    }
+    if ('formulario_inscripcion' in s) {
+      const f = s.formulario_inscripcion;
+      if (f === null || esPlaceholder(f)) {
+        aviso('red-pendiente', ARCHIVO_SITIO, null, null, 'formulario_inscripcion', 'el formulario de inscripción todavía no tiene enlace (no se muestra el botón «Sumate al Ateneo»)');
+      } else if (!(typeof f === 'string' && RE_HTTPS.test(f))) {
+        errS(null, 'formulario_inscripcion', 'tiene que ser un enlace que empiece con https:// (o null)');
+      }
+    }
+    if ('mesa_organizadora' in s) {
+      const m = s.mesa_organizadora;
+      const ref = 'Mesa Organizadora';
+      if (!esObjeto(m)) errS(ref, 'mesa_organizadora', 'tiene que ser { mostrar, nombre, integrantes }');
+      else {
+        for (const k of Object.keys(m)) {
+          if (!CAMPOS_MESA.includes(k)) errS(ref, k, 'campo desconocido (solo mostrar, nombre e integrantes; sin cargos ni datos de contacto)');
+        }
+        if (typeof m.mostrar !== 'boolean') errS(ref, 'mostrar', 'tiene que ser true o false (sin comillas)');
+        if (!esTextoNoVacio(m.nombre)) errS(ref, 'nombre', 'falta el nombre del órgano entre comillas (por ejemplo "Mesa Organizadora")');
+        if (!Array.isArray(m.integrantes)) errS(ref, 'integrantes', 'tiene que ser una lista de { nombre: "…", apellido: "…" }');
+        else m.integrantes.forEach((x, i) => {
+          const refI = 'integrante #' + (i + 1);
+          if (!esObjeto(x)) return errS(refI, 'integrantes', 'cada integrante tiene que ser { nombre: "…", apellido: "…" }');
+          for (const k of Object.keys(x)) {
+            if (!CAMPOS_INTEGRANTE.includes(k)) errS(refI, k, 'campo desconocido (solo nombre y apellido: sin cargos, correos ni teléfonos)');
+          }
+          for (const k of CAMPOS_INTEGRANTE) if (!esTextoNoVacio(x[k])) errS(refI, k, 'falta el ' + k + ' entre comillas');
+        });
+      }
+    }
+    if ('zoom_url_semestre' in s && s.zoom_url_semestre !== null && !(typeof s.zoom_url_semestre === 'string' && RE_HTTPS.test(s.zoom_url_semestre))) {
+      errS(null, 'zoom_url_semestre', 'tiene que ser el enlace de Zoom del semestre, empezando con https:// (o null)');
+    }
+    if ('video_presentacion' in s && s.video_presentacion !== null && !(typeof s.video_presentacion === 'string' && RE_YOUTUBE.test(s.video_presentacion))) {
+      errS(null, 'video_presentacion', 'tiene que ser el enlace de un video de YouTube (https://www.youtube.com/watch?v=…) o null');
+    }
+    if ('entrevistas_radio' in s) {
+      if (!Array.isArray(s.entrevistas_radio)) errS(null, 'entrevistas_radio', 'tiene que ser una lista (puede estar vacía: [])');
+      else s.entrevistas_radio.forEach((x, i) => {
+        const ref = 'entrevista #' + (i + 1);
+        if (!esObjeto(x)) return errS(ref, 'entrevistas_radio', 'cada entrevista tiene que ser { titulo: "…", url: "…", fecha: "DD/MM/AAAA" }');
+        for (const k of Object.keys(x)) if (!CAMPOS_ENTREVISTA.includes(k)) errS(ref, k, 'campo desconocido (solo titulo, url y fecha)');
+        if (!esTextoNoVacio(x.titulo)) errS(ref, 'titulo', 'falta el título de la entrevista entre comillas');
+        if (!(typeof x.url === 'string' && RE_HTTPS.test(x.url))) errS(ref, 'url', 'tiene que ser un enlace que empiece con https://');
+        if ('fecha' in x && x.fecha !== null && !(typeof x.fecha === 'string' && fechaValida(x.fecha))) errS(ref, 'fecha', 'fecha inválida; usá DD/MM/AAAA o null');
+      });
+    }
+    if ('declaracion_pdf' in s && s.declaracion_pdf !== null && !esTextoNoVacio(s.declaracion_pdf)) {
+      errS(null, 'declaracion_pdf', 'tiene que ser la ruta o el enlace del PDF entre comillas, o null');
+    }
+    if ('foto_principal' in s && s.foto_principal !== null) {
+      const f = s.foto_principal;
+      if (!esObjeto(f)) errS('foto principal', 'foto_principal', 'tiene que ser { archivo: "…", alt: "…" } o null');
+      else {
+        for (const k of Object.keys(f)) if (!CAMPOS_FOTO.includes(k)) errS('foto principal', k, 'campo desconocido (solo archivo y alt)');
+        if (!esTextoNoVacio(f.archivo)) errS('foto principal', 'archivo', 'falta la ruta de la imagen');
+        if (!esTextoNoVacio(f.alt)) errS('foto principal', 'alt', 'falta el texto alternativo que describe la foto');
+      }
     }
   }
 

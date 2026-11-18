@@ -44,7 +44,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c002",
     "titulo": "RECICLADO QUIMICO DE RESIDUOS PLASTICOS",
-    "disertante": "Dra Elangeni Gilbert",
+    "disertante": "Elangeni Gilbert",
     "tema": "agua-ambiente",
     "anio": 2026,
     "partes": [
@@ -100,7 +100,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c005",
     "titulo": "Módulo Habitacional y de Logística (HALO) - CHI",
-    "disertante": "Ing Carlos Sisso",
+    "disertante": "Carlos Sisso",
     "tema": "espacio-astronomia",
     "anio": 2026,
     "partes": [
@@ -173,7 +173,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c009",
     "titulo": "Ciencia y Tecnología para la Defensa en Argentina",
-    "disertante": "Dr Pablo Bolcatto",
+    "disertante": "Pablo Bolcatto",
     "tema": "ia-tecnologia",
     "anio": 2026,
     "partes": [
@@ -493,7 +493,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c026",
     "titulo": "Etica en las Geociencias y controles en la Minería",
-    "disertante": "Dra Marita Ahumada",
+    "disertante": "Marita Ahumada",
     "tema": "geologia",
     "anio": 2025,
     "partes": [
@@ -535,7 +535,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c028",
     "titulo": "La Evolucion del uso de los metales y el desarrollo Humano",
-    "disertante": "Ing Pablo Rolando",
+    "disertante": "Pablo Rolando",
     "tema": "geologia",
     "anio": 2025,
     "partes": [
@@ -551,7 +551,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c029",
     "titulo": "Panorámica del mundo psíquico III: Relaciones transaccionales",
-    "disertante": "Dr Raul Rivarola",
+    "disertante": "Raul Rivarola",
     "tema": "neurociencia-salud",
     "anio": 2024,
     "partes": [
@@ -611,7 +611,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c032",
     "titulo": "NEURONAS: La última frontera de las Neurociencias",
-    "disertante": "Dra Alicia Seltzer",
+    "disertante": "Alicia Seltzer",
     "tema": "neurociencia-salud",
     "anio": 2024,
     "partes": [
@@ -722,7 +722,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c038",
     "titulo": "Panorama del Psiquismo II - Los estados del Yo",
-    "disertante": "Dr Raul Rivarola",
+    "disertante": "Raul Rivarola",
     "tema": "neurociencia-salud",
     "anio": 2024,
     "partes": [
@@ -738,7 +738,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c039",
     "titulo": "Introducción a las redes neuronales con aprendizaje profundo",
-    "disertante": "Dr Diego Milone",
+    "disertante": "Diego Milone",
     "tema": "ia-tecnologia",
     "anio": 2024,
     "partes": [
@@ -894,7 +894,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c047",
     "titulo": "Panorama del psiquismo I - Niveles de conciencia",
-    "disertante": "Dr Raul E. Rivarola",
+    "disertante": "Raul E. Rivarola",
     "tema": "neurociencia-salud",
     "anio": 2024,
     "partes": [
@@ -910,7 +910,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c048",
     "titulo": "Panorámica del psiquismo I - Niveles de conciencia",
-    "disertante": "Dr Raul E. Rivarola",
+    "disertante": "Raul E. Rivarola",
     "tema": "neurociencia-salud",
     "anio": 2024,
     "partes": [
@@ -970,7 +970,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c051",
     "titulo": "De máquinas a vapora los trenes eléctricos",
-    "disertante": "Arq Graciela Moretti",
+    "disertante": "Graciela Moretti",
     "tema": "ingenieria-sismos",
     "anio": 2024,
     "partes": [
@@ -1340,7 +1340,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c068",
     "titulo": "PROYECTOS ESPACIALES DE LA UNION EUROPEA",
-    "disertante": "Ing Osvaldo Peinado",
+    "disertante": "Osvaldo Peinado",
     "tema": "espacio-astronomia",
     "anio": 2023,
     "partes": [
@@ -1364,7 +1364,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c069",
     "titulo": "Historia y futuro del Agua Subterránea, el gigante oculto",
-    "disertante": "Ing Armando Llop",
+    "disertante": "Armando Llop",
     "tema": "agua-ambiente",
     "anio": 2023,
     "partes": [
@@ -1405,7 +1405,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c071",
     "titulo": "Sinapsis Nerviosa",
-    "disertante": "Dra Alicia Seltzer",
+    "disertante": "Alicia Seltzer",
     "tema": "neurociencia-salud",
     "anio": 2023,
     "partes": [
@@ -1527,7 +1527,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c076",
     "titulo": "Respuestas para el riesgo sísmico en Mendoza",
-    "disertante": "Dr Ing Miguel Tornello",
+    "disertante": "Miguel Tornello",
     "tema": "ingenieria-sismos",
     "anio": 2023,
     "partes": [
@@ -1624,7 +1624,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c080",
     "titulo": "Agua y Recursos naturales",
-    "disertante": "Ing Alejandro Drovandi",
+    "disertante": "Alejandro Drovandi",
     "tema": "agua-ambiente",
     "anio": 2023,
     "partes": [
@@ -1716,7 +1716,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c084",
     "titulo": "Entrelazamiento cuántico",
-    "disertante": "Dr Ernesto Gandolfo Raso",
+    "disertante": "Ernesto Gandolfo Raso",
     "tema": "fisica-matematica",
     "anio": 2023,
     "partes": [
@@ -1863,7 +1863,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c090",
     "titulo": "Valor agregado en la minería del siglo XXI",
-    "disertante": "Lic Guillermo Pensado",
+    "disertante": "Guillermo Pensado",
     "tema": "geologia",
     "anio": 2022,
     "partes": [
@@ -1885,7 +1885,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c091",
     "titulo": "El bosque urbano de Mendoza",
-    "disertante": "Ing Mabel Chambouleyron",
+    "disertante": "Mabel Chambouleyron",
     "tema": "agua-ambiente",
     "anio": 2022,
     "partes": [
@@ -1907,7 +1907,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c092",
     "titulo": "Sistema inmune",
-    "disertante": "Dra Alicia Seltzer",
+    "disertante": "Alicia Seltzer",
     "tema": "neurociencia-salud",
     "anio": 2022,
     "partes": [
@@ -1923,7 +1923,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c093",
     "titulo": "Sistema inmune Alicia",
-    "disertante": "Dra Alicia Seltzer",
+    "disertante": "Alicia Seltzer",
     "tema": "neurociencia-salud",
     "anio": 2022,
     "partes": [
@@ -2121,7 +2121,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c102",
     "titulo": "El universo en que vivimos",
-    "disertante": "Dr Andres Piatti",
+    "disertante": "Andres Piatti",
     "tema": "espacio-astronomia",
     "anio": 2022,
     "partes": [
@@ -2281,7 +2281,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c109",
     "titulo": "El Futuro de las Redes III: 4G, 5G,...y 6G ...",
-    "disertante": "Ing Roberto Lauro",
+    "disertante": "Roberto Lauro",
     "tema": "ia-tecnologia",
     "anio": 2022,
     "partes": [
@@ -2536,7 +2536,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c120",
     "titulo": "Coaching",
-    "disertante": "Ing German Manzur",
+    "disertante": "German Manzur",
     "tema": "neurociencia-salud",
     "anio": 2022,
     "partes": [
@@ -2583,7 +2583,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c122",
     "titulo": "Inicios de la computación en Argentina",
-    "disertante": "Ing Victorio Sonzogni",
+    "disertante": "Victorio Sonzogni",
     "tema": "ia-tecnologia",
     "anio": 2022,
     "partes": [
@@ -2736,7 +2736,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c128",
     "titulo": "Meteorologia",
-    "disertante": "Dr Jorge Rubén Santos",
+    "disertante": "Jorge Rubén Santos",
     "tema": "agua-ambiente",
     "anio": 2021,
     "partes": [
@@ -2752,7 +2752,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c129",
     "titulo": "Meteorología",
-    "disertante": "Dr Ruben Santos",
+    "disertante": "Ruben Santos",
     "tema": "agua-ambiente",
     "anio": 2021,
     "partes": [
@@ -2944,7 +2944,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c137",
     "titulo": "Bosques urbanos en ciudaddes sustentables",
-    "disertante": "Ing Mabel Chambouleyron",
+    "disertante": "Mabel Chambouleyron",
     "tema": "agua-ambiente",
     "anio": 2021,
     "partes": [
@@ -2960,7 +2960,7 @@ window.AAC_CHARLAS = [
   {
     "id": "c138",
     "titulo": "Bosques urbanos en ciudades sustentables",
-    "disertante": "Ing Mabel Chambouleyron",
+    "disertante": "Mabel Chambouleyron",
     "tema": "agua-ambiente",
     "anio": 2021,
     "partes": [

@@ -50,11 +50,12 @@ test('derivación real sin cruce: pasa el validador sin errores y las 310 partes
   assert.ok(r.resumen.charlasConRevisar > 0);
 });
 
-test('derivación real: los disertantes automáticos son pocos y todos empiezan con título profesional', () => {
+test('derivación real: los disertantes automáticos son pocos y ninguno lleva título profesional', () => {
   const charlas = derivar(borrador, temas);
   const auto = charlas.filter((c) => c.disertante !== '[Disertante]');
   assert.ok(auto.length >= 25 && auto.length <= 40, 'charlas con disertante automático: ' + auto.length);
-  for (const c of auto) assert.match(c.disertante, /^(?:dr|dra|ing|lic|prof|profa|arq|mg|mgter|bioq|geol|geól)\b/i);
+  // Sin títulos (Ateneo, 17/11/2026): un título para una eminencia se carga a mano en data/correcciones.js.
+  for (const c of auto) assert.doesNotMatch(c.disertante, /^(?:dr|dra|ing|lic|prof|profa|arq|mg|mgter|bioq|geol|geól)\.?\s/i, c.id);
 });
 
 test('data/*.js versionados: mismas charlas y partes que el borrador y pasan el validador normal', () => {

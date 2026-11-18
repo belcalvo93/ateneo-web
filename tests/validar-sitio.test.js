@@ -229,3 +229,104 @@ test('validar: gancho vacío o que no es texto es un error en ese tema', () => {
     assert.equal(e[0].campo, 'gancho');
   }
 });
+
+// ---- C-02b: inscripción, Mesa Organizadora, Declaración en PDF y foto principal ----
+
+const mesa = (extra) => ({
+  mostrar: false,
+  nombre: 'Mesa Organizadora',
+  integrantes: [{ nombre: 'Adolfo', apellido: 'Anunziata' }, { nombre: 'Luis', apellido: 'Blanco' }],
+  ...extra
+});
+
+test('validar: campos nuevos del sitio válidos', () => {
+  const d = datosValidos();
+  Object.assign(d.sitio, {
+    formulario_inscripcion: 'https://docs.google.com/forms/d/e/abc/viewform',
+    mesa_organizadora: mesa(),
+    declaracion_pdf: null,
+    foto_principal: { archivo: 'img/salon.jpg', alt: 'Grupo en el Salón de Actos' }
+  });
+  assert.deepEqual(delSitio(validar(d, OPC)), []);
+});
+
+test('validar: los campos nuevos del sitio son opcionales', () => {
+  assert.deepEqual(delSitio(validar(datosValidos(), OPC)), []);
+});
+
+test('validar: formulario de inscripción sin https es error y el placeholder es aviso', () => {
+  const d = datosValidos();
+  d.sitio.formulario_inscripcion = 'http://forms.gle/x';
+  assert.equal(delSitio(validar(d, OPC))[0].campo, 'formulario_inscripcion');
+  d.sitio.formulario_inscripcion = '[enlace del formulario]';
+  const r = validar(d, OPC);
+  assert.deepEqual(delSitio(r), []);
+  assert.ok(r.avisos.some((a) => a.campo === 'formulario_inscripcion'));
+});
+
+test('validar: Mesa Organizadora con campos de contacto, sin apellido o con mostrar mal escrito', () => {
+  const d = datosValidos();
+  d.sitio.mesa_organizadora = mesa({ mostrar: 'no', integrantes: [{ nombre: 'Ana', apellido: 'Paz', correo: 'a@b.com' }, { nombre: 'Juan' }] });
+  const campos = delSitio(validar(d, OPC)).map((e) => e.campo).sort();
+  assert.deepEqual(campos, ['apellido', 'correo', 'mostrar']);
+});
+
+test('validar: Mesa Organizadora sin nombre del órgano o con integrantes que no son lista', () => {
+  const d = datosValidos();
+  d.sitio.mesa_organizadora = { mostrar: true, nombre: '', integrantes: 'Ana Paz', cargo: 'x' };
+  const campos = delSitio(validar(d, OPC)).map((e) => e.campo).sort();
+  assert.deepEqual(campos, ['cargo', 'integrantes', 'nombre']);
+});
+
+test('validar: declaracion_pdf y foto_principal mal escritos', () => {
+  const d = datosValidos();
+  d.sitio.declaracion_pdf = 42;
+  d.sitio.foto_principal = { archivo: 'img/x.jpg' };
+  const campos = delSitio(validar(d, OPC)).map((e) => e.campo).sort();
+  assert.deepEqual(campos, ['alt', 'declaracion_pdf']);
+});
+
+// ---- Zoom del semestre y lugar opcional (Ateneo, 17/11/2026) ----
+
+test('validar: zoom_url_semestre https o null es válido; sin https es error', () => {
+  const d = datosValidos();
+  d.sitio.zoom_url_semestre = 'https://utn.zoom.us/j/88394809866?pwd=abc';
+  assert.deepEqual(delSitio(validar(d, OPC)), []);
+  d.sitio.zoom_url_semestre = null;
+  assert.deepEqual(delSitio(validar(d, OPC)), []);
+  d.sitio.zoom_url_semestre = 'utn.zoom.us/j/1';
+  assert.equal(delSitio(validar(d, OPC))[0].campo, 'zoom_url_semestre');
+});
+
+test('validar: lugar de la próxima charla en null (charla por Zoom) es válido y no es pendiente', () => {
+  const d = datosValidos();
+  d.proxima.lugar = null;
+  const r = validar(d, { ...OPC, estricto: true });
+  assert.deepEqual(r.errores, []);
+  assert.equal(r.fallo, false);
+  d.proxima.lugar = 42;
+  assert.equal(deProxima(validar(d, OPC))[0].campo, 'lugar');
+});
+
+test('validar: entrevistas de radio válidas, vacías o mal escritas', () => {
+  const d = datosValidos();
+  d.sitio.entrevistas_radio = [];
+  assert.deepEqual(delSitio(validar(d, OPC)), []);
+  d.sitio.entrevistas_radio = [{ titulo: 'Entrevista en Radio Nacional', url: 'https://ejemplo.org/audio', fecha: '10/11/2026' }];
+  assert.deepEqual(delSitio(validar(d, OPC)), []);
+  d.sitio.entrevistas_radio = [{ titulo: '', url: 'http://x', fecha: '31/02/2026', otro: 1 }];
+  const campos = delSitio(validar(d, OPC)).map((e) => e.campo).sort();
+  assert.deepEqual(campos, ['fecha', 'otro', 'titulo', 'url']);
+});
+
+test('validar: video_presentacion null o un video de YouTube; otra cosa es error', () => {
+  const d = datosValidos();
+  d.sitio.video_presentacion = null;
+  assert.deepEqual(delSitio(validar(d, OPC)), []);
+  d.sitio.video_presentacion = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  assert.deepEqual(delSitio(validar(d, OPC)), []);
+  for (const malo of ['https://vimeo.com/1', 'video', 3]) {
+    d.sitio.video_presentacion = malo;
+    assert.equal(delSitio(validar(d, OPC))[0].campo, 'video_presentacion', JSON.stringify(malo));
+  }
+});

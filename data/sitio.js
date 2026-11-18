@@ -25,5 +25,47 @@ window.AAC_SITIO = {
   fotos: [
     // Autorizada por el Ateneo (17/11/2026). Las caras de dos personas del fondo están desenfocadas.
     { archivo: "img/ateneo-integrantes.jpg", alt: "Siete integrantes del Ateneo Amigos de la Ciencia, abrazados y sonrientes, durante un encuentro del grupo en 2019." }
-  ]
+  ],
+
+  // VIDEO DE PRESENTACIÓN de «Quiénes somos» (el video institucional del Ateneo), enlace de YouTube entre comillas.
+  // Con null (sin comillas) la sección del video no se muestra. Ejemplo: "https://www.youtube.com/watch?v=XXXXXXXXXXX"
+  video_presentacion: null,
+
+  // FOTO PRINCIPAL de «Quiénes somos» (al lado del título). Con null (sin comillas) no se muestra.
+  // El Ateneo va a mandar una foto actual (17/11/2026). Ejemplo: { archivo: "img/ateneo-2026.jpg", alt: "…" }
+  foto_principal: null,
+
+  // ZOOM del semestre: el link es recurrente y cambia una vez por semestre (Eduardo autorizó que sea público).
+  // Se muestra el botón «Entrar por Zoom» en la próxima charla, también antes de que esté anunciada.
+  // Si una charla puntual tiene un link propio, se carga zoom_url en data/proxima-charla.js y manda ese.
+  zoom_url_semestre: "https://utn.zoom.us/j/88394809866?pwd=GavNQgGKD6gPBTqR5sDoxWMXP6S1Vh.1",
+
+  // FORMULARIO para hacerse miembro (botón «Sumate al Ateneo» en «Quiénes somos»). Con null no se muestra el botón.
+  formulario_inscripcion: "https://docs.google.com/forms/d/e/1FAIpQLSc1mJHPDX0IZ7EGemwlh3mX4J7Xj3QHYpgxd9cv1wj4PL7hKQ/viewform",
+
+  // MESA ORGANIZADORA: se muestra en «Quiénes somos» con mostrar: true. Solo nombre y apellido
+  // (sin cargos, fotos ni datos de contacto); la página las ordena sola por apellido.
+  // Confirmado por Eduardo Serdoch (17/11/2026): se llama Mesa Organizadora, son 6 y quieren aparecer.
+  mesa_organizadora: {
+    mostrar: true,
+    nombre: "Mesa Organizadora",
+    integrantes: [
+      { nombre: "Raúl", apellido: "Pía" },
+      { nombre: "Luis P.", apellido: "Tittarelli" },
+      { nombre: "Adolfo", apellido: "Anunziata" },
+      { nombre: "Alberto", apellido: "Salassa" },
+      { nombre: "Luis", apellido: "Blanco" },
+      { nombre: "Eduardo", apellido: "Serdoch" }
+    ]
+  },
+
+  // EN LA RADIO: entrevistas grabadas al Ateneo. Vacía = la sección no se muestra en «Quiénes somos».
+  // Una línea por entrevista. Ejemplo: { titulo: "Entrevista en Radio …", url: "https://…", fecha: "10/11/2026" }
+  // (la fecha es opcional: con null o sin el campo no se muestra).
+  entrevistas_radio: [],
+
+  // DECLARACIÓN DE PRINCIPIOS en PDF (botón «Descargar en PDF»). null = no se muestra el botón.
+  // El Ateneo la va a reescribir (17/11/2026): cuando llegue la nueva, se cambia el texto de la página y se carga
+  // acá la ruta o, en Elementor, la URL del PDF subido.
+  declaracion_pdf: null
 };

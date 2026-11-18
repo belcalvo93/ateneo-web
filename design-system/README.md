@@ -1,8 +1,8 @@
 # Design system — Ateneo Amigos de la Ciencia
 
 Mode: system-only
-Revision: 2
-Approval: approved (2026-11-17, by user) — revisión 2; la revisión 1 fue aprobada el 2026-11-06
+Revision: 3
+Approval: approved (2026-11-17, by user) — revisión 3 (change C-02b); la revisión 2 fue aprobada el 2026-11-17 y la 1 el 2026-11-06
 
 Decisión de política (06/11/2026, por la usuaria): sistema de diseño definido ahora; los cambios visuales posteriores se implementan **sin pedir mockups por cambio**. Los mockups aprobados en `docs/mockups/` son el contrato visual de partida.
 
@@ -17,6 +17,16 @@ Decisión de política (06/11/2026, por la usuaria): sistema de diseño definido
 | `brand.md` | Nombre, logo, tono y reglas de uso |
 | `brand.js` | Constante del nombre; enlaza `[data-brand-name]` |
 | `components.html` | Referencia de componentes y estados (nav, menú en celular, hero, botones, ficha de charla con duración y puesto, buscador/chips, próxima charla, cifras, franja de redes, tema, línea de tiempo, valores, pie) |
+
+## Revisión 3 (17/11/2026, change C-02b) — aprobada el 17/11/2026
+
+Pedido de la autora: sin subrayado en los títulos de las tarjetas.
+
+- **Tarjetas de temas**: sin filete ni subrayado; fondo `--aac-celeste` (#DCE8F7, tinte de `--aac-azul`) que pasa a `--aac-celeste-hover` (#C7DAF1) al pasar el cursor, con radio de 12 px; flecha «→» decorativa (`aria-hidden`) junto a la cantidad de charlas. Contraste medido: texto 11,6:1, texto suave 5,3:1 y azul 6,0:1 sobre el tono más oscuro.
+- **Tarjetas de charla**: toda la tarjeta es el enlace, título sin subrayado; al pasar el cursor sube 2 px, la miniatura toma `--sombra-suave` y el título pasa a azul. Con `prefers-reduced-motion: reduce` solo cambia el color. El foco con teclado sigue siendo el contorno amarillo alrededor de toda la tarjeta.
+- **Tokens nuevos**: `--aac-celeste`, `--aac-celeste-hover`, `--sombra-suave` (sombra leve y momentánea, solo en el hover de la tarjeta de charla; la próxima charla sigue siendo el único elemento elevado en reposo).
+- **Botón «↑ Subir»** (compartido, `js/marco.js`): píldora azul con texto blanco (8,6:1) y borde blanco de 2 px para que se recorte sobre el blanco de la página y sobre el negro del pie; 44 px de alto, fijo abajo a la derecha, aparece tras bajar más de una pantalla. El pie suma espacio abajo para que nunca tape su último renglón.
+- **Cita**: Source Serif 4 cursiva 600 (se carga ese único estilo de cursiva) para la cita destacada de «Quiénes somos».
 
 ## Revisión 2 (17/11/2026, change C-03c)
 

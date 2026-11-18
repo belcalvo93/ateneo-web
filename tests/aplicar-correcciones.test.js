@@ -114,3 +114,45 @@ test('se carga como <script> común: define solo window.AAC_aplicarCorrecciones'
   assert.equal(r[0].titulo, 'X');
   assert.doesNotMatch(codigo, /^\s*(import|export)\s/m);
 });
+
+// ---- archivo cruzado del sitio viejo (C-02b) ----
+
+test('archivo cruzado: fecha, disertante y título, y anio sale de la fecha', () => {
+  const g = generadas();
+  const archivo = { c001: { fecha: '25/09/2026', disertante: 'José María Amoretti', titulo: 'Pinceladas' } };
+  const r = aplicarCorrecciones(g, {}, [], archivo);
+  const c = por(r, 'c001');
+  assert.equal(c.fecha, '25/09/2026');
+  assert.equal(c.anio, 2026);
+  assert.equal(c.disertante, 'José María Amoretti');
+  assert.equal(c.titulo, 'Pinceladas');
+  assert.deepEqual(c.revisar, ['vistas']);
+  assert.deepEqual(g, generadas()); // no modifica los argumentos
+  assert.deepEqual(archivo.c001, { fecha: '25/09/2026', disertante: 'José María Amoretti', titulo: 'Pinceladas' });
+});
+
+test('archivo cruzado: la corrección manual gana, y la fecha del archivo se mantiene', () => {
+  const r = aplicarCorrecciones(generadas(), { c001: { disertante: 'J. M. Amoretti' } }, [],
+    { c001: { fecha: '25/09/2026', disertante: 'José María Amoretti' } });
+  const c = por(r, 'c001');
+  assert.equal(c.disertante, 'J. M. Amoretti');
+  assert.equal(c.fecha, '25/09/2026');
+});
+
+test('fecha en una corrección: anio sale de la fecha aunque el archivo diga otra', () => {
+  const r = aplicarCorrecciones(generadas(), { c002: { fecha: '11/11/2022' } }, [], { c002: { fecha: '03/03/2021' } });
+  const c = por(r, 'c002');
+  assert.equal(c.fecha, '11/11/2022');
+  assert.equal(c.anio, 2022);
+});
+
+test('fecha mal escrita: se ignora sin romper', () => {
+  const r = aplicarCorrecciones(generadas(), { c002: { fecha: '31/02/2023' } }, [], { c001: { fecha: 'mañana' }, c999: { fecha: '01/01/2020' } });
+  assert.equal(por(r, 'c002').fecha, undefined);
+  assert.equal(por(r, 'c002').anio, 2020);
+  assert.equal(por(r, 'c001').fecha, undefined);
+});
+
+test('sin archivo cruzado: igual que antes', () => {
+  assert.deepEqual(aplicarCorrecciones(generadas(), {}, [], undefined), aplicarCorrecciones(generadas(), {}, []));
+});

@@ -83,7 +83,7 @@
     }
     var meta = unir([
       L.disertanteVisible(charla),
-      typeof charla.anio === 'number' ? String(charla.anio) : null,
+      L.fechaDeCharla(charla),
       L.textoPartes(charla)
     ], ' · ');
     if (meta) cuerpo.appendChild(crear('p', 'meta', meta));

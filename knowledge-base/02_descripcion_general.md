@@ -27,7 +27,7 @@ Desarrollo en local (este repo) → entrega pegando el código en el widget HTML
 
 ## Páginas / estructura
 
-- **Inicio**: encabezado con la presentación del Ateneo (rótulo, título, descripción desde 2015 — DD-13, horario «y/o por Zoom», botones «Ver la videoteca» y «Conocé al Ateneo»), próxima charla (con enlaces opcionales para agendar y entrar por Zoom), cifras (+100 conferencias, 310 videos), «Seguinos», últimas charlas, explorar por tema, más vistas e invitación a proponer una charla.
+- **Inicio**: encabezado con la presentación del Ateneo (rótulo, título, descripción desde 2015 — DD-13, horario «por Zoom», botones «Ver la videoteca» y «Conocé al Ateneo»), próxima charla (con enlaces opcionales para agendar y entrar por Zoom), cifras (+100 conferencias, 310 videos), «Seguinos», últimas charlas, explorar por tema, más vistas e invitación a proponer una charla.
 - **Videoteca**: buscador + chips de tema + grilla de fichas (una ficha por charla con sus partes).
 - **Quiénes somos** (`quienes-somos.html`): historia en 4 hitos, 4 valores, cómo funcionamos, galería (oculta hasta tener fotos con consentimiento) y «Proponer una charla» con la Declaración de Principios desplegable.
 - Menú (C-03b, DD-23): Inicio · Videoteca · Quiénes somos · Contacto; en el celular se pliega detrás del botón «Menú». Barra superior negra «UTN · Facultad Regional Mendoza». Cabecera, menú y pie son iguales en las tres páginas y salen de `js/marco.js`.

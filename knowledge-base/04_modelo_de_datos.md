@@ -38,12 +38,13 @@ Los mockups usan etiquetas cortas (Historia y cultura, Agua y ambiente, IA y tec
 | Archivo | Global | Contenido | Quién lo escribe |
 |---|---|---|---|
 | `data/charlas.js` | `AAC_CHARLAS` | Catálogo (186 charlas / 310 partes) | **Generado** (`scripts/derivar-datos.js`) |
+| `data/archivo-charlas.js` (C-02b) | `AAC_ARCHIVO_CHARLAS` | `{ cXXX: { fecha, disertante?, titulo? } }`: coincidencias **seguras** con el archivo 2020–2026 del sitio viejo (`docs/fuentes/sitio-viejo.md`). `fecha` en `DD/MM/AAAA`; `disertante` tal como figura en el archivo, sin títulos; `titulo` solo donde el catálogo dice `[Título]`. Las dudosas van a `scripts/salida/cruce-archivo.md` | **Generado** (`scripts/cruzar-archivo.js`) |
 | `data/charlas-nuevas.js` | `AAC_CHARLAS_NUEVAS` | Charlas agregadas a mano, mismo esquema que una charla; ids siguientes a `c186` | Editor |
-| `data/correcciones.js` | `AAC_CORRECCIONES` | `{ cXXX: { titulo, disertante, tema, anio, destacada, confirmados, partes: { N: { url } } } }`, clave = id de charla (nunca título ni id de video) | Editor |
+| `data/correcciones.js` | `AAC_CORRECCIONES` | `{ cXXX: { titulo, disertante, tema, anio, fecha, destacada, confirmados, partes: { N: { url } } } }`, clave = id de charla (nunca título ni id de video) | Editor |
 | `data/temas.js`, `data/proxima-charla.js` | `AAC_TEMAS`, `AAC_PROXIMA_CHARLA` | Temas y próxima charla | Editor |
 | `redes` (**C-03**, aún no existe) | — | Configuración del sitio: **lista configurable de redes** `[{ nombre, url }]`; `url` con placeholder `[…]` o `null` mientras no exista la red; agregar o quitar una red no toca el HTML. Conjunto confirmado el 11/11 (DD-14): **YouTube** (`https://www.youtube.com/@ateneoamigosdelasciencias`), **Canal de Difusión de WhatsApp** (`https://whatsapp.com/channel/0029VbDjwCbI7BeKsvprkr3t`, enlace oficial informado el 16/11/2026) e **Instagram** (sin enlace todavía: placeholder, no se muestra). C-03 crea la lista con estos valores | Editor |
 
-`AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS)` devuelve la **vista combinada** que usan las páginas: una corrección que completa `titulo` o `disertante` borra su marca de `revisar`; `confirmados` borra las marcas listadas.
+`AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS, AAC_ARCHIVO_CHARLAS)` devuelve la **vista combinada** que usan las páginas, con prioridad catálogo < archivo cruzado < correcciones; si una charla tiene `fecha`, `anio` sale de ella: una corrección que completa `titulo` o `disertante` borra su marca de `revisar`; `confirmados` borra las marcas listadas.
 
 ### Charla (`data/charlas.js`)
 - `id` (string, `c001`…`c186`)
@@ -69,11 +70,13 @@ El nombre visible **no se guarda**: «Charla» si hay 1 parte; «Parte N» si ha
 186 charlas, 310 videos, 104 charlas con más de un video, años 2020–2026.
 
 ### ProximaCharla (`data/proxima-charla.js`)
-Campos según RF-04: `titulo`, `disertante`, `descripcion` (1–2 líneas), `fecha` (`DD/MM/AAAA`), `hora` (`HH:MM`, 24 h), `lugar`, `modalidad` (presencial y/o por Zoom; se ajusta en cada charla), `zoom_url` (string | null) y `correo_inscripcion`. Los valores no confirmados quedan como placeholder entre corchetes; solo se precargan los documentados (RN-PC-02/03).
+Campos según RF-04: `titulo`, `disertante`, `descripcion` (1–2 líneas), `fecha` (`DD/MM/AAAA`), `hora` (`HH:MM`, 24 h), `lugar` (string | null: solo si la charla es presencial, que es excepcional), `modalidad` («Por Zoom»; se ajusta si una charla es presencial), `zoom_url` (string | null: solo si esa charla tiene un link propio; si no, se usa `zoom_url_semestre` de `data/sitio.js`) y `correo_inscripcion`. Los valores no confirmados quedan como placeholder entre corchetes; solo se precargan los documentados (RN-PC-02/03).
 
 **Ampliación acordada el 11/11 (DD-15, se implementa en C-03)**: se suma un campo opcional `calendar_url` (string | null) con el enlace para agendar la charla en Google Calendar. Junto con `zoom_url` (que ya existe) alimenta dos botones opcionales de la tarjeta «Próxima charla»: cada botón se muestra solo si su enlace está cargado. Se conserva el nombre `zoom_url` del esquema de C-02 y el nuevo campo sigue el mismo patrón (`calendar_url`), en lugar de renombrar a `url_zoom`/`url_calendar`. Todavía no está en `data/proxima-charla.js` ni en el validador.
 
 ### Contenido institucional (C-03)
+
+- **Configuración de «Quiénes somos» y del Zoom (C-02b, respuestas del 17/11/2026)**, en `data/sitio.js`: `video_presentacion` (enlace de YouTube del video institucional o `null`: con `null` no se muestra su sección, que lleva la cita de Palas Atenea), `foto_principal` (`{ archivo, alt }` o `null`; `null` hasta que el Ateneo mande una foto actual), `zoom_url_semestre` (link de Zoom recurrente del semestre, `https`, público), `formulario_inscripcion` (formulario de Google vigente), `mesa_organizadora` (`{ mostrar, nombre, integrantes: [{ nombre, apellido }] }`, sin cargos ni contacto; hoy los 6 integrantes con `mostrar: true`), `entrevistas_radio` (lista de `{ titulo, url, fecha? }`, vacía por ahora) y `declaracion_pdf` (`null` hasta tener la Declaración reescrita).
 
 - **Fotos históricas**: 4 fotos reales entregadas por el Ateneo para la galería de «Quiénes somos». Hoy están fuera del repo; en C-03 se copian optimizadas (peso y tamaño) a una carpeta de imágenes del repo, con texto alternativo descriptivo.
 - **Declaración de Principios v2.4**: su texto completo se muestra en un bloque desplegable de «Proponer una charla» (DD-16). Se transcribe del documento entregado por el Ateneo, sin reescribirlo.

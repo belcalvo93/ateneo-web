@@ -90,6 +90,16 @@ Fuente: reunión con el Ateneo del 11/11/2026 y documentos entregados por el Ate
 - **Sale la barra superior**: dentro de la web de la UTN duplica la cabecera de la facultad. El **logo oficial de la UTN** va en el pie, en blanco por CSS (el archivo no se modifica), con «Una actividad de la UTN Facultad Regional Mendoza».
 - **Foto grupal** en Quiénes somos, autorizada por el Ateneo, achicada, sin metadatos y con las caras de dos personas del fondo desenfocadas.
 
+### DD-25 — Respuestas de la Mesa Organizadora (17/11/2026, C-02b)
+**Decisión (de la Mesa Organizadora, por Eduardo Serdoch)**:
+- **Modalidad**: las charlas son por Zoom; presencial solo por excepción. Los textos dicen «por Zoom»; `lugar` de la próxima charla pasa a ser opcional (`null` salvo charla presencial). La dirección del pie es la sede del Ateneo.
+- **Zoom**: link recurrente, uno por semestre, público. Vive en `data/sitio.js` (`zoom_url_semestre`); `zoom_url` de `proxima-charla.js` lo reemplaza solo para una charla con link propio. El botón «Entrar por Zoom» se ve también antes de anunciar la charla.
+- **Mesa Organizadora** (no «Operativa»): 6 integrantes que quieren aparecer, con nombre y apellido, en orden alfabético, sin cargos ni fotos.
+- **Disertantes sin títulos** (Dr., Ing., Lic.): salvo una eminencia que el Ateneo indique, cargada a mano en `data/correcciones.js`. La derivación del catálogo los quita (`quitarTitulos`).
+- **Radio**: lista `entrevistas_radio` y sección «En la radio» que aparece solo con entrevistas.
+- **Fotos**: la del Salón de Actos no se usa; `foto_principal` en `null` hasta tener una actual. La de los siete integrantes (2019) queda, pendiente de confirmar.
+- **Pendientes**: Declaración reescrita (el texto actual queda hasta entonces, sin PDF) y validación del logo.
+
 ## Supuestos inferidos
 
 ### SU-01 — La sección se crea con cuentas de la facultad

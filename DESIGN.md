@@ -11,6 +11,8 @@ colors:
   blanco: "#FFFFFF"
   papel-frio: "#F1F3F8"
   celeste-suave: "#EAF0F8"
+  celeste-tema: "#DCE8F7"
+  celeste-tema-hover: "#C7DAF1"
   noche-azul: "#0D2B50"
   tinta: "#1A1F26"
   tinta-suave: "#4A5560"
@@ -110,7 +112,7 @@ components:
 
 # Design System: Ateneo Amigos de la Ciencia
 
-> Generado el 17/11/2026 con `impeccable document` desde el código (design system revisión 2, change C-03c). La fuente normativa de los valores es `design-system/tokens.css`; la referencia visual, `design-system/components.html`.
+> Generado el 17/11/2026 con `impeccable document` desde el código (design system revisión 2, change C-03c; actualizado a mano a la revisión 3, change C-02b). La fuente normativa de los valores es `design-system/tokens.css`; la referencia visual, `design-system/components.html`.
 
 ## Overview
 
@@ -193,6 +195,7 @@ El sistema es plano. La profundidad se marca con espacio, filetes de 1 px y un s
 
 ### Shadow Vocabulary
 - **Elevada** (`box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 18px 40px rgba(0,0,0,.22)`): solo la tarjeta de la próxima charla, sobre el azul del encabezado.
+- **Suave** (`box-shadow: 0 6px 18px rgba(0,0,0,.12)`, rev. 3): solo mientras el cursor está sobre una tarjeta de charla, junto con una subida de 2 px; nunca en reposo.
 
 ### Named Rules
 **La regla de lo único elevado.** Por página hay como mucho un elemento con sombra: el que la persona vino a buscar.
@@ -212,7 +215,7 @@ Radio de 12 px para miniaturas, fotos y la tarjeta de la próxima charla; 8 px p
 - **Focus:** anillo amarillo de 3 px con contorno negro de 2 px, separado 2 px.
 
 ### Cards / Containers
-- **Tarjeta de charla:** sin caja. Miniatura de 16:9 con 12 px de radio y la duración total en una etiqueta negra abajo a la derecha como único elemento encima; debajo, tema en Dosis azul, título en Source Serif subrayado en azul (siempre, no solo al pasar el mouse) y metadatos. Toda la tarjeta es el enlace. En «Las más vistas», el puesto es un numeral rojo junto al título, fuera de la imagen.
+- **Tarjeta de charla:** sin caja. Miniatura de 16:9 con 12 px de radio y la duración total en una etiqueta negra abajo a la derecha como único elemento encima; debajo, tema en Dosis azul, título en Source Serif sin subrayado y metadatos (disertante · fecha exacta, o el año si no se conoce). Toda la tarjeta es el enlace: el formato de tarjeta con miniatura dice que se abre; al pasar el cursor sube 2 px y el título pasa a azul (sin movimiento con `prefers-reduced-motion`). En «Las más vistas», el puesto es un numeral rojo junto al título, fuera de la imagen.
 - **Próxima charla (componente distintivo):** blanco, 12 px de radio, 32 px de relleno, sombra elevada. Etiqueta amarilla «Próxima charla», título, datos separados por un filete, botón rojo de inscripción, botones de contorno opcionales (calendario, Zoom) y el aviso por WhatsApp a todo el ancho. Si la charla no está anunciada, dice «La próxima charla se anunciará pronto».
 
 ### Navigation
@@ -221,7 +224,7 @@ Radio de 12 px para miniaturas, fotos y la tarjeta de la próxima charla; 8 px p
 - **Pie:** negro, títulos en Source Serif, enlaces blancos (amarillo al pasar el mouse) y una franja final con el logo oficial de la UTN en blanco y «Una actividad de la UTN Facultad Regional Mendoza».
 
 ### Temas
-Cada tema es un bloque de enlace con un filete arriba: nombre en Source Serif subrayado, gancho opcional y cantidad de charlas. Al pasar el mouse, fondo blanco sobre la banda.
+Cada tema es un bloque de enlace con fondo celeste suave (`--aac-celeste`) y 12 px de radio, sin bordes ni subrayado: nombre en Source Serif, gancho opcional y cantidad de charlas con una flecha «→» decorativa. Al pasar el mouse el fondo se oscurece (`--aac-celeste-hover`) y el nombre pasa a azul.
 
 ### Línea de tiempo y valores
 Año grande en Source Serif azul, título del hito y texto, separados por filetes; sin puntos ni riel. Los valores siguen el mismo patrón: título y frase, en dos columnas.
@@ -233,7 +236,7 @@ Año grande en Source Serif azul, título del hito y texto, separados por filete
 - **Do** usar Source Serif 4 para todo título y Open Sans para todo texto corrido.
 - **Do** mantener 44 px como alto mínimo de cualquier enlace o botón, incluso los que están dentro de un texto.
 - **Do** dejar la próxima charla como lo primero útil de la portada y como único elemento con sombra.
-- **Do** subrayar los títulos que son enlaces, para que se reconozcan sin mouse.
+- **Do** hacer reconocibles los enlaces sin depender solo del color: subrayado en el texto corrido; formato de tarjeta (miniatura o fondo celeste) y flecha «→» en las tarjetas.
 - **Do** tomar colores, fuentes y espaciados solo de las variables de `design-system/tokens.css`.
 
 ### Don't:

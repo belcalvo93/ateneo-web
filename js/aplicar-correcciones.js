@@ -1,7 +1,8 @@
 /*
   Vista combinada del catálogo de charlas: charlas generadas + charlas nuevas, con las correcciones a mano aplicadas.
 
-  Uso en la página:  AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS)
+  Uso en la página:  AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS, AAC_ARCHIVO_CHARLAS)
+  Prioridad: catálogo generado < archivo cruzado del sitio viejo < correcciones a mano. Con "fecha", el año sale de ella.
   No modifica sus argumentos. Si una corrección está mal escrita (charla inexistente, campo desconocido,
   tipo equivocado) la ignora sin romper la página; el validador (node scripts/validar-datos.js) la informa.
 
@@ -31,6 +32,26 @@
     }
   }
 
+  // "dd/mm/aaaa" de una fecha que existe en el calendario -> año; si no, null.
+  function anioDeFecha(fecha) {
+    if (typeof fecha !== 'string') return null;
+    var m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(fecha);
+    if (!m) return null;
+    var dia = Number(m[1]);
+    var mes = Number(m[2]);
+    var anio = Number(m[3]);
+    var d = new Date(Date.UTC(anio, mes - 1, dia));
+    if (d.getUTCFullYear() !== anio || d.getUTCMonth() !== mes - 1 || d.getUTCDate() !== dia) return null;
+    return anio;
+  }
+
+  function aplicarFecha(charla, fecha) {
+    var anio = anioDeFecha(fecha);
+    if (anio === null) return;
+    charla.fecha = fecha;
+    charla.anio = anio;
+  }
+
   function aplicarUna(charla, corr) {
     var i;
     for (i = 0; i < CAMPOS_TEXTO.length; i++) {
@@ -41,6 +62,7 @@
       }
     }
     if (typeof corr.anio === 'number' && Number.isInteger(corr.anio)) charla.anio = corr.anio;
+    aplicarFecha(charla, corr.fecha); // si hay fecha, el año sale de ella
     if (typeof corr.destacada === 'boolean') charla.destacada = corr.destacada;
     if (Array.isArray(corr.confirmados)) {
       for (i = 0; i < corr.confirmados.length; i++) {
@@ -58,19 +80,34 @@
     }
   }
 
-  function aplicarCorrecciones(generadas, correcciones, nuevas) {
-    var lista = (Array.isArray(generadas) ? clonar(generadas) : []).concat(Array.isArray(nuevas) ? clonar(nuevas) : []);
-    if (!esObjeto(correcciones)) return lista;
-    Object.keys(correcciones).forEach(function (id) {
-      var corr = correcciones[id];
-      if (!esObjeto(corr)) return;
+  // Del archivo cruzado (data/archivo-charlas.js) solo se toman fecha, disertante y titulo.
+  function delArchivo(dato) {
+    var r = {};
+    if (esTextoNoVacio(dato.disertante)) r.disertante = dato.disertante;
+    if (esTextoNoVacio(dato.titulo)) r.titulo = dato.titulo;
+    if (typeof dato.fecha === 'string') r.fecha = dato.fecha;
+    return r;
+  }
+
+  function aplicarPorId(lista, cambios, transformar) {
+    if (!esObjeto(cambios)) return;
+    Object.keys(cambios).forEach(function (id) {
+      var cambio = cambios[id];
+      if (!esObjeto(cambio)) return;
       for (var i = 0; i < lista.length; i++) {
         if (esObjeto(lista[i]) && lista[i].id === id) {
-          aplicarUna(lista[i], corr);
+          aplicarUna(lista[i], transformar ? transformar(cambio) : cambio);
           return;
         }
       }
     });
+  }
+
+  // Prioridad: catálogo generado < archivo cruzado < correcciones a mano.
+  function aplicarCorrecciones(generadas, correcciones, nuevas, archivo) {
+    var lista = (Array.isArray(generadas) ? clonar(generadas) : []).concat(Array.isArray(nuevas) ? clonar(nuevas) : []);
+    aplicarPorId(lista, archivo, delArchivo);
+    aplicarPorId(lista, correcciones);
     return lista;
   }
 

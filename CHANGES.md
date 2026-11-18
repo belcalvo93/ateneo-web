@@ -16,7 +16,7 @@
 
 ## Cómo usar este documento
 
-1. Identificá el próximo change pendiente (`[ ]`) cuyas dependencias estén todas `[x]`. **Hoy: C-04** (C-01 a C-03c están cerrados).
+1. Identificá el próximo change pendiente (`[ ]`) cuyas dependencias estén todas `[x]`. **Hoy: C-04** (C-01 a C-03c y C-02b están cerrados).
 2. Leé los archivos de "Leer antes" de ese change en `knowledge-base/`.
 3. Ejecutá `/opsx:propose C-NN-nombre` (y después `/opsx:apply`). La lógica de buscador/filtro (C-04) va con **Strict TDD** (`node:test`, sin dependencias).
 4. Al terminar: verificá y `/opsx:archive`.
@@ -51,6 +51,7 @@ C-01 base-y-estilos                     ✓ cerrado
       ├── C-03 portada                  ✓ cerrado
       │    └── C-03b rediseño portada + quiénes somos   ✓ cerrado
       │         └── C-03c refinamiento visual (rev. 2)  ✓ cerrado
+      │              └── C-02b archivo del sitio viejo + Quiénes somos + rev. 3   ✓ cerrado
       │              ├── C-04 videoteca (TDD)
       │              └── C-05 responsive-a11y-carga-completa
       └── C-04 videoteca (TDD)          (usa el marco y la tarjeta de C-03b/C-03c)
@@ -198,13 +199,20 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 - **Governance**: BAJO
 - **Leer antes**: `openspec/changes/c-03c-refinamiento-visual/`, `knowledge-base/09` §DD-24, `DESIGN.md`
 
+### [C-02b] `archivo-y-quienes-somos`
+- **Estado**: `[x]` completado y archivado (2026-11-17); design system rev. 3 aprobado. Quedan 57 charlas dudosas y 20 sin par del cruce para revisar con `scripts/salida/cruce-archivo.md`
+- **Scope**: (A) cruce del archivo de charlas 2020–2026 del sitio viejo con el catálogo (`scripts/cruzar-archivo.js` → `data/archivo-charlas.js` generado, con fecha exacta, disertante del archivo y título donde había `[Título]`; dudosas a `scripts/salida/cruce-archivo.md`), `fecha` en `data/correcciones.js` y «Últimas charlas» por fecha real con la fecha visible; (B) Quiénes somos: foto principal, «Ateneo · Amigos · Ciencia» con la cita de Palas Atenea, alcance internacional, Mesa Organizadora ocultable, «Sumate al Ateneo» y lugar para la Declaración en PDF (oculto hasta tener la v2.4); (D) tarjetas sin subrayado: temas en celeste con flecha y charlas que se elevan al pasar el cursor (design system rev. 3).
+- **Dependencias**: `C-02`, `C-03c`
+- **Governance**: MEDIO (pipeline de datos; la autora revisa las dudosas antes de cargarlas)
+- **Leer antes**: `openspec/changes/c-02b-archivo-y-quienes-somos/`, `docs/fuentes/sitio-viejo.md`, `knowledge-base/10`
+
 ### [C-04] `videoteca`
 - **Estado**: `[ ]` pendiente — **validado el 11/11**
 - **Scope**:
   - **Strict TDD** con `node:test` (sin dependencias): `js/buscador.js` con funciones puras `normalizar`, `buscar`, `filtrarPorTema`, `combinar`; tests en `tests/buscador.test.js` escritos antes del código.
   - Tests esperados: normalización de mayúsculas y tildes, búsqueda por título o disertante (RN-BU-01/02), filtro por tema, combinación búsqueda + tema, «Todos los temas» por defecto, sin resultados, mínimo 2 casos por comportamiento.
   - `videoteca.html` según el mockup «Videoteca» (`docs/mockups/`): buscador, chips de tema (etiquetas cortas), contador «Mostrando N charlas», fichas con miniatura derivada de la URL de YouTube.
-  - `js/app.js`: render desde la vista combinada `AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS)` (generado + correcciones + charlas nuevas; nunca `AAC_CHARLAS` directo); una ficha por charla; botones «Charla · duración» o «Parte N · duración» (RN-VI-05), con el nombre derivado de la cantidad de partes.
+  - `js/app.js`: render desde la vista combinada `AAC_aplicarCorrecciones(AAC_CHARLAS, AAC_CORRECCIONES, AAC_CHARLAS_NUEVAS, AAC_ARCHIVO_CHARLAS)` (C-02b: con el archivo cruzado del sitio viejo) (generado + correcciones + charlas nuevas; nunca `AAC_CHARLAS` directo); una ficha por charla; botones «Charla · duración» o «Parte N · duración» (RN-VI-05), con el nombre derivado de la cantidad de partes.
   - **Requisito (decidido en C-02)**: un placeholder entre corchetes nunca es visible para el público. Si `titulo` sigue en `[Título]`, la ficha muestra el `titulo_original` de la parte 1; si `disertante` es `[Disertante]`, esa línea no se muestra. Las partes con `url: null` no deben romper la ficha.
   - Estado vacío «No encontramos charlas…» con acción de limpiar filtros; mensaje si falla la carga de datos.
   - Búsqueda nunca insertada con `innerHTML`; enlaces con `rel="noopener noreferrer"`.
@@ -278,6 +286,7 @@ Proyecto chico, pensado para una sola desarrolladora; la tabla indica qué se po
 | C-03 | `portada` | 2 | C-02 | BAJO | `[x]` | Cerrado |
 | C-03b | `rediseno-portada-y-quienes-somos` | 2 | C-03 | BAJO | `[x]` | Cerrado |
 | C-03c | `refinamiento-visual` | 2 | C-03b | BAJO | `[x]` | Cerrado |
+| C-02b | `archivo-y-quienes-somos` | 2 | C-02, C-03c | MEDIO | `[x]` | Cerrado |
 | C-04 | `videoteca` | 2 | C-02, C-03b | MEDIO | `[ ]` | Validado 11/11 |
 | C-05 | `responsive-a11y-carga-completa` | 3 | C-03, C-04 | MEDIO | `[ ]` | Validado 11/11 |
 | C-06 | `integracion-y-guia` | 3 | C-05 | ALTO | `[ ]` | Validado 11/11 |

@@ -9,6 +9,9 @@
   - En pantallas angostas el menú se pliega detrás del botón «Menú»; sin JavaScript se ve entero.
   - El pie toma el correo, las redes, la dirección y el mapa de data/sitio.js. Una red sin enlace no se muestra.
   - Lo que cada página trae escrito dentro de los contenedores es solo el respaldo por si esto no carga.
+  - Botón «↑ Subir» (enlace a #inicio, el contenedor .aac-web): aparece después de bajar más de una pantalla,
+    sube con desplazamiento suave solo si no se pidió reducir el movimiento y deja el foco en «Saltar al contenido».
+    Sin JavaScript es un enlace común; si la página no lo trae escrito, se crea acá.
 
   Necesita cargados antes: js/portada-logica.js (y data/sitio.js para el pie). Sin módulos ES.
 */
@@ -213,6 +216,51 @@
     if (propuesta) propuesta.href = 'mailto:' + correo + '?subject=' + encodeURIComponent('Propuesta de charla');
   }
 
+  // ---- volver arriba ----
+
+  function volverArriba(raiz) {
+    var enlace = buscar(raiz, 'volver-arriba');
+    if (!enlace) {
+      enlace = crear('a', 'volver-arriba');
+      enlace.href = '#inicio';
+      enlace.setAttribute('data-aac', 'volver-arriba');
+      enlace.setAttribute('aria-label', 'Subir: volver al inicio de la página');
+      var flecha = crear('span', '', '↑');
+      flecha.setAttribute('aria-hidden', 'true');
+      enlace.appendChild(flecha);
+      enlace.appendChild(document.createTextNode(' Subir'));
+      raiz.appendChild(enlace);
+    }
+    var saltar = raiz.querySelector('.saltar');
+    var movimiento = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: no-preference)') : null;
+
+    // Cuánto se bajó desde el principio de la sección del Ateneo (dentro de Elementor no es el tope de la página).
+    function actualizar() {
+      var desplazado = -raiz.getBoundingClientRect().top;
+      enlace.hidden = !L.debeMostrarVolverArriba(desplazado, window.innerHeight);
+    }
+    var pendiente = false;
+    window.addEventListener('scroll', function () {
+      if (pendiente) return;
+      pendiente = true;
+      window.requestAnimationFrame(function () { pendiente = false; actualizar(); });
+    }, { passive: true });
+    window.addEventListener('resize', actualizar);
+    actualizar();
+
+    enlace.addEventListener('click', function (evento) {
+      evento.preventDefault();
+      var suave = movimiento !== null && movimiento.matches;
+      var destino = raiz.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: Math.max(0, destino), behavior: suave ? 'smooth' : 'auto' });
+      var foco = saltar || raiz.querySelector('main');
+      if (foco) {
+        if (!saltar) foco.setAttribute('tabindex', '-1');
+        foco.focus({ preventScroll: true });
+      }
+    });
+  }
+
   // ---- arranque ----
 
   function iniciar() {
@@ -224,6 +272,7 @@
 
     var cabecera = buscar(raiz, 'cabecera');
     if (cabecera) dibujarCabecera(cabecera, pagina);
+    volverArriba(raiz);
 
     if (typeof sitio === 'object' && sitio !== null) {
       var pie = buscar(raiz, 'pie');

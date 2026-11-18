@@ -106,6 +106,42 @@ test('ultimasCharlas: a igual año, las agregadas a mano van primero y la últim
   assert.deepEqual(L.ultimasCharlas(lista, 5, ['n1', 'n2', 'n3']).map((c) => c.id), ['n2', 'n1', 'c1', 'c2', 'n3']);
 });
 
+test('ultimasCharlas: dentro del año, las fechadas por fecha real de la más nueva a la más vieja', () => {
+  const lista = [
+    charla('c1', { anio: 2026, fecha: '25/09/2026' }),
+    charla('c2', { anio: 2026 }),
+    charla('c3', { anio: 2026, fecha: '09/10/2026' }),
+    charla('c4', { anio: 2025, fecha: '28/11/2025' })
+  ];
+  assert.deepEqual(L.ultimasCharlas(lista, 4).map((c) => c.id), ['c3', 'c1', 'c2', 'c4']);
+});
+
+test('ultimasCharlas: nuevas sin fecha primero, después fechadas y al final las sin fecha', () => {
+  const lista = [
+    charla('c1', { anio: 2026 }),
+    charla('c2', { anio: 2026, fecha: '13/03/2026' }),
+    charla('n1', { anio: 2026 }),
+    charla('n2', { anio: 2026, fecha: '30/10/2026' }),
+    charla('c3', { anio: 2027, fecha: '05/03/2027' })
+  ];
+  assert.deepEqual(L.ultimasCharlas(lista, 5, ['n1', 'n2']).map((c) => c.id), ['c3', 'n1', 'n2', 'c2', 'c1']);
+});
+
+test('textoFecha: "09/10/2026" -> "9 de octubre de 2026"; inválida o ausente -> null', () => {
+  assert.equal(L.textoFecha('09/10/2026'), '9 de octubre de 2026');
+  assert.equal(L.textoFecha('25/09/2026'), '25 de septiembre de 2026');
+  assert.equal(L.textoFecha('31/02/2026'), null);
+  assert.equal(L.textoFecha('2026-10-09'), null);
+  assert.equal(L.textoFecha(undefined), null);
+});
+
+test('fechaDeCharla: fecha si la tiene, si no el año, si no null', () => {
+  assert.equal(L.fechaDeCharla(charla('c1', { anio: 2026, fecha: '09/10/2026' })), '9 de octubre de 2026');
+  assert.equal(L.fechaDeCharla(charla('c1', { anio: 2024 })), '2024');
+  assert.equal(L.fechaDeCharla(charla('c1', { anio: 2024, fecha: 'mal' })), '2024');
+  assert.equal(L.fechaDeCharla({ id: 'x' }), null);
+});
+
 test('ultimasCharlas: listas cortas, vacías o inválidas, sin modificar la lista recibida', () => {
   const lista = [charla('c1', { anio: 2020 }), charla('c2', { anio: 2026 })];
   const copia = JSON.stringify(lista);
@@ -402,7 +438,14 @@ test('portada con los datos reales: nada de lo que se muestra tiene corchetes', 
   const cargar = (archivo, variable) => JSON.parse(JSON.stringify(cargarArchivoDeDatos(path.join(raiz, archivo), variable)));
   const temas = cargar('temas.js', 'AAC_TEMAS');
   const nuevas = cargar('charlas-nuevas.js', 'AAC_CHARLAS_NUEVAS');
-  const lista = aplicarCorrecciones(cargar('charlas.js', 'AAC_CHARLAS'), cargar('correcciones.js', 'AAC_CORRECCIONES'), nuevas);
+  const lista = aplicarCorrecciones(cargar('charlas.js', 'AAC_CHARLAS'), cargar('correcciones.js', 'AAC_CORRECCIONES'), nuevas,
+    cargar('archivo-charlas.js', 'AAC_ARCHIVO_CHARLAS'));
+  // Las que ya tienen fecha real salen de la más nueva a la más vieja.
+  const fechadas = L.ultimasCharlas(lista, lista.length, nuevas.map((c) => c.id)).filter((c) => c.fecha);
+  const clave = (f) => f.slice(6) + f.slice(3, 5) + f.slice(0, 2);
+  assert.ok(fechadas.length > 50);
+  for (let i = 1; i < fechadas.length; i++) assert.ok(clave(fechadas[i - 1].fecha) >= clave(fechadas[i].fecha), fechadas[i].id);
+  assert.match(L.fechaDeCharla(fechadas[0]), /^\d{1,2} de [a-z]+ de \d{4}$/);
   const sitio = cargar('sitio.js', 'AAC_SITIO');
   const prox = cargar('proxima-charla.js', 'AAC_PROXIMA_CHARLA');
 
@@ -434,4 +477,108 @@ test('portada con los datos reales: nada de lo que se muestra tiene corchetes', 
     if (t !== null) assert.doesNotMatch(String(t), /[\[\]]/, 'texto con corchetes: ' + t);
   }
   assert.equal(L.totalVideos(lista), lista.reduce((a, c) => a + c.partes.length, 0));
+});
+
+// ---- Mesa Organizadora (C-02b) ----
+
+test('integrantesOrdenados: por apellido sin distinguir tildes, con apellido compuesto', () => {
+  const lista = [
+    { nombre: 'Raúl', apellido: 'Pía Vargas' }, { nombre: 'Eduardo', apellido: 'Serdoch' },
+    { nombre: 'Luis Pacífico', apellido: 'Tittarelli' }, { nombre: 'Adolfo', apellido: 'Anunziata' },
+    { nombre: 'Alberto', apellido: 'Salassa' }, { nombre: 'Mabel', apellido: 'Chambouleyron' },
+    { nombre: 'Alfredo', apellido: 'Pérez Raffaelli' }, { nombre: 'Luis', apellido: 'Blanco' },
+    { nombre: 'Jorge', apellido: 'Garoni' }, { nombre: 'Victorio', apellido: 'Sonzogni' }
+  ];
+  const r = L.integrantesOrdenados(lista);
+  assert.deepEqual(r, ['Adolfo Anunziata', 'Luis Blanco', 'Mabel Chambouleyron', 'Jorge Garoni', 'Alfredo Pérez Raffaelli',
+    'Raúl Pía Vargas', 'Alberto Salassa', 'Eduardo Serdoch', 'Victorio Sonzogni', 'Luis Pacífico Tittarelli']);
+  assert.equal(lista[0].apellido, 'Pía Vargas'); // no modifica la lista
+});
+
+test('integrantesOrdenados: mismo apellido por nombre; descarta incompletos y placeholders; lista ausente', () => {
+  assert.deepEqual(L.integrantesOrdenados([
+    { nombre: 'Luis', apellido: 'Álvarez' }, { nombre: 'Ana', apellido: 'Alvarez' }, { nombre: 'Juan' },
+    { nombre: '[Nombre]', apellido: 'Paz' }, null
+  ]), ['Ana Alvarez', 'Luis Álvarez']);
+  assert.deepEqual(L.integrantesOrdenados(undefined), []);
+  assert.deepEqual(L.integrantesOrdenados('x'), []);
+});
+
+// ---- Botón «Volver arriba» (C-02b) ----
+
+test('debeMostrarVolverArriba: solo después de bajar más de una pantalla', () => {
+  assert.equal(L.debeMostrarVolverArriba(0, 844), false);
+  assert.equal(L.debeMostrarVolverArriba(500, 844), false);
+  assert.equal(L.debeMostrarVolverArriba(844, 844), false);
+  assert.equal(L.debeMostrarVolverArriba(845, 844), true);
+  assert.equal(L.debeMostrarVolverArriba(3000, 900), true);
+});
+
+test('debeMostrarVolverArriba: valores inválidos no muestran el botón', () => {
+  assert.equal(L.debeMostrarVolverArriba(-200, 844), false);
+  assert.equal(L.debeMostrarVolverArriba(NaN, 844), false);
+  assert.equal(L.debeMostrarVolverArriba(2000, 0), false);
+  assert.equal(L.debeMostrarVolverArriba(undefined, undefined), false);
+});
+
+// ---- Zoom del semestre (Ateneo, 17/11/2026) ----
+
+const ZOOM_SEM = 'https://utn.zoom.us/j/88394809866?pwd=GavNQgGKD6gPBTqR5sDoxWMXP6S1Vh.1';
+
+test('accionesProxima: sin zoom_url propio usa el Zoom del semestre de data/sitio.js', () => {
+  const r = L.accionesProxima(proxima(), { zoom_url_semestre: ZOOM_SEM });
+  assert.deepEqual(r.map((a) => [a.tipo, a.url]), [['correo', 'mailto:contacto@ejemplo.org'], ['zoom', ZOOM_SEM]]);
+});
+
+test('accionesProxima: el zoom_url de la charla manda sobre el del semestre', () => {
+  const propio = 'https://utn.zoom.us/j/111';
+  const r = L.accionesProxima(proxima({ zoom_url: propio }), { zoom_url_semestre: ZOOM_SEM });
+  assert.equal(r.find((a) => a.tipo === 'zoom').url, propio);
+});
+
+test('accionesProxima: también con la charla sin anunciar; sin ningún enlace válido no hay botón', () => {
+  const sinAnunciar = proxima({ titulo: '[Título de la charla]', fecha: '[fecha]' });
+  assert.ok(L.accionesProxima(sinAnunciar, { zoom_url_semestre: ZOOM_SEM }).some((a) => a.tipo === 'zoom'));
+  assert.ok(!L.accionesProxima(sinAnunciar, { zoom_url_semestre: null }).some((a) => a.tipo === 'zoom'));
+  assert.ok(!L.accionesProxima(sinAnunciar, { zoom_url_semestre: 'http://zoom.us/j/1' }).some((a) => a.tipo === 'zoom'));
+  assert.ok(!L.accionesProxima(sinAnunciar).some((a) => a.tipo === 'zoom'));
+});
+
+// ---- En la radio (Ateneo, 17/11/2026) ----
+
+test('entrevistasVisibles: solo las que tienen título y enlace https, con la fecha en texto si la hay', () => {
+  const r = L.entrevistasVisibles([
+    { titulo: 'Entrevista en Radio Nacional', url: 'https://ejemplo.org/a', fecha: '10/11/2026' },
+    { titulo: 'Sin fecha', url: 'https://ejemplo.org/b' },
+    { titulo: '[Título]', url: 'https://ejemplo.org/c' },
+    { titulo: 'Insegura', url: 'javascript:alert(1)' },
+    { titulo: 'Sin https', url: 'http://ejemplo.org/d' },
+    null
+  ]);
+  assert.deepEqual(r, [
+    { titulo: 'Entrevista en Radio Nacional', url: 'https://ejemplo.org/a', fecha: '10 de noviembre de 2026' },
+    { titulo: 'Sin fecha', url: 'https://ejemplo.org/b', fecha: null }
+  ]);
+});
+
+test('entrevistasVisibles: lista vacía o ausente -> []', () => {
+  assert.deepEqual(L.entrevistasVisibles([]), []);
+  assert.deepEqual(L.entrevistasVisibles(undefined), []);
+});
+
+// ---- Video de presentación (C-02b, 17/11/2026) ----
+
+test('videoDePresentacion: un video de YouTube -> enlace y miniatura', () => {
+  assert.deepEqual(L.videoDePresentacion('https://www.youtube.com/watch?v=dQw4w9WgXcQ'), {
+    url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    miniatura: 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg'
+  });
+  assert.equal(L.videoDePresentacion('https://youtu.be/dQw4w9WgXcQ').miniatura, 'https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg');
+});
+
+test('videoDePresentacion: null, placeholder o un enlace que no es de YouTube -> null', () => {
+  assert.equal(L.videoDePresentacion(null), null);
+  assert.equal(L.videoDePresentacion('[enlace del video]'), null);
+  assert.equal(L.videoDePresentacion('https://vimeo.com/123'), null);
+  assert.equal(L.videoDePresentacion('javascript:alert(1)'), null);
 });
